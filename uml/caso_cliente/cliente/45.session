@@ -1,0 +1,17 @@
+window_sizes 1800 903 218 1577 753 104
+
+diagrams
+  active  classdiagram_ref 128173 // client
+    1261 600 100 A-Landscape 36 0
+end
+show_stereotypes
+selected operation_ref 129581 // ejecutar
+open
+  class_ref 128301 // UserInterface
+  class_ref 128429 // MenuManager
+  classrelation_ref 128685 // <dependency>
+  class_ref 128173 // Cliente
+  class_ref 129453 // ICommand
+  class_ref 129965 // ActivateEffectorCommand
+end
+end

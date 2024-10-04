@@ -1,0 +1,766 @@
+format 224
+"cliente"
+  revision 1
+  modified_by 45 "Usuario"
+
+
+  
+  // class settings
+  default_attribute_visibility private default_relation_visibility private default_operation_visibility public
+  
+  classdiagramsettings draw_all_relations yes hide_attributes no hide_operations no hide_getset_operations no hide_ports no show_members_full_definition no show_members_visibility no show_members_stereotype no show_members_context no show_members_multiplicity no show_members_initialization no show_attribute_modifiers no member_max_width 127 show_parameter_dir yes show_parameter_name yes package_name_in_tab no class_drawing_mode natural drawing_language uml show_context_mode no auto_label_position yes show_relation_modifiers no show_relation_visibility no show_infonote no shadow yes gradient none show_stereotype_properties no end
+  
+  classcompositediagramsettings auto_label_position yes draw_all_relations yes shadow yes gradient none end
+  
+  usecasediagramsettings package_name_in_tab no show_context_mode no auto_label_position yes draw_all_relations yes class_drawing_mode actor shadow yes gradient none show_stereotype_properties no end
+  
+  sequencediagramsettings show_full_operations_definition no show_class_of_operation no write_horizontally yes instances_drawing_mode natural drawing_language uml draw_all_relations yes shadow yes gradient none show_stereotype_properties no show_class_context_mode no show_msg_context_mode no end
+  
+  collaborationdiagramsettings show_full_operations_definition no show_class_of_operation no show_hierarchical_rank no write_horizontally yes instances_drawing_mode natural drawing_language uml package_name_in_tab no show_class_pack_context_mode no show_msg_context_mode no draw_all_relations yes shadow yes gradient none show_stereotype_properties no end
+  
+  objectdiagramsettings write_horizontally yes package_name_in_tab no show_class_pack_context_mode no auto_label_position yes draw_all_relations yes shadow yes gradient none show_stereotype_properties no end
+  
+  objectcompositediagramsettings auto_label_position yes draw_all_relations yes shadow yes gradient none end
+  
+  componentdiagramsettings package_name_in_tab no show_context_mode no auto_label_position yes draw_all_relations yes shadow yes gradient none
+   draw_component_as_icon no show_component_req_prov no show_component_rea no show_stereotype_properties no end
+  
+  deploymentdiagramsettings package_name_in_tab no show_context_mode no write_horizontally yes auto_label_position yes draw_all_relations yes shadow yes gradient none
+   draw_component_as_icon no show_component_req_prov no show_component_rea no show_stereotype_properties no end
+  
+  statediagramsettings package_name_in_tab no show_context_mode no auto_label_position yes write_label_horizontally yes show_trans_definition no draw_all_relations yes shadow yes gradient none
+   show_activities yes region_horizontally yes drawing_language uml show_stereotype_properties no end
+  
+  activitydiagramsettings package_name_in_tab no show_context_mode no show_opaque_action_definition no auto_label_position yes write_label_horizontally no draw_all_relations yes shadow yes gradient none
+   show_infonote yes drawing_language uml show_stereotype_properties no end
+  
+  class_color yellow duration_color transparent continuation_color gray note_color blue fragment_color transparent subject_color transparent usecase_color yellow package_color transparent component_color green artifact_color green deploymentnode_color gray state_color yellow stateaction_color transparent activity_color transparent activityregion_color transparent activitypartition_color transparent activityaction_color transparent parameterpin_color white generalization_color black 
+  dpi 96
+  font_size 8
+  diagram_format A4
+
+  image_root_dir ""
+
+
+  mark_for_import
+  
+  classview 128173 "cliente"
+    
+    classdiagramsettings member_max_width 0 end
+    
+    classcompositediagramsettings end
+    
+    collaborationdiagramsettings end
+    
+    objectdiagramsettings end
+    
+    objectcompositediagramsettings end
+    
+    sequencediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    
+    activitydiagramsettings
+     end
+    classdiagram 128173 "client"
+      classdiagramsettings draw_all_relations no show_members_visibility yes member_max_width 0 end
+      size A-Landscape
+    end
+
+    class 128301 "UserInterface"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      operation 128685 "mostrarMenu"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 128813 "solicitarComando"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      classrelation 129709 // <dependency>
+	relation 129453 -_->
+	  a public
+	    cpp default "#include in source"
+	    classrelation_ref 129709 // <dependency>
+	  b parent class_ref 128429 // MenuManager
+      end
+    end
+
+    class 128429 "MenuManager"
+      visibility package stereotype "boundary"
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 129325 // <unidirectional association>
+	relation 129069 --->
+	  a role_name "" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 129325 // <unidirectional association>
+	  b parent class_ref 128685 // RobotController
+      end
+
+      classrelation 129453 // <unidirectional association>
+	relation 129197 --->
+	  a role_name "" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 129453 // <unidirectional association>
+	  b parent class_ref 128557 // FileManager
+      end
+
+      classrelation 129581 // <unidirectional association>
+	relation 129325 --->
+	  a role_name "" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 129581 // <unidirectional association>
+	  b parent class_ref 128173 // Cliente
+      end
+
+      classrelation 131501 // <dependency>
+	relation 131245 -_->
+	  a public
+	    cpp default "#include in source"
+	    classrelation_ref 131501 // <dependency>
+	  b parent class_ref 129453 // ICommand
+      end
+
+      operation 129197 "seleccionarOpcion"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "opcion" explicit_type ""
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}const ${t0} & ${p0}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 129325 "ejecutaropcion"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+    end
+
+    class 128557 "FileManager"
+      visibility package stereotype "entity"
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 128685 // <dependency>
+	relation 128557 -_->
+	  a public
+	    cpp default "#include in source"
+	    classrelation_ref 128685 // <dependency>
+	  b parent class_ref 128557 // FileManager
+      end
+
+      class 128173 "Cliente"
+	visibility protected stereotype "control"
+	cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+	java_decl ""
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	operation 128173 "conectar"
+	  public explicit_return_type ""
+	  nparams 0
+	  cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	  cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	  
+	end
+
+	operation 128301 "desconectar"
+	  public explicit_return_type ""
+	  nparams 0
+	  cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	  cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	  
+	end
+
+	operation 128429 "enviarComando"
+	  public explicit_return_type ""
+	  nparams 0
+	  cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	  cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	  
+	end
+
+	operation 128557 "subirGCode"
+	  public explicit_return_type ""
+	  nparams 0
+	  cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	  cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	  
+	end
+
+	classrelation 128173 // <aggregation>
+	  relation 128173 o---
+	    a role_name "" private
+	      cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	      classrelation_ref 128173 // <aggregation>
+	    b role_name "" private
+	      cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	      classrelation_ref 128301 // <aggregation>
+	end
+
+	classrelation 128429 // <association>
+	  relation 128301 ----
+	    a role_name "" private
+	      cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	      classrelation_ref 128429 // <association>
+	    b role_name "" package
+	      classrelation_ref 128941 // <association>
+	end
+
+	classrelation 128557 // <unidirectional association>
+	  relation 128429 --->
+	    a role_name "" private
+	      cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	      classrelation_ref 128557 // <unidirectional association>
+	    b parent class_ref 128557 // FileManager
+	end
+
+	classrelation 130349 // <realization>
+	  relation 130093 -_-|>
+	    a public
+	      cpp default "${type}"
+	      classrelation_ref 130349 // <realization>
+	    b parent class_ref 129197 // ICliente
+	end
+
+	classrelation 130477 // <dependency>
+	  relation 130221 -_->
+	    a public
+	      cpp default "#include in source"
+	      classrelation_ref 130477 // <dependency>
+	    b parent class_ref 129581 // IFileManager
+	end
+
+	classrelation 130605 // <dependency>
+	  relation 130349 -_->
+	    a public
+	      cpp default "#include in source"
+	      classrelation_ref 130605 // <dependency>
+	    b parent class_ref 129325 // IRobotController
+	end
+      end
+
+      classrelation 128813 // <dependency>
+	relation 128685 -_->
+	  a public
+	    cpp default "#include in source"
+	    classrelation_ref 128813 // <dependency>
+	  b parent class_ref 128173 // Cliente
+      end
+
+      operation 128941 "leerArchivo"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 129069 "subirArchivo"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      classrelation 131117 // <realization>
+	relation 130861 -_-|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 131117 // <realization>
+	  b parent class_ref 129581 // IFileManager
+      end
+
+      classrelation 131245 // <dependency>
+	relation 130989 -_->
+	  a public
+	    cpp default "#include in source"
+	    classrelation_ref 131245 // <dependency>
+	  b parent class_ref 129197 // ICliente
+      end
+
+      classrelation 131373 // <dependency>
+	relation 131117 -_->
+	  a public
+	    cpp default "#include in source"
+	    classrelation_ref 131373 // <dependency>
+	  b parent class_ref 128429 // MenuManager
+      end
+    end
+
+    class 128685 "RobotController"
+      visibility package stereotype "entity"
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 128301 // <aggregation>
+	relation_ref 128173 // <aggregation>
+      end
+
+      classrelation 128941 // <association>
+	relation_ref 128301 // <association>
+      end
+
+      classrelation 130733 // <realization>
+	relation 130477 -_-|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 130733 // <realization>
+	  b parent class_ref 129325 // IRobotController
+      end
+
+      classrelation 130861 // <dependency>
+	relation 130605 -_->
+	  a public
+	    cpp default "#include in source"
+	    classrelation_ref 130861 // <dependency>
+	  b parent class_ref 128173 // Cliente
+      end
+
+      classrelation 130989 // <dependency>
+	relation 130733 -_->
+	  a public
+	    cpp default "#include in source"
+	    classrelation_ref 130989 // <dependency>
+	  b parent class_ref 128429 // MenuManager
+      end
+
+      classrelation 131885 // <dependency>
+	relation 131629 -_->
+	  a public
+	    cpp default "#include in source"
+	    classrelation_ref 131885 // <dependency>
+	  b parent class_ref 129197 // ICliente
+      end
+
+      classrelation 132013 // <unidirectional association>
+	relation 131757 --->
+	  a role_name "" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 132013 // <unidirectional association>
+	  b parent class_ref 128941 // Alarma
+      end
+
+      classrelation 132141 // <unidirectional association>
+	relation 131885 --->
+	  a role_name "" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 132141 // <unidirectional association>
+	  b parent class_ref 128813 // Visualizer
+      end
+
+      classrelation 132269 // <unidirectional association>
+	relation 132013 --->
+	  a role_name "" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 132269 // <unidirectional association>
+	  b parent class_ref 129069 // Audio
+      end
+    end
+
+    class 128813 "Visualizer"
+      visibility package stereotype "boundary"
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 129837 // <dependency>
+	relation 129581 -_->
+	  a public
+	    cpp default "#include in source"
+	    classrelation_ref 129837 // <dependency>
+	  b parent class_ref 128685 // RobotController
+      end
+    end
+
+    class 128941 "Alarma"
+      visibility package stereotype "boundary"
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 129197 // <dependency>
+	relation 128941 -_->
+	  a public
+	    cpp default "#include in source"
+	    classrelation_ref 129197 // <dependency>
+	  b parent class_ref 128173 // Cliente
+      end
+    end
+
+    class 129069 "Audio"
+      visibility package stereotype "boundary"
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 129069 // <dependency>
+	relation 128813 -_->
+	  a public
+	    cpp default "#include in source"
+	    classrelation_ref 129069 // <dependency>
+	  b parent class_ref 128685 // RobotController
+      end
+    end
+
+    class 129197 "ICliente"
+      visibility package stereotype "interface"
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl "${comment}${@}${visibility}${static}interface ${name}${extends} {
+${members}}
+"
+      php_decl "${comment}interface ${name}${extends} {
+${members}}
+"
+      python_2_2 python_decl ""
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 129325 "IRobotController"
+      visibility package stereotype "interface"
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl "${comment}${@}${visibility}${static}interface ${name}${extends} {
+${members}}
+"
+      php_decl "${comment}interface ${name}${extends} {
+${members}}
+"
+      python_2_2 python_decl ""
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 129453 "ICommand"
+      visibility package stereotype "interface"
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl "${comment}${@}${visibility}${static}interface ${name}${extends} {
+${members}}
+"
+      php_decl "${comment}interface ${name}${extends} {
+${members}}
+"
+      python_2_2 python_decl ""
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      operation 129581 "ejecutar"
+	protected explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+    end
+
+    class 129581 "IFileManager"
+      visibility package stereotype "interface"
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl "${comment}${@}${visibility}${static}interface ${name}${extends} {
+${members}}
+"
+      php_decl "${comment}interface ${name}${extends} {
+${members}}
+"
+      python_2_2 python_decl ""
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 129709 "MoveCommand"
+      visibility package stereotype "auxiliary"
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl "${comment}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl "${comment}${abstract}${custom}valuetype ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 129965 // <realization>
+	relation 129709 -_-|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 129965 // <realization>
+	  b parent class_ref 129453 // ICommand
+      end
+
+      classrelation 131629 // <dependency>
+	relation 131373 -_->
+	  a public
+	    cpp default "#include in source"
+	    classrelation_ref 131629 // <dependency>
+	  b parent class_ref 128685 // RobotController
+      end
+    end
+
+    class 129837 "LoadFileCommand"
+      visibility package stereotype "auxiliary"
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl "${comment}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl "${comment}${abstract}${custom}valuetype ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 130221 // <realization>
+	relation 129965 -_-|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 130221 // <realization>
+	  b parent class_ref 129453 // ICommand
+      end
+
+      classrelation 131757 // <dependency>
+	relation 131501 -_->
+	  a public
+	    cpp default "#include in source"
+	    classrelation_ref 131757 // <dependency>
+	  b parent class_ref 129581 // IFileManager
+      end
+    end
+
+    class 129965 "ActivateEffectorCommand"
+      visibility package stereotype "auxiliary"
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl "${comment}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl "${comment}${abstract}${custom}valuetype ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 130093 // <realization>
+	relation 129837 -_-|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 130093 // <realization>
+	  b parent class_ref 129453 // ICommand
+      end
+
+    end
+  end
+end

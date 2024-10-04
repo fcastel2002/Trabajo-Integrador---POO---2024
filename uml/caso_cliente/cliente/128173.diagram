@@ -1,0 +1,164 @@
+format 224
+
+classcanvas 128045 class_ref 128173 // Cliente
+  classdiagramsettings member_max_width 0 end
+  xyz 554.714 268.786 2000
+end
+classcanvas 128301 class_ref 128429 // MenuManager
+  classdiagramsettings member_max_width 0 end
+  xyz 409.214 41.25 2000
+end
+classcanvas 128429 class_ref 128557 // FileManager
+  classdiagramsettings member_max_width 0 end
+  xyz 425.179 163.036 2000
+end
+classcanvas 128557 class_ref 128685 // RobotController
+  classdiagramsettings member_max_width 0 end
+  xyz 756.107 445.143 2000
+end
+classcanvas 128685 class_ref 128813 // Visualizer
+  classdiagramsettings member_max_width 0 end
+  xyz 779 107.286 2000
+end
+classcanvas 128813 class_ref 128941 // Alarma
+  classdiagramsettings member_max_width 0 end
+  xyz 779.143 539.429 2000
+end
+classcanvas 128941 class_ref 129069 // Audio
+  classdiagramsettings member_max_width 0 end
+  xyz 931.429 445.143 2000
+end
+classcanvas 132013 class_ref 129197 // ICliente
+  classdiagramsettings member_max_width 0 end
+  xyz 578.75 174.071 2000
+end
+classcanvas 132141 class_ref 129325 // IRobotController
+  classdiagramsettings member_max_width 0 end
+  xyzwh 531.75 426.143 2000 145 93
+end
+classcanvas 132269 class_ref 129453 // ICommand
+  classdiagramsettings member_max_width 0 end
+  xyz 241.714 49.25 2000
+end
+classcanvas 132397 class_ref 129581 // IFileManager
+  classdiagramsettings member_max_width 0 end
+  xyz 429.214 299.786 2000
+end
+classcanvas 132525 class_ref 129709 // MoveCommand
+  classdiagramsettings member_max_width 0 end
+  xyz 189.393 528.607 2000
+end
+classcanvas 132653 class_ref 129837 // LoadFileCommand
+  classdiagramsettings member_max_width 0 end
+  xyz 275.679 300.75 2000
+end
+classcanvas 132781 class_ref 129965 // ActivateEffectorCommand
+  classdiagramsettings member_max_width 0 end
+  xyz 40.5714 300.75 2000
+end
+relationcanvas 132909 relation_ref 129709 // <realization>
+  geometry VHV unfixed
+  from ref 132525 z 2001 to point 236 260
+  line 136749 z 2001 to point 273 260
+  line 136877 z 2001 to ref 132269
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 133037 relation_ref 129837 // <realization>
+  geometry VHV unfixed
+  from ref 132781 z 2001 to point 116 260
+  line 135725 z 2001 to point 273 260
+  line 135853 z 2001 to ref 132269
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 133165 relation_ref 129965 // <realization>
+  geometry VHV unfixed
+  decenter_begin 521
+  from ref 132653 z 2001 to point 332 260
+  line 135213 z 2001 to point 273 260
+  line 135341 z 2001 to ref 132269
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 133293 relation_ref 130093 // <realization>
+  decenter_end 549
+  from ref 128045 z 2001 to ref 132013
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 133421 relation_ref 130221 // <dependency>
+  from ref 128045 z 2001 to ref 132397
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 133549 relation_ref 130349 // <dependency>
+  decenter_end 517
+  from ref 128045 z 2001 to ref 132141
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 133677 relation_ref 130477 // <realization>
+  from ref 128557 z 2001 to ref 132141
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 134061 relation_ref 130861 // <realization>
+  from ref 128429 z 2001 to ref 132397
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 134189 relation_ref 130989 // <dependency>
+  from ref 128429 z 2001 to ref 132013
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 134317 relation_ref 131117 // <dependency>
+  from ref 128429 z 2001 to ref 128301
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 134573 relation_ref 131245 // <dependency>
+  from ref 128301 z 2001 to ref 132269
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 134701 relation_ref 131373 // <dependency>
+  decenter_begin 542
+  decenter_end 836
+  from ref 132525 z 2001 to point 716 559
+  line 137133 z 2001 to point 716 492
+  line 137261 z 2001 to ref 128557
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 134829 relation_ref 131501 // <dependency>
+  from ref 132653 z 2001 to ref 132397
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 136109 relation_ref 131629 // <dependency>
+  geometry VH unfixed
+  decenter_begin 153
+  from ref 128557 z 2001 to point 768 199
+  line 137389 z 2001 to ref 132013
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 136365 relation_ref 131757 // <unidirectional association>
+  from ref 128557 z 2001 to ref 128813
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 136493 relation_ref 131885 // <unidirectional association>
+  decenter_begin 555
+  from ref 128557 z 2001 to ref 128685
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 136621 relation_ref 132013 // <unidirectional association>
+  from ref 128557 z 2001 to ref 128941
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+end

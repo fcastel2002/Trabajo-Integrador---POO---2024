@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Bouml (http://bouml.free.fr/) -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="1242" height="568" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<g>
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="288" y="72" width="3" height="33" />
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="252" y="102" width="39" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="248" y="68" width="40" height="34" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="268" y="78">main</text>
+	<line stroke="black" stroke-opacity="1" x1="248" y1="86" x2="288" y2="86" />
+	<line stroke="black" stroke-opacity="1" x1="248" y1="94" x2="288" y2="94" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="215" y1="354" x2="223" y2="354" />
+	<line stroke="black" stroke-opacity="1" x1="215" y1="344" x2="215" y2="364" />
+	<ellipse fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" cx="233" cy="354" rx="10" ry="10" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="233" y="374">AdminInterface</text>
+	<line stroke="black" stroke-opacity="1" x1="187" y1="382" x2="279" y2="382" />
+	<line stroke="black" stroke-opacity="1" x1="187" y1="390" x2="279" y2="390" />
+</g>
+<g>
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="433" y="265" width="3" height="59" />
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="335" y="321" width="101" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="331" y="261" width="102" height="60" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="382" y="271">RequestHandler</text>
+	<line stroke="black" stroke-opacity="1" x1="331" y1="279" x2="433" y2="279" />
+	<line stroke="black" stroke-opacity="1" x1="331" y1="287" x2="433" y2="287" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="335" y="297">verificarComando()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="335" y="313">manejarPeticiones()</text>
+</g>
+<g>
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="276" y="270" width="3" height="33" />
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="194" y="300" width="85" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="190" y="266" width="86" height="34" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="233" y="276">SerialManager</text>
+	<line stroke="black" stroke-opacity="1" x1="190" y1="284" x2="276" y2="284" />
+	<line stroke="black" stroke-opacity="1" x1="190" y1="292" x2="276" y2="292" />
+</g>
+<g>
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="569" y="256" width="3" height="75" />
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="483" y="328" width="89" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="479" y="252" width="90" height="76" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="524" y="262">Logger</text>
+	<line stroke="black" stroke-opacity="1" x1="479" y1="270" x2="569" y2="270" />
+	<line stroke="black" stroke-opacity="1" x1="479" y1="278" x2="569" y2="278" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="483" y="288">registrarEvento()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="483" y="304">mostrarLog()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="483" y="320">guardarLog()</text>
+</g>
+<g>
+	<ellipse fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" cx="386" cy="55" rx="10" ry="10" />
+	<line stroke="black" stroke-opacity="1" x1="386" y1="45" x2="391" y2="40" />
+	<line stroke="black" stroke-opacity="1" x1="386" y1="45" x2="391" y2="50" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="386" y="75">Server</text>
+	<line stroke="black" stroke-opacity="1" x1="338" y1="83" x2="434" y2="83" />
+	<line stroke="black" stroke-opacity="1" x1="338" y1="91" x2="434" y2="91" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="342" y="101">iniciarServidor()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="342" y="117">detenerServidor()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="342" y="133">procesarPeticion()</text>
+</g>
+<g>
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="284" y="135" width="3" height="91" />
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="182" y="223" width="105" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="178" y="131" width="106" height="92" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="231" y="141">Robot</text>
+	<line stroke="black" stroke-opacity="1" x1="178" y1="149" x2="284" y2="149" />
+	<line stroke="black" stroke-opacity="1" x1="178" y1="157" x2="284" y2="157" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="182" y="167">activarMotores()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="182" y="183">desactivarMotores()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="182" y="199">moverLineal()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="182" y="215">posicionDescanso()</text>
+</g>
+<g>
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="147" y="345" width="3" height="51" />
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="43" y="393" width="107" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="39" y="341" width="108" height="52" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" text-anchor="middle" x="93" y="351">&lt;&lt;auxiliary&gt;&gt;</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="93" y="369">AdminCommands</text>
+	<line stroke="black" stroke-opacity="1" x1="39" y1="377" x2="147" y2="377" />
+	<line stroke="black" stroke-opacity="1" x1="39" y1="385" x2="147" y2="385" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="389" y1="140" x2="387" y2="260" />
+	<polygon fill="#000000" stroke="black" stroke-opacity="1" points="389,140 394,146 388,151 382,145" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="151" y1="376" x2="156" y2="382" />
+	<line stroke="black" stroke-opacity="1" x1="151" y1="376" x2="157" y2="370" />
+	<line stroke-dasharray="4,4" stroke="black" stroke-opacity="1" x1="186" y1="377" x2="151" y2="376" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="478" y1="292" x2="472" y2="286" />
+	<line stroke="black" stroke-opacity="1" x1="478" y1="292" x2="472" y2="298" />
+	<line stroke-dasharray="4,4" stroke="black" stroke-opacity="1" x1="437" y1="292" x2="478" y2="292" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="434" y1="89" x2="526" y2="89" />
+	<polygon fill="#000000" stroke="black" stroke-opacity="1" points="434,89 440,83 446,89 440,95" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="526" y1="89" x2="526" y2="251" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="280" y1="289" x2="285" y2="295" />
+	<line stroke="black" stroke-opacity="1" x1="280" y1="289" x2="286" y2="283" />
+	<line stroke-dasharray="4,4" stroke="black" stroke-opacity="1" x1="330" y1="290" x2="280" y2="289" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="234" y1="265" x2="233" y2="227" />
+	<polygon fill="#000000" stroke="black" stroke-opacity="1" points="234,265 227,259 233,253 239,258" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="292" y1="87" x2="297" y2="93" />
+	<line stroke="black" stroke-opacity="1" x1="292" y1="87" x2="298" y2="81" />
+	<line stroke="black" stroke-opacity="1" x1="337" y1="88" x2="292" y2="87" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="234" y1="304" x2="227" y2="309" />
+	<line stroke="black" stroke-opacity="1" x1="234" y1="304" x2="239" y2="310" />
+	<line stroke-dasharray="4,4" stroke="black" stroke-opacity="1" x1="233" y1="343" x2="234" y2="304" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="374" y1="400" x2="394" y2="400" />
+	<ellipse fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" cx="384" cy="390" rx="10" ry="10" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="384" y="410">UserManager</text>
+	<line stroke="black" stroke-opacity="1" x1="313" y1="418" x2="455" y2="418" />
+	<line stroke="black" stroke-opacity="1" x1="313" y1="426" x2="455" y2="426" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="317" y="436">validarUsuario()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="317" y="452">agregarUsuario()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="317" y="468">removerUsuario()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="317" y="484">serializarUsuarios()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="317" y="500">deserializarUsuarios()</text>
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="387" y1="379" x2="393" y2="373" />
+	<line stroke="black" stroke-opacity="1" x1="387" y1="379" x2="381" y2="373" />
+	<line stroke-dasharray="4,4" stroke="black" stroke-opacity="1" x1="387" y1="325" x2="387" y2="379" />
+</g>
+</svg>
