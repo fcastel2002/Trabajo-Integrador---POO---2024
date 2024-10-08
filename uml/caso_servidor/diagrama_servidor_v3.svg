@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Bouml (http://bouml.free.fr/) -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="1558" height="721" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<g>
+	<line stroke="black" stroke-opacity="1" x1="341" y1="245" x2="349" y2="245" />
+	<line stroke="black" stroke-opacity="1" x1="341" y1="235" x2="341" y2="255" />
+	<ellipse fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" cx="359" cy="245" rx="10" ry="10" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="359" y="265">AdminInterface</text>
+	<line stroke="black" stroke-opacity="1" x1="313" y1="273" x2="405" y2="273" />
+	<line stroke="black" stroke-opacity="1" x1="313" y1="281" x2="405" y2="281" />
+</g>
+<g>
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="400" y="387" width="3" height="33" />
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="318" y="417" width="85" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="314" y="383" width="86" height="34" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="357" y="393">SerialManager</text>
+	<line stroke="black" stroke-opacity="1" x1="314" y1="401" x2="400" y2="401" />
+	<line stroke="black" stroke-opacity="1" x1="314" y1="409" x2="400" y2="409" />
+</g>
+<g>
+	<ellipse fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" cx="422" cy="601" rx="10" ry="10" />
+	<line stroke="black" stroke-opacity="1" x1="422" y1="591" x2="427" y2="586" />
+	<line stroke="black" stroke-opacity="1" x1="422" y1="591" x2="427" y2="596" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="422" y="621">Server</text>
+	<line stroke="black" stroke-opacity="1" x1="368" y1="629" x2="476" y2="629" />
+	<line stroke="black" stroke-opacity="1" x1="368" y1="637" x2="476" y2="637" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="372" y="647">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="384" y="647">iniciarServidor()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="372" y="663">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="384" y="663">detenerServidor()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="372" y="679">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="384" y="679">procesarPeticion()</text>
+</g>
+<g>
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="410" y="487" width="3" height="59" />
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="300" y="543" width="113" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="296" y="483" width="114" height="60" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="353" y="493">RequestHandler</text>
+	<line stroke="black" stroke-opacity="1" x1="296" y1="501" x2="410" y2="501" />
+	<line stroke="black" stroke-opacity="1" x1="296" y1="509" x2="410" y2="509" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="300" y="519">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="312" y="519">verificarComando()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="300" y="535">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="312" y="535">manejarPeticiones()</text>
+</g>
+<g>
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="323" y="604" width="3" height="75" />
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="225" y="676" width="101" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="221" y="600" width="102" height="76" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="272" y="610">Logger</text>
+	<line stroke="black" stroke-opacity="1" x1="221" y1="618" x2="323" y2="618" />
+	<line stroke="black" stroke-opacity="1" x1="221" y1="626" x2="323" y2="626" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="225" y="636">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="237" y="636">registrarEvento()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="225" y="652">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="237" y="652">mostrarLog()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="225" y="668">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="237" y="668">guardarLog()</text>
+</g>
+<g>
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="268" y="354" width="3" height="91" />
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="154" y="442" width="117" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="150" y="350" width="118" height="92" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="209" y="360">Robot</text>
+	<line stroke="black" stroke-opacity="1" x1="150" y1="368" x2="268" y2="368" />
+	<line stroke="black" stroke-opacity="1" x1="150" y1="376" x2="268" y2="376" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="154" y="386">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="166" y="386">activarMotores()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="154" y="402">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="166" y="402">desactivarMotores()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="154" y="418">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="166" y="418">moverLineal()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="154" y="434">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="166" y="434">posicionDescanso()</text>
+</g>
+<g>
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="168" y="206" width="3" height="107" />
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="52" y="310" width="119" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="48" y="202" width="120" height="108" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="108" y="212">ServerMetodos</text>
+	<line stroke="black" stroke-opacity="1" x1="48" y1="220" x2="168" y2="220" />
+	<line stroke="black" stroke-opacity="1" x1="48" y1="228" x2="168" y2="228" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="52" y="238">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="64" y="238">movLineal()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="52" y="254">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="64" y="254">efectorState()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="52" y="270">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="64" y="270">home()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="52" y="286">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="64" y="286">guardarTrayectoria()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="52" y="302">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="64" y="302">cargarGCode()</text>
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="110" y1="314" x2="104" y2="320" />
+	<line stroke="black" stroke-opacity="1" x1="110" y1="314" x2="116" y2="320" />
+	<line stroke-dasharray="4,4" stroke="black" stroke-opacity="1" x1="110" y1="515" x2="110" y2="314" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="398" y1="585" x2="398" y2="547" />
+	<polygon fill="#000000" stroke="black" stroke-opacity="1" points="398,585 392,579 398,573 404,579" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="367" y1="640" x2="327" y2="640" />
+	<polygon fill="#000000" stroke="black" stroke-opacity="1" points="367,640 361,646 355,640 361,634" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="313" y1="398" x2="272" y2="398" />
+	<polygon fill="#000000" stroke="black" stroke-opacity="1" points="313,398 307,404 301,398 307,392" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="312" y1="599" x2="318" y2="593" />
+	<line stroke="black" stroke-opacity="1" x1="312" y1="599" x2="306" y2="593" />
+	<line stroke-dasharray="4,4" stroke="black" stroke-opacity="1" x1="312" y1="547" x2="312" y2="599" />
+</g>
+<g>
+	<line stroke-dasharray="4,4" stroke="black" stroke-opacity="1" x1="295" y1="515" x2="110" y2="515" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="172" y1="257" x2="178" y2="263" />
+	<line stroke="black" stroke-opacity="1" x1="172" y1="257" x2="178" y2="251" />
+	<line stroke-dasharray="4,4" stroke="black" stroke-opacity="1" x1="312" y1="257" x2="172" y2="257" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="359" y1="421" x2="353" y2="427" />
+	<line stroke="black" stroke-opacity="1" x1="359" y1="421" x2="365" y2="427" />
+	<line stroke="black" stroke-opacity="1" x1="359" y1="482" x2="359" y2="421" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="359" y1="382" x2="365" y2="376" />
+	<line stroke="black" stroke-opacity="1" x1="359" y1="382" x2="353" y2="376" />
+	<line stroke="black" stroke-opacity="1" x1="359" y1="289" x2="359" y2="382" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="100" y1="58" x2="120" y2="58" />
+	<ellipse fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" cx="110" cy="48" rx="10" ry="10" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="110" y="68">UserManager</text>
+	<line stroke="black" stroke-opacity="1" x1="39" y1="76" x2="181" y2="76" />
+	<line stroke="black" stroke-opacity="1" x1="39" y1="84" x2="181" y2="84" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="43" y="94">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="55" y="94">validarUsuario()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="43" y="110">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="55" y="110">agregarUsuario()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="43" y="126">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="55" y="126">removerUsuario()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="43" y="142">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="55" y="142">serializarUsuarios()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="43" y="158">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="55" y="158">deserializarUsuarios()</text>
+</g>
+<g>
+	<line stroke-dasharray="4,4" stroke="black" stroke-opacity="1" x1="414" y1="516" x2="455" y2="518" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="110" y1="166" x2="104" y2="172" />
+	<line stroke="black" stroke-opacity="1" x1="110" y1="166" x2="116" y2="172" />
+	<line stroke="black" stroke-opacity="1" x1="110" y1="201" x2="110" y2="166" />
+</g>
+<g>
+	<line stroke-dasharray="4,4" stroke="black" stroke-opacity="1" x1="455" y1="518" x2="455" y2="104" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="181" y1="102" x2="186" y2="108" />
+	<line stroke="black" stroke-opacity="1" x1="181" y1="102" x2="187" y2="96" />
+	<line stroke-dasharray="4,4" stroke="black" stroke-opacity="1" x1="455" y1="104" x2="181" y2="102" />
+</g>
+</svg>
