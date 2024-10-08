@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Bouml (http://bouml.free.fr/) -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="1242" height="568" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<g>
+	<line stroke="black" stroke-opacity="1" x1="82" y1="210" x2="90" y2="210" />
+	<line stroke="black" stroke-opacity="1" x1="82" y1="200" x2="82" y2="220" />
+	<ellipse fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" cx="100" cy="210" rx="10" ry="10" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="100" y="230">MainMenu</text>
+	<line stroke="black" stroke-opacity="1" x1="41" y1="238" x2="159" y2="238" />
+	<line stroke="black" stroke-opacity="1" x1="41" y1="246" x2="159" y2="246" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="45" y="256">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="57" y="256">seleccionarOpcion()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="45" y="272">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="57" y="272">ejecutaropcion()</text>
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="234" y1="220" x2="254" y2="220" />
+	<ellipse fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" cx="244" cy="210" rx="10" ry="10" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="244" y="230">FileManager</text>
+	<line stroke="black" stroke-opacity="1" x1="199" y1="238" x2="289" y2="238" />
+	<line stroke="black" stroke-opacity="1" x1="199" y1="246" x2="289" y2="246" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="203" y="256">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="215" y="256">leerArchivo()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="203" y="272">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="215" y="272">subirArchivo()</text>
+</g>
+<g>
+	<ellipse fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" cx="100" cy="57" rx="10" ry="10" />
+	<line stroke="black" stroke-opacity="1" x1="100" y1="47" x2="105" y2="42" />
+	<line stroke="black" stroke-opacity="1" x1="100" y1="47" x2="105" y2="52" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="100" y="77">Cliente</text>
+	<line stroke="black" stroke-opacity="1" x1="49" y1="85" x2="151" y2="85" />
+	<line stroke="black" stroke-opacity="1" x1="49" y1="93" x2="151" y2="93" />
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="53" y="103">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="65" y="103">conectar()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="53" y="119">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="65" y="119">desconectar()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="53" y="135">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="65" y="135">enviarComando()</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" font-weight="bold" x="53" y="151">+</text>
+	<text font-family="Helvetica" font-size="8" fill="#000000" xml:space="preserve" x="65" y="151">subirGCode()</text>
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="198" y1="240" x2="192" y2="234" />
+	<line stroke="black" stroke-opacity="1" x1="198" y1="240" x2="192" y2="246" />
+	<line stroke-dasharray="4,4" stroke="black" stroke-opacity="1" x1="159" y1="240" x2="198" y2="240" />
+</g>
+<g>
+	<line stroke="black" stroke-opacity="1" x1="103" y1="158" x2="103" y2="199" />
+</g>
+</svg>
