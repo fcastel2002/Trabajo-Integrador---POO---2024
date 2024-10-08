@@ -111,11 +111,11 @@ class InterfazServidor:
         print("\n=== Reporte Detallado de Logs ===")
         # Aquí puedes agregar la lógica real para obtener los logs
         logs = [
-            "2024-04-27 12:00:00 - Conectar al Robot - Éxito - Robot conectado.",
-            "2024-04-27 12:05:00 - Activar Motores del Robot - Éxito - Motores activados.",
-            "2024-04-27 12:10:00 - Desactivar Motores del Robot - Error - No se pudo desactivar.",
-            "2024-04-27 12:15:00 - Maniobra de Homing - Éxito - Homing realizado.",
-            "2024-04-27 12:20:00 - Carga y Ejecución de Archivo Gcode - Éxito - Archivo ejecutado."
+            "2024-04-27 12:00:00 - Usuario 1 IP 127.0.0.1 - Conectar al Robot - Éxito - Robot conectado.",
+            "2024-04-27 12:05:00 - Usuario 1 IP 127.0.0.1 - Activar Motores del Robot - Éxito - Motores activados.",
+            "2024-04-27 12:10:00 - Usuario 1 IP 127.0.0.1 - Desactivar Motores del Robot - Error - No se pudo desactivar.",
+            "2024-04-27 12:15:00 - Usuario 1 IP 127.0.0.1 - Maniobra de Homing - Éxito - Homing realizado.",
+            "2024-04-27 12:20:00 - Usuario 1 IP 127.0.0.1 - Carga y Ejecución de Archivo Gcode - Éxito - Archivo ejecutado."
             # Agrega más líneas de log según sea necesario
         ]
         for log in logs:
@@ -164,10 +164,10 @@ class InterfazServidor:
             if not velocidad:
                 print("\nError: Debes proporcionar un valor para la velocidad.\n")
                 return
-            print(f"\nMoviendo el efector final a la posición ({x}, {y}, {z}) con velocidad {velocidad}.\n")
+            print(f"\nMoviendo el efector final a la posición ({x}, {y}, {z})[mm] con velocidad {velocidad} [mm/s].\n")
             # Aquí puedes agregar la lógica real para mover el efector con velocidad
         else:
-            print(f"\nMoviendo el efector final a la posición ({x}, {y}, {z}) con velocidad por defecto.\n")
+            print(f"\nMoviendo el efector final a la posición ({x}, {y}, {z})[mm] con velocidad 1 [mm/s] por defecto.\n")
             # Aquí puedes agregar la lógica real para mover el efector sin especificar velocidad
 
     def activar_motores(self):
