@@ -27,6 +27,7 @@ GCODE_FILES = [
 # Contraseña ficticia para administradores
 ADMIN_PASSWORD = "admin123"
 
+
 def conectar_robot():
     print("\nConectando al robot...")
     # Aquí puedes agregar la lógica real para conectar al robot
