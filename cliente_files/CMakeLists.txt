@@ -8,4 +8,6 @@ add_executable(cliente_files main.cpp
         ActivarEfectorCommand.cpp
         ActivarEfectorCommand.h
         MoveEfectorCommand.cpp
-        MoveEfectorCommand.h)
+        MoveEfectorCommand.h
+        Cliente.cpp
+        Cliente.h)
