@@ -1,4 +1,4 @@
 "C:\Program Files\JetBrains\CLion 2024.2.2\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "MinGW Makefiles" -S C:\Users\Pachi\Desktop\repos\Trabajo-Integrador---POO---2024\cliente_files -B C:\Users\Pachi\Desktop\repos\Trabajo-Integrador---POO---2024\cliente_files\cmake-build-debug
--- Configuring done (0.7s)
+-- Configuring done (0.2s)
 -- Generating done (0.1s)
 -- Build files have been written to: C:/Users/Pachi/Desktop/repos/Trabajo-Integrador---POO---2024/cliente_files/cmake-build-debug

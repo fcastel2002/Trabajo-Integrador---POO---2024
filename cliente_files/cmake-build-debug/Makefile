@@ -176,6 +176,30 @@ Cliente.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\cliente_files.dir\build.make CMakeFiles/cliente_files.dir/Cliente.cpp.s
 .PHONY : Cliente.cpp.s
 
+MainMenu.obj: MainMenu.cpp.obj
+.PHONY : MainMenu.obj
+
+# target to build an object file
+MainMenu.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cliente_files.dir\build.make CMakeFiles/cliente_files.dir/MainMenu.cpp.obj
+.PHONY : MainMenu.cpp.obj
+
+MainMenu.i: MainMenu.cpp.i
+.PHONY : MainMenu.i
+
+# target to preprocess a source file
+MainMenu.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cliente_files.dir\build.make CMakeFiles/cliente_files.dir/MainMenu.cpp.i
+.PHONY : MainMenu.cpp.i
+
+MainMenu.s: MainMenu.cpp.s
+.PHONY : MainMenu.s
+
+# target to generate assembly for a file
+MainMenu.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cliente_files.dir\build.make CMakeFiles/cliente_files.dir/MainMenu.cpp.s
+.PHONY : MainMenu.cpp.s
+
 MoveEfectorCommand.obj: MoveEfectorCommand.cpp.obj
 .PHONY : MoveEfectorCommand.obj
 
@@ -239,6 +263,9 @@ help:
 	@echo ... Cliente.obj
 	@echo ... Cliente.i
 	@echo ... Cliente.s
+	@echo ... MainMenu.obj
+	@echo ... MainMenu.i
+	@echo ... MainMenu.s
 	@echo ... MoveEfectorCommand.obj
 	@echo ... MoveEfectorCommand.i
 	@echo ... MoveEfectorCommand.s

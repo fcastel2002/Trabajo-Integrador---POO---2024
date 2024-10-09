@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/cliente_files.dir/ActivarEfectorCommand.cpp.obj.d"
   "CMakeFiles/cliente_files.dir/Cliente.cpp.obj"
   "CMakeFiles/cliente_files.dir/Cliente.cpp.obj.d"
+  "CMakeFiles/cliente_files.dir/MainMenu.cpp.obj"
+  "CMakeFiles/cliente_files.dir/MainMenu.cpp.obj.d"
   "CMakeFiles/cliente_files.dir/MoveEfectorCommand.cpp.obj"
   "CMakeFiles/cliente_files.dir/MoveEfectorCommand.cpp.obj.d"
   "CMakeFiles/cliente_files.dir/main.cpp.obj"

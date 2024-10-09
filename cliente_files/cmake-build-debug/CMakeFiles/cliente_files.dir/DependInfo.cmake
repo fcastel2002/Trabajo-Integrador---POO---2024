@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/Pachi/Desktop/repos/Trabajo-Integrador---POO---2024/cliente_files/ActivarEfectorCommand.cpp" "CMakeFiles/cliente_files.dir/ActivarEfectorCommand.cpp.obj" "gcc" "CMakeFiles/cliente_files.dir/ActivarEfectorCommand.cpp.obj.d"
   "C:/Users/Pachi/Desktop/repos/Trabajo-Integrador---POO---2024/cliente_files/Cliente.cpp" "CMakeFiles/cliente_files.dir/Cliente.cpp.obj" "gcc" "CMakeFiles/cliente_files.dir/Cliente.cpp.obj.d"
+  "C:/Users/Pachi/Desktop/repos/Trabajo-Integrador---POO---2024/cliente_files/MainMenu.cpp" "CMakeFiles/cliente_files.dir/MainMenu.cpp.obj" "gcc" "CMakeFiles/cliente_files.dir/MainMenu.cpp.obj.d"
   "C:/Users/Pachi/Desktop/repos/Trabajo-Integrador---POO---2024/cliente_files/MoveEfectorCommand.cpp" "CMakeFiles/cliente_files.dir/MoveEfectorCommand.cpp.obj" "gcc" "CMakeFiles/cliente_files.dir/MoveEfectorCommand.cpp.obj.d"
   "C:/Users/Pachi/Desktop/repos/Trabajo-Integrador---POO---2024/cliente_files/main.cpp" "CMakeFiles/cliente_files.dir/main.cpp.obj" "gcc" "CMakeFiles/cliente_files.dir/main.cpp.obj.d"
   )

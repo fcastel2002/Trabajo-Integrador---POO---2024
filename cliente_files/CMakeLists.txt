@@ -10,4 +10,6 @@ add_executable(cliente_files main.cpp
         MoveEfectorCommand.cpp
         MoveEfectorCommand.h
         Cliente.cpp
-        Cliente.h)
+        Cliente.h
+        MainMenu.cpp
+        MainMenu.h)
