@@ -5,20 +5,20 @@
 #ifndef CLIENTE_H
 #define CLIENTE_H
 #include <string>
-
+#include "Orden.h"
+#include "FileManager.h"
 
 class Cliente {
 private:
-    std::string m_ipAddress{};
-    int m_port{};
-    bool conected = false;
+    std::string m_ipServer{};
+    std::string m_puertoServer{};
+    bool conectado = false;
 public:
-    Cliente(std::string ipAddress, int puerto) : m_ipAddress(ipAddress), m_port(puerto) {}
-    bool autenticar(std::string nombreUsuario, std::string clave);
+    Cliente(std::string ipServer, std::string puertoServer);
     bool conectar();
     void desconectar();
-    std::string sendCommand(std::string cmd);
-    void subirGcode(std::string archivo);
+    std::string enviarOrden(const Orden& orden);
+    void enviarArchivo(FileManager& filemanager);
 };
 
 

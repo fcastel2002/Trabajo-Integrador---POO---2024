@@ -4,12 +4,9 @@ project(cliente_files)
 set(CMAKE_CXX_STANDARD 23)
 
 add_executable(cliente_files main.cpp
-        Command.h
-        ActivarEfectorCommand.cpp
-        ActivarEfectorCommand.h
-        MoveEfectorCommand.cpp
-        MoveEfectorCommand.h
         Cliente.cpp
         Cliente.h
-        MainMenu.cpp
-        MainMenu.h)
+        Orden.cpp
+        Orden.h
+        FileManager.cpp
+        FileManager.h)
