@@ -237,3 +237,10 @@ class InterfazServidor:
     def salir(self):
         print("\nSaliendo del Panel de Control. ¡Hasta luego!")
         sys.exit(0)
+
+def main():
+    interfaz = InterfazServidor()
+    interfaz.menu()
+
+if __name__ == "__main__":
+    main()
