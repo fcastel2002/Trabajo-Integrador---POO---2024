@@ -17,7 +17,7 @@ class ControladorRobot:
 
     def conectar(self):
         if self.estado_conexion == "conectado":
-            raise ErrorCoherencia(3)
+            raise ErrorDeEstado(3)  # Conexión ya activa
         try:
             self.serial_robot = serial.Serial(self.puerto_serial, self.baudios)
             self.estado_conexion = "conectado"
@@ -28,16 +28,16 @@ class ControladorRobot:
 
     def desconectar(self):
         if self.estado_conexion == "desconectado":
-            raise ErrorCoherencia(4)
+            raise ErrorDeEstado(4)  # Conexión ya inactiva
         self.serial_robot.close()
         self.estado_conexion = "desconectado"
         return "Éxito: Conexión terminada\n"
 
     def activar_motores(self):
         if self.estado_conexion == "desconectado":
-            raise ErrorConexion(1)
+            raise ErrorDeConexion(1)  # No hay conexión
         if self.motores_activos:
-            raise ErrorCoherencia(2)
+            raise ErrorDeEstado(2)  # Motores ya encendidos
 
         self.motores_activos = True
         gcode = "M17"
@@ -46,9 +46,9 @@ class ControladorRobot:
 
     def desactivar_motores(self):
         if self.estado_conexion == "desconectado":
-            raise ErrorConexion(1)
+            raise ErrorDeConexion(1)  # No hay conexión
         if not self.motores_activos:
-            raise ErrorCoherencia(1)
+            raise ErrorDeEstado(1)  # Motores ya apagados
 
         self.motores_activos = False
         gcode = "M18"
@@ -57,9 +57,9 @@ class ControladorRobot:
 
     def mover_circular(self, q1, v1, q2, v2, q3, v3):
         if self.estado_conexion == "desconectado":
-            raise ErrorConexion(1)
+            raise ErrorDeConexion(1)  # No hay conexión
         if not self.motores_activos:
-            raise ErrorConexion(2)
+            raise ErrorDeConexion(2)  # Motores apagados
 
         gcode = f"G2 A{q1} R{v1} B{q2} S{v2} C{q3} T{v3}"
         self._registrar_comando(gcode)
@@ -67,9 +67,9 @@ class ControladorRobot:
 
     def mover_efector(self, x, y, z, velocidad):
         if self.estado_conexion == "desconectado":
-            raise ErrorConexion(1)
+            raise ErrorDeConexion(1)  # No hay conexión
         if not self.motores_activos:
-            raise ErrorConexion(2)
+            raise ErrorDeConexion(2)  # Motores apagados
 
         gcode = f"G1 X{x} Y{y} Z{z} F{velocidad}"
         self._registrar_comando(gcode)
@@ -77,31 +77,31 @@ class ControladorRobot:
 
     def actuar_efector(self, accion):
         if self.estado_conexion == "desconectado":
-            raise ErrorConexion(1)
+            raise ErrorDeConexion(1)  # No hay conexión
         if not self.motores_activos:
-            raise ErrorConexion(2)
+            raise ErrorDeConexion(2)  # Motores apagados
 
         if accion == '1':
             if self.efector_estado == "activado":
-                raise ErrorCoherencia(5)
+                raise ErrorDeEstado(5)  # Efector ya activado
             gcode = "M3"
             self.efector_estado = "activado"
         elif accion == '0':
             if self.efector_estado == "desactivado":
-                raise ErrorCoherencia(6)
+                raise ErrorDeEstado(6)  # Efector ya desactivado
             gcode = "M5"
             self.efector_estado = "desactivado"
         else:
-            raise ErrorArgumentos(3)
+            raise ErrorDeParametros(3)  # Parámetros inválidos
 
         self._registrar_comando(gcode)
         return f"Éxito: Efector {'activado' if accion == '1' else 'desactivado'}\n"
 
     def homming(self):
         if self.estado_conexion == "desconectado":
-            raise ErrorConexion(1)
+            raise ErrorDeConexion(1)  # No hay conexión
         if not self.motores_activos:
-            raise ErrorConexion(2)
+            raise ErrorDeConexion(2)  # Motores apagados
 
         gcode = "G28"
         self._registrar_comando(gcode)
@@ -109,27 +109,27 @@ class ControladorRobot:
 
     def aprender(self, nombre_archivo, activar):
         if not self.motores_activos:
-            raise ErrorConexion(2)
+            raise ErrorDeConexion(2)  # Motores apagados
 
         if activar:
             if self.aprendiendo:
-                raise ErrorCoherencia(7)
+                raise ErrorDeEstado(7)  # Ya está en modo aprendizaje
             self.aprendiendo = True
             self.archivo_aprendizaje = GestorDeArchivos(f"{nombre_archivo}.txt")
             return "Modo aprendizaje activado\n"
         else:
             if not self.aprendiendo:
-                raise ErrorCoherencia(8)
+                raise ErrorDeEstado(8)  # No está en modo aprendizaje
             self.aprendiendo = False
             return "Modo aprendizaje desactivado\n"
 
     def ejecutar_automatico(self, nombre_archivo):
         if self.estado_conexion == "desconectado":
-            raise ErrorConexion(1)
+            raise ErrorDeConexion(1)  # No hay conexión
         if not self.motores_activos:
-            raise ErrorConexion(2)
+            raise ErrorDeConexion(2)  # Motores apagados
         if self.aprendiendo:
-            raise ErrorCoherencia(9)
+            raise ErrorDeEstado(9)  # Está en modo aprendizaje
 
         with open(f"{nombre_archivo}.txt", "r") as archivo:
             comandos = archivo.readlines()
