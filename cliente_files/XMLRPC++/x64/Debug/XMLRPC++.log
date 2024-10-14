@@ -1,0 +1,49 @@
+﻿  get_time.cpp
+  XmlRpcClient.cpp
+C:\Users\Usuario\Desktop\RepoProgramacion\CASTEL_POO_2024\L13784_TP3_v2\L31783_TP3\XMLRPC++\XmlRpcClient.cpp(252,16): warning C4477: 'sprintf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'unsigned __int64'
+      C:\Users\Usuario\Desktop\RepoProgramacion\CASTEL_POO_2024\L13784_TP3_v2\L31783_TP3\XMLRPC++\XmlRpcClient.cpp(252,16):
+      consider using '%zd' in the format string
+  
+  XmlRpcDispatch.cpp
+  XmlRpcServer.cpp
+C:\Users\Usuario\Desktop\RepoProgramacion\CASTEL_POO_2024\L13784_TP3_v2\L31783_TP3\XMLRPC++\XmlRpcServer.cpp(275,33): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  XmlRpcServerConnection.cpp
+C:\Users\Usuario\Desktop\RepoProgramacion\CASTEL_POO_2024\L13784_TP3_v2\L31783_TP3\XMLRPC++\XmlRpcServerConnection.cpp(1,9): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+      C:\Users\Usuario\Desktop\RepoProgramacion\CASTEL_POO_2024\L13784_TP3_v2\L31783_TP3\XMLRPC++\XmlRpcServerConnection.cpp(1,9):
+      '_CRT_SECURE_NO_WARNINGS' previously declared on the command line
+  
+C:\Users\Usuario\Desktop\RepoProgramacion\CASTEL_POO_2024\L13784_TP3_v2\L31783_TP3\XMLRPC++\XmlRpcServerConnection.cpp(348,19): warning C4477: 'sprintf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'unsigned __int64'
+      C:\Users\Usuario\Desktop\RepoProgramacion\CASTEL_POO_2024\L13784_TP3_v2\L31783_TP3\XMLRPC++\XmlRpcServerConnection.cpp(348,19):
+      consider using '%zd' in the format string
+  
+  XmlRpcServerMethod.cpp
+  XmlRpcSocket.cpp
+C:\Users\Usuario\Desktop\RepoProgramacion\CASTEL_POO_2024\L13784_TP3_v2\L31783_TP3\XMLRPC++\XmlRpcSocket.cpp(2,9): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+      C:\Users\Usuario\Desktop\RepoProgramacion\CASTEL_POO_2024\L13784_TP3_v2\L31783_TP3\XMLRPC++\XmlRpcSocket.cpp(2,9):
+      '_CRT_SECURE_NO_WARNINGS' previously declared on the command line
+  
+C:\Users\Usuario\Desktop\RepoProgramacion\CASTEL_POO_2024\L13784_TP3_v2\L31783_TP3\XMLRPC++\XmlRpcSocket.cpp(20,10): warning C4005: 'EINPROGRESS': macro redefinition
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\errno.h(101,13):
+      see previous definition of 'EINPROGRESS'
+  
+C:\Users\Usuario\Desktop\RepoProgramacion\CASTEL_POO_2024\L13784_TP3_v2\L31783_TP3\XMLRPC++\XmlRpcSocket.cpp(21,10): warning C4005: 'EWOULDBLOCK': macro redefinition
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\errno.h(129,13):
+      see previous definition of 'EWOULDBLOCK'
+  
+C:\Users\Usuario\Desktop\RepoProgramacion\CASTEL_POO_2024\L13784_TP3_v2\L31783_TP3\XMLRPC++\XmlRpcSocket.cpp(22,10): warning C4005: 'ETIMEDOUT': macro redefinition
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\errno.h(127,13):
+      see previous definition of 'ETIMEDOUT'
+  
+  XmlRpcSource.cpp
+  XmlRpcUtil.cpp
+C:\Users\Usuario\Desktop\RepoProgramacion\CASTEL_POO_2024\L13784_TP3_v2\L31783_TP3\XMLRPC++\XmlRpcUtil.cpp(1,9): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+      C:\Users\Usuario\Desktop\RepoProgramacion\CASTEL_POO_2024\L13784_TP3_v2\L31783_TP3\XMLRPC++\XmlRpcUtil.cpp(1,9):
+      '_CRT_SECURE_NO_WARNINGS' previously declared on the command line
+  
+  XmlRpcValue.cpp
+C:\Users\Usuario\Desktop\RepoProgramacion\CASTEL_POO_2024\L13784_TP3_v2\L31783_TP3\XMLRPC++\XmlRpcValue.cpp(1,9): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+      C:\Users\Usuario\Desktop\RepoProgramacion\CASTEL_POO_2024\L13784_TP3_v2\L31783_TP3\XMLRPC++\XmlRpcValue.cpp(1,9):
+      '_CRT_SECURE_NO_WARNINGS' previously declared on the command line
+  
+  Generating Code...
+  XMLRPC++.vcxproj -> C:\Users\Usuario\Desktop\RepoProgramacion\CASTEL_POO_2024\L13784_TP3_v2\L31783_TP3\x64\Debug\XMLRPC++.lib

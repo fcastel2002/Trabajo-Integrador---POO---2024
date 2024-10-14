@@ -83,7 +83,7 @@ build CMakeFiles/cliente_files.dir/FileManager.cpp.obj: CXX_COMPILER__cliente_fi
 
 build cliente_files.exe: CXX_EXECUTABLE_LINKER__cliente_files_Debug CMakeFiles/cliente_files.dir/main.cpp.obj CMakeFiles/cliente_files.dir/Cliente.cpp.obj CMakeFiles/cliente_files.dir/Orden.cpp.obj CMakeFiles/cliente_files.dir/FileManager.cpp.obj
   FLAGS = -g
-  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  LINK_LIBRARIES = -l./XMLRPC++/XMLRPC++.lib  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\cliente_files.dir
   POST_BUILD = cd .
   PRE_LINK = cd .

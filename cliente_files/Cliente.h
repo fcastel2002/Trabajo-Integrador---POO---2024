@@ -5,20 +5,17 @@
 #ifndef CLIENTE_H
 #define CLIENTE_H
 #include <string>
-#include "Orden.h"
 #include "FileManager.h"
+#include "./XMLRPC++/XmlRpc.h"
 
 class Cliente {
 private:
+    XmlRpc::XmlRpcClient* cliente;
     std::string m_ipServer{};
-    std::string m_puertoServer{};
-    bool conectado = false;
+    int m_puertoServer{};
+
 public:
-    Cliente(std::string ipServer, std::string puertoServer);
-    bool conectar();
-    void desconectar();
-    std::string enviarOrden(const Orden& orden);
-    void enviarArchivo(FileManager& filemanager);
+    Cliente(std::string ipServer, int puertoServer);
 };
 
 

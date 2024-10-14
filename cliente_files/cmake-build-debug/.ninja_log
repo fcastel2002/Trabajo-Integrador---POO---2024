@@ -1,0 +1,6 @@
+# ninja log v6
+3	495	7502999996802197	CMakeFiles/cliente_files.dir/main.cpp.obj	bab99f6791f8d8a7
+68	606	7502994557133769	CMakeFiles/cliente_files.dir/FileManager.cpp.obj	9c865bd3946dea1b
+9	306	7502999996862388	CMakeFiles/cliente_files.dir/Orden.cpp.obj	1393fefe4e75aead
+6	488	7502999996832397	CMakeFiles/cliente_files.dir/Cliente.cpp.obj	20c421e5aa7d4d38
+1	183	7503571824294634	build.ninja	46eef5d9da562fc2
