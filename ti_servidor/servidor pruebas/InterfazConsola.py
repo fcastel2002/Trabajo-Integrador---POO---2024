@@ -143,4 +143,4 @@ class InterfazConsola:
         print("Saliendo del sistema...")
         if(self.rpc_server is not None):
             self.rpc_server.disconnect()
-        sys.exit(0)
+        exit(0)

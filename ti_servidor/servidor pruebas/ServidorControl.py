@@ -1,12 +1,13 @@
 from xmlrpc.server import SimpleXMLRPCServer
-from threading import Thread
-from ControladorRobot import ControladorRobot
+from ControladorRobot import ControladorRobot  # Include ControladorRobot class
+import sys
 
 class ServidorControl:
-    def __init__(self, consola, ip="localhost", puerto=9000):
+    def __init__(self, consola, ip="127.0.0.1", puerto=9000):
         self.consola = consola
         self.ip = ip
         self.puerto = puerto
+        self.running = True  # Control flag to manage the server loop
         self._iniciar_servidor()
 
     def _iniciar_servidor(self):
@@ -14,16 +15,32 @@ class ServidorControl:
         self._registrar_funciones()
 
     def _registrar_funciones(self):
+        # Registering the functions from ControladorRobot with the XML-RPC server
         self.server.register_function(self.conectar_robot, "conectar")
         self.server.register_function(self.desconectar_robot, "desconectar")
         self.server.register_function(self.activar_motores, "activar_motores")
         self.server.register_function(self.desactivar_motores, "desactivar_motores")
         self.server.register_function(self.mover_efector, "mover_efector")
-    
+
+    def run(self):
+       
+        print("Servidor iniciado. Presione Ctrl+C para detener.")
+        try:
+            while self.running:
+                # Handle one request at a time; will keep running until the flag is False
+                self.server.handle_request()
+        except KeyboardInterrupt:
+            # Handle a graceful shutdown when Ctrl+C is pressed
+            self.disconnect()
+
     def disconnect(self):
-        self.server.shutdown()
-        self.server.socket.close()
-    
+        
+        print("Iniciando cierre del servidor...")
+        self.running = False  # Set the flag to stop the server loop
+        self.server.server_close()  # Close the server socket
+        print("Servidor cerrado correctamente.")
+        
+    # Robot control functions, leveraging the ControladorRobot instance
     def conectar_robot(self):
         return self.consola.conectar_robot()
 
@@ -39,5 +56,3 @@ class ServidorControl:
     def mover_efector(self, x, y, z, velocidad):
         return self.consola.mover_efector(x, y, z, velocidad)
 
-    def run(self):
-        self.server.serve_forever()

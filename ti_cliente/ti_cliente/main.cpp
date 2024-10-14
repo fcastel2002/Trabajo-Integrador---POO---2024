@@ -2,11 +2,17 @@
 
 int main() {
     Cliente cliente("127.0.0.1", 9000);
-    // Example of sending a command to activate motors
+
+    // Attempt to connect to the server
+    std::cout << "Connecting to the server..." << std::endl;
     XmlRpcValue noParams;
-	cliente.enviarComando("conectar", noParams);
-    std::string response = cliente.enviarComando("activar_motores", noParams);
-	std::cout << "Response: " << response << std::endl; 
+    std::string response = cliente.enviarComando("conectar", noParams);
+    std::cout << "Response: " << response << std::endl;
+
+    // Example of sending a command to activate motors
+    response = cliente.enviarComando("activar_motores", noParams);
+    std::cout << "Response: " << response << std::endl;
+
     // Example of sending a command to move the effector
     XmlRpcValue params;
     params[0] = 10; // x
@@ -16,7 +22,9 @@ int main() {
     response = cliente.enviarComando("mover_efector", params);
     std::cout << "Response: " << response << std::endl;
 
-    cliente.desconectar();
+    // Attempt to disconnect from the server
+    response = cliente.enviarComando("desconectar", noParams);
+    std::cout << "Response: " << response << std::endl;
 
     return 0;
 }
