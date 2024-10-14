@@ -3,7 +3,6 @@ from ControladorRobot import ControladorRobot
 from ServidorControl import ServidorControl
 import sys
 
-
 class InterfazConsola:
     def __init__(self):
         self.robot = ControladorRobot('COM8', 115200)
@@ -127,8 +126,3 @@ class InterfazConsola:
     def salir(self):
         print("Saliendo del sistema...")
         sys.exit(0)
-
-
-if __name__ == "__main__":
-    consola = InterfazConsola()
-    consola.iniciar()
