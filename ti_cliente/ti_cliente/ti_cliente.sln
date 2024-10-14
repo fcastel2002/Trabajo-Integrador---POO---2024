@@ -11,9 +11,6 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xmlrpc++", "..\XMLRPC++\xmlrpc++.vcxproj", "{2C314936-727B-4A4A-952E-77CD64E1F2ED}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{94417A16-937A-418B-80DB-303AA1F7621F}"
-	ProjectSection(SolutionItems) = preProject
-		servidor.py = servidor.py
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

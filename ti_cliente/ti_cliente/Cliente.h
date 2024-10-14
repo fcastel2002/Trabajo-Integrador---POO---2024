@@ -13,13 +13,13 @@ private:
 	int m_port{};
 	bool connected{ false };
 	XmlRpcClient client;
+
 public:
 
 	Cliente(std::string ip, int port);
 	void conectar();
 	void desconectar();
-	std::string enviarComando(std::string comando);
-	std::string generarNumero(double cota_inferior, double cota_superior, const std::string& alias, const std::string& ip); // Method to send "generarNumero" command
+	std::string enviarComando(std::string comando, XmlRpcValue params);
 
 };
 
