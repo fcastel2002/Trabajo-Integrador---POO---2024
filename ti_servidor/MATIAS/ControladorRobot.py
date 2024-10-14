@@ -1,7 +1,7 @@
 import serial
 import time
-from ManejadorErrores import ErrorConexion, ErrorArgumentos, ErrorCoherencia
-from GestorArchivos import GestorDeArchivos
+from ManejadorErrores import ErrorDeConexion, ErrorDeParametros, ErrorDeEstado
+from GestorDeArchivos import GestorDeArchivos
 
 class ControladorRobot:
     def __init__(self, puerto_serial, baudios):
