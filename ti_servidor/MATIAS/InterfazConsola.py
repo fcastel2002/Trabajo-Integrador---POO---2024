@@ -3,29 +3,38 @@ from ControladorRobot import ControladorRobot
 from ServidorControl import ServidorControl
 import sys
 
+
 class InterfazConsola:
     def __init__(self):
         self.robot = ControladorRobot('COM8', 115200)
-        self.servidor_rpc = None
+        self.rpc_server = None
 
     def iniciar(self):
         while True:
+            # Menú dinámico según el estado del robot
+            opciones_menu = []
+
+            if self.robot.estado_conexion == "desconectado":
+                opciones_menu.append("Conectar al Robot")
+            else:
+                opciones_menu.append("Desconectar del Robot")
+                opciones_menu.append("Iniciar/Detener Servidor RPC")
+                if not self.robot.motores_activos:
+                    opciones_menu.append("Activar Motores")
+                else:
+                    opciones_menu.append("Desactivar Motores")
+                    opciones_menu.append("Mover Efector Final")
+                    opciones_menu.append("Movimiento Circular")
+                    opciones_menu.append("Homming")
+                    opciones_menu.append("Aprendizaje (On/Off)")
+                    opciones_menu.append("Ejecución Automática")
+                    opciones_menu.append("Reportar Estado")
+
+            opciones_menu.append("Salir")  # Siempre debe estar disponible
+
             choice = questionary.select(
                 "Seleccione una opción:",
-                choices=[
-                    "Conectar al Robot",
-                    "Desconectar del Robot",
-                    "Iniciar/Detener Servidor RPC",
-                    "Activar Motores",
-                    "Desactivar Motores",
-                    "Mover Efector Final",
-                    "Movimiento Circular",
-                    "Homming",
-                    "Aprendizaje (On/Off)",
-                    "Ejecución Automática",
-                    "Reportar Estado",
-                    "Salir"
-                ]
+                choices=opciones_menu
             ).ask()
 
             if choice == "Conectar al Robot":
@@ -54,8 +63,16 @@ class InterfazConsola:
                 self.salir()
 
     def conectar_robot(self):
-        mensaje = self.robot.conectar()
-        print(mensaje)
+        puerto = questionary.text("Ingrese el puerto COM (ejemplo: COM8):").ask()
+        baudios = questionary.text("Ingrese la tasa de baudios (ejemplo: 115200):").ask()
+
+        if puerto and baudios:
+            self.robot.puerto_serial = puerto
+            self.robot.baudios = int(baudios)
+            mensaje = self.robot.conectar()
+            print(mensaje)
+        else:
+            print("Error: Debe ingresar un puerto COM y la tasa de baudios.")
 
     def desconectar_robot(self):
         mensaje = self.robot.desconectar()
@@ -64,16 +81,15 @@ class InterfazConsola:
     def gestionar_servidor(self):
         value = questionary.confirm("¿Desea iniciar el servidor RPC?").ask()
         if value:
-            if self.servidor_rpc is None:
-                self.servidor_rpc = ServidorControl(self)
-                self.servidor_rpc.run()
+            if self.rpc_server is None:
+                self.rpc_server = ServidorControl(self)
                 print("Servidor iniciado\n")
             else:
                 print("Servidor ya está en ejecución\n")
         else:
-            if self.servidor_rpc is not None:
-                self.servidor_rpc.shutdown()
-                self.servidor_rpc = None
+            if self.rpc_server is not None:
+                self.rpc_server.shutdown()
+                self.rpc_server = None
                 print("Servidor detenido\n")
             else:
                 print("No hay servidor en ejecución para detener\n")
