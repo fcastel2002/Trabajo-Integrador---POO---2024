@@ -1,36 +1,44 @@
 #include "Cliente.h"
 
 
-Cliente::Cliente(std::string ip, int port) : m_ip{ ip }, m_port{ port }, client(ip.c_str(), port) {}
+Cliente::Cliente(std::string ip, int port, IMessageView& messageView) : m_ip{ ip }, m_port{ port } {
+	client = new XmlRpcClient(m_ip.c_str(), m_port);
+	m_messageView = messageView;
 
-void Cliente::conectar() {
-    XmlRpcValue noParams, result;
-    if (client.execute("conectar", noParams, result)) {
-        connected = true;
-        std::cout << "Connected to the robot: " << result << std::endl;
-    }
-    else {
-        std::cerr << "Failed to connect to the robot." << std::endl;
-    }
 }
 
-void Cliente::desconectar() {
-    XmlRpcValue noParams, result;
-    if (client.execute("desconectar", noParams, result)) {
-        connected = false;
-        std::cout << "Disconnected from the robot." << std::endl;
-    }
-    else {
-        std::cerr << "Failed to disconnect from the robot." << std::endl;
-    }
+Cliente::Cliente() {
+	delete client;
 }
 
-std::string Cliente::enviarComando(const std::string comando, XmlRpcValue params) {
-    XmlRpcValue result;
-    if (client.execute("conectar", params, result)) {
-        return result.toXml();
-    }
-    else {
-        return "Failed to execute command.";
-    }
+bool Cliente::enviarComando(std::string& comando, XmlRpcValue& result) {
+	XmlRpcValue noArgs;
+
+	try {
+		bool requestSuccess = client->execute(comando.c_str(), noArgs, result);
+		if (requestSuccess) {
+			bool success = static_cast<bool>(result);
+			if (success) {
+				m_messageView.showMessage("Comando '" + comando + "' ejecutado correctamente", MessageType::INFO);
+				return true;
+			}
+			else {
+				m_messageView.showMessage("Error al ejecutar el comando '" + comando + "'", MessageType::ERROR);
+				return false;
+			}
+		}
+		else {
+			m_messageView.showMessage("Error en la llamada XML-RPC para el comando '" + comando +"'", MessageType::ERROR);
+			return false;
+		}
+	}
+	catch (XmlRpcException& e) { //advierte de error en la llamada mediante excepcion (ojo podria estar de mas el else de arriba)
+		m_messageView.showMessage("Excepción al ejecutar el comando '" + comando + "': " + e.getMessage(), MessageType::ERROR);
+		return false;
+	}
+}
+
+bool Cliente::enviarComando(const std::string& comando) {
+	XmlRpcValue result;
+	return enviarComando(comando, result);
 }

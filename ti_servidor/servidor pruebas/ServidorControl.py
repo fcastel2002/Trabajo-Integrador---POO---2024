@@ -3,7 +3,7 @@ from ControladorRobot import ControladorRobot  # Include ControladorRobot class
 import sys
 
 class ServidorControl:
-    def __init__(self, consola, ip="127.0.0.1", puerto=9000):
+    def __init__(self, consola, ip="0.0.0.0", puerto=9000):
         self.consola = consola
         self.ip = ip
         self.puerto = puerto
@@ -13,6 +13,7 @@ class ServidorControl:
     def _iniciar_servidor(self):
         self.server = SimpleXMLRPCServer((self.ip, self.puerto), allow_none=True)
         self._registrar_funciones()
+        self.run()
 
     def _registrar_funciones(self):
         # Registering the functions from ControladorRobot with the XML-RPC server
@@ -21,6 +22,7 @@ class ServidorControl:
         self.server.register_function(self.activar_motores, "activar_motores")
         self.server.register_function(self.desactivar_motores, "desactivar_motores")
         self.server.register_function(self.mover_efector, "mover_efector")
+        self.server.register_function(self.realizar_homming,"homming")
 
     def run(self):
        
@@ -31,6 +33,7 @@ class ServidorControl:
                 self.server.handle_request()
         except KeyboardInterrupt:
             # Handle a graceful shutdown when Ctrl+C is pressed
+            self.running = False
             self.disconnect()
 
     def disconnect(self):
@@ -56,3 +59,5 @@ class ServidorControl:
     def mover_efector(self, x, y, z, velocidad):
         return self.consola.mover_efector(x, y, z, velocidad)
 
+    def realizar_homming(self):
+        return self.consola.realizar_homming()
