@@ -10,10 +10,13 @@ int main() {
         XmlRpc::XmlRpcValue result;
 
         // Llamar al método "conectar" sin argumentos
+        std::cout << "Enviando solicitud XML-RPC para 'activar_motores'..." << std::endl;
         bool callSuccess = client.execute("activar_motores", noArgs, result);
 
         if (callSuccess) {
-            // Convertir el resultado a booleano
+            std::cout << "Solicitud enviada exitosamente. Resultado recibido:" << std::endl;
+            std::cout << "Tipo del resultado: " << result.getType() << std::endl;
+            std::cout << "Contenido del resultado: " << result.toXml() << std::endl;
             bool success = static_cast<bool>(result);
             if (success) {
                 std::cout << "Conexión exitosa al robot." << std::endl;

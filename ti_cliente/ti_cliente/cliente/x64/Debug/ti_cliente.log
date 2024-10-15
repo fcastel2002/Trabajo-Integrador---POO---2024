@@ -1,1 +1,7 @@
-﻿  ti_cliente.vcxproj -> C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\ti_cliente\ti_cliente\x64\Debug\cliente.exe
+﻿  Cliente.cpp
+  FileManager.cpp
+  main.cpp
+  MainMenu.cpp
+  Generando código...
+  LINK : no se encontró C:\Users\Pachi\Desktop\repos\Trabajo-Integrador---POO---2024\ti_cliente\ti_cliente\x64\Debug\cliente.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
+  ti_cliente.vcxproj -> C:\Users\Pachi\Desktop\repos\Trabajo-Integrador---POO---2024\ti_cliente\ti_cliente\x64\Debug\cliente.exe
