@@ -16,7 +16,7 @@
 #endif
 
 #if XMLRPC_HAVE_TIMEVAL
-#include <sys/time.h>
+//#include <sys/time.h>
 #endif
 
 #ifdef __cplusplus

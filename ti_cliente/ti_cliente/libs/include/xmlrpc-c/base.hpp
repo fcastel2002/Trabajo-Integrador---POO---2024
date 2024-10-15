@@ -15,7 +15,7 @@
 #include <ostream>
 #endif
 #if XMLRPC_HAVE_TIMEVAL
-#include <sys/time.h>
+//#include <sys/time.h>
 #endif
 
 #include <xmlrpc-c/c_util.h>
