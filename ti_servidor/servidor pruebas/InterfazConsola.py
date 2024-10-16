@@ -2,6 +2,7 @@ import json
 import questionary
 from ControladorRobot import ControladorRobot
 from ServidorControl import ServidorControl
+from GestorDeArchivos import GestorDeArchivos
 import sys
 
 class InterfazConsola:
@@ -10,8 +11,10 @@ class InterfazConsola:
         self.rpc_server = None
         self.archivo_configuracion = "configuracion_robot.json"  # Archivo para guardar la configuración
         self.archivo_usuarios = "usuarios.json"  # Archivo que contiene usuarios y contraseñas
+        self.archivo_logs = "logs_trabajo.csv"  # Archivo donde se guardan los logs de trabajo
         self.modo_trabajo = "manual"  # Modo por defecto
         self.tipo_movimiento = "absoluto"  # Tipo de movimiento por defecto
+        self.gestor_logs = GestorDeArchivos(self.archivo_logs)  # Instancia para manejar el archivo de logs
 
     def mostrar_ayuda(self):
         ayuda = """
@@ -25,7 +28,7 @@ class InterfazConsola:
         - Mover Efector Final (solo Posición): mover_efector_posicion(usuario, clave, x, y, z)
         - Homming: homming(usuario, clave)
         - Ejecución Automática: ejecutar_automatico(usuario, clave, nombre_archivo)
-        
+
         Ejemplo:
         Para conectar el robot:
         conectar("admin", "clave123")
@@ -65,6 +68,9 @@ class InterfazConsola:
             if self.rpc_server is not None:
                 opciones_menu.append("Detener Servidor RPC")
             
+            # Agregar la opción de mostrar las últimas 100 líneas del log (solo para admin)
+            opciones_menu.append("Mostrar las últimas 100 líneas del Log (Admin)")
+
             opciones_menu.append("Mostrar Ayuda")  # Opción para mostrar ayuda
             opciones_menu.append("Salir")  # Siempre disponible
 
@@ -107,10 +113,20 @@ class InterfazConsola:
                 self.ejecutar_automatico()
             elif choice == "Reportar Estado":
                 self.reportar_estado()
+            elif choice == "Mostrar las últimas 100 líneas del Log (Admin)":
+                self.mostrar_log_admin()
             elif choice == "Mostrar Ayuda":
                 self.mostrar_ayuda()
             elif choice == "Salir":
                 self.salir()
+
+    def mostrar_log_admin(self):
+        """Función para mostrar las últimas 100 líneas del log de trabajo (solo para admin)"""
+        # Aquí podemos agregar validación si queremos restringirlo a ciertos usuarios
+        print("Mostrando las últimas 100 líneas del log de trabajo:\n")
+        ultimas_lineas = self.gestor_logs.leer_ultimas_lineas(100)
+        for linea in ultimas_lineas:
+            print(linea.strip())
 
     # Listar los comandos disponibles
     def listar_comandos(self):
