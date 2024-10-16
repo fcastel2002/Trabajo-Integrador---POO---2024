@@ -28,6 +28,7 @@ std::optional<std::string> MainMenu::displayMenu() {
 
         m_messageView.showMessage("0: Salir\n", MessageType::INFO);
         m_messageView.showMessage("Seleccione una opcion: ", MessageType::INFO);
+
         std::cin >> selectedOption;
 
         if (std::cin.fail()) {

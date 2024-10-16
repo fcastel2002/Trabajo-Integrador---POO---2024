@@ -15,7 +15,7 @@ int main() {
     menu.addOption(3, "Homming", "homming");
 
     while (true) {
-        std::optional<std::string> cmdOption = menu.displayMenu();
+        std::optional<std::string> cmdOption = menu.displayMenu(); 
         if (!cmdOption.has_value()) {
             messages.showMessage("Saliendo del programa", MessageType::INFO);
             break;
@@ -26,8 +26,7 @@ int main() {
         bool success = cliente.enviarComando(comando);
         if (success) {
             messages.showMessage("Comando ejecutado correctamente", MessageType::INFO);
-        }
-        else {
+        } else {
             messages.showMessage("Error al ejecutar el comando", MessageType::ERROR);
         }
     }
