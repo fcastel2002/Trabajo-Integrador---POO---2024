@@ -3,7 +3,6 @@ from ControladorRobot import ControladorRobot
 from ServidorControl import ServidorControl
 import sys
 
-
 class InterfazConsola:
     def __init__(self):
         self.robot = ControladorRobot('COM8', 115200)
@@ -11,18 +10,23 @@ class InterfazConsola:
 
     def iniciar(self):
         while True:
-            # Menú dinámico según el estado del robot
+            # Menú dinámico según el estado del robot y el servidor
             opciones_menu = []
 
             if self.robot.estado_conexion == "desconectado":
                 opciones_menu.append("Conectar al Robot")
-            else:
+            
+            if self.rpc_server is None:
+                opciones_menu.append("Iniciar Servidor RPC")
+
+            if self.robot.estado_conexion == "conectado":
                 opciones_menu.append("Desconectar del Robot")
-                opciones_menu.append("Iniciar/Detener Servidor RPC")
-                if not self.robot.motores_activos:
-                    opciones_menu.append("Activar Motores")
-                else:
-                    opciones_menu.append("Desactivar Motores")
+
+                # Mostrar "Activar/Desactivar Motores"
+                opciones_menu.append("Activar Motores" if not self.robot.motores_activos else "Desactivar Motores")
+
+                # Mostrar opciones solo si los motores están activados
+                if self.robot.motores_activos:
                     opciones_menu.append("Mover Efector Final")
                     opciones_menu.append("Movimiento Circular")
                     opciones_menu.append("Homming")
@@ -30,7 +34,10 @@ class InterfazConsola:
                     opciones_menu.append("Ejecución Automática")
                     opciones_menu.append("Reportar Estado")
 
-            opciones_menu.append("Salir")  # Siempre debe estar disponible
+            if self.rpc_server is not None:
+                opciones_menu.append("Detener Servidor RPC")
+            
+            opciones_menu.append("Salir")  # Siempre disponible
 
             choice = questionary.select(
                 "Seleccione una opción:",
@@ -41,8 +48,10 @@ class InterfazConsola:
                 self.conectar_robot()
             elif choice == "Desconectar del Robot":
                 self.desconectar_robot()
-            elif choice == "Iniciar/Detener Servidor RPC":
-                self.gestionar_servidor()
+            elif choice == "Iniciar Servidor RPC":
+                self.iniciar_servidor_rpc()
+            elif choice == "Detener Servidor RPC":
+                self.detener_servidor_rpc()
             elif choice == "Activar Motores":
                 self.activar_motores()
             elif choice == "Desactivar Motores":
@@ -78,21 +87,20 @@ class InterfazConsola:
         mensaje = self.robot.desconectar()
         print(mensaje)
 
-    def gestionar_servidor(self):
-        value = questionary.confirm("¿Desea iniciar el servidor RPC?").ask()
-        if value:
-            if self.rpc_server is None:
-                self.rpc_server = ServidorControl(self)
-                print("Servidor iniciado\n")
-            else:
-                print("Servidor ya está en ejecución\n")
+    def iniciar_servidor_rpc(self):
+        if self.rpc_server is None:
+            self.rpc_server = ServidorControl(self)
+            self.rpc_server.iniciar()  # Inicia el servidor en un hilo separado
         else:
-            if self.rpc_server is not None:
-                self.rpc_server.disconnect()
-                self.rpc_server = None
-                print("Servidor detenido\n")
-            else:
-                print("No hay servidor en ejecución para detener\n")
+            print("El servidor RPC ya está en ejecución\n")
+
+    def detener_servidor_rpc(self):
+        if self.rpc_server is not None:
+            self.rpc_server.disconnect()
+            self.rpc_server = None
+            print("Servidor RPC detenido\n")
+        else:
+            print("No hay servidor en ejecución para detener\n")
 
     def activar_motores(self):
         mensaje = self.robot.activar_motores()
@@ -141,6 +149,6 @@ class InterfazConsola:
 
     def salir(self):
         print("Saliendo del sistema...")
-        if(self.rpc_server is not None):
+        if self.rpc_server is not None:
             self.rpc_server.disconnect()
-        exit(0)
+        sys.exit(0)

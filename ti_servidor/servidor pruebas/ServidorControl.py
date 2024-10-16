@@ -2,51 +2,49 @@ import signal
 from xmlrpc.server import SimpleXMLRPCServer
 from ControladorRobot import ControladorRobot  # Include ControladorRobot class
 import sys
+import threading
 
 class ServidorControl:
     def __init__(self, consola, ip="127.0.0.1", puerto=9000):
         self.consola = consola
         self.ip = ip
         self.puerto = puerto
-        self.running = True  # Control flag to manage the server loop
-        self._iniciar_servidor()
+        self.server_thread = None
+        self.server = None
 
-    def _iniciar_servidor(self):
+    def iniciar(self):
+        # Crear el servidor pero no ejecutarlo aún
         self.server = SimpleXMLRPCServer((self.ip, self.puerto), allow_none=True)
         self._registrar_funciones()
-        self.run()
+        self.server_thread = threading.Thread(target=self._iniciar_servidor)
+        self.server_thread.daemon = True  # Para que el hilo se cierre al finalizar el programa
+        self.server_thread.start()
+        print(f"Servidor RPC iniciado en {self.ip}:{self.puerto}\n")
+
+    def _iniciar_servidor(self):
+        # Ejecutar el servidor en un hilo separado
+        try:
+            self.server.serve_forever()
+        except KeyboardInterrupt:
+            self.server.shutdown()
 
     def _registrar_funciones(self):
-        # Registering the functions from ControladorRobot with the XML-RPC server
+        # Registrar funciones del robot con el servidor XML-RPC
         self.server.register_function(self.conectar_robot, "conectar")
         self.server.register_function(self.desconectar_robot, "desconectar")
         self.server.register_function(self.activar_motores, "activar_motores")
         self.server.register_function(self.desactivar_motores, "desactivar_motores")
         self.server.register_function(self.mover_efector, "mover_efector")
-        self.server.register_function(self.realizar_homming,"homming")
-
-    def run(self):
-        print("Servidor iniciado. Presione Ctrl+C para detener.")
-        
-        def signal_handler(sig, frame):
-            print("Interrupción detectada. Cerrando el servidor...")
-            self.running = False
-            self.server.shutdown()  # Shutdown the server immediately
-            self.disconnect()
-            sys.exit(0)
-
-        signal.signal(signal.SIGINT, signal_handler)
-
-        try:
-            self.server.serve_forever()
-        except KeyboardInterrupt:
-            signal_handler(None, None)
+        self.server.register_function(self.realizar_homming, "homming")
 
     def disconnect(self):
-        print("Iniciando cierre del servidor...")
-        self.running = False  # Set the flag to stop the server loop
-        self.server.server_close()  # Close the server socket
-        print("Servidor cerrado correctamente.")
+        # Detener el servidor
+        if self.server:
+            print("Iniciando cierre del servidor...")
+            self.server.shutdown()
+            self.server.server_close()
+            self.server_thread.join()  # Asegurarse de que el hilo termine
+            print("Servidor cerrado correctamente.")
 
     # Robot control functions, leveraging the ControladorRobot instance
     def conectar_robot(self):
