@@ -5,6 +5,7 @@ import sys
 import threading
 import json
 import logging
+import time
 
 class ServidorControl:
     def __init__(self, consola, ip="127.0.0.1", puerto=9000):
