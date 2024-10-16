@@ -1,8 +1,9 @@
 import signal
 from xmlrpc.server import SimpleXMLRPCServer
-from ControladorRobot import ControladorRobot  # Include ControladorRobot class
+from ControladorRobot import ControladorRobot
 import sys
 import threading
+import json
 
 class ServidorControl:
     def __init__(self, consola, ip="127.0.0.1", puerto=9000):
@@ -17,25 +18,32 @@ class ServidorControl:
         self.server = SimpleXMLRPCServer((self.ip, self.puerto), allow_none=True)
         self._registrar_funciones()
         self.server_thread = threading.Thread(target=self._iniciar_servidor)
-        self.server_thread.daemon = True  # Para que el hilo se cierre al finalizar el programa
+        self.server_thread.daemon = True
         self.server_thread.start()
         print(f"Servidor RPC iniciado en {self.ip}:{self.puerto}\n")
 
     def _iniciar_servidor(self):
-        # Ejecutar el servidor en un hilo separado
         try:
             self.server.serve_forever()
         except KeyboardInterrupt:
             self.server.shutdown()
 
     def _registrar_funciones(self):
-        # Registrar funciones del robot con el servidor XML-RPC
-        self.server.register_function(self.conectar_robot, "conectar")
-        self.server.register_function(self.desconectar_robot, "desconectar")
-        self.server.register_function(self.activar_motores, "activar_motores")
-        self.server.register_function(self.desactivar_motores, "desactivar_motores")
-        self.server.register_function(self.mover_efector, "mover_efector")
-        self.server.register_function(self.realizar_homming, "homming")
+        self.server.register_function(self._serializar_comando(self.conectar_robot), "conectar")
+        self.server.register_function(self._serializar_comando(self.desconectar_robot), "desconectar")
+        self.server.register_function(self._serializar_comando(self.activar_motores), "activar_motores")
+        self.server.register_function(self._serializar_comando(self.desactivar_motores), "desactivar_motores")
+        self.server.register_function(self._serializar_comando(self.mover_efector), "mover_efector")
+        self.server.register_function(self._serializar_comando(self.realizar_homming), "homming")
+
+    def _serializar_comando(self, funcion):
+        def wrapper(*args, **kwargs):
+            # Serializamos el comando recibido
+            comando_serializado = json.dumps({"args": args, "kwargs": kwargs})
+            print(f"Comando recibido: {comando_serializado}")
+            resultado = funcion(*args, **kwargs)
+            return json.dumps(resultado)  # Devolvemos la respuesta como JSON
+        return wrapper
 
     def disconnect(self):
         # Detener el servidor

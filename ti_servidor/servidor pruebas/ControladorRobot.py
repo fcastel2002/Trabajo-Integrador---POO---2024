@@ -1,5 +1,6 @@
 import serial
 import time
+import json
 from ManejadorErrores import ErrorDeConexion, ErrorDeParametros, ErrorDeEstado
 from GestorDeArchivos import GestorDeArchivos
 
@@ -12,8 +13,8 @@ class ControladorRobot:
         self.efector_estado = "desactivado"
         self.aprendiendo = False
         self.actividad = "inactivo"
-        self.archivo_ordenes_ejecutadas = GestorDeArchivos("ordenes_ejecutadas.txt")
-        self.archivo_ordenes_solicitadas = GestorDeArchivos("ordenes_solicitadas.txt")
+        self.archivo_ordenes_ejecutadas = GestorDeArchivos("ordenes_ejecutadas.json")
+        self.archivo_ordenes_solicitadas = GestorDeArchivos("ordenes_solicitadas.json")
 
     def conectar(self):
         if self.estado_conexion == "conectado":
@@ -148,7 +149,29 @@ class ControladorRobot:
         return reporte
 
     def _registrar_comando(self, comando):
-        self.archivo_ordenes_solicitadas.guardar_linea(comando)
+        # Enviar el comando al robot (sin serialización)
         self.serial_robot.write((comando + "\r\n").encode())
+        
+        # Leer la respuesta del robot (en texto plano)
         respuesta = self.serial_robot.readline().decode().strip()
-        self.archivo_ordenes_ejecutadas.guardar_linea(comando + " -> " + respuesta)
+        
+        # Si la respuesta está vacía, devolvemos un error
+        if not respuesta:
+            print("Error: Respuesta vacía recibida del robot.")
+            return {"error": "No se recibió respuesta del robot"}
+        
+        # Aquí evitamos deserializar la respuesta del robot ya que es texto plano
+        print(f"Respuesta del robot: {respuesta}")
+
+        # Guardar el comando enviado en el archivo de órdenes solicitadas (opcionalmente serializado)
+        comando_json = json.dumps({"comando": comando, "timestamp": time.time()})
+        self.archivo_ordenes_solicitadas.guardar_linea(comando_json)
+
+        # Guardar la respuesta del robot en el archivo de órdenes ejecutadas (en texto plano)
+        try:
+            self.archivo_ordenes_ejecutadas.guardar_linea(f"{comando} -> {respuesta}")
+        except Exception as e:
+            print(f"Error al guardar en ordenes ejecutadas: {e}")
+            return {"error": f"No se pudo guardar la respuesta: {e}"}
+
+        return {"respuesta_robot": respuesta}
