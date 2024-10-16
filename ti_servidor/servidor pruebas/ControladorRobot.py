@@ -97,16 +97,6 @@ class ControladorRobot:
         reporte += f"Número de órdenes ejecutadas: {self.archivo_ordenes_ejecutadas.contar_lineas()}\n"
         return reporte
 
-    def mover_circular(self, q1, v1, q2, v2, q3, v3):
-        if self.estado_conexion == "desconectado":
-            raise ErrorDeConexion(1)  # No hay conexión
-        if not self.motores_activos:
-            raise ErrorDeConexion(2)  # Motores apagados
-
-        gcode = f"G2 A{q1} R{v1} B{q2} S{v2} C{q3} T{v3}"
-        self._registrar_comando(gcode)
-        return f"Éxito: Movimiento circular ejecutado con éxito (q1={q1}, q2={q2}, q3={q3})\n"
-
     def mover_efector(self, x, y, z, velocidad):
         if self.estado_conexion == "desconectado":
             raise ErrorDeConexion(1)  # No hay conexión

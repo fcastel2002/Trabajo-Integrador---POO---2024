@@ -59,7 +59,6 @@ class InterfazConsola:
                 if self.robot.motores_activos:
                     opciones_menu.append("Mover Efector Final (con Velocidad)")
                     opciones_menu.append("Mover Efector Final (solo Posición)")
-                    opciones_menu.append("Movimiento Circular")
                     opciones_menu.append("Homming")
                     opciones_menu.append("Aprendizaje (On/Off)")
                     opciones_menu.append("Ejecución Automática")
@@ -103,8 +102,6 @@ class InterfazConsola:
                 self.mover_efector()
             elif choice == "Mover Efector Final (solo Posición)":
                 self.mover_efector_posicion()
-            elif choice == "Movimiento Circular":
-                self.mover_circular()
             elif choice == "Homming":
                 self.realizar_homming()
             elif choice == "Aprendizaje (On/Off)":
@@ -137,7 +134,6 @@ class InterfazConsola:
             "Desactivar Motores",
             "Mover Efector Final (con Velocidad)",
             "Mover Efector Final (solo Posición)",
-            "Movimiento Circular",
             "Homming",
             "Aprendizaje (On/Off)",
             "Ejecución Automática",
@@ -251,16 +247,6 @@ class InterfazConsola:
         y = questionary.text("Ingrese la coordenada Y:").ask()
         z = questionary.text("Ingrese la coordenada Z:").ask()
         mensaje = self.robot.mover_efector_posicion(float(x), float(y), float(z))
-        print(mensaje)
-
-    def mover_circular(self):
-        q1 = questionary.text("Ingrese ángulo q1:").ask()
-        v1 = questionary.text("Ingrese velocidad v1:").ask()
-        q2 = questionary.text("Ingrese ángulo q2:").ask()
-        v2 = questionary.text("Ingrese velocidad v2:").ask()
-        q3 = questionary.text("Ingrese ángulo q3:").ask()
-        v3 = questionary.text("Ingrese velocidad v3:").ask()
-        mensaje = self.robot.mover_circular(float(q1), float(v1), float(q2), float(v2), float(q3), float(v3))
         print(mensaje)
 
     def realizar_homming(self):
