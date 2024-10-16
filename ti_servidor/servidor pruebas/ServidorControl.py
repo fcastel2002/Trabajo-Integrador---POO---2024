@@ -1,4 +1,4 @@
-
+import signal
 from xmlrpc.server import SimpleXMLRPCServer
 from ControladorRobot import ControladorRobot  # Include ControladorRobot class
 import sys
@@ -25,7 +25,7 @@ class ServidorControl:
         self.server.register_function(self.mover_efector, "mover_efector")
         self.server.register_function(self.realizar_homming,"homming")
 
-       def run(self):
+    def run(self):
         print("Servidor iniciado. Presione Ctrl+C para detener.")
         
         def signal_handler(sig, frame):
@@ -37,8 +37,10 @@ class ServidorControl:
 
         signal.signal(signal.SIGINT, signal_handler)
 
-        while self.running:
-            self.server.handle_request()
+        try:
+            self.server.serve_forever()
+        except KeyboardInterrupt:
+            signal_handler(None, None)
 
     def disconnect(self):
         print("Iniciando cierre del servidor...")
