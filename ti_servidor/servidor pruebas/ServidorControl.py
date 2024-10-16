@@ -3,7 +3,7 @@ from ControladorRobot import ControladorRobot  # Include ControladorRobot class
 import sys
 
 class ServidorControl:
-    def __init__(self, consola, ip="0.0.0.0", puerto=9000):
+    def __init__(self, consola, ip="127.0.0.1", puerto=9000):
         self.consola = consola
         self.ip = ip
         self.puerto = puerto

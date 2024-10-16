@@ -10,5 +10,5 @@ enum class MessageType {
 class IMessageView {
 public:
 	virtual ~IMessageView() = default;
-	virtual void showMessage(const std::string& message, MessageType type = MessageType::INFO) override;
+	virtual void showMessage(const std::string& message, MessageType type = MessageType::INFO) = 0;
 };

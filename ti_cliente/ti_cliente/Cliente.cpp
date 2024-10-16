@@ -1,17 +1,17 @@
 #include "Cliente.h"
 
 
-Cliente::Cliente(std::string ip, int port, IMessageView& messageView) : m_ip{ ip }, m_port{ port } {
+Cliente::Cliente(std::string ip, int port, IMessageView& messageView) : m_ip{ ip }, m_port{ port }, m_messageView{ messageView } {
 	client = new XmlRpcClient(m_ip.c_str(), m_port);
-	m_messageView = messageView;
+	
 
 }
 
-Cliente::Cliente() {
+Cliente::~Cliente() {
 	delete client;
 }
 
-bool Cliente::enviarComando(std::string& comando, XmlRpcValue& result) {
+bool Cliente::enviarComando(const std::string& comando, XmlRpcValue& result) {
 	XmlRpcValue noArgs;
 
 	try {

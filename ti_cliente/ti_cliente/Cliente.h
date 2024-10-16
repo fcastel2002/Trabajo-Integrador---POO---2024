@@ -19,6 +19,7 @@ private:
 public:
 
 	Cliente(std::string ip, int port, IMessageView& messageView);
+	~Cliente();
 	bool enviarComando(const std::string& comando, XmlRpcValue& result);
 	bool enviarComando(const std::string& comando);
 };

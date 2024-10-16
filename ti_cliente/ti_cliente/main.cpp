@@ -1,34 +1,37 @@
 // src/cliente.cpp
 #include <iostream>
 #include <XmlRpc.h> // Asegúrate de que la ruta de inclusión está configurada correctamente
+#include "Cliente.h"
+#include "CLIMessageView.h"
+#include "MainMenu.h"
 
 int main() {
-    try {
-        // Crear un cliente XML-RPC apuntando al servidor en 127.0.0.1:9000
-        XmlRpc::XmlRpcClient client("127.0.0.1", 9000);
-        XmlRpc::XmlRpcValue noArgs; // Sin argumentos
-        XmlRpc::XmlRpcValue result;
+	CLIMessageView messages;
 
-        // Llamar al método "conectar" sin argumentos
-        bool callSuccess = client.execute("activar_motores", noArgs, result);
+	Cliente cliente("127.0.0.1", 9000, messages);
 
-        if (callSuccess) {
-            // Convertir el resultado a booleano
-            bool success = static_cast<bool>(result);
-            if (success) {
-                std::cout << "Conexión exitosa al robot." << std::endl;
-            }
-            else {
-                std::cout << "Error al conectar al robot." << std::endl;
-            }
-        }
-        else {
-            std::cerr << "Error en la llamada XML-RPC." << std::endl;
-        }
-    }
-    catch (const XmlRpc::XmlRpcException& e) {
-        std::cerr << "Exception: " << e.getMessage() << std::endl;
-    }
+	MainMenu menu(messages);
 
-    return 0;
+	menu.addOption(1, "Activar motores", "activar_motores");
+	menu.addOption(2, "Desactivar motores", "desactivar_motores");
+	menu.addOption(3, "Homming", "homming");
+
+	while (true) {
+		std::optional<std::string> cmdOption = menu.displayMenu();
+		if (!cmdOption.has_value()) {
+			messages.showMessage("Saliendo del programa", MessageType::INFO);
+			break;
+		}
+
+		std::string comando = cmdOption.value();
+		messages.showMessage("Enviando comando: " + comando, MessageType::INFO);
+		bool success = cliente.enviarComando(comando);
+		if (success) {
+			messages.showMessage("Comando ejecutado correctamente", MessageType::INFO);
+		}
+		else {
+			messages.showMessage("Error al ejecutar el comando", MessageType::ERROR);
+		}
+	}
+	return 0;
 }
