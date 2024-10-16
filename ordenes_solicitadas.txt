@@ -1,3 +1,3 @@
-M17
-G28
-M18
+{"comando": "M17", "timestamp": 1729090688.3282084}
+{"comando": "G1 X2.0 Y3.0 Z4.0 F1000", "timestamp": 1729090701.26109}
+{"comando": "G28", "timestamp": 1729090707.6307178}
