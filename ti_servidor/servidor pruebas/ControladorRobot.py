@@ -15,6 +15,7 @@ class ControladorRobot:
         self.actividad = "inactivo"
         self.archivo_ordenes_ejecutadas = GestorDeArchivos("ordenes_ejecutadas.txt")
         self.archivo_ordenes_solicitadas = GestorDeArchivos("ordenes_solicitadas.txt")
+        self.archivo_aprendizaje = None
         self.inicio_actividad = None  # Almacenar cuando se inicia la actividad
         self.ordenes_totales = 0  # Contador de órdenes solicitadas
         self.errores = []  # Almacenar órdenes que produjeron errores
@@ -43,14 +44,12 @@ class ControladorRobot:
         if self.motores_activos:
             raise ErrorDeEstado(2)  # Motores ya encendidos
 
-        # Registro de inicio de actividad
         if self.inicio_actividad is None:
             self.inicio_actividad = time.time()
 
         self.motores_activos = True
         gcode = "M17"
-        self._registrar_comando(gcode)
-        return "Éxito: Motores activados\n"
+        return self._registrar_comando(gcode)
 
     def desactivar_motores(self):
         if self.estado_conexion == "desconectado":
@@ -60,28 +59,33 @@ class ControladorRobot:
 
         self.motores_activos = False
         gcode = "M18"
-        self._registrar_comando(gcode)
-        return "Éxito: Motores desactivados\n"
+        return self._registrar_comando(gcode)
 
     def _registrar_comando(self, comando):
-        self.ordenes_totales += 1  # Incrementar contador de órdenes
+        self.ordenes_totales += 1
         comando_json = json.dumps({"comando": comando, "timestamp": time.time()})
         self.archivo_ordenes_solicitadas.guardar_linea(comando_json)
         self.serial_robot.write((comando + "\r\n").encode())
-        
+
         respuesta = self.serial_robot.readline().decode().strip()
-        
+
         if not respuesta:
-            self.errores.append(comando)  # Registrar el comando que produjo un error
-            print("Error: Respuesta vacía recibida del robot.")
+            self.errores.append(comando)
             return {"error": "No se recibió respuesta del robot"}
+
+        if "ERROR" in respuesta.upper():
+            self.errores.append(comando)
+            return {"error": respuesta}
 
         try:
             self.archivo_ordenes_ejecutadas.guardar_linea(f"{comando} -> {respuesta}")
         except Exception as e:
-            self.errores.append(comando)  # Registrar el comando que produjo un error
-            print(f"Error al guardar en ordenes ejecutadas: {e}")
+            self.errores.append(comando)
             return {"error": f"No se pudo guardar la respuesta: {e}"}
+
+        # Agregar el comando al archivo de aprendizaje si está activo
+        if self.aprendiendo and self.archivo_aprendizaje:
+            self.archivo_aprendizaje.guardar_linea(comando)
 
         return {"respuesta_robot": respuesta}
 
@@ -97,6 +101,50 @@ class ControladorRobot:
         reporte += f"Número de órdenes ejecutadas: {self.archivo_ordenes_ejecutadas.contar_lineas()}\n"
         return reporte
 
+    def aprender(self, nombre_archivo, activar):
+        if not self.motores_activos:
+            raise ErrorDeConexion(2)  # Motores apagados
+
+        if activar:
+            if self.aprendiendo:
+                raise ErrorDeEstado(7)  # Ya está en modo aprendizaje
+            self.aprendiendo = True
+            self.archivo_aprendizaje = GestorDeArchivos(f"{nombre_archivo}.txt")
+            return "Modo aprendizaje activado\n"
+        else:
+            if not self.aprendiendo:
+                return "El robot ya está fuera del modo aprendizaje\n"
+            self.aprendiendo = False
+            self.archivo_aprendizaje = None  # Eliminar la referencia
+            return "Modo aprendizaje desactivado\n"
+
+    def ejecutar_automatico(self, nombre_archivo):
+        if self.estado_conexion == "desconectado":
+            raise ErrorDeConexion(1)
+        if not self.motores_activos:
+            raise ErrorDeConexion(2)
+        if self.aprendiendo:
+            raise ErrorDeEstado(9)
+
+        try:
+            with open(f"{nombre_archivo}.txt", "r") as archivo:
+                comandos = archivo.readlines()
+        except FileNotFoundError:
+            return f"Error: El archivo {nombre_archivo}.txt no existe."
+
+        resultados = []
+        for comando in comandos:
+            comando = comando.strip()
+            resultado = self._registrar_comando(comando)
+            if "error" in resultado:
+                resultados.append(f"Comando: {comando} - Error: {resultado['error']}")
+            else:
+                respuesta = resultado.get('respuesta_robot', '')
+                resultados.append(f"Comando: {comando} - Respuesta: {respuesta}")
+
+        resultados.append("Ejecución automática completada\n")
+        return "\n".join(resultados)
+
     def mover_efector(self, x, y, z, velocidad):
         if self.estado_conexion == "desconectado":
             raise ErrorDeConexion(1)  # No hay conexión
@@ -104,7 +152,10 @@ class ControladorRobot:
             raise ErrorDeConexion(2)  # Motores apagados
 
         gcode = f"G1 X{x} Y{y} Z{z} F{velocidad}"
-        self._registrar_comando(gcode)
+        resultado = self._registrar_comando(gcode)
+        if "error" in resultado:
+            return resultado["error"]
+        
         return f"Éxito: Efector movido a (X={x}, Y={y}, Z={z}) con velocidad {velocidad}\n"
     
     def mover_efector_posicion(self, x, y, z):
@@ -115,9 +166,12 @@ class ControladorRobot:
             raise ErrorDeConexion(2)  # Motores apagados
 
         # Usar una velocidad por defecto, por ejemplo, 1000
-        velocidad_default = 1000
+        velocidad_default = 1
         gcode = f"G1 X{x} Y{y} Z{z} F{velocidad_default}"
-        self._registrar_comando(gcode)
+        resultado = self._registrar_comando(gcode)
+        if "error" in resultado:
+            return resultado["error"]
+        
         return f"Éxito: Efector movido a (X={x}, Y={y}, Z={z}) con velocidad {velocidad_default}\n"
 
     def actuar_efector(self, accion):
@@ -139,7 +193,10 @@ class ControladorRobot:
         else:
             raise ErrorDeParametros(3)  # Parámetros inválidos
 
-        self._registrar_comando(gcode)
+        resultado = self._registrar_comando(gcode)
+        if "error" in resultado:
+            return resultado["error"]
+        
         return f"Éxito: Efector {'activado' if accion == '1' else 'desactivado'}\n"
 
     def homming(self):
@@ -148,8 +205,10 @@ class ControladorRobot:
         if not self.motores_activos:
             raise ErrorDeConexion(2)  # Motores apagados
 
-        gcode = "G28"
-        self._registrar_comando(gcode)
+        resultado = self._registrar_comando("G28")
+        if "error" in resultado:
+            return resultado["error"]
+        
         return "Éxito: Homming realizado\n"
 
     def mover_a_origen(self):
@@ -159,38 +218,8 @@ class ControladorRobot:
         if not self.motores_activos:
             raise ErrorDeConexion(2)  # Motores apagados
 
-        gcode = "G28"  # Comando de retorno al origen
-        self._registrar_comando(gcode)
+        resultado = self._registrar_comando("G28")  # Comando de retorno al origen
+        if "error" in resultado:
+            return resultado["error"]
+        
         return "Éxito: Efector movido a la posición de origen\n"
-
-    def aprender(self, nombre_archivo, activar):
-        if not self.motores_activos:
-            raise ErrorDeConexion(2)  # Motores apagados
-
-        if activar:
-            if self.aprendiendo:
-                raise ErrorDeEstado(7)  # Ya está en modo aprendizaje
-            self.aprendiendo = True
-            self.archivo_aprendizaje = GestorDeArchivos(f"{nombre_archivo}.txt")
-            return "Modo aprendizaje activado\n"
-        else:
-            if not self.aprendiendo:
-                raise ErrorDeEstado(8)  # No está en modo aprendizaje
-            self.aprendiendo = False
-            return "Modo aprendizaje desactivado\n"
-
-    def ejecutar_automatico(self, nombre_archivo):
-        if self.estado_conexion == "desconectado":
-            raise ErrorDeConexion(1)  # No hay conexión
-        if not self.motores_activos:
-            raise ErrorDeConexion(2)  # Motores apagados
-        if self.aprendiendo:
-            raise ErrorDeEstado(9)  # Está en modo aprendizaje
-
-        with open(f"{nombre_archivo}.txt", "r") as archivo:
-            comandos = archivo.readlines()
-
-        for comando in comandos:
-            self._registrar_comando(comando.strip())
-
-        return "Éxito: Ejecución automática completada\n"
