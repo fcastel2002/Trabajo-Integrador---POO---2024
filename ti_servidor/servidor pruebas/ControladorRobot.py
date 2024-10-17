@@ -222,4 +222,41 @@ class ControladorRobot:
         if "error" in resultado:
             return resultado["error"]
         
+<<<<<<< HEAD
         return "Éxito: Efector movido a la posición de origen\n"
+
+    def reportar_posicion(self):
+        """Reporte la posición actual y el modo de coordenadas"""
+        if self.estado_conexion == "desconectado":
+            raise ErrorDeConexion(1)  # No hay conexión
+
+        resultado = self._registrar_comando("M114")
+        if "error" in resultado:
+            return resultado["error"]
+        
+        return f"Posición actual: {resultado['respuesta_robot']}\n"
+
+    def modo_absoluto(self):
+        """Cambiar a modo de coordenadas absolutas"""
+        if self.estado_conexion == "desconectado":
+            raise ErrorDeConexion(1)  # No hay conexión
+
+        resultado = self._registrar_comando("G90")
+        if "error" in resultado:
+            return resultado["error"]
+        
+        return "Modo absoluto activado\n"
+
+    def modo_relativo(self):
+        """Cambiar a modo de coordenadas relativas"""
+        if self.estado_conexion == "desconectado":
+            raise ErrorDeConexion(1)  # No hay conexión
+
+        resultado = self._registrar_comando("G91")
+        if "error" in resultado:
+            return resultado["error"]
+        
+        return "Modo relativo activado\n"
+=======
+        return "Éxito: Efector movido a la posición de origen\n"
+>>>>>>> 8c40792504f73845e57c04ad83b14fd79fc8e54a

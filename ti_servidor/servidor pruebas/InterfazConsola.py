@@ -11,6 +11,15 @@ class InterfazConsola:
     def __init__(self):
         self.robot = ControladorRobot('COM8', 115200)
         self.rpc_server = None
+<<<<<<< HEAD
+        self.archivo_configuracion = "configuracion_robot.json"
+        self.archivo_usuarios = "usuarios.json"
+        self.archivo_logs = "log_trabajo.csv"
+        self.modo_trabajo = "manual"
+        self.tipo_movimiento = "absoluto"
+        self.gestor_logs = GestorDeArchivos(self.archivo_logs)
+        self.logger = Logger()
+=======
         self.archivo_configuracion = "configuracion_robot.json"  # Archivo para guardar la configuración
         self.archivo_usuarios = "usuarios.json"  # Archivo que contiene usuarios y contraseñas
         self.archivo_logs = "log_trabajo.csv"  # Archivo donde se guardan los logs de trabajo (corregido)
@@ -18,6 +27,7 @@ class InterfazConsola:
         self.tipo_movimiento = "absoluto"  # Tipo de movimiento por defecto
         self.gestor_logs = GestorDeArchivos(self.archivo_logs)  # Instancia para manejar el archivo de logs
         self.logger = Logger()  # Instanciamos el logger
+>>>>>>> 8c40792504f73845e57c04ad83b14fd79fc8e54a
 
     def mostrar_ayuda(self):
         ayuda = """
@@ -31,6 +41,11 @@ class InterfazConsola:
         - Mover Efector Final (solo Posición): mover_efector_posicion(usuario, clave, x, y, z)
         - Homming: homming(usuario, clave)
         - Ejecución Automática: ejecutar_automatico(usuario, clave, nombre_archivo)
+        - Reportar Posición Actual: reportar_posicion(usuario, clave)
+        - Cambiar a Modo Absoluto: modo_absoluto(usuario, clave)
+        - Cambiar a Modo Relativo: modo_relativo(usuario, clave)
+        - Activar Efector: activar_efector(usuario, clave)
+        - Desactivar Efector: desactivar_efector(usuario, clave)
 
         Ejemplo:
         Para conectar el robot:
@@ -40,7 +55,6 @@ class InterfazConsola:
 
     def iniciar(self):
         while True:
-            # Menú dinámico según el estado del robot y el servidor
             opciones_menu = []
 
             if self.robot.estado_conexion == "desconectado":
@@ -53,8 +67,13 @@ class InterfazConsola:
                 opciones_menu.append("Desconectar del Robot")
                 opciones_menu.append("Listar Comandos Disponibles")
                 opciones_menu.append("Mostrar/Editar Parámetros de Conexión")
-                opciones_menu.append("Cambiar Modo de Trabajo (Actual: {})".format(self.modo_trabajo))
-                opciones_menu.append("Cambiar Tipo de Movimiento (Actual: {})".format(self.tipo_movimiento))
+                opciones_menu.append(f"Cambiar Modo de Trabajo (Actual: {self.modo_trabajo})")
+
+                # Cambiar tipo de movimiento de acuerdo al estado actual
+                if self.tipo_movimiento == "absoluto":
+                    opciones_menu.append("Cambiar a Modo Relativo")
+                else:
+                    opciones_menu.append("Cambiar a Modo Absoluto")
 
                 # Mostrar "Activar/Desactivar Motores"
                 opciones_menu.append("Activar Motores" if not self.robot.motores_activos else "Desactivar Motores")
@@ -66,15 +85,20 @@ class InterfazConsola:
                     opciones_menu.append("Aprendizaje (On/Off)")
                     opciones_menu.append("Ejecución Automática")
                     opciones_menu.append("Reportar Estado")
+                    opciones_menu.append("Reportar Posición Actual")
+
+                    # Mostrar solo la opción válida para el efector
+                    if self.robot.efector_estado == "desactivado":
+                        opciones_menu.append("Activar Efector")
+                    else:
+                        opciones_menu.append("Desactivar Efector")
 
             if self.rpc_server is not None:
                 opciones_menu.append("Detener Servidor RPC")
             
-            # Agregar la opción de mostrar las últimas 100 líneas del log (solo para admin)
             opciones_menu.append("Mostrar las últimas 100 líneas del Log (Admin)")
-
-            opciones_menu.append("Mostrar Ayuda")  # Opción para mostrar ayuda
-            opciones_menu.append("Salir")  # Siempre disponible
+            opciones_menu.append("Mostrar Ayuda")
+            opciones_menu.append("Salir")
 
             choice = questionary.select(
                 "Seleccione una opción:",
@@ -97,10 +121,10 @@ class InterfazConsola:
                 self.listar_comandos()
             elif choice == "Mostrar/Editar Parámetros de Conexión":
                 self.mostrar_editar_parametros()
-            elif choice.startswith("Cambiar Modo de Trabajo"):
-                self.cambiar_modo_trabajo()
-            elif choice.startswith("Cambiar Tipo de Movimiento"):
-                self.cambiar_tipo_movimiento()
+            elif choice == "Cambiar a Modo Absoluto":
+                self.modo_absoluto()
+            elif choice == "Cambiar a Modo Relativo":
+                self.modo_relativo()
             elif choice == "Mover Efector Final (con Velocidad)":
                 self.mover_efector()
             elif choice == "Mover Efector Final (solo Posición)":
@@ -113,12 +137,75 @@ class InterfazConsola:
                 self.ejecutar_automatico()
             elif choice == "Reportar Estado":
                 self.reportar_estado()
+            elif choice == "Reportar Posición Actual":
+                self.reportar_posicion()
+            elif choice == "Activar Efector":
+                self.activar_efector()
+            elif choice == "Desactivar Efector":
+                self.desactivar_efector()
             elif choice == "Mostrar las últimas 100 líneas del Log (Admin)":
                 self.mostrar_log_admin()
             elif choice == "Mostrar Ayuda":
                 self.mostrar_ayuda()
             elif choice == "Salir":
                 self.salir()
+
+    def reportar_posicion(self):
+        usuario = "consola_local"
+        ip = "127.0.0.1"
+        try:
+            mensaje = self.robot.reportar_posicion()
+            print(mensaje)
+            self.logger.registrar_log("reportar_posicion", ip, usuario, True)
+        except Exception as e:
+            print(f"Error al reportar la posición: {e}")
+            self.logger.registrar_log("reportar_posicion", ip, usuario, False)
+
+    def modo_absoluto(self):
+        usuario = "consola_local"
+        ip = "127.0.0.1"
+        try:
+            mensaje = self.robot.modo_absoluto()
+            print(mensaje)
+            self.tipo_movimiento = "absoluto"
+            self.logger.registrar_log("modo_absoluto", ip, usuario, True)
+        except Exception as e:
+            print(f"Error al cambiar a modo absoluto: {e}")
+            self.logger.registrar_log("modo_absoluto", ip, usuario, False)
+
+    def modo_relativo(self):
+        usuario = "consola_local"
+        ip = "127.0.0.1"
+        try:
+            mensaje = self.robot.modo_relativo()
+            print(mensaje)
+            self.tipo_movimiento = "relativo"
+            self.logger.registrar_log("modo_relativo", ip, usuario, True)
+        except Exception as e:
+            print(f"Error al cambiar a modo relativo: {e}")
+            self.logger.registrar_log("modo_relativo", ip, usuario, False)
+
+    def activar_efector(self):
+        usuario = "consola_local"
+        ip = "127.0.0.1"
+        try:
+            mensaje = self.robot.actuar_efector('1')
+            print(mensaje)
+            self.logger.registrar_log("activar_efector", ip, usuario, True)
+        except Exception as e:
+            print(f"Error al activar el efector: {e}")
+            self.logger.registrar_log("activar_efector", ip, usuario, False)
+
+    def desactivar_efector(self):
+        usuario = "consola_local"
+        ip = "127.0.0.1"
+        try:
+            mensaje = self.robot.actuar_efector('0')
+            print(mensaje)
+            self.logger.registrar_log("desactivar_efector", ip, usuario, True)
+        except Exception as e:
+            print(f"Error al desactivar el efector: {e}")
+            self.logger.registrar_log("desactivar_efector", ip, usuario, False)
 
     def mostrar_log_admin(self):
         """Función para mostrar las últimas 100 líneas del log de trabajo (solo para admin)"""
