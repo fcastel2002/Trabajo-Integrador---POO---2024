@@ -143,7 +143,7 @@ XmlRpcDispatch::work(double timeout)
           if ( ! src->getKeepOpen())
             src->close();
         } else if (newMask != (unsigned) -1) {
-          thisIt->getMask() = newMask;
+              thisIt->getMask() = newMask;
         }
       }
     }

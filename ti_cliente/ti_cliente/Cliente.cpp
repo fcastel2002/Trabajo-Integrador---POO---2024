@@ -11,8 +11,8 @@ Cliente::~Cliente() {
 	delete client;
 }
 
-bool Cliente::enviarComando(const std::string& comando, XmlRpcValue& result) {
-	XmlRpcValue noArgs;
+bool Cliente::enviarComando(const std::string& comando) {
+	XmlRpcValue noArgs,result;
 
 	try {
 		bool requestSuccess = client->execute(comando.c_str(), noArgs, result);
@@ -37,8 +37,9 @@ bool Cliente::enviarComando(const std::string& comando, XmlRpcValue& result) {
 		return false;
 	}
 }
-
+/*
 bool Cliente::enviarComando(const std::string& comando) {
 	XmlRpcValue result;
 	return enviarComando(comando, result);
 }
+*/
