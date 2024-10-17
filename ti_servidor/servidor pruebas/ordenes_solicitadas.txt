@@ -61,3 +61,5 @@
 {"comando": "G28", "timestamp": 1729104386.5635796}
 {"comando": "G1 X3.0 Y3.0 Z3.0 F1", "timestamp": 1729104386.5635796}
 {"comando": "G1 X6.0 Y6.0 Z6.0 F1", "timestamp": 1729104386.5791497}
+{"comando": "M17", "timestamp": 1729107034.9070132}
+{"comando": "G28", "timestamp": 1729107047.5495162}

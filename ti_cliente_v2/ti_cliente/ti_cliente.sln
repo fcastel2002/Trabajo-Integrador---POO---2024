@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cliente", "ti_cliente.vcxproj", "{A43D6854-9A9A-4242-AEA2-41CE706981CE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2C314936-727B-4A4A-952E-77CD64E1F2ED} = {2C314936-727B-4A4A-952E-77CD64E1F2ED}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{94417A16-937A-418B-80DB-303AA1F7621F}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\ti_servidor\servidor pruebas\ControladorRobot.py = ..\..\ti_servidor\servidor pruebas\ControladorRobot.py
+		..\..\ti_servidor\servidor pruebas\GestorDeArchivos.py = ..\..\ti_servidor\servidor pruebas\GestorDeArchivos.py
+		..\..\ti_servidor\servidor pruebas\InterfazConsola.py = ..\..\ti_servidor\servidor pruebas\InterfazConsola.py
+		..\..\ti_servidor\servidor pruebas\main.py = ..\..\ti_servidor\servidor pruebas\main.py
+		..\..\ti_servidor\servidor pruebas\ManejadorErrores.py = ..\..\ti_servidor\servidor pruebas\ManejadorErrores.py
+		..\..\ti_servidor\servidor pruebas\ServidorControl.py = ..\..\ti_servidor\servidor pruebas\ServidorControl.py
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XMLRPC++", "..\XMLRPC++\XMLRPC++.vcxproj", "{2C314936-727B-4A4A-952E-77CD64E1F2ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A43D6854-9A9A-4242-AEA2-41CE706981CE}.Debug|x64.ActiveCfg = Debug|x64
+		{A43D6854-9A9A-4242-AEA2-41CE706981CE}.Debug|x64.Build.0 = Debug|x64
+		{A43D6854-9A9A-4242-AEA2-41CE706981CE}.Debug|x86.ActiveCfg = Debug|Win32
+		{A43D6854-9A9A-4242-AEA2-41CE706981CE}.Debug|x86.Build.0 = Debug|Win32
+		{A43D6854-9A9A-4242-AEA2-41CE706981CE}.Release|x64.ActiveCfg = Release|x64
+		{A43D6854-9A9A-4242-AEA2-41CE706981CE}.Release|x64.Build.0 = Release|x64
+		{A43D6854-9A9A-4242-AEA2-41CE706981CE}.Release|x86.ActiveCfg = Release|Win32
+		{A43D6854-9A9A-4242-AEA2-41CE706981CE}.Release|x86.Build.0 = Release|Win32
+		{2C314936-727B-4A4A-952E-77CD64E1F2ED}.Debug|x64.ActiveCfg = Debug|x64
+		{2C314936-727B-4A4A-952E-77CD64E1F2ED}.Debug|x64.Build.0 = Debug|x64
+		{2C314936-727B-4A4A-952E-77CD64E1F2ED}.Debug|x86.ActiveCfg = Debug|Win32
+		{2C314936-727B-4A4A-952E-77CD64E1F2ED}.Debug|x86.Build.0 = Debug|Win32
+		{2C314936-727B-4A4A-952E-77CD64E1F2ED}.Release|x64.ActiveCfg = Release|x64
+		{2C314936-727B-4A4A-952E-77CD64E1F2ED}.Release|x64.Build.0 = Release|x64
+		{2C314936-727B-4A4A-952E-77CD64E1F2ED}.Release|x86.ActiveCfg = Release|Win32
+		{2C314936-727B-4A4A-952E-77CD64E1F2ED}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {368DD62F-3ED2-4E42-8F7D-7832ABC8E067}
+	EndGlobalSection
+EndGlobal
