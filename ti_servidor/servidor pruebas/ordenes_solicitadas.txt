@@ -1,0 +1,67 @@
+{"comando": "M17", "timestamp": 1729100287.841788}
+{"comando": "G1 X5.0 Y5.0 Z5.0 F1.0", "timestamp": 1729100320.97621}
+{"comando": "G1 X7.0 Y7.0 Z7.0 F1.0", "timestamp": 1729100326.7766705}
+{"comando": "G28", "timestamp": 1729100328.8702743}
+{"comando": "G1 X1.0 Y1.0 Z1.0 F1.0", "timestamp": 1729100353.3400342}
+{"comando": "M17", "timestamp": 1729101131.1235087}
+{"comando": "M17", "timestamp": 1729101174.2752013}
+{"comando": "G1 X5.0 Y5.0 Z5.0 F1.0", "timestamp": 1729101178.9460073}
+{"comando": "G1 X1.0 Y1.0 Z1.0 F1.0", "timestamp": 1729101183.5592744}
+{"comando": "G1 X6.0 Y6.0 Z6.0 F1.0", "timestamp": 1729101196.449101}
+{"comando": "G28", "timestamp": 1729101201.0886323}
+{"comando": "M17", "timestamp": 1729101717.266207}
+{"comando": "G1 X5.0 Y5.0 Z5.0 F1.0", "timestamp": 1729101733.2962005}
+{"comando": "G1 X6.0 Y6.0 Z6.0 F1.0", "timestamp": 1729101739.919677}
+{"comando": "G1 X3.0 Y3.0 Z3.0 F1.0", "timestamp": 1729101745.7935395}
+{"comando": "G1 X1.0 Y1.0 Z1.0 F1.0", "timestamp": 1729101750.185922}
+{"comando": "G1 X0.0 Y0.0 Z0.0 F1.0", "timestamp": 1729101755.1691234}
+{"comando": "G28", "timestamp": 1729101758.059354}
+{"comando": "M17", "timestamp": 1729102714.0717442}
+{"comando": "G1 X2.0 Y2.0 Z2.0 F1.0", "timestamp": 1729102720.1793485}
+{"comando": "G1 X3.0 Y3.0 Z3.0 F1.0", "timestamp": 1729102725.4436955}
+{"comando": "G28", "timestamp": 1729102728.8803837}
+{"comando": "G1 X2.5 Y2.5 Z2.5 F1.0", "timestamp": 1729102743.1302643}
+{"comando": "M17", "timestamp": 1729102831.9904902}
+{"comando": "G1 X2.0 Y2.0 Z2.0 F1.0", "timestamp": 1729102844.4432006}
+{"comando": "G1 X2.5 Y2.5 Z2.5 F1.0", "timestamp": 1729102851.28006}
+{"comando": "G1 X1.0 Y1.0 Z1.0 F1.0", "timestamp": 1729102860.544853}
+{"comando": "G28", "timestamp": 1729102899.3440409}
+{"comando": "G1 X9.0 Y9.0 Z9.0 F1.0", "timestamp": 1729102904.8896322}
+{"comando": "M17", "timestamp": 1729102964.0664704}
+{"comando": "G1 X2.0 Y2.0 Z2.0 F1.0", "timestamp": 1729102970.3615956}
+{"comando": "G1 X9.0 Y9.0 Z9.0 F1.0", "timestamp": 1729102970.3615956}
+{"comando": "M17", "timestamp": 1729103843.4658854}
+{"comando": "G1 X2.0 Y2.0 Z2.0 F1", "timestamp": 1729103857.2452095}
+{"comando": "G1 X3.0 Y3.0 Z3.0 F1", "timestamp": 1729103861.5924673}
+{"comando": "G1 X9.0 Y9.0 Z9.0 F1", "timestamp": 1729103866.701993}
+{"comando": "G1 X5.0 Y5.0 Z5.0 F1", "timestamp": 1729103870.6694674}
+{"comando": "G1 X2.5 Y2.5 Z2.5 F1", "timestamp": 1729103895.2633047}
+{"comando": "G1 X1.0 Y1.0 Z1.0 F1", "timestamp": 1729103911.134815}
+{"comando": "M17", "timestamp": 1729104081.9080482}
+{"comando": "G28", "timestamp": 1729104084.8916767}
+{"comando": "G1 X3.0 Y3.0 Z3.0 F1", "timestamp": 1729104089.3440914}
+{"comando": "G1 X6.0 Y6.0 Z6.0 F1", "timestamp": 1729104094.3425722}
+{"comando": "M17", "timestamp": 1729104152.9877393}
+{"comando": "M17", "timestamp": 1729104191.0504198}
+{"comando": "G28", "timestamp": 1729104199.845219}
+{"comando": "G1 X3.0 Y3.0 Z3.0 F1.0", "timestamp": 1729104204.9069126}
+{"comando": "G1 X6.0 Y6.0 Z6.0 F1.0", "timestamp": 1729104211.1706734}
+{"comando": "G28", "timestamp": 1729104263.3535314}
+{"comando": "G1 X3.0 Y3.0 Z3.0 F1.0", "timestamp": 1729104263.3687565}
+{"comando": "G1 X6.0 Y6.0 Z6.0 F1.0", "timestamp": 1729104263.3687565}
+{"comando": "M17", "timestamp": 1729104295.7382503}
+{"comando": "G28", "timestamp": 1729104309.0372941}
+{"comando": "G1 X3.0 Y3.0 Z3.0 F1", "timestamp": 1729104312.717269}
+{"comando": "G1 X6.0 Y6.0 Z6.0 F1", "timestamp": 1729104315.6717377}
+{"comando": "M17", "timestamp": 1729104343.8102124}
+{"comando": "G28", "timestamp": 1729104349.183946}
+{"comando": "G1 X3.0 Y3.0 Z3.0 F1", "timestamp": 1729104349.183946}
+{"comando": "G1 X6.0 Y6.0 Z6.0 F1", "timestamp": 1729104349.183946}
+{"comando": "M17", "timestamp": 1729104381.1894703}
+{"comando": "G28", "timestamp": 1729104386.5635796}
+{"comando": "G1 X3.0 Y3.0 Z3.0 F1", "timestamp": 1729104386.5635796}
+{"comando": "G1 X6.0 Y6.0 Z6.0 F1", "timestamp": 1729104386.5791497}
+{"comando": "M17", "timestamp": 1729107034.9070132}
+{"comando": "G28", "timestamp": 1729107047.5495162}
+{"comando": "M17", "timestamp": 1729193230.399021}
+{"comando": "M18", "timestamp": 1729193240.2564092}
