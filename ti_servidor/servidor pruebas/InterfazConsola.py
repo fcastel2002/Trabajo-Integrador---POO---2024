@@ -11,6 +11,7 @@ class InterfazConsola:
     def __init__(self):
         self.robot = ControladorRobot('COM8', 115200)
         self.rpc_server = None
+<<<<<<< HEAD
         self.archivo_configuracion = "configuracion_robot.json"
         self.archivo_usuarios = "usuarios.json"
         self.archivo_logs = "log_trabajo.csv"
@@ -18,6 +19,15 @@ class InterfazConsola:
         self.tipo_movimiento = "absoluto"
         self.gestor_logs = GestorDeArchivos(self.archivo_logs)
         self.logger = Logger()
+=======
+        self.archivo_configuracion = "configuracion_robot.json"  # Archivo para guardar la configuración
+        self.archivo_usuarios = "usuarios.json"  # Archivo que contiene usuarios y contraseñas
+        self.archivo_logs = "log_trabajo.csv"  # Archivo donde se guardan los logs de trabajo (corregido)
+        self.modo_trabajo = "manual"  # Modo por defecto
+        self.tipo_movimiento = "absoluto"  # Tipo de movimiento por defecto
+        self.gestor_logs = GestorDeArchivos(self.archivo_logs)  # Instancia para manejar el archivo de logs
+        self.logger = Logger()  # Instanciamos el logger
+>>>>>>> 8c40792504f73845e57c04ad83b14fd79fc8e54a
 
     def mostrar_ayuda(self):
         ayuda = """

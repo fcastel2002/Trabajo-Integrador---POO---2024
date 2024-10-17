@@ -22,7 +22,6 @@ int main() {
         }
 
         std::string comando = cmdOption.value();
-        messages.showMessage("Enviando comando: " + comando, MessageType::INFO);
         bool success = cliente.enviarComando(comando);
         if (success) {
             messages.showMessage("Comando ejecutado correctamente", MessageType::INFO);

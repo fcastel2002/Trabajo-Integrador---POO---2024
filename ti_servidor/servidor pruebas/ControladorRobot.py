@@ -166,7 +166,7 @@ class ControladorRobot:
             raise ErrorDeConexion(2)  # Motores apagados
 
         # Usar una velocidad por defecto, por ejemplo, 1000
-        velocidad_default = 1000
+        velocidad_default = 1
         gcode = f"G1 X{x} Y{y} Z{z} F{velocidad_default}"
         resultado = self._registrar_comando(gcode)
         if "error" in resultado:
@@ -222,6 +222,7 @@ class ControladorRobot:
         if "error" in resultado:
             return resultado["error"]
         
+<<<<<<< HEAD
         return "Éxito: Efector movido a la posición de origen\n"
 
     def reportar_posicion(self):
@@ -256,3 +257,6 @@ class ControladorRobot:
             return resultado["error"]
         
         return "Modo relativo activado\n"
+=======
+        return "Éxito: Efector movido a la posición de origen\n"
+>>>>>>> 8c40792504f73845e57c04ad83b14fd79fc8e54a

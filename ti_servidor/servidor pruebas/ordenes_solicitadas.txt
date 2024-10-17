@@ -61,6 +61,7 @@
 {"comando": "G28", "timestamp": 1729104386.5635796}
 {"comando": "G1 X3.0 Y3.0 Z3.0 F1", "timestamp": 1729104386.5635796}
 {"comando": "G1 X6.0 Y6.0 Z6.0 F1", "timestamp": 1729104386.5791497}
+<<<<<<< HEAD
 {"comando": "M17", "timestamp": 1729104924.136923}
 {"comando": "M18", "timestamp": 1729104976.86688}
 {"comando": "M17", "timestamp": 1729104982.8397214}
@@ -77,3 +78,7 @@
 {"comando": "M3", "timestamp": 1729107006.587666}
 {"comando": "G28", "timestamp": 1729107013.8047152}
 {"comando": "M5", "timestamp": 1729107019.1787176}
+=======
+{"comando": "M17", "timestamp": 1729107034.9070132}
+{"comando": "G28", "timestamp": 1729107047.5495162}
+>>>>>>> 8c40792504f73845e57c04ad83b14fd79fc8e54a

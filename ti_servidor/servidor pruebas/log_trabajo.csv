@@ -68,6 +68,7 @@ iniciar_servidor_rpc,127.0.0.1,consola_local,exitoso,2024-10-16 15:46:19
 activar_motores,127.0.0.1,consola_local,exitoso,2024-10-16 15:46:21
 ejecutar_automatico,127.0.0.1,consola_local,exitoso,2024-10-16 15:46:26
 reportar_estado,127.0.0.1,consola_local,exitoso,2024-10-16 15:46:32
+<<<<<<< HEAD
 conectar_robot,127.0.0.1,consola_local,exitoso,2024-10-16 15:55:21
 iniciar_servidor_rpc,127.0.0.1,consola_local,exitoso,2024-10-16 15:55:22
 activar_motores,127.0.0.1,consola_local,exitoso,2024-10-16 15:55:24
@@ -89,3 +90,13 @@ activar_motores,127.0.0.1,consola_local,exitoso,2024-10-16 16:29:55
 activar_efector,127.0.0.1,consola_local,exitoso,2024-10-16 16:30:06
 homming,127.0.0.1,consola_local,exitoso,2024-10-16 16:30:13
 desactivar_efector,127.0.0.1,consola_local,exitoso,2024-10-16 16:30:19
+=======
+iniciar_servidor_rpc,127.0.0.1,consola_local,exitoso,2024-10-16 16:26:05
+conectar_robot,127.0.0.1,consola_local,exitoso,2024-10-16 16:28:16
+detener_servidor_rpc,127.0.0.1,consola_local,exitoso,2024-10-16 16:29:03
+iniciar_servidor_rpc,127.0.0.1,consola_local,exitoso,2024-10-16 16:29:04
+activar_motores,127.0.0.1,consola_local,exitoso,2024-10-16 16:30:34
+homming,127.0.0.1,consola_local,exitoso,2024-10-16 16:30:47
+iniciar_servidor_rpc,127.0.0.1,consola_local,exitoso,2024-10-16 18:41:57
+conectar_robot,127.0.0.1,consola_local,exitoso,2024-10-16 18:42:02
+>>>>>>> 8c40792504f73845e57c04ad83b14fd79fc8e54a

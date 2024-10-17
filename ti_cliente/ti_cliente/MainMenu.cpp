@@ -11,11 +11,12 @@ void MainMenu::addOption(int optionNumber, std::string descripcion, std::string 
 }
 
 std::optional<std::string> MainMenu::displayMenu() {
-    m_messageView.showMessage("Número de opciones: " + std::to_string(m_options.size()), MessageType::INFO); 
+    m_messageView.showMessage("Número de opciones: " + std::to_string(m_options.size()), MessageType::INFO);
     int selectedOption;
 
     while (true) {
-        m_messageView.showMessage("Menu principal\n", MessageType::INFO);
+        m_messageView.showMessage("------------------------------------");
+        m_messageView.showMessage("------------Menu principal----------\n", MessageType::INFO);
 
         if (m_options.empty()) {
             m_messageView.showMessage("No hay opciones disponibles\n", MessageType::ERROR);
