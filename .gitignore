@@ -1,4 +1,5 @@
 ti_cliente/ti_cliente/.vs
+servidor/__pycache__
 ti_cliente_v2/ti_cliente/.vs
 ordenes_ejecutadas.txt
 ordenes_solicitadas.txt
