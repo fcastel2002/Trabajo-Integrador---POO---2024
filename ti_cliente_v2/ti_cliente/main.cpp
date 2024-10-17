@@ -1,33 +1,26 @@
-#include <iostream>
 #include "Cliente.h"
-#include "CLIMessageView.h"
-#include "MainMenu.h"
+#include <iostream>
 
 int main() {
-    CLIMessageView messages;
+    std::string serverUrl = "http://127.0.0.1:9000/RPC2";
+    Cliente cliente(serverUrl);
 
-    Cliente cliente("127.0.0.1", 9000, messages);
+    std::string usuario = "admin";
+    std::string clave = "clave123";
 
-    MainMenu menu(messages);
-
-    menu.addOption(1, "Activar motores", "activar_motores");
-    menu.addOption(2, "Desactivar motores", "desactivar_motores");
-    menu.addOption(3, "Homming", "homming");
-
-    while (true) {
-        std::optional<std::string> cmdOption = menu.displayMenu(); 
-        if (!cmdOption.has_value()) {
-            messages.showMessage("Saliendo del programa", MessageType::INFO);
-            break;
-        }
-
-        std::string comando = cmdOption.value();
-        bool success = cliente.enviarComando(comando);
-        if (success) {
-            messages.showMessage("Comando ejecutado correctamente", MessageType::INFO);
-        } else {
-            messages.showMessage("Error al ejecutar el comando", MessageType::ERROR);
-        }
+    if (cliente.conectar(usuario, clave)) {
+        std::cout << "Conectado al servidor exitosamente." << std::endl;
     }
+    else {
+        std::cerr << "Error al conectar al servidor." << std::endl;
+    }
+
+    if (cliente.desconectar(usuario, clave)) {
+        std::cout << "Desconectado del servidor exitosamente." << std::endl;
+    }
+    else {
+        std::cerr << "Error al desconectar del servidor." << std::endl;
+    }
+
     return 0;
 }

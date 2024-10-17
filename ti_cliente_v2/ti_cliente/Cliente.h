@@ -1,23 +1,18 @@
-#pragma once
+#ifndef CLIENTE_H
+#define CLIENTE_H
+
 #include <string>
-#include "../XMLRPC++/XmlRpc.h"
-#pragma comment(lib, "WS2_32.lib")
-#include <iostream>
-#include "IMessageView.h"
-#pragma comment(lib, "./x64/Debug/xmlrpc++.lib")
+#include "XmlRpc.h"
 
-using namespace XmlRpc;
-
-class Cliente
-{
-private:
-    std::string m_ip{};
-    int m_port{};
-    bool connected{ false };
-    XmlRpcClient client; // Declarar el cliente sin inicializar
-    IMessageView& m_messageView;
-
+class Cliente {
 public:
-    Cliente(std::string ip, int port, IMessageView& messageView);
-    bool enviarComando(const std::string& comando);
+    Cliente(const std::string& serverUrl);
+    bool conectar(const std::string& usuario, const std::string& clave);
+    bool desconectar(const std::string& usuario, const std::string& clave);
+
+private:
+    std::string serverUrl;
+    XmlRpc::XmlRpcClient client;
 };
+
+#endif // CLIENTE_H

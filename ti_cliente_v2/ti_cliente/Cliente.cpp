@@ -1,46 +1,32 @@
 #include "Cliente.h"
+#include <iostream>
 
-Cliente::Cliente(std::string ip, int port, IMessageView& messageView)
-    : m_ip{ ip }, m_port{ port }, m_messageView{ messageView }, client(ip.c_str(), port) {
-    m_messageView.showMessage("Cliente inicializado con IP: " + ip + " y puerto: " + std::to_string(port), MessageType::INFO);
+Cliente::Cliente(const std::string& serverUrl) : serverUrl(serverUrl), client(serverUrl.c_str(), 9000) {}
+
+bool Cliente::conectar(const std::string& usuario, const std::string& clave) {
+    XmlRpc::XmlRpcValue args, result;
+    args[0] = usuario;
+    args[1] = clave;
+    if (client.execute("conectar", args, result)) {
+        bool success = result;
+        return success;
+    }
+    else {
+        std::cerr << "Error: Failed to execute 'conectar' method." << std::endl;
+        return false;
+    }
 }
 
-bool Cliente::enviarComando(const std::string& comando) {
-    XmlRpcValue params,result;  
-    params[0] = comando;
-    m_messageView.showMessage("Comando recibido: " + comando, MessageType::WARNING);
-    try {
-        m_messageView.showMessage("Enviando comando: " + comando, MessageType::INFO);
-
-        // Enviar el comando al servidor (asegúrate de que el comando es el nombre correcto)
-        bool requestSuccess = client.execute(comando.c_str(), comando, result);  // Usar valor vacío
-
-        if (requestSuccess) {
-            m_messageView.showMessage("Resultado recibido: " + result.toXml(), MessageType::INFO);
-
-            // Verificar el tipo de resultado
-            if (result.getType() == XmlRpcValue::TypeBoolean) {
-                bool success = result;
-                if (success) {
-                    m_messageView.showMessage("Comando ejecutado correctamente", MessageType::INFO);
-                }
-                else {
-                    m_messageView.showMessage("Error al ejecutar el comando", MessageType::ERROR);
-                }
-            }
-            else {
-                m_messageView.showMessage("El resultado no es un booleano: " + result.toXml(), MessageType::INFO);
-            }
-
-            return true;
-        }
-        else {
-            m_messageView.showMessage("Error en la llamada XML-RPC para el comando '" + comando + "'", MessageType::ERROR);
-            return false;
-        }
+bool Cliente::desconectar(const std::string& usuario, const std::string& clave) {
+    XmlRpc::XmlRpcValue args, result;
+    args[0] = usuario;
+    args[1] = clave;
+    if (client.execute("desconectar", args, result)) {
+        bool success = result;
+        return success;
     }
-    catch (XmlRpcException& e) {
-        m_messageView.showMessage("Excepción al ejecutar el comando: " + e.getMessage(), MessageType::ERROR);
+    else {
+        std::cerr << "Error: Failed to execute 'desconectar' method." << std::endl;
         return false;
     }
 }
