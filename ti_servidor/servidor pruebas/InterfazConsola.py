@@ -2,6 +2,9 @@ import json
 import questionary
 from ControladorRobot import ControladorRobot
 from ServidorControl import ServidorControl
+from GestorDeArchivos import GestorDeArchivos
+from ManejadorErrores import ErrorDeConexion, ErrorDeParametros, ErrorDeEstado
+from Logger import Logger
 import sys
 
 class InterfazConsola:
@@ -10,8 +13,11 @@ class InterfazConsola:
         self.rpc_server = None
         self.archivo_configuracion = "configuracion_robot.json"  # Archivo para guardar la configuración
         self.archivo_usuarios = "usuarios.json"  # Archivo que contiene usuarios y contraseñas
+        self.archivo_logs = "log_trabajo.csv"  # Archivo donde se guardan los logs de trabajo (corregido)
         self.modo_trabajo = "manual"  # Modo por defecto
         self.tipo_movimiento = "absoluto"  # Tipo de movimiento por defecto
+        self.gestor_logs = GestorDeArchivos(self.archivo_logs)  # Instancia para manejar el archivo de logs
+        self.logger = Logger()  # Instanciamos el logger
 
     def mostrar_ayuda(self):
         ayuda = """
@@ -25,7 +31,7 @@ class InterfazConsola:
         - Mover Efector Final (solo Posición): mover_efector_posicion(usuario, clave, x, y, z)
         - Homming: homming(usuario, clave)
         - Ejecución Automática: ejecutar_automatico(usuario, clave, nombre_archivo)
-        
+
         Ejemplo:
         Para conectar el robot:
         conectar("admin", "clave123")
@@ -56,7 +62,6 @@ class InterfazConsola:
                 if self.robot.motores_activos:
                     opciones_menu.append("Mover Efector Final (con Velocidad)")
                     opciones_menu.append("Mover Efector Final (solo Posición)")
-                    opciones_menu.append("Movimiento Circular")
                     opciones_menu.append("Homming")
                     opciones_menu.append("Aprendizaje (On/Off)")
                     opciones_menu.append("Ejecución Automática")
@@ -65,6 +70,9 @@ class InterfazConsola:
             if self.rpc_server is not None:
                 opciones_menu.append("Detener Servidor RPC")
             
+            # Agregar la opción de mostrar las últimas 100 líneas del log (solo para admin)
+            opciones_menu.append("Mostrar las últimas 100 líneas del Log (Admin)")
+
             opciones_menu.append("Mostrar Ayuda")  # Opción para mostrar ayuda
             opciones_menu.append("Salir")  # Siempre disponible
 
@@ -97,8 +105,6 @@ class InterfazConsola:
                 self.mover_efector()
             elif choice == "Mover Efector Final (solo Posición)":
                 self.mover_efector_posicion()
-            elif choice == "Movimiento Circular":
-                self.mover_circular()
             elif choice == "Homming":
                 self.realizar_homming()
             elif choice == "Aprendizaje (On/Off)":
@@ -107,10 +113,20 @@ class InterfazConsola:
                 self.ejecutar_automatico()
             elif choice == "Reportar Estado":
                 self.reportar_estado()
+            elif choice == "Mostrar las últimas 100 líneas del Log (Admin)":
+                self.mostrar_log_admin()
             elif choice == "Mostrar Ayuda":
                 self.mostrar_ayuda()
             elif choice == "Salir":
                 self.salir()
+
+    def mostrar_log_admin(self):
+        """Función para mostrar las últimas 100 líneas del log de trabajo (solo para admin)"""
+        # Aquí podemos agregar validación si queremos restringirlo a ciertos usuarios
+        print("Mostrando las últimas 100 líneas del log de trabajo:\n")
+        ultimas_lineas = self.gestor_logs.leer_ultimas_lineas(100)
+        for linea in ultimas_lineas:
+            print(linea.strip())
 
     # Listar los comandos disponibles
     def listar_comandos(self):
@@ -121,7 +137,6 @@ class InterfazConsola:
             "Desactivar Motores",
             "Mover Efector Final (con Velocidad)",
             "Mover Efector Final (solo Posición)",
-            "Movimiento Circular",
             "Homming",
             "Aprendizaje (On/Off)",
             "Ejecución Automática",
@@ -145,8 +160,8 @@ class InterfazConsola:
         editar = questionary.confirm("¿Desea editar los parámetros de conexión?").ask()
 
         if editar:
-            nuevo_puerto = questionary.text("Ingrese el nuevo puerto (actual: COM8):", default=parametros['puerto_serial']).ask()
-            nuevo_baudios = questionary.text("Ingrese la nueva tasa de baudios (actual: 115200):", default=str(parametros['baudios'])).ask()
+            nuevo_puerto = questionary.text("Ingrese el nuevo puerto (actual: {}):".format(parametros['puerto_serial']), default=parametros['puerto_serial']).ask()
+            nuevo_baudios = questionary.text("Ingrese la nueva tasa de baudios (actual: {}):".format(parametros['baudios']), default=str(parametros['baudios'])).ask()
 
             # Actualizar el archivo de configuración
             parametros['puerto_serial'] = nuevo_puerto
@@ -184,25 +199,41 @@ class InterfazConsola:
 
     # Funciones para interactuar con el robot y servidor
     def conectar_robot(self):
-        puerto = questionary.text("Ingrese el puerto COM (ejemplo: COM8):").ask()
-        baudios = questionary.text("Ingrese la tasa de baudios (ejemplo: 115200):").ask()
+        usuario = "consola_local"
+        ip = "127.0.0.1"
+        try:
+            puerto = questionary.text("Ingrese el puerto COM (ejemplo: COM8):").ask()
+            baudios = questionary.text("Ingrese la tasa de baudios (ejemplo: 115200):").ask()
 
-        if puerto and baudios:
-            self.robot.puerto_serial = puerto
-            self.robot.baudios = int(baudios)
-            mensaje = self.robot.conectar()
-            print(mensaje)
-        else:
-            print("Error: Debe ingresar un puerto COM y la tasa de baudios.")
+            if puerto and baudios:
+                self.robot.puerto_serial = puerto
+                self.robot.baudios = int(baudios)
+                mensaje = self.robot.conectar()
+                print(mensaje)
+                self.logger.registrar_log("conectar_robot", ip, usuario, True)
+            else:
+                print("Error: Debe ingresar un puerto COM y la tasa de baudios.")
+                self.logger.registrar_log("conectar_robot", ip, usuario, False)
+        except Exception as e:
+            print(f"Error al conectar: {e}")
+            self.logger.registrar_log("conectar_robot", ip, usuario, False)
 
     def desconectar_robot(self):
-        mensaje = self.robot.desconectar()
-        print(mensaje)
+        usuario = "consola_local"
+        ip = "127.0.0.1"
+        try:
+            mensaje = self.robot.desconectar()
+            print(mensaje)
+            self.logger.registrar_log("desconectar_robot", ip, usuario, True)
+        except Exception as e:
+            print(f"Error al desconectar: {e}")
+            self.logger.registrar_log("desconectar_robot", ip, usuario, False)
 
     def iniciar_servidor_rpc(self):
         if self.rpc_server is None:
             self.rpc_server = ServidorControl(self)
             self.rpc_server.iniciar()  # Inicia el servidor en un hilo separado
+            self.logger.registrar_log("iniciar_servidor_rpc", "127.0.0.1", "consola_local", True)
         else:
             print("El servidor RPC ya está en ejecución\n")
 
@@ -211,63 +242,122 @@ class InterfazConsola:
             self.rpc_server.disconnect()
             self.rpc_server = None
             print("Servidor RPC detenido\n")
+            self.logger.registrar_log("detener_servidor_rpc", "127.0.0.1", "consola_local", True)
         else:
             print("No hay servidor en ejecución para detener\n")
 
     def activar_motores(self):
-        mensaje = self.robot.activar_motores()
-        print(mensaje)
+        usuario = "consola_local"
+        ip = "127.0.0.1"
+        try:
+            mensaje = self.robot.activar_motores()
+            print(mensaje)
+            self.logger.registrar_log("activar_motores", ip, usuario, True)
+        except Exception as e:
+            print(f"Error al activar motores: {e}")
+            self.logger.registrar_log("activar_motores", ip, usuario, False)
 
     def desactivar_motores(self):
-        mensaje = self.robot.desactivar_motores()
-        print(mensaje)
+        usuario = "consola_local"
+        ip = "127.0.0.1"
+        try:
+            mensaje = self.robot.desactivar_motores()
+            print(mensaje)
+            self.logger.registrar_log("desactivar_motores", ip, usuario, True)
+        except Exception as e:
+            print(f"Error al desactivar motores: {e}")
+            self.logger.registrar_log("desactivar_motores", ip, usuario, False)
 
     def mover_efector(self):
-        x = questionary.text("Ingrese la coordenada X:").ask()
-        y = questionary.text("Ingrese la coordenada Y:").ask()
-        z = questionary.text("Ingrese la coordenada Z:").ask()
-        velocidad = questionary.text("Ingrese la velocidad:").ask()
-        mensaje = self.robot.mover_efector(float(x), float(y), float(z), float(velocidad))
-        print(mensaje)
+        usuario = "consola_local"
+        ip = "127.0.0.1"
+        try:
+            x = questionary.text("Ingrese la coordenada X:").ask()
+            y = questionary.text("Ingrese la coordenada Y:").ask()
+            z = questionary.text("Ingrese la coordenada Z:").ask()
+            velocidad = questionary.text("Ingrese la velocidad:").ask()
+            mensaje = self.robot.mover_efector(float(x), float(y), float(z), float(velocidad))
+            print(mensaje)
+            self.logger.registrar_log("mover_efector", ip, usuario, True)
+        except Exception as e:
+            print(f"Error al mover el efector: {e}")
+            self.logger.registrar_log("mover_efector", ip, usuario, False)
 
     def mover_efector_posicion(self):
-        x = questionary.text("Ingrese la coordenada X:").ask()
-        y = questionary.text("Ingrese la coordenada Y:").ask()
-        z = questionary.text("Ingrese la coordenada Z:").ask()
-        mensaje = self.robot.mover_efector_posicion(float(x), float(y), float(z))
-        print(mensaje)
-
-    def mover_circular(self):
-        q1 = questionary.text("Ingrese ángulo q1:").ask()
-        v1 = questionary.text("Ingrese velocidad v1:").ask()
-        q2 = questionary.text("Ingrese ángulo q2:").ask()
-        v2 = questionary.text("Ingrese velocidad v2:").ask()
-        q3 = questionary.text("Ingrese ángulo q3:").ask()
-        v3 = questionary.text("Ingrese velocidad v3:").ask()
-        mensaje = self.robot.mover_circular(float(q1), float(v1), float(q2), float(v2), float(q3), float(v3))
-        print(mensaje)
+        usuario = "consola_local"
+        ip = "127.0.0.1"
+        try:
+            x = questionary.text("Ingrese la coordenada X:").ask()
+            y = questionary.text("Ingrese la coordenada Y:").ask()
+            z = questionary.text("Ingrese la coordenada Z:").ask()
+            mensaje = self.robot.mover_efector_posicion(float(x), float(y), float(z))
+            print(mensaje)
+            self.logger.registrar_log("mover_efector_posicion", ip, usuario, True)
+        except Exception as e:
+            print(f"Error al mover el efector: {e}")
+            self.logger.registrar_log("mover_efector_posicion", ip, usuario, False)
 
     def realizar_homming(self):
-        mensaje = self.robot.homming()
-        print(mensaje)
+        usuario = "consola_local"
+        ip = "127.0.0.1"
+        try:
+            mensaje = self.robot.homming()
+            print(mensaje)
+            self.logger.registrar_log("homming", ip, usuario, True)
+        except Exception as e:
+            print(f"Error al realizar homming: {e}")
+            self.logger.registrar_log("homming", ip, usuario, False)
 
     def aprendizaje(self):
-        nombre_archivo = questionary.text("Ingrese el nombre del archivo:").ask()
-        activar = questionary.confirm("¿Desea activar el modo aprendizaje?").ask()
-        mensaje = self.robot.aprender(nombre_archivo, activar)
-        print(mensaje)
+        usuario = "consola_local"
+        ip = "127.0.0.1"
+        try:
+            nombre_archivo = questionary.text("Ingrese el nombre del archivo:").ask()
+            activar = questionary.confirm("¿Desea activar el modo aprendizaje?").ask()
+            mensaje = self.robot.aprender(nombre_archivo, activar)
+            print(mensaje)
+            self.logger.registrar_log("aprendizaje", ip, usuario, True)
+        except Exception as e:
+            print(f"Error en el modo aprendizaje: {e}")
+            self.logger.registrar_log("aprendizaje", ip, usuario, False)
 
     def ejecutar_automatico(self):
-        nombre_archivo = questionary.text("Ingrese el nombre del archivo G-code:").ask()
-        mensaje = self.robot.ejecutar_automatico(nombre_archivo)
-        print(mensaje)
+        usuario = "consola_local"
+        ip = "127.0.0.1"
+        try:
+            nombre_archivo = questionary.text("Ingrese el nombre del archivo G-code (sin extensión):").ask()
+            mensaje = self.robot.ejecutar_automatico(nombre_archivo)
+            if mensaje:
+                print(mensaje)
+            self.logger.registrar_log("ejecutar_automatico", ip, usuario, True)
+        except ErrorDeConexion as e:
+            print(f"Error de conexión: {e}")
+            self.logger.registrar_log("ejecutar_automatico", ip, usuario, False)
+        except ErrorDeEstado as e:
+            print(f"Error de estado: {e}")
+            self.logger.registrar_log("ejecutar_automatico", ip, usuario, False)
+        except Exception as e:
+            print(f"Error inesperado en la ejecución automática: {e}")
+            self.logger.registrar_log("ejecutar_automatico", ip, usuario, False)
 
     def reportar_estado(self):
-        reporte = self.robot.reportar()
-        print(reporte)
+        try:
+            reporte = self.robot.reportar()
+            print(reporte)
+            self.logger.registrar_log("reportar_estado", "127.0.0.1", "consola_local", True)
+        except Exception as e:
+            print(f"Error al reportar estado: {e}")
+            self.logger.registrar_log("reportar_estado", "127.0.0.1", "consola_local", False)
 
     def salir(self):
-        print("Saliendo del sistema...")
+        # Desactivar el modo de aprendizaje si está activo
+        if self.robot.aprendiendo:
+            print("El modo de aprendizaje está activo, desactivándolo antes de salir.")
+            self.robot.aprender("", False)  # Desactivar el modo de aprendizaje
+
+        # Cerrar el servidor RPC si está activo
         if self.rpc_server is not None:
             self.rpc_server.disconnect()
+
+        print("Saliendo del sistema...")
         sys.exit(0)

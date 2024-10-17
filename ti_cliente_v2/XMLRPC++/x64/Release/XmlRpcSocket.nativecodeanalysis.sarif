@@ -1,0 +1,192 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C6031",
+          "message": {
+            "text": "Return value ignored: 'WSAStartup'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Usuario/Desktop/RepoProgramacion/CASTEL_POO_2024/L13784_TP3_v2/L31783_TP3/XMLRPC++/XmlRpcSocket.cpp"
+                },
+                "region": {
+                  "startLine": 52,
+                  "startColumn": 5,
+                  "endLine": 52,
+                  "endColumn": 36
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "initWinSock",
+                  "decoratedName": "?initWinSock@@YAXXZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6053",
+          "message": {
+            "text": "The prior call to '_snprintf' might not zero-terminate string 'err'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Usuario/Desktop/RepoProgramacion/CASTEL_POO_2024/L13784_TP3_v2/L31783_TP3/XMLRPC++/XmlRpcSocket.cpp"
+                },
+                "region": {
+                  "startLine": 275,
+                  "startColumn": 3,
+                  "endLine": 275,
+                  "endColumn": 22
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "XmlRpc::XmlRpcSocket::getErrorMsg",
+                  "decoratedName": "?getErrorMsg@XmlRpcSocket@XmlRpc@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Usuario/Desktop/RepoProgramacion/CASTEL_POO_2024/L13784_TP3_v2/L31783_TP3/XMLRPC++/XmlRpcSocket.cpp"
+                          },
+                          "region": {
+                            "startLine": 273,
+                            "startColumn": 8
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Usuario/Desktop/RepoProgramacion/CASTEL_POO_2024/L13784_TP3_v2/L31783_TP3/XMLRPC++/XmlRpcSocket.cpp"
+                          },
+                          "region": {
+                            "startLine": 274,
+                            "startColumn": 11
+                          }
+                        },
+                        "message": {
+                          "text": "This call to '_snprintf' may not zero-terminate 'err'"
+                        }
+                      },
+                      "kinds": [
+                        "declaration"
+                      ],
+                      "importance": "essential"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Usuario/Desktop/RepoProgramacion/CASTEL_POO_2024/L13784_TP3_v2/L31783_TP3/XMLRPC++/XmlRpcSocket.cpp"
+                          },
+                          "region": {
+                            "startLine": 275,
+                            "startColumn": 3
+                          }
+                        },
+                        "message": {
+                          "text": "'err' is an Input to 'std::basic_string<char,std::char_traits<char>,std::allocator<char> >::{ctor}' (declared at d:\\visualstudioide\\vc\\tools\\msvc\\14.41.34120\\include\\xstring:749)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Usuario/Desktop/RepoProgramacion/CASTEL_POO_2024/L13784_TP3_v2/L31783_TP3/XMLRPC++/XmlRpcSocket.cpp"
+                          },
+                          "region": {
+                            "startLine": 275,
+                            "startColumn": 3
+                          }
+                        },
+                        "message": {
+                          "text": "'err' is required to be zero-terminated by a SAL annotation on '{ctor}'"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.41.34120.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///C:/Users/Usuario/Desktop/RepoProgramacion/CASTEL_POO_2024/L13784_TP3_v2/L31783_TP3/XMLRPC++/XmlRpcSocket.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "1a067d9590d9abbe3580a5b4876f253d290800cf7b2a7d2a7bf0a58835633b01"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/usuario/desktop/repoprogramacion/castel_poo_2024/l13784_tp3_v2/l31783_tp3/xmlrpc++/xmlrpcsocket.h"
+          },
+          "hashes": {
+            "sha-256": "8bc14332f60c0887e3d853efc7986eb09514c3261a6fb1e11b47712c37c80e3a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/usuario/desktop/repoprogramacion/castel_poo_2024/l13784_tp3_v2/l31783_tp3/xmlrpc++/xmlrpcutil.h"
+          },
+          "hashes": {
+            "sha-256": "3eb5071b4bdfa417121b37ed713033539e017d0d699907601c4828ba0409caf5"
+          }
+        }
+      ]
+    }
+  ]
+}

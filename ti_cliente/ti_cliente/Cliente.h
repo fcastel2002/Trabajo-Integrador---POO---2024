@@ -5,22 +5,19 @@
 #include <iostream>
 #include "IMessageView.h"
 #pragma comment(lib, "./x64/Debug/xmlrpc++.lib")
+
 using namespace XmlRpc;
+
 class Cliente
 {
 private:
-	
-	std::string m_ip{};
-	int m_port{};
-	bool connected{ false };
-	XmlRpcClient *client;
-	IMessageView& m_messageView;
+    std::string m_ip{};
+    int m_port{};
+    bool connected{ false };
+    XmlRpcClient client; // Declarar el cliente sin inicializar
+    IMessageView& m_messageView;
 
 public:
-
-	Cliente(std::string ip, int port, IMessageView& messageView);
-	~Cliente();
-	bool enviarComando(const std::string& comando, XmlRpcValue& result);
-	bool enviarComando(const std::string& comando);
+    Cliente(std::string ip, int port, IMessageView& messageView);
+    bool enviarComando(const std::string& comando);
 };
-
