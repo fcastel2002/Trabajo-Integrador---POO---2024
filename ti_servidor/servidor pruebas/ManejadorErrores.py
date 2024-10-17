@@ -9,6 +9,7 @@ class ErrorDeConexion(Exception):
     def __str__(self):
         return self.mensaje
 
+
 class ErrorDeParametros(Exception):
     def __init__(self, tipo):
         mensajes = {
@@ -21,13 +22,19 @@ class ErrorDeParametros(Exception):
     def __str__(self):
         return self.mensaje
 
+
 class ErrorDeEstado(Exception):
     def __init__(self, tipo):
         mensajes = {
             1: "Los motores ya están apagados.",
             2: "Los motores ya están encendidos.",
             3: "La conexión ya está activa.",
-            4: "La conexión ya está inactiva."
+            4: "La conexión ya está inactiva.",
+            5: "El efector ya está activado.",
+            6: "El efector ya está desactivado.",
+            7: "El robot ya está en modo aprendizaje.",
+            8: "El robot no está en modo aprendizaje.",
+            9: "No se puede ejecutar en modo aprendizaje activo."
         }
         self.mensaje = mensajes.get(tipo, "Error de estado.")
 
