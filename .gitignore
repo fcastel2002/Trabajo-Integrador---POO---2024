@@ -3,3 +3,4 @@ ordenes_ejecutadas.txt
 ordenes_solicitadas.txt
 logs_trabajo.csv
 aprendizaje.txt
+__pycache__

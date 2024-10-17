@@ -1,11 +1,13 @@
 import signal
 from xmlrpc.server import SimpleXMLRPCServer
 from ControladorRobot import ControladorRobot
+from Logger import Logger
 import sys
 import threading
 import json
 import logging
 import time
+import csv
 
 class ServidorControl:
     def __init__(self, consola, ip="127.0.0.1", puerto=9000):
@@ -17,6 +19,7 @@ class ServidorControl:
         self.usuarios_autorizados = self._cargar_usuarios()  # Cargar usuarios desde archivo
         self.logs = []  # Lista para almacenar los logs de trabajo
         self.modo_trabajo = "manual"  # Modo por defecto
+        self.logger = Logger()
 
     def _cargar_usuarios(self):
         # Cargamos los usuarios desde un archivo JSON
@@ -34,15 +37,7 @@ class ServidorControl:
         return False
 
     def _registrar_log(self, peticion, ip, usuario, exito):
-        # Registra una entrada en el log del servidor
-        log_entrada = {
-            "peticion": peticion,
-            "ip": ip,
-            "usuario": usuario,
-            "resultado": "exitoso" if exito else "fallido",
-            "timestamp": time.time()
-        }
-        self.logs.append(log_entrada)
+        self.logger.registrar_log(peticion, ip, usuario, exito)
 
     def iniciar(self):
         # Crear el servidor pero no ejecutarlo aún
