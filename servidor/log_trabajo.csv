@@ -89,3 +89,4 @@ activar_motores,127.0.0.1,consola_local,exitoso,2024-10-16 16:29:55
 activar_efector,127.0.0.1,consola_local,exitoso,2024-10-16 16:30:06
 homming,127.0.0.1,consola_local,exitoso,2024-10-16 16:30:13
 desactivar_efector,127.0.0.1,consola_local,exitoso,2024-10-16 16:30:19
+iniciar_servidor_rpc,127.0.0.1,consola_local,exitoso,2024-10-17 16:42:49
