@@ -8,3 +8,6 @@ aprendizaje.txt
 __pycache__/
 *.pyc
 ti_cliente_v2/ti_cliente/x64/Debug/
+ti_cliente_v2/ti_cliente/x64/Release/
+ti_cliente_v2/XMLRPC++/x64/
+ti_cliente/
