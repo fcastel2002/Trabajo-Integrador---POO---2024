@@ -81,10 +81,10 @@ void MainMenu::mostrarMenu() {
 void MainMenu::manejarSeleccion(int seleccion) {
     switch (seleccion) {
     case 0:
-        cliente.conectarServidor();
+        cliente.enviarComando("listar_comandos");
         break;
     case 1:
-		cliente.desconectarMotores();  // Desconectar motores
+		cliente.enviarComando("listar_comandos");  // Desconectar motores
         break;
     case 2:
         cliente.enviarComando("activar_motores");

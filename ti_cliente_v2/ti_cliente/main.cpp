@@ -7,10 +7,10 @@ int main() {
     // Inicializamos los componentes principales
     std::string ip = "127.0.0.1";   // Dirección IP del servidor
     int puerto = 9000;              // Puerto del servidor XMLRPC
-
+    CLIMessageView console;
     try {
         // Creamos la instancia del cliente
-        Cliente cliente(ip, puerto);
+        Cliente cliente(ip, puerto, console);
 
         // Creamos el menú principal
         MainMenu menu(cliente);

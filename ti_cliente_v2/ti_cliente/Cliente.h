@@ -15,12 +15,12 @@ private:
 	std::string m_ip;
 	int m_puerto;
 	XmlRpcClient client;
+	CLIMessageView& m_console;
 public:
 
-	Cliente(std::string ip, int puerto);
-	
-	bool conectarServidor();
+	Cliente(std::string ip, int puerto, CLIMessageView& console);
+
 	bool enviarComando(const std::string& comando);
-	bool desconectarMotores();
+	
 
 };

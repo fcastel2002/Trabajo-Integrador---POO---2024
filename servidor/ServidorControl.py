@@ -68,14 +68,13 @@ class ServidorControl:
         def wrapper(usuario, clave, *args, **kwargs):
             # Validar usuario y clave antes de ejecutar el comando
             if not self._validar_usuario(usuario, clave):
-                print(usuario, clave)
                 return json.dumps({"error": "Acceso denegado: Usuario o clave incorrectos"})
 
             # Registrar el log de la petición
             self._registrar_log(funcion.__name__, "127.0.0.1", usuario, True)
 
             comando_serializado = json.dumps({"args": args, "kwargs": kwargs})
-            print(f"Comando recibido de {usuario}: {comando_serializado}")
+            #print(f"Comando recibido de {usuario}: {comando_serializado}")
             resultado = funcion(*args, **kwargs)
             return json.dumps(resultado)  # Serializar la respuesta
         return wrapper
