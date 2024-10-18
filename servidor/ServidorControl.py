@@ -1,13 +1,10 @@
-import signal
 from xmlrpc.server import SimpleXMLRPCServer
 from ControladorRobot import ControladorRobot
 from Logger import Logger
 import sys
 import threading
 import json
-import logging
-import time
-import csv
+
 
 class ServidorControl:
     def __init__(self, consola, ip="127.0.0.1", puerto=9000):
@@ -71,6 +68,7 @@ class ServidorControl:
         def wrapper(usuario, clave, *args, **kwargs):
             # Validar usuario y clave antes de ejecutar el comando
             if not self._validar_usuario(usuario, clave):
+                print(usuario, clave)
                 return json.dumps({"error": "Acceso denegado: Usuario o clave incorrectos"})
 
             # Registrar el log de la petición

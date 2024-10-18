@@ -27,7 +27,7 @@ void MainMenu::mostrarMenu() {
         "Mover Efector (con Velocidad)",
         "Mover Efector (solo Posición)",
         "Homming",
-        "Ejecución Automática",
+        "Ejecucion Automática",
         "Reportar Estado",
         "Reportar Posición Actual",
         "Cambiar a Modo Absoluto",
@@ -84,7 +84,7 @@ void MainMenu::manejarSeleccion(int seleccion) {
         cliente.conectarServidor();
         break;
     case 1:
-        
+		cliente.desconectarMotores();  // Desconectar motores
         break;
     case 2:
         cliente.enviarComando("activar_motores");
