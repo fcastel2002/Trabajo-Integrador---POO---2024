@@ -5,5 +5,4 @@ def main():
     consola.iniciar()
 
 if __name__ == "__main__":
-
     main()
