@@ -16,6 +16,10 @@ void MainMenu::terminarPantalla() {
     endwin();                // Termina PDCurses
 }
 
+void MainMenu::setComandos(const std::vector<const std::string>& comandos) {
+    m_comandos = comandos;
+}
+
 void MainMenu::mostrarMenu() {
     inicializarPantalla(); // Inicia la interfaz de PDCurses
 
@@ -68,6 +72,8 @@ void MainMenu::mostrarMenu() {
             break;
         case 10:              // Enter
             manejarSeleccion(seleccion);
+			Orden my_order = crearOrden(manejarSeleccion(seleccion));
+            cliente.enviarComando(my_order);
             if (seleccion == n_opciones - 1) { // Si es la opción "Salir"
                 terminarPantalla();
                 return;
@@ -78,52 +84,74 @@ void MainMenu::mostrarMenu() {
 }
 
 // Maneja la selección del menú
-void MainMenu::manejarSeleccion(int seleccion) {
+const std::string MainMenu::manejarSeleccion(int seleccion) {
     switch (seleccion) {
     case 0:
-        cliente.enviarComando("listar_comandos");
-        break;
+        return "conectar_robot";
     case 1:
-		cliente.enviarComando("listar_comandos");  // Desconectar motores
-        break;
+		return "desconectar_robot";
     case 2:
-        cliente.enviarComando("activar_motores");
-        break;
+		return "activar_motores";
     case 3:
-        cliente.enviarComando("desactivar_motores");
-        break;
+		return "desactivar_motores";
+
     case 4:
-        cliente.enviarComando("mover_efector");
-        break;
+		return "mover_efector_velocidad";
     case 5:
-        cliente.enviarComando("mover_efector_posicion");
-        break;
+        
+		return "mover_efector_posicion";
     case 6:
-        cliente.enviarComando("homming");
-        break;
-    case 7:
-        cliente.enviarComando("ejecutar_automatico");
-        break;
-    case 8:
-        cliente.enviarComando("reportar_estado");
-        break;
-    case 9:
-        cliente.enviarComando("reportar_posicion");
-        break;
-    case 10:
-        cliente.enviarComando("modo_absoluto");
-        break;
-    case 11:
-        cliente.enviarComando("modo_relativo");
-        break;
-    case 12:
-        cliente.enviarComando("activar_efector");
-        break;
-    case 13:
-        cliente.enviarComando("desactivar_efector");
-        break;
+        
+		return "homming";
+
+	case 7:
+
+		return "ejecucion_automatica";
+	case 8:
+            
+		return "reportar_estado";
+	case 9:
+
+		return "reportar_posicion_actual";
+
+	case 10:
+
+		return "cambiar_modo_absoluto";
+
+	case 11:
+
+		return "cambiar_modo_relativo";
+
+	case 12:
+
+		return "activar_efector";
+
+	case 13:
+
+		return "desactivar_efector";
+
     case 14:
-        std::cout << "Saliendo...\n";
+        cliente.getConsole().mostrarMensaje("Saliendo...\n");
         break;
     }
+}
+
+
+Orden MainMenu::crearOrden(const std::string& tipo) {
+	std::vector <std::string> parametros;
+
+	for (int i = 0; i < 3; i++) {
+        clear();
+        echo();
+		mvprintw(1, 1, "Ingrese el parametro %d: ", i + 1);
+		char buffer[100];
+		getstr(buffer);
+		std::string param{ buffer };
+		if (param.empty()) {
+            break;
+		}
+		parametros.push_back(param);
+	}
+    noecho();
+	return Orden(tipo, parametros);
 }

@@ -112,7 +112,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../XMLRPC++;../PDCurses-3.8</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../XMLRPC++;../PDCurses-3.8;../json-develop/json-develop/include/</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -146,13 +146,16 @@
     <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="Orden.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\json-develop\json-develop\include\nlohmann\json.hpp" />
     <ClInclude Include="Cliente.h" />
     <ClInclude Include="CLIMessageView.h" />
     <ClInclude Include="FileManager.h" />
     <ClInclude Include="IMessageView.h" />
     <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="Orden.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

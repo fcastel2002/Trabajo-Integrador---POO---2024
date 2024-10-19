@@ -63,6 +63,8 @@ class ServidorControl:
         self.server.register_function(self.mostrar_ayuda, "mostrar_ayuda")
         self.server.register_function(self.reportar_estado_servidor, "reportar_estado")
         self.server.register_function(self.reportar_log_trabajo, "reportar_log")
+        self.server.register_function(self._serializar_comando(self.interpretar_comando), "interpretar_comando")
+
 
     def _serializar_comando(self, funcion):
         def wrapper(usuario, clave, *args, **kwargs):
@@ -162,3 +164,11 @@ class ServidorControl:
         
         self.modo_trabajo = nuevo_modo
         return json.dumps({"exito": f"Modo de trabajo cambiado a {self.modo_trabajo}"})
+    
+    def interpretar_comando(self, comando):
+        # Evaluar un comando directamente desde la consola
+        try:
+            resultado = eval(comando)
+            return json.dumps({"resultado": resultado})
+        except Exception as e:
+            return json.dumps({"error": f"Error al ejecutar comando: {str(e)}"})

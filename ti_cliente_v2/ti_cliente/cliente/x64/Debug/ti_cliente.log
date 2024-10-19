@@ -1,8 +1,3 @@
-﻿  Cliente.cpp
-  CLIMessageView.cpp
-  FileManager.cpp
-  main.cpp
-  MainMenu.cpp
-  Generando código...
-  LINK : no se encontró D:\Usuario\Matias\Facultad\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\ti_cliente_v2\ti_cliente\x64\Debug\cliente.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
-  ti_cliente.vcxproj -> D:\Usuario\Matias\Facultad\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\ti_cliente_v2\ti_cliente\x64\Debug\cliente.exe
+﻿  MainMenu.cpp
+C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\ti_cliente_v2\ti_cliente\MainMenu.cpp(133,1): warning C4715: 'MainMenu::manejarSeleccion': not all control paths return a value
+  ti_cliente.vcxproj -> C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\ti_cliente_v2\ti_cliente\x64\Debug\cliente.exe
