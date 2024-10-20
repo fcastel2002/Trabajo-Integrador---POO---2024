@@ -146,7 +146,6 @@
     <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
-    <ClCompile Include="Orden.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\json-develop\json-develop\include\nlohmann\json.hpp" />

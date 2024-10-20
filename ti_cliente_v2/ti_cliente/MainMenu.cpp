@@ -131,9 +131,11 @@ const std::string MainMenu::manejarSeleccion(int seleccion) {
 		return "desactivar_efector";
 
     case 14:
-        cliente.getConsole().mostrarMensaje("Saliendo...\n");
-        break;
+       cliente.getConsole().mostrarMensaje("Saliendo...\n");
+       return "salir";
+        
     }
+    return "";
 }
 
 
