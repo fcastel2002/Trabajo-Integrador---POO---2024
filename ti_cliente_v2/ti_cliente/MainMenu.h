@@ -16,13 +16,13 @@ public:
     void mostrarMenu();
     
 	Orden crearOrden(const std::string& tipo);
-    void setComandos(const std::vector<const std::string>& comandos);
+    void setComandos(const std::vector<std::string>& comandos);
 private:
     Cliente& cliente;
     const std::string manejarSeleccion(int seleccion);
     void inicializarPantalla();
     void terminarPantalla();
-    std::vector<const std::string> m_comandos;
+    std::vector<std::string> m_comandos;
 };
 
 #endif

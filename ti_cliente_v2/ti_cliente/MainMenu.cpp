@@ -16,7 +16,7 @@ void MainMenu::terminarPantalla() {
     endwin();                // Termina PDCurses
 }
 
-void MainMenu::setComandos(const std::vector<const std::string>& comandos) {
+void MainMenu::setComandos(const std::vector<std::string>& comandos) {
     m_comandos = comandos;
 }
 

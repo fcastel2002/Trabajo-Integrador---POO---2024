@@ -8,8 +8,7 @@ Cliente::Cliente(std::string ip, int puerto, CLIMessageView& console)
 	, m_puerto)
 	, m_console{console}
 	, m_usuario{ "admin" }
-	, m_clave{"clave123"} {
-	}
+	, m_clave{"clave123"} {}
 
 
 bool Cliente::enviarComando(const Orden& my_order) {

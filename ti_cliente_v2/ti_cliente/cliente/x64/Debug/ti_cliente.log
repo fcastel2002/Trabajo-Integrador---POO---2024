@@ -1,3 +1,5 @@
-﻿  MainMenu.cpp
-C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\ti_cliente_v2\ti_cliente\MainMenu.cpp(133,1): warning C4715: 'MainMenu::manejarSeleccion': not all control paths return a value
+﻿  main.cpp
+  MainMenu.cpp
+  Generating Code...
+C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\ti_cliente_v2\ti_cliente\MainMenu.cpp(137,1): warning C4715: 'MainMenu::manejarSeleccion': not all control paths return a value
   ti_cliente.vcxproj -> C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\ti_cliente_v2\ti_cliente\x64\Debug\cliente.exe

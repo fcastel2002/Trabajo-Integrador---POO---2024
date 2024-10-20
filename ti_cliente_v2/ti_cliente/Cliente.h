@@ -32,6 +32,6 @@ public:
 	std::string getPass() { return m_clave; }
 	void setUser(std::string user) { m_usuario = user; }
 	void setPass(std::string pass) { m_clave = pass; }
-	CLIMessageView& getConsole() { return m_console; }
-
+    CLIMessageView& getConsole() { return m_console; }
 };
+
