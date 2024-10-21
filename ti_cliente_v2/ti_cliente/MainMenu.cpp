@@ -79,13 +79,14 @@ void MainMenu::mostrarMenu() {
             resize_term(0, 0); // Ajusta el tamaño de la terminal
             break;
         case 10:              // Enter
-            manejarSeleccion(seleccion);
-            Orden my_order = crearOrden(manejarSeleccion(seleccion));
-            cliente.enviarComando(my_order);
             if (seleccion == n_opciones - 1) { // Si es la opción "Salir"
                 terminarPantalla();
                 return;
             }
+            manejarSeleccion(seleccion);
+            Orden my_order = crearOrden(manejarSeleccion(seleccion));
+            cliente.enviarComando(my_order);
+
             break;
         }
     }
