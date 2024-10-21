@@ -26,7 +26,7 @@ public:
 	Cliente(std::string ip, int puerto, CLIMessageView& console);
 
 	bool enviarComando(const Orden& my_order);
-	bool interpretarRespuesta(XmlRpcValue& respuesta);
+	const std::string interpretarRespuesta(std::string& respuesta);
 
 	std::string getUser() { return m_usuario; }
 	std::string getPass() { return m_clave; }

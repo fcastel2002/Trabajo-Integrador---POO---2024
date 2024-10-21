@@ -1,4 +1,4 @@
-#include "MainMenu.h"
+#include "MainMenu.h" 
 #include <iostream>
 
 MainMenu::MainMenu(Cliente& cliente) : cliente(cliente) {}
@@ -9,6 +9,10 @@ void MainMenu::inicializarPantalla() {
     noecho();                // No muestra lo que se escribe
     curs_set(FALSE);         // Oculta el cursor
     keypad(stdscr, TRUE);    // Habilita teclas especiales (como las flechas)
+    // Habilita el redimensionamiento de la ventana
+    if (has_key(KEY_RESIZE)) {
+        resize_term(0, 0);   // Ajusta el tamaño de la terminal a su valor actual
+    }
 }
 
 // Termina el uso de PDCurses
@@ -70,9 +74,13 @@ void MainMenu::mostrarMenu() {
             seleccion++;
             if (seleccion >= n_opciones) seleccion = 0;
             break;
+        case KEY_RESIZE:      // Cambio de tamaño de ventana
+            clear();          // Limpia la pantalla
+            resize_term(0, 0); // Ajusta el tamaño de la terminal
+            break;
         case 10:              // Enter
             manejarSeleccion(seleccion);
-			Orden my_order = crearOrden(manejarSeleccion(seleccion));
+            Orden my_order = crearOrden(manejarSeleccion(seleccion));
             cliente.enviarComando(my_order);
             if (seleccion == n_opciones - 1) { // Si es la opción "Salir"
                 terminarPantalla();
@@ -87,73 +95,62 @@ void MainMenu::mostrarMenu() {
 const std::string MainMenu::manejarSeleccion(int seleccion) {
     switch (seleccion) {
     case 0:
-        return "conectar_robot";
+        return "conectar";
     case 1:
-		return "desconectar_robot";
+        return "desconectar";
     case 2:
-		return "activar_motores";
+        return "activar_motores";
     case 3:
-		return "desactivar_motores";
+        return "desactivar_motores";
 
     case 4:
-		return "mover_efector_velocidad";
+        return "mover_efector_velocidad";
     case 5:
-        
-		return "mover_efector_posicion";
+        return "mover_efector_posicion";
     case 6:
-        
-		return "homming";
+        return "homming";
 
-	case 7:
+    case 7:
+        return "ejecucion_automatica";
+    case 8:
+        return "reportar_estado";
+    case 9:
+        return "reportar_posicion_actual";
 
-		return "ejecucion_automatica";
-	case 8:
-            
-		return "reportar_estado";
-	case 9:
+    case 10:
+        return "cambiar_modo_absoluto";
 
-		return "reportar_posicion_actual";
+    case 11:
+        return "cambiar_modo_relativo";
 
-	case 10:
+    case 12:
+        return "activar_efector";
 
-		return "cambiar_modo_absoluto";
-
-	case 11:
-
-		return "cambiar_modo_relativo";
-
-	case 12:
-
-		return "activar_efector";
-
-	case 13:
-
-		return "desactivar_efector";
+    case 13:
+        return "desactivar_efector";
 
     case 14:
-       cliente.getConsole().mostrarMensaje("Saliendo...\n");
-       return "salir";
-        
+        cliente.getConsole().mostrarMensaje("Saliendo...\n");
+        return "salir";
     }
     return "";
 }
 
-
 Orden MainMenu::crearOrden(const std::string& tipo) {
-	std::vector <std::string> parametros;
+    std::vector <std::string> parametros;
 
-	for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 3; i++) {
         clear();
         echo();
-		mvprintw(1, 1, "Ingrese el parametro %d: ", i + 1);
-		char buffer[100];
-		getstr(buffer);
-		std::string param{ buffer };
-		if (param.empty()) {
+        mvprintw(1, 1, "Ingrese el parametro %d: ", i + 1);
+        char buffer[100];
+        getstr(buffer);
+        std::string param{ buffer };
+        if (param.empty()) {
             break;
-		}
-		parametros.push_back(param);
-	}
+        }
+        parametros.push_back(param);
+    }
     noecho();
-	return Orden(tipo, parametros);
+    return Orden(tipo, parametros);
 }

@@ -17,12 +17,13 @@ bool Cliente::enviarComando(const Orden& my_order) {
 	cmd = my_order.toJson(m_usuario, m_clave);
 	params[0] = cmd;
 	
-	client.execute("interpretar_comando", params, result);
+	client.execute("Interpreta_Comando", params, result);
 	interpretarRespuesta(result);
 	client.close();
 	return true;
 }
 
-bool Cliente::interpretarRespuesta(XmlRpcValue& respuesta) {
-	return true;
+const std::string Cliente::interpretarRespuesta(std::string& respuesta) {
+	m_console.mostrarRespuesta(respuesta); 
+	return "";
 }

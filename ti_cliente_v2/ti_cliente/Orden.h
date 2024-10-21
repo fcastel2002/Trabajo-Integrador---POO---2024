@@ -12,9 +12,9 @@ public:
 
 	std::string toJson(std::string& username, std::string& pass) const {
 		nlohmann::json j;
-		j["username"] = username;
-		j["password"] = pass;
-		j["tipo"] = m_tipo;
+		j["usuario"] = username;
+		j["clave"] = pass;
+		j["comando"] = m_tipo;
 		j["parametros"] = m_parametros;
 		j["cantidad_param"] = m_parametros.size();
 		return j.dump();
