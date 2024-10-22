@@ -15,6 +15,7 @@ bool Cliente::enviarComando(const Orden& my_order) {
 	XmlRpcValue params, result;
 	std::string cmd;
 	cmd = my_order.toJson(m_usuario, m_clave);
+	m_console.mostrarMensaje(cmd); 
 	params[0] = cmd;
 	
 	client.execute("Interpreta_Comando", params, result);

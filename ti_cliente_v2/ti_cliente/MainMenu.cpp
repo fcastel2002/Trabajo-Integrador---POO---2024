@@ -33,7 +33,6 @@ void MainMenu::mostrarMenu() {
         "Activar Motores",
         "Desactivar Motores",
         "Mover Efector (con Velocidad)",
-        "Mover Efector (solo Posición)",
         "Homming",
         "Ejecucion Automática",
         "Reportar Estado",
@@ -105,32 +104,30 @@ const std::string MainMenu::manejarSeleccion(int seleccion) {
         return "desactivar_motores";
 
     case 4:
-        return "mover_efector_velocidad";
+        return "mover_efector";
     case 5:
-        return "mover_efector_posicion";
-    case 6:
         return "homming";
 
-    case 7:
+    case 6:
         return "ejecucion_automatica";
-    case 8:
+    case 7:
         return "reportar_estado";
-    case 9:
+    case 8:
         return "reportar_posicion_actual";
 
-    case 10:
+    case 9:
         return "cambiar_modo_absoluto";
 
-    case 11:
+    case 10:
         return "cambiar_modo_relativo";
 
-    case 12:
+    case 11:
         return "activar_efector";
 
-    case 13:
+    case 12:
         return "desactivar_efector";
 
-    case 14:
+    case 13:
         cliente.getConsole().mostrarMensaje("Saliendo...\n");
         return "salir";
     }
@@ -139,7 +136,7 @@ const std::string MainMenu::manejarSeleccion(int seleccion) {
 
 Orden MainMenu::crearOrden(const std::string& tipo) {
     std::vector <std::string> parametros;
-
+    /*
     for (int i = 0; i < 3; i++) {
         clear();
         echo();
@@ -153,5 +150,44 @@ Orden MainMenu::crearOrden(const std::string& tipo) {
         parametros.push_back(param);
     }
     noecho();
+    */
+    if (tipo == "conectar") {
+        const int cantidad = { 2 };
+        clear();
+        echo();
+        for (int i = 0; i < cantidad; i++) {
+            
+			if (i == 0) mvprintw(1, 1, "Ingrese puerto COM: ");
+			else mvprintw(2, 1, "Ingrese Baudrate: ");
+            char buffer[100];
+            getstr(buffer);
+            std::string param{ buffer };
+            if (param.empty()) {
+                break;
+            }
+            parametros.push_back(param);
+        }
+
+    }
+    else if (tipo == "mover_efector") {
+		const int cantidad = { 4 };
+		clear();
+		echo();
+        for (int i = 0; i < cantidad; i++) {
+            if (i == 0) mvprintw(1, 1, "Ingrese X: ");
+            else if (i == 1) mvprintw(2, 1, "Ingrese Y: ");
+            else if (i == 2) mvprintw(3, 1, "Ingrese Z: ");
+            else mvprintw(4, 1, "Ingrese Velocidad: ");
+            char buffer[100];
+            getstr(buffer);
+            std::string param{ buffer };
+            if (param.empty()) {
+                break;
+            }
+            parametros.push_back(param);
+        }
+
+
+    }
     return Orden(tipo, parametros);
 }
