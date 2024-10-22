@@ -40,3 +40,14 @@ class ErrorDeEstado(Exception):
 
     def __str__(self):
         return self.mensaje
+
+class ErrorArchivos(Exception):
+    def __init__(self, tipo, nombre_archivo = None):
+        mensajes = {
+            1: "No se pudo escribir en el archivo",
+            2: f"El archivo {nombre_archivo}.txt no existe."
+        }
+        self.mensaje = mensajes.get(tipo, "Error de estado.")
+
+    def __str__(self):
+        return self.mensaje

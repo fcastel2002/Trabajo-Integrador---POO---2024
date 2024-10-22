@@ -1,4 +1,3 @@
-ti_cliente/ti_cliente/.vs
 servidor/__pycache__
 ti_cliente_v2/ti_cliente/.vs
 ordenes_ejecutadas.txt
@@ -6,6 +5,6 @@ ordenes_solicitadas.txt
 log_trabajo.csv
 aprendizaje.txt
 __pycache__/
-*.pyc
+servidor_tests_pachi/servidor/__pycache__
 com/
 ti_cliente_v2/json/json-develop/json/tests

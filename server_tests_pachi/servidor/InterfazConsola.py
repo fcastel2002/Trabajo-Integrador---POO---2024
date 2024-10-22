@@ -1,7 +1,7 @@
 import json
 import questionary
 from ControladorRobot import ControladorRobot
-from ServidorControl import ServidorControl
+from ServidorControl2 import ServidorControl
 from GestorDeArchivos import GestorDeArchivos
 from ManejadorErrores import ErrorDeConexion, ErrorDeParametros, ErrorDeEstado
 from Logger import Logger
@@ -88,6 +88,7 @@ class InterfazConsola:
             
             opciones_menu.append("Mostrar las últimas 100 líneas del Log (Admin)")
             opciones_menu.append("Mostrar Ayuda")
+            opciones_menu.append("Actualizar")
             opciones_menu.append("Salir")
 
             choice = questionary.select(
@@ -111,6 +112,8 @@ class InterfazConsola:
                 self.listar_comandos()
             elif choice == "Mostrar/Editar Parámetros de Conexión":
                 self.mostrar_editar_parametros()
+            elif choice == f"Cambiar Modo de Trabajo (Actual: {self.modo_trabajo})":
+                self.cambiar_modo_trabajo()
             elif choice == "Cambiar a Modo Absoluto":
                 self.modo_absoluto()
             elif choice == "Cambiar a Modo Relativo":
@@ -137,74 +140,84 @@ class InterfazConsola:
                 self.mostrar_log_admin()
             elif choice == "Mostrar Ayuda":
                 self.mostrar_ayuda()
+            elif choice == "Actualizar":
+                continue
             elif choice == "Salir":
                 self.salir()
 
-    def reportar_posicion(self):
+    # Funciones para interactuar con el robot y servidor
+    def conectar_robot(self):
         usuario = "consola_local"
         ip = "127.0.0.1"
         try:
-            mensaje = self.robot.reportar_posicion()
-            print(mensaje)
-            self.logger.registrar_log("reportar_posicion", ip, usuario, True)
-        except Exception as e:
-            print(f"Error al reportar la posición: {e}")
-            self.logger.registrar_log("reportar_posicion", ip, usuario, False)
+            puerto = questionary.text("Ingrese el puerto COM (ejemplo: COM8):").ask()
+            baudios = questionary.text("Ingrese la tasa de baudios (ejemplo: 115200):").ask()
 
-    def modo_absoluto(self):
+            if puerto and baudios:
+                self.robot.puerto_serial = puerto
+                self.robot.baudios = int(baudios)
+                mensajes = self.robot.conectar()
+                for mensaje in mensajes:
+                    print(mensaje)
+                self.logger.registrar_log("conectar_robot", ip, usuario, True)
+            else:
+                print("Error: Debe ingresar un puerto COM y la tasa de baudios.")
+                self.logger.registrar_log("conectar_robot", ip, usuario, False)
+        except Exception as e:
+            print(f"Error al conectar: {e}")
+            self.logger.registrar_log("conectar_robot", ip, usuario, False)
+
+    def desconectar_robot(self):
         usuario = "consola_local"
         ip = "127.0.0.1"
         try:
-            mensaje = self.robot.modo_absoluto()
+            mensaje = self.robot.desconectar()
             print(mensaje)
-            self.tipo_movimiento = "absoluto"
-            self.logger.registrar_log("modo_absoluto", ip, usuario, True)
+            self.logger.registrar_log("desconectar_robot", ip, usuario, True)
         except Exception as e:
-            print(f"Error al cambiar a modo absoluto: {e}")
-            self.logger.registrar_log("modo_absoluto", ip, usuario, False)
+            print(f"Error al desconectar: {e}")
+            self.logger.registrar_log("desconectar_robot", ip, usuario, False)
 
-    def modo_relativo(self):
+    def iniciar_servidor_rpc(self):
+        if self.rpc_server is None:
+            self.rpc_server = ServidorControl(self,self.robot)
+            self.rpc_server.iniciar()  # Inicia el servidor en un hilo separado
+            self.logger.registrar_log("iniciar_servidor_rpc", "127.0.0.1", "consola_local", True)
+        else:
+            print("El servidor RPC ya está en ejecución\n")
+
+    def detener_servidor_rpc(self):
+        if self.rpc_server is not None:
+            self.rpc_server.disconnect()
+            self.rpc_server = None
+            print("Servidor RPC detenido\n")
+            self.logger.registrar_log("detener_servidor_rpc", "127.0.0.1", "consola_local", True)
+        else:
+            print("No hay servidor en ejecución para detener\n")
+
+    def activar_motores(self):
         usuario = "consola_local"
         ip = "127.0.0.1"
         try:
-            mensaje = self.robot.modo_relativo()
-            print(mensaje)
-            self.tipo_movimiento = "relativo"
-            self.logger.registrar_log("modo_relativo", ip, usuario, True)
+            mensajes = self.robot.activar_motores()
+            for mensaje in mensajes:
+                print(mensaje)
+            self.logger.registrar_log("activar_motores", ip, usuario, True)
         except Exception as e:
-            print(f"Error al cambiar a modo relativo: {e}")
-            self.logger.registrar_log("modo_relativo", ip, usuario, False)
+            print(f"Error al activar motores: {e}")
+            self.logger.registrar_log("activar_motores", ip, usuario, False)
 
-    def activar_efector(self):
+    def desactivar_motores(self):
         usuario = "consola_local"
         ip = "127.0.0.1"
         try:
-            mensaje = self.robot.actuar_efector('1')
+            mensaje = self.robot.desactivar_motores()
             print(mensaje)
-            self.logger.registrar_log("activar_efector", ip, usuario, True)
+            self.logger.registrar_log("desactivar_motores", ip, usuario, True)
         except Exception as e:
-            print(f"Error al activar el efector: {e}")
-            self.logger.registrar_log("activar_efector", ip, usuario, False)
-
-    def desactivar_efector(self):
-        usuario = "consola_local"
-        ip = "127.0.0.1"
-        try:
-            mensaje = self.robot.actuar_efector('0')
-            print(mensaje)
-            self.logger.registrar_log("desactivar_efector", ip, usuario, True)
-        except Exception as e:
-            print(f"Error al desactivar el efector: {e}")
-            self.logger.registrar_log("desactivar_efector", ip, usuario, False)
-
-    def mostrar_log_admin(self):
-        """Función para mostrar las últimas 100 líneas del log de trabajo (solo para admin)"""
-        # Aquí podemos agregar validación si queremos restringirlo a ciertos usuarios
-        print("Mostrando las últimas 100 líneas del log de trabajo:\n")
-        ultimas_lineas = self.gestor_logs.leer_ultimas_lineas(100)
-        for linea in ultimas_lineas:
-            print(linea.strip())
-
+            print(f"Error al desactivar motores: {e}")
+            self.logger.registrar_log("desactivar_motores", ip, usuario, False)
+            
     # Listar los comandos disponibles
     def listar_comandos(self):
         comandos = [
@@ -251,99 +264,29 @@ class InterfazConsola:
         else:
             print("No se realizaron cambios en los parámetros.")
 
-    def cambiar_modo_trabajo(self):
-        self.modo_trabajo = "manual" if self.modo_trabajo == "automático" else "automático"
-        print(f"Modo de trabajo cambiado a: {self.modo_trabajo}")
-
-    def cambiar_tipo_movimiento(self):
-        self.tipo_movimiento = "absoluto" if self.tipo_movimiento == "relativo" else "relativo"
-        print(f"Tipo de movimiento cambiado a: {self.tipo_movimiento}")
-
-    # Validar usuario y clave
-    def validar_usuario(self, usuario, clave):
-        try:
-            with open(self.archivo_usuarios, "r") as archivo:
-                usuarios = json.load(archivo)
-                if usuario in usuarios and usuarios[usuario] == clave:
-                    print(f"Validación exitosa para el usuario {usuario}")
-                    return True
-                else:
-                    print(f"Usuario o clave incorrectos para el usuario {usuario}")
-                    return False
-        except FileNotFoundError:
-            print("No se encontró el archivo de usuarios.")
-            return False
-
-    # Funciones para interactuar con el robot y servidor
-    def conectar_robot(self):
+    def modo_absoluto(self):
         usuario = "consola_local"
         ip = "127.0.0.1"
         try:
-            puerto = questionary.text("Ingrese el puerto COM (ejemplo: COM8):").ask()
-            baudios = questionary.text("Ingrese la tasa de baudios (ejemplo: 115200):").ask()
-
-            if puerto and baudios:
-                self.robot.puerto_serial = puerto
-                self.robot.baudios = int(baudios)
-                mensaje = self.robot.conectar()
-                print(mensaje)
-                self.logger.registrar_log("conectar_robot", ip, usuario, True)
-            else:
-                print("Error: Debe ingresar un puerto COM y la tasa de baudios.")
-                self.logger.registrar_log("conectar_robot", ip, usuario, False)
-        except Exception as e:
-            print(f"Error al conectar: {e}")
-            self.logger.registrar_log("conectar_robot", ip, usuario, False)
-
-    def desconectar_robot(self):
-        usuario = "consola_local"
-        ip = "127.0.0.1"
-        try:
-            mensaje = self.robot.desconectar()
+            mensaje = self.robot.modo_absoluto()
             print(mensaje)
-            self.logger.registrar_log("desconectar_robot", ip, usuario, True)
+            self.tipo_movimiento = "absoluto"
+            self.logger.registrar_log("modo_absoluto", ip, usuario, True)
         except Exception as e:
-            print(f"Error al desconectar: {e}")
-            self.logger.registrar_log("desconectar_robot", ip, usuario, False)
+            print(f"Error al cambiar a modo absoluto: {e}")
+            self.logger.registrar_log("modo_absoluto", ip, usuario, False)
 
-    def iniciar_servidor_rpc(self):
-        if self.rpc_server is None:
-            self.rpc_server = ServidorControl(self)
-            self.rpc_server.iniciar()  # Inicia el servidor en un hilo separado
-            self.logger.registrar_log("iniciar_servidor_rpc", "127.0.0.1", "consola_local", True)
-        else:
-            print("El servidor RPC ya está en ejecución\n")
-
-    def detener_servidor_rpc(self):
-        if self.rpc_server is not None:
-            self.rpc_server.disconnect()
-            self.rpc_server = None
-            print("Servidor RPC detenido\n")
-            self.logger.registrar_log("detener_servidor_rpc", "127.0.0.1", "consola_local", True)
-        else:
-            print("No hay servidor en ejecución para detener\n")
-
-    def activar_motores(self):
+    def modo_relativo(self):
         usuario = "consola_local"
         ip = "127.0.0.1"
         try:
-            mensaje = self.robot.activar_motores()
+            mensaje = self.robot.modo_relativo()
             print(mensaje)
-            self.logger.registrar_log("activar_motores", ip, usuario, True)
+            self.tipo_movimiento = "relativo"
+            self.logger.registrar_log("modo_relativo", ip, usuario, True)
         except Exception as e:
-            print(f"Error al activar motores: {e}")
-            self.logger.registrar_log("activar_motores", ip, usuario, False)
-
-    def desactivar_motores(self):
-        usuario = "consola_local"
-        ip = "127.0.0.1"
-        try:
-            mensaje = self.robot.desactivar_motores()
-            print(mensaje)
-            self.logger.registrar_log("desactivar_motores", ip, usuario, True)
-        except Exception as e:
-            print(f"Error al desactivar motores: {e}")
-            self.logger.registrar_log("desactivar_motores", ip, usuario, False)
+            print(f"Error al cambiar a modo relativo: {e}")
+            self.logger.registrar_log("modo_relativo", ip, usuario, False)
 
     def mover_efector(self):
         usuario = "consola_local"
@@ -353,9 +296,15 @@ class InterfazConsola:
             y = questionary.text("Ingrese la coordenada Y:").ask()
             z = questionary.text("Ingrese la coordenada Z:").ask()
             velocidad = questionary.text("Ingrese la velocidad:").ask()
-            mensaje = self.robot.mover_efector(float(x), float(y), float(z), float(velocidad))
-            print(mensaje)
-            self.logger.registrar_log("mover_efector", ip, usuario, True)
+            mensajes = self.robot.mover_efector(float(x), float(y), float(z), float(velocidad))
+            for mensaje in mensajes:
+                print(mensaje)
+            for mensaje in mensajes:
+                if "ERROR" in mensaje:
+                    self.logger.registrar_log("mover_efector", ip, usuario, False)
+                    break
+            else: 
+                self.logger.registrar_log("mover_efector", ip, usuario, True)
         except Exception as e:
             print(f"Error al mover el efector: {e}")
             self.logger.registrar_log("mover_efector", ip, usuario, False)
@@ -367,8 +316,9 @@ class InterfazConsola:
             x = questionary.text("Ingrese la coordenada X:").ask()
             y = questionary.text("Ingrese la coordenada Y:").ask()
             z = questionary.text("Ingrese la coordenada Z:").ask()
-            mensaje = self.robot.mover_efector_posicion(float(x), float(y), float(z))
-            print(mensaje)
+            mensajes = self.robot.mover_efector_posicion(float(x), float(y), float(z))
+            for mensaje in mensajes:
+                print(mensaje)
             self.logger.registrar_log("mover_efector_posicion", ip, usuario, True)
         except Exception as e:
             print(f"Error al mover el efector: {e}")
@@ -378,13 +328,14 @@ class InterfazConsola:
         usuario = "consola_local"
         ip = "127.0.0.1"
         try:
-            mensaje = self.robot.homming()
-            print(mensaje)
+            mensajes = self.robot.homming()
+            for mensaje in mensajes:
+                print(mensaje)
             self.logger.registrar_log("homming", ip, usuario, True)
         except Exception as e:
             print(f"Error al realizar homming: {e}")
             self.logger.registrar_log("homming", ip, usuario, False)
-
+            
     def aprendizaje(self):
         usuario = "consola_local"
         ip = "127.0.0.1"
@@ -425,6 +376,71 @@ class InterfazConsola:
         except Exception as e:
             print(f"Error al reportar estado: {e}")
             self.logger.registrar_log("reportar_estado", "127.0.0.1", "consola_local", False)
+
+    def reportar_posicion(self):
+        usuario = "consola_local"
+        ip = "127.0.0.1"
+        try:
+            mensajes = self.robot.reportar_posicion()
+            for mensaje in mensajes:
+                print(mensaje)
+            self.logger.registrar_log("reportar_posicion", ip, usuario, True)
+        except Exception as e:
+            print(f"Error al reportar la posición: {e}")
+            self.logger.registrar_log("reportar_posicion", ip, usuario, False)
+
+    def activar_efector(self):
+        usuario = "consola_local"
+        ip = "127.0.0.1"
+        try:
+            mensaje = self.robot.actuar_efector('1')
+            print(mensaje)
+            self.logger.registrar_log("activar_efector", ip, usuario, True)
+        except Exception as e:
+            print(f"Error al activar el efector: {e}")
+            self.logger.registrar_log("activar_efector", ip, usuario, False)
+
+    def desactivar_efector(self):
+        usuario = "consola_local"
+        ip = "127.0.0.1"
+        try:
+            mensaje = self.robot.actuar_efector('0')
+            print(mensaje)
+            self.logger.registrar_log("desactivar_efector", ip, usuario, True)
+        except Exception as e:
+            print(f"Error al desactivar el efector: {e}")
+            self.logger.registrar_log("desactivar_efector", ip, usuario, False)
+
+    def mostrar_log_admin(self):
+        """Función para mostrar las últimas 100 líneas del log de trabajo (solo para admin)"""
+        # Aquí podemos agregar validación si queremos restringirlo a ciertos usuarios
+        print("Mostrando las últimas 100 líneas del log de trabajo:\n")
+        ultimas_lineas = self.gestor_logs.leer_ultimas_lineas(100)
+        for linea in ultimas_lineas:
+            print(linea.strip())
+
+    def cambiar_modo_trabajo(self):
+        self.modo_trabajo = "manual" if self.modo_trabajo == "automático" else "automático"
+        print(f"Modo de trabajo cambiado a: {self.modo_trabajo}")
+
+    def cambiar_tipo_movimiento(self):
+        self.tipo_movimiento = "absoluto" if self.tipo_movimiento == "relativo" else "relativo"
+        print(f"Tipo de movimiento cambiado a: {self.tipo_movimiento}")
+
+    # Validar usuario y clave
+    def validar_usuario(self, usuario, clave):
+        try:
+            with open(self.archivo_usuarios, "r") as archivo:
+                usuarios = json.load(archivo)
+                if usuario in usuarios and usuarios[usuario] == clave:
+                    print(f"Validación exitosa para el usuario {usuario}")
+                    return True
+                else:
+                    print(f"Usuario o clave incorrectos para el usuario {usuario}")
+                    return False
+        except FileNotFoundError:
+            print("No se encontró el archivo de usuarios.")
+            return False
 
     def salir(self):
         # Desactivar el modo de aprendizaje si está activo

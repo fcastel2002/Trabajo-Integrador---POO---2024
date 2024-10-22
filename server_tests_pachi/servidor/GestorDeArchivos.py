@@ -1,5 +1,6 @@
 import json
 import csv
+from ManejadorErrores import ErrorArchivos
 
 class GestorDeArchivos:
     def __init__(self, nombre):
@@ -12,8 +13,11 @@ class GestorDeArchivos:
 
     def guardar_linea(self, objeto_json):
         """Guarda una línea en el archivo."""
-        with open(self.nombre_archivo, "a") as archivo:
-            archivo.write(objeto_json + "\n")
+        try:
+            with open(self.nombre_archivo, "a") as archivo:
+                archivo.write(objeto_json + "\n")
+        except Exception:
+            raise ErrorArchivos(1)
 
     def leer_contenido(self):
         """Lee y deserializa el contenido JSON del archivo."""
@@ -37,3 +41,8 @@ class GestorDeArchivos:
         with open(self.nombre_archivo, newline='') as archivo_csv:
             lector_csv = csv.reader(archivo_csv)
             return list(lector_csv)
+    
+    def leer_archivo(self):
+        with open(self.nombre_archivo, "r") as archivo:
+            lineas = archivo.readlines()
+            return lineas

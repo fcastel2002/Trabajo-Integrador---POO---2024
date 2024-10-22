@@ -19,7 +19,7 @@ with SimpleXMLRPCServer(('localhost', 9000), requestHandler=RequestHandler) as s
         except json.JSONDecodeError as e:
             return f"Error al procesar el comando: {e}"
 
-    server.register_function(interpretar_comando, 'interpretar_comando')
+    server.register_function(interpretar_comando, 'Interpreta_Comando')
 
     # Ejecutar el servidor
     print("Servidor XML-RPC escuchando en el puerto 9000...")
