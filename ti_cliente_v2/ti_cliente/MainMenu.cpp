@@ -1,7 +1,11 @@
 #include "MainMenu.h" 
 #include <iostream>
 
-MainMenu::MainMenu(Cliente& cliente) : cliente(cliente) {}
+MainMenu::MainMenu(Cliente& cliente) : cliente(cliente) {
+    inicializarPantalla();
+	Orden my_order = Orden("comandos", {});
+    m_comandos = cliente.pedirComandos(my_order);
+}
 
 // Inicializa la pantalla para PDCurses
 void MainMenu::inicializarPantalla() {
@@ -26,7 +30,7 @@ void MainMenu::setComandos(const std::vector<std::string>& comandos) {
 
 void MainMenu::mostrarMenu() {
     inicializarPantalla(); // Inicia la interfaz de PDCurses
-
+    /*
     std::string opciones[] = {
         "Conectar al Robot",
         "Desconectar del Robot",
@@ -43,9 +47,10 @@ void MainMenu::mostrarMenu() {
         "Desactivar Efector",
         "Salir"
     };
+    */
 
     int seleccion = 0;           // Índice de la opción seleccionada
-    int n_opciones = sizeof(opciones) / sizeof(opciones[0]);
+	int n_opciones = m_comandos.size(); // Número de opciones
 
     while (true) {
         clear();                 // Limpia la pantalla
@@ -55,7 +60,7 @@ void MainMenu::mostrarMenu() {
             if (i == seleccion) {
                 attron(A_REVERSE);  // Resalta la opción seleccionada
             }
-            mvprintw(i + 1, 1, opciones[i].c_str()); // Imprime cada opción
+            mvprintw(i + 1, 1, m_comandos[i].c_str()); // Imprime cada opción
             if (i == seleccion) {
                 attroff(A_REVERSE); // Quita el resaltado
             }
@@ -109,11 +114,11 @@ const std::string MainMenu::manejarSeleccion(int seleccion) {
         return "homming";
 
     case 6:
-        return "ejecucion_automatica";
+        return "ejecutar_automatico";
     case 7:
         return "reportar_estado";
     case 8:
-        return "reportar_posicion_actual";
+        return "reportar_posicion";
 
     case 9:
         return "cambiar_modo_absoluto";
@@ -189,5 +194,6 @@ Orden MainMenu::crearOrden(const std::string& tipo) {
 
 
     }
+
     return Orden(tipo, parametros);
 }

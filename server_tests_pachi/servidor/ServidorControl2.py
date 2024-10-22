@@ -3,7 +3,6 @@ from Logger import Logger
 import json
 import threading
 
-
 class ServidorControl:
     def __init__(self, consola, robot, ip="127.0.0.1", puerto=9000):
         self.consola = consola
@@ -141,5 +140,15 @@ class ServidorControl:
                 return json.dumps({"Respuesta":self.robot.ejecutar_automatico(nombre_archivo)})
             except Exception as e:
                 return json.dumps({"Respuesta":{e}})
+
+        elif comando == "comandos":
+            
+            try:
+                comandos_disponibles = self.consola.opciones_menu
+                return json.dumps({comandos_disponibles})
+            except Exception as e:
+                return json.dumps({"Respuesta":{e}})
         else:
             raise ValueError(f"Comando '{comando}' no reconocido.")
+
+    

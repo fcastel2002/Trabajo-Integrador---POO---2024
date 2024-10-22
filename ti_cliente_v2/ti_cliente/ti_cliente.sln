@@ -10,12 +10,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cliente", "ti_cliente.vcxpr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{94417A16-937A-418B-80DB-303AA1F7621F}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\ti_servidor\servidor pruebas\ControladorRobot.py = ..\..\ti_servidor\servidor pruebas\ControladorRobot.py
-		..\..\ti_servidor\servidor pruebas\GestorDeArchivos.py = ..\..\ti_servidor\servidor pruebas\GestorDeArchivos.py
-		..\..\ti_servidor\servidor pruebas\InterfazConsola.py = ..\..\ti_servidor\servidor pruebas\InterfazConsola.py
-		..\..\ti_servidor\servidor pruebas\main.py = ..\..\ti_servidor\servidor pruebas\main.py
-		..\..\ti_servidor\servidor pruebas\ManejadorErrores.py = ..\..\ti_servidor\servidor pruebas\ManejadorErrores.py
-		..\..\ti_servidor\servidor pruebas\ServidorControl.py = ..\..\ti_servidor\servidor pruebas\ServidorControl.py
+		..\..\server_tests_pachi\servidor\ControladorRobot.py = ..\..\server_tests_pachi\servidor\ControladorRobot.py
+		..\..\server_tests_pachi\servidor\GestorDeArchivos.py = ..\..\server_tests_pachi\servidor\GestorDeArchivos.py
+		..\..\server_tests_pachi\servidor\InterfazConsola.py = ..\..\server_tests_pachi\servidor\InterfazConsola.py
+		..\..\server_tests_pachi\servidor\Logger.py = ..\..\server_tests_pachi\servidor\Logger.py
+		..\..\server_tests_pachi\servidor\main.py = ..\..\server_tests_pachi\servidor\main.py
+		..\..\server_tests_pachi\servidor\ManejadorErrores.py = ..\..\server_tests_pachi\servidor\ManejadorErrores.py
+		..\..\server_tests_pachi\servidor\ServidorControl2.py = ..\..\server_tests_pachi\servidor\ServidorControl2.py
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XMLRPC++", "..\XMLRPC++\XMLRPC++.vcxproj", "{2C314936-727B-4A4A-952E-77CD64E1F2ED}"
