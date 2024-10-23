@@ -153,7 +153,15 @@ class ServidorControl:
                 return self.robot.ejecutar_automatico(nombre_archivo)
             except Exception as e:
                 return f"Error: {str(e)}"
-        elif comando == "Cambiar modo"
+        elif comando == "Cambiar_modo":
+            try:
+                if self.consola.tipo_movimiento == 'absoluto':
+                    return self.robot.modo_relativo()
+                else:
+                    return self.robot.modo_absoluto()
+            except Exception as e:
+                return f"Error: {str(e)}"
+
         
         else:
             raise ValueError(f"Comando '{comando}' no reconocido.")

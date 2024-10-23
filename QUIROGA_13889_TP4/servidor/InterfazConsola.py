@@ -268,10 +268,16 @@ class InterfazConsola:
         usuario = "consola_local"
         ip = "127.0.0.1"
         try:
-            mensaje = self.robot.modo_absoluto()
-            print(mensaje)
-            self.tipo_movimiento = "absoluto"
-            self.logger.registrar_log("modo_absoluto", ip, usuario, True)
+            mensajes = self.robot.modo_absoluto()
+            for mensaje in mensajes:
+                print(mensaje)
+            for mensaje in mensajes:
+                if "ERROR" in mensaje:
+                    self.logger.registrar_log("modo_absoluto", ip, usuario, False)
+                    break
+            else: 
+                self.logger.registrar_log("modo_absoluto", ip, usuario, True)
+                self.tipo_movimiento = "absoluto"
         except Exception as e:
             print(f"Error al cambiar a modo absoluto: {e}")
             self.logger.registrar_log("modo_absoluto", ip, usuario, False)
@@ -280,10 +286,17 @@ class InterfazConsola:
         usuario = "consola_local"
         ip = "127.0.0.1"
         try:
-            mensaje = self.robot.modo_relativo()
-            print(mensaje)
-            self.tipo_movimiento = "relativo"
-            self.logger.registrar_log("modo_relativo", ip, usuario, True)
+            mensajes = self.robot.modo_relativo()
+            for mensaje in mensajes:
+                print(mensaje)
+            
+            for mensaje in mensajes:
+                if "ERROR" in mensaje:
+                    self.logger.registrar_log("modo_relativo", ip, usuario, False)
+                    break
+            else: 
+                self.logger.registrar_log("modo_relativo", ip, usuario, True)
+                self.tipo_movimiento = "relativo"
         except Exception as e:
             print(f"Error al cambiar a modo relativo: {e}")
             self.logger.registrar_log("modo_relativo", ip, usuario, False)
@@ -422,10 +435,6 @@ class InterfazConsola:
     def cambiar_modo_trabajo(self):
         self.modo_trabajo = "manual" if self.modo_trabajo == "automático" else "automático"
         print(f"Modo de trabajo cambiado a: {self.modo_trabajo}")
-
-    def cambiar_tipo_movimiento(self):
-        self.tipo_movimiento = "absoluto" if self.tipo_movimiento == "relativo" else "relativo"
-        print(f"Tipo de movimiento cambiado a: {self.tipo_movimiento}")
 
     # Validar usuario y clave
     def validar_usuario(self, usuario, clave):

@@ -278,18 +278,24 @@ class ControladorRobot:
             raise ErrorDeConexion(1)  # No hay conexión
 
         resultado = self._registrar_comando("G90")
+        mensajes = []
         if "error" in resultado:
-            return resultado["error"]
-        
-        return "Modo absoluto activado\n"
+            mensajes.append(resultado["error"])
+            return mensajes
+        mensajes.append(resultado)
+        mensajes.append("Modo de coordenadas absolutas activado\n")
+        return mensajes
 
     def modo_relativo(self):
         """Cambiar a modo de coordenadas relativas"""
         if self.estado_conexion == "desconectado":
             raise ErrorDeConexion(1)  # No hay conexión
-
-        resultado = self._registrar_comando("G91")
-        if "error" in resultado:
-            return resultado["error"]
         
-        return "Modo relativo activado\n"
+        resultado = self._registrar_comando("G91")
+        mensajes = []
+        if "error" in resultado:
+            mensajes.append(resultado["error"])
+            return mensajes
+        mensajes.append(resultado)
+        mensajes.append("Modo relativo activado\n")
+        return mensajes
