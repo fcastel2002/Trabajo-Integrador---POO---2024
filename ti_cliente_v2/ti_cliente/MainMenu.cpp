@@ -3,7 +3,8 @@
 
 MainMenu::MainMenu(Cliente& cliente) : cliente(cliente) {
     inicializarPantalla();
-	Orden my_order = Orden("comandos", {});
+	Orden my_order = crearOrden("comandos");
+	
     m_comandos = cliente.pedirComandos(my_order);
 }
 
@@ -139,8 +140,11 @@ const std::string MainMenu::manejarSeleccion(int seleccion) {
     return "";
 }
 
-Orden MainMenu::crearOrden(const std::string& tipo) {
+Orden MainMenu::crearOrden(const std::string& comando) {
     std::vector <std::string> parametros;
+    parametros[0]= cliente.getUser();
+    parametros[1] = cliente.getPass();
+    parametros[2] = comando;
     /*
     for (int i = 0; i < 3; i++) {
         clear();
@@ -156,28 +160,28 @@ Orden MainMenu::crearOrden(const std::string& tipo) {
     }
     noecho();
     */
-    if (tipo == "conectar") {
+    if (parametros[2] == "conectar") {
         const int cantidad = { 2 };
         clear();
         echo();
+        XmlRpcValue param;
+
         for (int i = 0; i < cantidad; i++) {
-            
-			if (i == 0) mvprintw(1, 1, "Ingrese puerto COM: ");
-			else mvprintw(2, 1, "Ingrese Baudrate: ");
+
+            if (i == 0) mvprintw(1, 1, "Ingrese puerto COM: ");
+            else mvprintw(2, 1, "Ingrese Baudrate: ");
             char buffer[100];
             getstr(buffer);
-            std::string param{ buffer };
-            if (param.empty()) {
-                break;
-            }
-            parametros.push_back(param);
+            param[i] = buffer;
         }
+        parametros[3] = param;
 
     }
-    else if (tipo == "mover_efector") {
-		const int cantidad = { 4 };
-		clear();
-		echo();
+    else if (parametros[2] == "mover_efector") {
+        const int cantidad = { 4 };
+        clear();
+        echo();
+        XmlRpcValue param;
         for (int i = 0; i < cantidad; i++) {
             if (i == 0) mvprintw(1, 1, "Ingrese X: ");
             else if (i == 1) mvprintw(2, 1, "Ingrese Y: ");
@@ -185,15 +189,14 @@ Orden MainMenu::crearOrden(const std::string& tipo) {
             else mvprintw(4, 1, "Ingrese Velocidad: ");
             char buffer[100];
             getstr(buffer);
-            std::string param{ buffer };
-            if (param.empty()) {
-                break;
-            }
-            parametros.push_back(param);
+			param[i] = buffer;
         }
-
+		    parametros[3] = param;  
 
     }
+    else {
+		parametros[3] = "0";
+    }
 
-    return Orden(tipo, parametros);
+    return Orden(parametros);
 }

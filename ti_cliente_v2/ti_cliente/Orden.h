@@ -1,7 +1,9 @@
 #pragma once
 #include <string>
 #include <vector>
-#include <nlohmann/json.hpp>
+#include "XmlRpc.h"
+
+using namespace  XmlRpc;
 class Orden {
 private:
     std::string m_tipo{};
@@ -9,35 +11,22 @@ private:
     // Atributo normal para almacenar las etiquetas de los parámetros
     std::map<std::string, std::vector<std::string>> etiquetasParametros;
 
+
+
+
 public:
-    Orden(const std::string& tipo, const std::vector<std::string>& parametros)
-        : m_tipo(tipo), m_parametros(parametros) {
-        // Inicializamos el mapa de etiquetas en el constructor
-        etiquetasParametros = {
-            {"mover_efector", {"X", "Y", "Z", "velocidad"}},
-            {"conectar", {"puerto_COM", "tasa_baudios"}},
-            {"actuar_efector", {"accion_efector"}},
-            {"ejecutar_automatico", {"nombre_archivo"}}
-        };
+
+    Orden(std::vector<std::string>& parametros) :m_parametros{ parametros } {}
+
+    XmlRpcValue crearOrden(std::string& user, std::string& pass) {
+
+    XmlRpcValue params;
+    params[0] = m_parametros[0]; //user
+    params[1] = m_parametros[1]; //pass
+    params[2] = m_parametros[2];
+    for (int i = 0; i < m_parametros[3].size(); i++) {
+        params[3][i] = m_parametros[3][i];
     }
-
-    std::string toJson(std::string& username, std::string& pass) const {
-        nlohmann::json j;
-        j["usuario"] = username;
-        j["clave"] = pass;
-        j["comando"] = m_tipo;
-
-        // Seleccionamos las etiquetas de los parámetros dependiendo del tipo de comando
-        nlohmann::json parametrosJson;
-        auto it = etiquetasParametros.find(m_tipo);
-        if (it != etiquetasParametros.end()) {
-            const std::vector<std::string>& etiquetas = it->second;
-            for (size_t i = 0; i < etiquetas.size() && i < m_parametros.size(); ++i) {
-                parametrosJson[etiquetas[i]] = m_parametros[i];
-            }
-        }
-
-        j["parametros"] = parametrosJson;
-        return j.dump();
+    return params;
     }
 };

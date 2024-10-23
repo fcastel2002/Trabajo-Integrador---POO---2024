@@ -26,13 +26,15 @@ public:
 	Cliente(std::string ip, int puerto, CLIMessageView& console);
 
 	bool enviarComando(const Orden& my_order);
-	const std::string interpretarRespuesta(std::string& respuesta);
+	std::vector<std::string> pedirComandos(Orden& my_order);
+
+	void std::string interpretarRespuesta(std::string& respuesta);
 
 	std::string getUser() { return m_usuario; }
 	std::string getPass() { return m_clave; }
 	void setUser(std::string user) { m_usuario = user; }
 	void setPass(std::string pass) { m_clave = pass; }
     CLIMessageView& getConsole() { return m_console; }
-	const std::vector<std::string> pedirComandos(Orden& my_order);
+	//const std::vector<std::string> pedirComandos(Orden& my_order);
 };
 

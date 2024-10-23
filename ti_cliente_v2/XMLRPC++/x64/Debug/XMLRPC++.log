@@ -1,1 +1,48 @@
-﻿  XMLRPC++.vcxproj -> C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\ti_cliente_v2\ti_cliente\x64\Debug\XMLRPC++.lib
+﻿  XmlRpcClient.cpp
+C:\Users\Pachi\Desktop\repos\Trabajo-Integrador---POO---2024\ti_cliente_v2\XMLRPC++\XmlRpcClient.cpp(252,16): warning C4477: 'sprintf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 1 tiene el tipo 'unsigned __int64'
+      C:\Users\Pachi\Desktop\repos\Trabajo-Integrador---POO---2024\ti_cliente_v2\XMLRPC++\XmlRpcClient.cpp(252,16):
+      considere el uso de ' %zd' en la cadena de formato
+  
+  XmlRpcDispatch.cpp
+  XmlRpcServer.cpp
+C:\Users\Pachi\Desktop\repos\Trabajo-Integrador---POO---2024\ti_cliente_v2\XMLRPC++\XmlRpcServer.cpp(275,33): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+  XmlRpcServerConnection.cpp
+C:\Users\Pachi\Desktop\repos\Trabajo-Integrador---POO---2024\ti_cliente_v2\XMLRPC++\XmlRpcServerConnection.cpp(1,9): warning C4005: '_CRT_SECURE_NO_WARNINGS': redefinición de macro
+      C:\Users\Pachi\Desktop\repos\Trabajo-Integrador---POO---2024\ti_cliente_v2\XMLRPC++\XmlRpcServerConnection.cpp(1,9):
+      '_CRT_SECURE_NO_WARNINGS' declarado previamente en la línea de comandos
+  
+C:\Users\Pachi\Desktop\repos\Trabajo-Integrador---POO---2024\ti_cliente_v2\XMLRPC++\XmlRpcServerConnection.cpp(348,19): warning C4477: 'sprintf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 1 tiene el tipo 'unsigned __int64'
+      C:\Users\Pachi\Desktop\repos\Trabajo-Integrador---POO---2024\ti_cliente_v2\XMLRPC++\XmlRpcServerConnection.cpp(348,19):
+      considere el uso de ' %zd' en la cadena de formato
+  
+  XmlRpcServerMethod.cpp
+  XmlRpcSocket.cpp
+C:\Users\Pachi\Desktop\repos\Trabajo-Integrador---POO---2024\ti_cliente_v2\XMLRPC++\XmlRpcSocket.cpp(2,9): warning C4005: '_CRT_SECURE_NO_WARNINGS': redefinición de macro
+      C:\Users\Pachi\Desktop\repos\Trabajo-Integrador---POO---2024\ti_cliente_v2\XMLRPC++\XmlRpcSocket.cpp(2,9):
+      '_CRT_SECURE_NO_WARNINGS' declarado previamente en la línea de comandos
+  
+C:\Users\Pachi\Desktop\repos\Trabajo-Integrador---POO---2024\ti_cliente_v2\XMLRPC++\XmlRpcSocket.cpp(20,10): warning C4005: 'EINPROGRESS': redefinición de macro
+      D:\Windows Kits\10\Include\10.0.22621.0\ucrt\errno.h(101,13):
+      vea la definición anterior de “EINPROGRESS”
+  
+C:\Users\Pachi\Desktop\repos\Trabajo-Integrador---POO---2024\ti_cliente_v2\XMLRPC++\XmlRpcSocket.cpp(21,10): warning C4005: 'EWOULDBLOCK': redefinición de macro
+      D:\Windows Kits\10\Include\10.0.22621.0\ucrt\errno.h(129,13):
+      vea la definición anterior de “EWOULDBLOCK”
+  
+C:\Users\Pachi\Desktop\repos\Trabajo-Integrador---POO---2024\ti_cliente_v2\XMLRPC++\XmlRpcSocket.cpp(22,10): warning C4005: 'ETIMEDOUT': redefinición de macro
+      D:\Windows Kits\10\Include\10.0.22621.0\ucrt\errno.h(127,13):
+      vea la definición anterior de “ETIMEDOUT”
+  
+  XmlRpcSource.cpp
+  XmlRpcUtil.cpp
+C:\Users\Pachi\Desktop\repos\Trabajo-Integrador---POO---2024\ti_cliente_v2\XMLRPC++\XmlRpcUtil.cpp(1,9): warning C4005: '_CRT_SECURE_NO_WARNINGS': redefinición de macro
+      C:\Users\Pachi\Desktop\repos\Trabajo-Integrador---POO---2024\ti_cliente_v2\XMLRPC++\XmlRpcUtil.cpp(1,9):
+      '_CRT_SECURE_NO_WARNINGS' declarado previamente en la línea de comandos
+  
+  XmlRpcValue.cpp
+C:\Users\Pachi\Desktop\repos\Trabajo-Integrador---POO---2024\ti_cliente_v2\XMLRPC++\XmlRpcValue.cpp(1,9): warning C4005: '_CRT_SECURE_NO_WARNINGS': redefinición de macro
+      C:\Users\Pachi\Desktop\repos\Trabajo-Integrador---POO---2024\ti_cliente_v2\XMLRPC++\XmlRpcValue.cpp(1,9):
+      '_CRT_SECURE_NO_WARNINGS' declarado previamente en la línea de comandos
+  
+  Generando código...
+  XMLRPC++.vcxproj -> C:\Users\Pachi\Desktop\repos\Trabajo-Integrador---POO---2024\ti_cliente_v2\ti_cliente\x64\Debug\XMLRPC++.lib
