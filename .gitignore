@@ -8,3 +8,5 @@ __pycache__/
 servidor_tests_pachi/servidor/__pycache__
 com/
 ti_cliente_v2/json/json-develop/json/tests
+ti_cliente/
+cliente_files/
