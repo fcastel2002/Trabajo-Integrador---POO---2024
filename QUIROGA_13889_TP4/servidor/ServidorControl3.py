@@ -166,7 +166,17 @@ class ServidorControl:
                     return self.robot.modo_absoluto()
             except Exception as e:
                 return f"Error: {str(e)}"
-
+        elif comando == "Aprendizaje":
+            nombre_archivo = parametros[0]
+            activacion = None
+            try:
+                activacion = parametros[1]
+            except Exception:
+                activacion = None
+            try:
+                return self.robot.aprender(nombre_archivo, activacion)
+            except Exception as e:
+                return f"Error: {str(e)}"
         elif comando == "comandos":
             return comandos_disponibles
         else:
