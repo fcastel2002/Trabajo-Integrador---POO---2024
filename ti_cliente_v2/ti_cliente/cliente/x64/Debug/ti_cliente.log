@@ -1,8 +1,3 @@
-﻿  Cliente.cpp
-  CLIMessageView.cpp
-  FileManager.cpp
-  main.cpp
-  MainMenu.cpp
-C:\Users\Pachi\Desktop\repos\Trabajo-Integrador---POO---2024\ti_cliente_v2\ti_cliente\MainMenu.cpp(53,17): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-  Generando código...
+﻿  MainMenu.cpp
+C:\Users\Pachi\Desktop\repos\Trabajo-Integrador---POO---2024\ti_cliente_v2\ti_cliente\MainMenu.cpp(54,17): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
   ti_cliente.vcxproj -> C:\Users\Pachi\Desktop\repos\Trabajo-Integrador---POO---2024\ti_cliente_v2\ti_cliente\x64\Debug\cliente.exe

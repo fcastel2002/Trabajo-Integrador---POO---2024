@@ -22,9 +22,21 @@ bool Cliente::enviarComando(const Orden& my_order) {
 	client.close();
 	return true;
 }
-
-const std::string Cliente::interpretarRespuesta(std::string& respuesta) {
+void Cliente::interpretarRespuesta(std::string& respuesta) {
 	m_console.mostrarRespuesta(respuesta);
-    return "";
+
 }
 
+std::vector<std::string> Cliente::pedirComandos(Orden& my_order) {
+	XmlRpcValue params, result;
+	params = my_order.crearOrden(m_usuario, m_clave);
+	client.execute("Interpreta_Comando", params, result);
+	std::string respuesta = result[0];
+	interpretarRespuesta(respuesta);
+	std::vector<std::string> comandos;
+	for (int i = 1; i < result.size(); i++) {
+		comandos.push_back(result[i]);
+	}
+	client.close();
+	return comandos;
+}

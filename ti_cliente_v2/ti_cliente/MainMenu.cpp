@@ -142,7 +142,7 @@ const std::string MainMenu::manejarSeleccion(int seleccion) {
 
 Orden MainMenu::crearOrden(const std::string& comando) {
     std::vector <std::string> parametros;
-    parametros[0]= cliente.getUser();
+    parametros[0] = cliente.getUser();
     parametros[1] = cliente.getPass();
     parametros[2] = comando;
     /*
