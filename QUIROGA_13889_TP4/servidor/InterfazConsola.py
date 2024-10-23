@@ -1,7 +1,7 @@
 import json
 import questionary
 from ControladorRobot import ControladorRobot
-from ServidorControl2 import ServidorControl
+from ServidorControl3 import ServidorControl
 from GestorDeArchivos import GestorDeArchivos
 from ManejadorErrores import ErrorDeConexion, ErrorDeParametros, ErrorDeEstado
 from Logger import Logger

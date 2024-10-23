@@ -20,7 +20,7 @@ public:
     ClienteRobot(const string& url, int puerto);
     void setAlias(const string& nuevoAlias, const string& nuevaIP);
     string crearMensajeJson(const string& comando, const string& usuario, const string& clave, const vector<string>& tipoParametros, const vector<string>& parametros);
-    void ejecutarComando(const string& comando, const string& mensajeJson);
+    void ejecutarComando(const string& comando, const vector<string>& parametros);
     void mostrarMenu();
 };
 

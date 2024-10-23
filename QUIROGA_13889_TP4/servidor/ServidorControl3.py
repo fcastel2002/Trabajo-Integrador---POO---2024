@@ -55,91 +55,106 @@ class ServidorControl:
             self.server_thread.join()  # Asegurarse de que el hilo termine
             print("Servidor cerrado correctamente.")
 
-    def interpreta_comando(self, mensaje_json):
-        # Deserializar el mensaje y ejecutar el comando correspondiente
+    def interpreta_comando(self, usuario, clave, comando, parametros = None):
+        # Validar usuario y clave
+        if not self._validar_usuario(usuario, clave):
+            return {"error": "Acceso denegado: Usuario o clave incorrectos"}
+
         try:
-            mensaje = json.loads(mensaje_json)
-            usuario = mensaje["usuario"]
-            clave = mensaje["clave"]
-            comando = mensaje["comando"]
-            parametros = mensaje["parametros"]
-
-            if not self._validar_usuario(usuario, clave):
-                return json.dumps({"error": "Acceso denegado: Usuario o clave incorrectos"})
-
+            # Ejecutar el comando correspondiente
             resultado = self._ejecutar_comando(comando, parametros)
+            
+            # Registrar la operación en el log
             self.logger.registrar_log(comando, "127.0.0.1", usuario, True)
-            return json.dumps({"resultado": resultado})
+            return {"resultado": resultado}
 
         except Exception as e:
+            # Registrar error en el log y devolver mensaje de error
             self.logger.registrar_log("error", "127.0.0.1", "sistema", False)
-            return json.dumps({"error": f"Error al interpretar el comando: {str(e)}"})
+            return {"error": f"Error al interpretar el comando: {str(e)}"}
 
-    def _ejecutar_comando(self, comando, parametros):
+
+    def _ejecutar_comando(self, comando, parametros = None):
         # Ejecutar el comando recibido
         if comando == "conectar":
-            self.robot.puerto_serial = parametros["puerto_COM"]
-            self.robot.baudios = int(parametros["tasa_baudios"])
+            self.robot.puerto_serial = parametros[0]  # puerto_COM
+            self.robot.baudios = int(parametros[1])   # tasa_baudios
             try:
-                return json.dumps({"Respuesta":self.robot.conectar()})
+                return self.robot.conectar()
             except Exception as e:
-                return json.dumps({"Respuesta":{e}})
+                return f"Error: {str(e)}"
+        
         elif comando == "desconectar":
             try: 
-                return json.dumps({"Respuesta":self.robot.desconectar()})
+                return self.robot.desconectar()
             except Exception as e:
-                return json.dumps({"Respuesta":{e}})
+                return f"Error: {str(e)}"
+        
         elif comando == "activar_motores":
             try:
-                return json.dumps({"Respuesta":self.robot.activar_motores()})
+                return self.robot.activar_motores()
             except Exception as e:
-                return json.dumps({"Respuesta":{e}})
+                return f"Error: {str(e)}"
+        
         elif comando == "desactivar_motores":
             try:
-                return json.dumps({"Respuesta":self.robot.desactivar_motores()})
+                return self.robot.desactivar_motores()
             except Exception as e:
-                return json.dumps({"Respuesta":{e}})
+                return f"Error: {str(e)}"
+        
         elif comando == "mover_efector":
-            x = parametros["X"]
-            y = parametros["Y"]
-            z = parametros["Z"]
-            velocidad = parametros["velocidad"] if "velocidad" in parametros else None
+            x = float(parametros[0])  # X
+            y = float(parametros[1])  # Y
+            z = float(parametros[2])  # Z
+            if len(parametros) > 3:
+                velocidad = float(parametros[3])  # velocidad
+            else:
+                velocidad = None
+            
             if velocidad is not None:
                 try:
-                    return json.dumps({"Respuesta":self.robot.mover_efector(x,y,z,velocidad)})
+                    return self.robot.mover_efector(x, y, z, velocidad)
                 except Exception as e:
-                    return json.dumps({"Respuesta":{e}})
+                    return f"Error: {str(e)}"
             else:
                 try:
-                    return json.dumps({"Respuesta":self.robot.mover_efector_posicion(x,y,z)})
+                    return self.robot.mover_efector_posicion(x, y, z)
                 except Exception as e:
-                    return json.dumps({"Respuesta":{e}})
+                    return f"Error: {str(e)}"
+        
         elif comando == "homming":
             try:
-                return json.dumps({"Respuesta":self.robot.homming()})
+                return self.robot.homming()
             except Exception as e:
-                return json.dumps({"Respuesta":{e}})
+                return f"Error: {str(e)}"
+        
         elif comando == "reportar_estado":
             try:
-                return json.dumps({"Respuesta":self.robot.reportar()})
+                return self.robot.reportar()
             except Exception as e:
-                return json.dumps({"Respuesta":{e}})
+                return f"Error: {str(e)}"
+        
         elif comando == "reportar_posicion":
             try:
-                return json.dumps({"Respuesta":self.robot.reportar_posicion()})
+                return self.robot.reportar_posicion()
             except Exception as e:
-                return json.dumps({"Respuesta":{e}})
+                return f"Error: {str(e)}"
+        
         elif comando == "actuar_efector":
-            accion_efector = parametros["accion_efector"]
+            accion_efector = parametros[0]  # acción sobre el efector
             try: 
-                return json.dumps({"Respuesta":self.robot.actuar_efector(accion_efector)})
+                return self.robot.actuar_efector(accion_efector)
             except Exception as e:
-                return json.dumps({"Respuesta":{e}})
+                return f"Error: {str(e)}"
+        
         elif comando == "ejecutar_automatico":
-            nombre_archivo = parametros["nombre_archivo"]
+            nombre_archivo = parametros[0]  # nombre del archivo
             try: 
-                return json.dumps({"Respuesta":self.robot.ejecutar_automatico(nombre_archivo)})
+                return self.robot.ejecutar_automatico(nombre_archivo)
             except Exception as e:
-                return json.dumps({"Respuesta":{e}})
+                return f"Error: {str(e)}"
+        elif comando == "Cambiar modo"
+        
         else:
             raise ValueError(f"Comando '{comando}' no reconocido.")
+

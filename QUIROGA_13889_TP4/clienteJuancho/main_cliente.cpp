@@ -9,7 +9,7 @@ int main(int argc, char** argv) {
     string servidorUrl = argv[1];
     int puerto = stoi(argv[2]);
     ClienteRobot cliente(servidorUrl, puerto);
-    cliente.setAlias("robot_client", "127.0.0.1");
+    cliente.setAlias("admin", "127.0.0.1");
     cliente.mostrarMenu();
     return 0;
 }

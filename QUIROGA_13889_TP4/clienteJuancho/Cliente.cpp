@@ -11,36 +11,24 @@ void ClienteRobot::setAlias(const string& nuevoAlias, const string& nuevaIP) {
     ip = nuevaIP;
 }
 
-// Método para crear un mensaje en formato JSON manualmente
-string ClienteRobot::crearMensajeJson(const string& usuario, const string& clave, const string& comando, const vector<string>& tipoParametros, const vector<string>& parametros) {
-    ostringstream oss;
-    oss << "{\"usuario\":\"" << usuario << "\","
-        << "\"clave\":\"" << clave << "\","
-        << "\"comando\":\"" << comando << "\","
-        << "\"parametros\":{";
-
-    for (size_t i = 0; i < tipoParametros.size(); ++i) {
-        oss << "\"" << tipoParametros[i] << "\":\"" << parametros[i] << "\"";
-        if (i != tipoParametros.size() - 1) {
-            oss << ",";
-        }
-    }
-
-    oss << "}}";  // Cierra el diccionario de "parametros" y el objeto JSON
-
-    return oss.str();
-}
-
-
 // Método para ejecutar comandos y enviar petición al servidor
-void ClienteRobot::ejecutarComando(const string& comando, const string& mensajeJson) {
+void ClienteRobot::ejecutarComando(const string& comando, const vector<string>& parametros) {
     XmlRpc::XmlRpcClient cliente(servidorUrl.c_str(), servidorPuerto);
     XmlRpc::XmlRpcValue args, result;
-    
-    // Colocamos el mensaje JSON como el único argumento que enviamos
-    args[0] = mensajeJson;
-    
-    // Siempre ejecutamos el comando registrado en el servidor: "Interpreta_Comando"
+
+    // Asignar el nombre de usuario y la clave
+    args[0] = alias;  // usuario (el alias)
+    args[1] = "clave123";  // clave (puedes hacer que sea dinámico más tarde)
+    args[2] = comando;  // comando
+
+    // Pasar los parámetros como un array de XmlRpcValue
+    XmlRpc::XmlRpcValue paramArray;
+    for (size_t i = 0; i < parametros.size(); ++i) {
+        paramArray[i] = parametros[i];
+    }
+    args[3] = paramArray;  // parámetros
+
+    // Ejecutar el comando en el servidor
     if (cliente.execute("Interpreta_Comando", args, result)) {
         cout << "Respuesta del servidor: " << result << endl;
     } else {
@@ -58,9 +46,10 @@ void ClienteRobot::mostrarMenu() {
         string comando;
 
         if (comandoSeleccionado == "15") {
-            cout << "Saliendo del programa"<<endl;
+            cout << "Saliendo del programa" << endl;
             break;
         }
+
         if (comandoSeleccionado == "1") {
             comando = "conectar";
         } else if (comandoSeleccionado == "2") {
@@ -82,33 +71,14 @@ void ClienteRobot::mostrarMenu() {
         } else if (comandoSeleccionado == "10") {
             comando = "ejecutar_automatico";
         } else {
-            cerr << "Comando no valido." << endl;
-            return;
+            cerr << "Comando no válido." << endl;
+            continue;
         }
         
-        string usuario = interfaz.solicitarUsuario();
-        string clave = interfaz.solicitarClave();
-        
-        // Crear el vector de tipo de parámetros según el comando seleccionado
-        vector<string> tipoParametros;
-        if (comando == "conectar") {
-            tipoParametros = {"puerto_COM", "tasa_baudios"};
-        } else if (comando == "mover_efector") {
-            tipoParametros = {"X", "Y", "Z", "velocidad"};
-        } else if (comando == "actuar_efector") {
-            tipoParametros = {"accion_efector"};
-        } else if (comando == "ejecutar_automatico") {
-            tipoParametros = {"nombre_archivo"};
-        }
-        
-        // Solicitar los parámetros dependiendo del comando
+        // Solicitar los parámetros dependiendo del comando seleccionado
         vector<string> parametros = interfaz.solicitarParametros(comandoSeleccionado);
         
-        // Crear el mensaje JSON para enviar
-        string mensajeJson = crearMensajeJson(usuario, clave, comando, tipoParametros, parametros);
-        cout << "Mensaje JSON: " << mensajeJson << endl;
-        
-        // Ejecutar el comando con el mensaje JSON
-        ejecutarComando("Interpreta_Comando", mensajeJson);
+        // Ejecutar el comando con los parámetros
+        ejecutarComando(comando, parametros);
     }
 }
