@@ -28,7 +28,7 @@ public:
 	bool enviarComando(const Orden& my_order);
 	std::vector<std::string> pedirComandos(Orden& my_order);
 
-	void interpretarRespuesta(std::string& respuesta);
+	void interpretarRespuesta(XmlRpcValue& respuesta);
 
 	std::string getUser() { return m_usuario; }
 	std::string getPass() { return m_clave; }

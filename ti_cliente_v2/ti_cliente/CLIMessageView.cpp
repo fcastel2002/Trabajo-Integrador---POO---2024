@@ -22,9 +22,9 @@ void CLIMessageView::mostrarError(const std::string& error) {
 }
 
 // Muestra la respuesta del servidor
-void CLIMessageView::mostrarRespuesta(const std::string& respuesta) {
+void CLIMessageView::mostrarRespuesta(XmlRpcValue& respuesta) {
     clear(); // Limpia la pantalla
-    mvprintw(1, 1, "Respuesta del servidor: %s", respuesta.c_str());
+    mvprintw(1, 1, "Respuesta del servidor: %s", respuesta);
     refresh();
     getch();   // Espera a que el usuario presione una tecla para continuar
 }
