@@ -436,21 +436,6 @@ class InterfazConsola:
         self.modo_trabajo = "manual" if self.modo_trabajo == "automático" else "automático"
         print(f"Modo de trabajo cambiado a: {self.modo_trabajo}")
 
-    # Validar usuario y clave
-    def validar_usuario(self, usuario, clave):
-        try:
-            with open(self.archivo_usuarios, "r") as archivo:
-                usuarios = json.load(archivo)
-                if usuario in usuarios and usuarios[usuario] == clave:
-                    print(f"Validación exitosa para el usuario {usuario}")
-                    return True
-                else:
-                    print(f"Usuario o clave incorrectos para el usuario {usuario}")
-                    return False
-        except FileNotFoundError:
-            print("No se encontró el archivo de usuarios.")
-            return False
-
     def salir(self):
         # Desactivar el modo de aprendizaje si está activo
         if self.robot.aprendiendo:
