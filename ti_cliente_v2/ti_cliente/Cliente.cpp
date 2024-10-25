@@ -35,9 +35,7 @@ std::vector<std::string> Cliente::pedirComandos(Orden& my_order) {
     m_console.mostrarRespuesta(result);
     std::vector<std::string> comandos;
 
-	for (int i = 0; i < result.size(); i++) {
-		comandos.push_back(result[i]);
-	}
+	
     client.close();
     return comandos;
 }
