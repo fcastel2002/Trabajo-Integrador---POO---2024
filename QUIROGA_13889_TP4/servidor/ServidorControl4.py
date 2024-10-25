@@ -5,8 +5,7 @@ import threading
 
 
 class ServidorControl:
-    def __init__(self, consola, robot, ip="127.0.0.1", puerto=9000):
-        self.consola = consola
+    def __init__(self, robot, ip="127.0.0.1", puerto=9000):
         self.robot = robot
         self.ip = ip
         self.puerto = puerto
@@ -14,6 +13,7 @@ class ServidorControl:
         self.server = None
         self.logger = Logger()
         self.usuarios_autorizados = self._cargar_usuarios()
+        self.evento_actualizacion = threading.Event()
 
     def _cargar_usuarios(self):
         # Cargar usuarios desde un archivo JSON
@@ -35,10 +35,8 @@ class ServidorControl:
         # Crear el servidor y registrar la única función "Interpreta_Comando"
         self.server = SimpleXMLRPCServer((self.ip, self.puerto), allow_none=True, logRequests=False)
         self.server.register_function(self.interpreta_comando, "Interpreta_Comando")
-        self.server_thread = threading.Thread(target=self._iniciar_servidor)
-        self.server_thread.daemon = True
-        self.server_thread.start()
         print(f"Servidor RPC iniciado en {self.ip}:{self.puerto}\n")
+        self._iniciar_servidor()
 
     def _iniciar_servidor(self):
         try:
@@ -52,7 +50,7 @@ class ServidorControl:
             print("Iniciando cierre del servidor...")
             self.server.shutdown()
             self.server.server_close()
-            self.server_thread.join()  # Asegurarse de que el hilo termine
+            # self.server_thread.join()  # Asegurarse de que el hilo termine
             print("Servidor cerrado correctamente.")
 
     def interpreta_comando(self, usuario, clave, comando, parametros = None):
@@ -67,7 +65,8 @@ class ServidorControl:
             # Registrar la operación en el log
             self.logger.registrar_log(comando, "127.0.0.1", usuario, True)
             
-
+            # Activar el evento de actualización
+            self.evento_actualizacion.set()
             return {"resultado": resultado}
 
         except Exception as e:

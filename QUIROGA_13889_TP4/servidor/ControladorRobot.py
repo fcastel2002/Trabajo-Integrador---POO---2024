@@ -63,7 +63,11 @@ class ControladorRobot:
 
         self.motores_activos = True
         gcode = "M17"
-        return self._registrar_comando(gcode)
+        try:
+            return self._registrar_comando(gcode)
+        except Exception as e:
+            self.motores_activos = False
+            raise e
 
     def desactivar_motores(self):
         if self.estado_conexion == "desconectado":
@@ -73,14 +77,21 @@ class ControladorRobot:
 
         self.motores_activos = False
         gcode = "M18"
-        return self._registrar_comando(gcode)
+        try:   
+            return self._registrar_comando(gcode)
+        except Exception:
+            self.motores_activos = True
+            raise Exception
 
     def _registrar_comando(self, comando):
         self.ordenes_totales += 1
         comando_json = json.dumps({"comando": comando, "timestamp": time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())})
         self.archivo_ordenes_solicitadas.guardar_linea(comando_json)
 
-        self.serial_robot.write((comando + "\r\n").encode())
+        try:
+            self.serial_robot.write((comando + "\r\n").encode())
+        except Exception:
+            raise ErrorDeConexion(1)
 
         # Limpiar el buffer de entrada antes de leer la respuesta para asegurarnos de no tener residuos de comandos anteriores
         self.serial_robot.reset_input_buffer()

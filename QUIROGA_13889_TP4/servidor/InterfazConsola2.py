@@ -1,12 +1,13 @@
 import json
 import questionary
 from ControladorRobot import ControladorRobot
-from ServidorControl3 import ServidorControl
+from ServidorControl4 import ServidorControl
 from GestorDeArchivos import GestorDeArchivos
 from ManejadorErrores import ErrorDeConexion, ErrorDeParametros, ErrorDeEstado
 from Logger import Logger
 import sys
 import threading
+import time
 
 class InterfazConsola:
     def __init__(self, robot=None):
@@ -22,7 +23,6 @@ class InterfazConsola:
         self.evento_finalizacion = threading.Event()
         self.evento_creacion_Servidor = threading.Event()
         self.evento_cierre_Servidor = threading.Event()
-        self.rpc_server = ServidorControl(self,self.robot)
 
     def mostrar_ayuda(self):
         ayuda = """
@@ -149,6 +149,9 @@ class InterfazConsola:
                 continue
             elif choice == "Salir":
                 self.salir()
+                break
+            else:
+                break
 
     # Funciones para interactuar con el robot y servidor
     def conectar_robot(self):
@@ -185,7 +188,7 @@ class InterfazConsola:
 
     def iniciar_servidor_rpc(self):
         if self.servidor_activado is False:
-            self.rpc_server.iniciar()  # Inicia el servidor en un hilo separado
+            self.evento_creacion_Servidor.set()
             self.logger.registrar_log("iniciar_servidor_rpc", "127.0.0.1", "consola_local", True)
             self.servidor_activado = True
         else:
@@ -193,7 +196,7 @@ class InterfazConsola:
 
     def detener_servidor_rpc(self):
         if self.servidor_activado is not False:
-            self.rpc_server.disconnect()
+            self.evento_cierre_Servidor.set()
             print("Servidor RPC detenido\n")
             self.logger.registrar_log("detener_servidor_rpc", "127.0.0.1", "consola_local", True)
             self.servidor_activado = False
@@ -446,11 +449,7 @@ class InterfazConsola:
         if self.robot.aprendiendo:
             print("El modo de aprendizaje está activo, desactivándolo antes de salir.")
             self.robot.aprender("", False)  # Desactivar el modo de aprendizaje
-
-        # Cerrar el servidor RPC si está activo
-        if self.servidor_activado is not False:
-            self.rpc_server.disconnect()
+        self.detener_servidor_rpc()
 
         print("Saliendo del sistema...")
         self.evento_finalizacion.set()
-        sys.exit(0)
