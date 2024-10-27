@@ -1,6 +1,5 @@
 #include "Cliente.h"
 
-#include <nlohmann/json.hpp>  
 
 #include <iostream>
 

@@ -53,3 +53,42 @@ void CLIMessageView::mostrarRespuesta(XmlRpcValue& respuesta) {
     refresh();
     getch();   // Espera a que el usuario presione una tecla para continuar
 }
+// Solicita al usuario su nombre de usuario y contraseña
+std::pair<std::string, std::string> CLIMessageView::loguearse() {
+    clear();
+    echo(); // Muestra lo que se escribe
+
+    char usuario[100];
+    char contrasena[100];
+
+    mvprintw(1, 1, "Ingrese usuario: ");
+    getstr(usuario);
+
+    mvprintw(2, 1, "Ingrese contraseña: ");
+    getstr(contrasena);
+
+    noecho(); // Deja de mostrar lo que se escribe
+    refresh();
+
+    return { usuario, contrasena };
+}
+
+// Solicita al usuario la IP y el puerto
+std::pair<std::string, int> CLIMessageView::conectarse() {
+    clear();
+    echo(); // Muestra lo que se escribe
+
+    char ip[100];
+    char puerto[100];
+
+    mvprintw(1, 1, "Ingrese IP: ");
+    getstr(ip);
+
+    mvprintw(2, 1, "Ingrese puerto: ");
+    getstr(puerto);
+
+    noecho(); // Deja de mostrar lo que se escribe
+    refresh();
+
+    return { ip, std::stoi(puerto) };
+}

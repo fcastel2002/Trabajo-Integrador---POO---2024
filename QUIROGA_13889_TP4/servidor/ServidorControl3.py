@@ -18,8 +18,8 @@ class ServidorControl:
     def _cargar_usuarios(self):
         # Cargar usuarios desde un archivo JSON
         try:
-            #with open("servidor\\usuarios.json", "r") as archivo:
-            with open("usuarios.json", "r") as archivo:
+            with open("servidor\\usuarios.json", "r") as archivo:
+            #with open("usuarios.json", "r") as archivo:
                 return json.load(archivo)
         except FileNotFoundError:
             print("No se encontró el archivo de usuarios.")
@@ -77,10 +77,10 @@ class ServidorControl:
 
 
     def _ejecutar_comando(self, comando, parametros = None):
-        comandos_disponibles = [
+        comandos_disponibles = ["login","cerrar sesion","conectar con servidor",
         "conectar", "desconectar", "activar_motores", "desactivar_motores",
         "mover_efector", "homming", "reportar_estado", "reportar_posicion",
-        "actuar_efector", "ejecutar_automatico", "Cambiar_modo", "comandos"
+        "actuar_efector", "ejecutar_automatico", "Cambiar_modo", "comandos","salir"
     ]
         # Ejecutar el comando recibido
         if comando == "conectar":

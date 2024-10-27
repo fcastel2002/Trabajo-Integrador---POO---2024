@@ -113,43 +113,8 @@ void MainMenu::mostrarMenu() {
 
 // Maneja la selección del menú
 const std::string MainMenu::manejarSeleccion(int seleccion) {
-    switch (seleccion) {
-    case 0:
-        return "conectar";
-    case 1:
-        return "desconectar";
-    case 2:
-        return "activar_motores";
-    case 3:
-        return "desactivar_motores";
-
-    case 4:
-        return "mover_efector";
-    case 5:
-        return "homming";
-
-    case 6:
-        return "ejecutar_automatico";
-    case 7:
-        return "reportar_estado";
-    case 8:
-        return "reportar_posicion";
-
-    case 9:
-        return "cambiar_modo_absoluto";
-
-    case 10:
-        return "cambiar_modo_relativo";
-
-    case 11:
-        return "activar_efector";
-
-    case 12:
-        return "desactivar_efector";
-
-    case 13:
-        cliente.getConsole().mostrarMensaje("Saliendo...\n");
-        return "salir";
+    if (seleccion >= 0 && seleccion < m_comandos.size()) {
+        return m_comandos[seleccion];
     }
     return "";
 }
@@ -210,6 +175,7 @@ Orden MainMenu::crearOrden(const std::string& comando) {
 		    parametros[3] = param;  
 
     }
+  
     else {
         parametros[3] = std::vector<std::string>();
     }
