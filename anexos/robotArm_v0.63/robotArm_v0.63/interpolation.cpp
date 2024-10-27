@@ -17,7 +17,7 @@ void Interpolation::setPosOffset(float new_x, float new_y, float new_z, float ne
   pos_offset.zmm = zPosmm - new_z;
   pos_offset.emm = ePosmm - new_e;
   Logger::logINFO("POSITION OFFSET: [X" + String(pos_offset.xmm) + " Y:" + String(pos_offset.ymm) + " Z:" + String(pos_offset.zmm) + " E:" + String(pos_offset.emm) + "]");
-  Logger::logINFO("CURRENT POSITION: [X:" + String(new_x) + " Y:" + String(new_y) + " Z:" + String(new_z) + " E:" + String(new_e) + "]");
+  Logger::logINFO("ACTUAL POSITION: [X:" + String(new_x) + " Y:" + String(new_y) + " Z:" + String(new_z) + " E:" + String(new_e) + "]");
 }
 
 void Interpolation::resetPosOffset() {
