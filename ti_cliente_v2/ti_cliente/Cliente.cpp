@@ -2,6 +2,7 @@
 
 #include <nlohmann/json.hpp>  
 
+#include <iostream>
 
 Cliente::Cliente(std::string ip, int puerto, CLIMessageView& console) 
 	: m_ip(ip)
@@ -12,9 +13,10 @@ Cliente::Cliente(std::string ip, int puerto, CLIMessageView& console)
 	, m_clave{"clave123"} {}
 
 
-bool Cliente::enviarComando(const Orden& my_order) {
+bool Cliente::enviarComando(Orden& my_order) {
 	XmlRpcValue params, result;
-
+	params = my_order.crearOrden(m_usuario,m_clave);
+			 
 	
 	client.execute("Interpreta_Comando", params, result);
 	interpretarRespuesta(result);
@@ -26,16 +28,22 @@ void Cliente::interpretarRespuesta(XmlRpcValue& respuesta) {
 
 }
 
+
 std::vector<std::string> Cliente::pedirComandos(Orden& my_order) {
-    XmlRpcValue params, result;
-    params = my_order.crearOrden(m_usuario, m_clave);
+	XmlRpcValue params, result;
+	params = my_order.crearOrden(m_usuario, m_clave);
+	client.execute("Interpreta_Comando", params, result);
+	interpretarRespuesta(result);
 
-    client.execute("Interpreta_Comando", params, result);
-	
-    m_console.mostrarRespuesta(result);
-    std::vector<std::string> comandos;
+	std::vector<std::string> comandos;
+	if (result.hasMember("resultado") && result["resultado"].getType() == XmlRpcValue::TypeArray) {
+		for (int i = 0; i < result["resultado"].size(); ++i) {
+			if (result["resultado"][i].getType() == XmlRpcValue::TypeString) {
+				comandos.push_back(result["resultado"][i]);
+			}
+		}
+	}
 
-	
-    client.close();
-    return comandos;
+	client.close();
+	return comandos;
 }

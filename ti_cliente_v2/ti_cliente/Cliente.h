@@ -4,7 +4,6 @@
 #include "CLIMessageView.h"
 #include <XmlRpc.h>
 #include "Orden.h"
-#include "nlohmann/json.hpp"
 
 #pragma comment(lib, "xmlrpc++.lib")
 #pragma comment(lib, "WS2_32.lib")	
@@ -25,7 +24,7 @@ public:
 
 	Cliente(std::string ip, int puerto, CLIMessageView& console);
 
-	bool enviarComando(const Orden& my_order);
+	bool enviarComando(Orden& my_order);
 	std::vector<std::string> pedirComandos(Orden& my_order);
 
 	void interpretarRespuesta(XmlRpcValue& respuesta);

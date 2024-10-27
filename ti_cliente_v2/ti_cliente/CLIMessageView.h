@@ -11,7 +11,9 @@ class CLIMessageView {
 public:
     void mostrarMensaje(const std::string& mensaje);
     void mostrarError(const std::string& error);
-    void mostrarRespuesta(XmlRpcValue& resultado);
+    void mostrarRespuesta(XmlRpcValue& respuesta);
+
 };
+
 
 #endif

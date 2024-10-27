@@ -14,7 +14,19 @@ void MainMenu::inicializarPantalla() {
     noecho();                // No muestra lo que se escribe
     curs_set(FALSE);         // Oculta el cursor
     keypad(stdscr, TRUE);    // Habilita teclas especiales (como las flechas)
+
     // Habilita el redimensionamiento de la ventana
+    
+    // Crear la ventana auxiliar para depuración
+    int height = 10; // Altura de la ventana de depuración
+    int width = COLS; // Ancho de la ventana de depuración
+    int starty = LINES - height; // Posición Y de inicio
+    int startx = 0; // Posición X de inicio
+    debugWin = newwin(height, width, starty, startx);
+    scrollok(debugWin, TRUE); // Habilitar el scroll en la ventana de depuración
+     
+
+
     if (has_key(KEY_RESIZE)) {
         resize_term(0, 0);   // Ajusta el tamaño de la terminal a su valor actual
     }
@@ -22,6 +34,7 @@ void MainMenu::inicializarPantalla() {
 
 // Termina el uso de PDCurses
 void MainMenu::terminarPantalla() {
+	delwin(debugWin);        // Elimina la ventana de depuración
     endwin();                // Termina PDCurses
 }
 
@@ -30,7 +43,8 @@ void MainMenu::setComandos(const std::vector<std::string>& comandos) {
 }
 
 void MainMenu::mostrarMenu() {
-    inicializarPantalla(); // Inicia la interfaz de PDCurses
+    refresh();
+                // Inicia la interfaz de PDCurses
     /*
     std::string opciones[] = {
         "Conectar al Robot",
@@ -141,10 +155,13 @@ const std::string MainMenu::manejarSeleccion(int seleccion) {
 }
 
 Orden MainMenu::crearOrden(const std::string& comando) {
-    std::vector <std::string> parametros(4);
-    parametros[0] = cliente.getUser();
-    parametros[1] = cliente.getPass();
-    parametros[2] = comando;
+    std::vector <std::vector<std::string>> parametros(4);
+    for (auto& vec : parametros) {
+        vec.resize(1); // Inicializa cada vector interno con un tamaño de 1
+    }
+    parametros[0][0] = cliente.getUser();
+    parametros[1][0] = cliente.getPass();
+    parametros[2][0] = comando;
     /*
     for (int i = 0; i < 3; i++) {
         clear();
@@ -160,28 +177,27 @@ Orden MainMenu::crearOrden(const std::string& comando) {
     }
     noecho();
     */
-    if (parametros[2] == "conectar") {
-        const int cantidad = { 2 };
+    if (parametros[2][0] == "conectar") {
+        const int cantidad = 2;
         clear();
         echo();
-        XmlRpcValue param;
+        std::vector<std::string> param(cantidad);
 
         for (int i = 0; i < cantidad; i++) {
-
             if (i == 0) mvprintw(1, 1, "Ingrese puerto COM: ");
             else mvprintw(2, 1, "Ingrese Baudrate: ");
             char buffer[100];
             getstr(buffer);
             param[i] = buffer;
         }
-        parametros[3] = param;
 
+        parametros[3] = param; // Convertimos XmlRpcValue a string para almacenarlo en parametros
     }
-    else if (parametros[2] == "mover_efector") {
+    else if (parametros[2][0] == "mover_efector") {
         const int cantidad = { 4 };
         clear();
         echo();
-        XmlRpcValue param;
+        std::vector<std::string> param(cantidad);
         for (int i = 0; i < cantidad; i++) {
             if (i == 0) mvprintw(1, 1, "Ingrese X: ");
             else if (i == 1) mvprintw(2, 1, "Ingrese Y: ");
@@ -195,7 +211,7 @@ Orden MainMenu::crearOrden(const std::string& comando) {
 
     }
     else {
-		parametros[3] = "0";
+        parametros[3] = std::vector<std::string>();
     }
 
     return Orden(parametros);

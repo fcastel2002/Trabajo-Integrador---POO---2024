@@ -1,6 +1,5 @@
 from xmlrpc.server import SimpleXMLRPCServer
 from xmlrpc.server import SimpleXMLRPCRequestHandler
-import json
 
 # Restringir a una ruta específica
 class RequestHandler(SimpleXMLRPCRequestHandler):
@@ -10,17 +9,20 @@ class RequestHandler(SimpleXMLRPCRequestHandler):
 with SimpleXMLRPCServer(('localhost', 9000), requestHandler=RequestHandler) as server:
     server.register_introspection_functions()
 
-    # Definir una función que será llamada por el cliente
-    def interpretar_comando(cmd_json):
-        try:
-            cmd = json.loads(cmd_json)
-            print(f"Comando recibido: {cmd_json}")
-            return "Comando procesado correctamente"
-        except json.JSONDecodeError as e:
-            return f"Error al procesar el comando: {e}"
+    # Definir una función que reciba y muestre los parámetros de la lista
+    def interpreta_comando(param1,param2,param3,param4):
+        
+        print("Received params:")
+        print("param1:", param1)
+        print("param2:", param2)
+        print("param3:", param3)
+        print("param4:", param4)
+        # Simular una respuesta
+    
+        return {"resultado": ["Comando1", "Comando2", "Comando3"]}
 
-    server.register_function(interpretar_comando, 'Interpreta_Comando')
+    server.register_function(interpreta_comando, 'Interpreta_Comando')
 
     # Ejecutar el servidor
-    print("Servidor XML-RPC escuchando en el puerto 9000...")
+    print("Servidor XML-RPC corriendo en http://localhost:5000")
     server.serve_forever()
