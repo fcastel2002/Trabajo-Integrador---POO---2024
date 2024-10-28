@@ -153,7 +153,7 @@ class ControladorRobot:
             self.archivo_aprendizaje = None  # Eliminar la referencia
             return "Modo aprendizaje desactivado\n"
 
-    def ejecutar_automatico(self, nombre_archivo):
+    def ejecutar_automatico(self, nombre_archivo, archivo = None):
         if self.estado_conexion == "desconectado":
             raise ErrorDeConexion(1)
         if not self.motores_activos:
@@ -161,15 +161,22 @@ class ControladorRobot:
         if self.aprendiendo:
             raise ErrorDeEstado(9)
 
-        archivo_control_automatico = GestorDeArchivos(f"{nombre_archivo}.txt")
-        try:
-            comandos = archivo_control_automatico.leer_archivo()
-        except Exception:
-            raise ErrorArchivos(2,nombre_archivo)
+        if archivo is not None:
+            comandos = archivo
+            print(comandos)
+            archivo_control_automatico = GestorDeArchivos("ArchivoRecibido.txt")
+        else:
+            archivo_control_automatico = GestorDeArchivos(f"{nombre_archivo}.txt")
+            try:
+                comandos = archivo_control_automatico.leer_archivo()
+            except Exception:
+                raise ErrorArchivos(2,nombre_archivo)
 
         resultados = []
         for comando in comandos:
             comando = comando.strip()
+            if archivo is not None:
+                archivo_control_automatico.escribir_archivo(comando)
             respuestas = self._registrar_comando(comando)
             if "error" in respuestas:
                 resultados.append(f"Comando: {comando} - Error: {respuestas['error']}")

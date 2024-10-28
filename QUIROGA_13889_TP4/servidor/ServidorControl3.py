@@ -68,7 +68,7 @@ class ServidorControl:
             self.logger.registrar_log(comando, "127.0.0.1", usuario, True)
             
 
-            return {"resultado": resultado}
+            return resultado
 
         except Exception as e:
             # Registrar error en el log y devolver mensaje de error
@@ -156,10 +156,20 @@ class ServidorControl:
         
         elif comando == "ejecutar_automatico":
             nombre_archivo = parametros[0]  # nombre del archivo
-            try: 
-                return self.robot.ejecutar_automatico(nombre_archivo)
-            except Exception as e:
-                return f"Error: {str(e)}"
+            if parametros[1] is not None:
+                archivo = []
+                for i in range(1,len(parametros)):
+                    archivo.append(parametros[i])
+                print(archivo)
+                try: 
+                    return self.robot.ejecutar_automatico(nombre_archivo, archivo)
+                except Exception as e:
+                    return f"Error: {str(e)}"
+            else:        
+                try: 
+                    return self.robot.ejecutar_automatico(nombre_archivo)
+                except Exception as e:
+                    return f"Error: {str(e)}"
         elif comando == "Cambiar_modo":
             try:
                 if self.consola.tipo_movimiento == 'absoluto':

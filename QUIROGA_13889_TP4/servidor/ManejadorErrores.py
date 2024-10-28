@@ -1,10 +1,10 @@
 class ErrorDeConexion(Exception):
     def __init__(self, tipo):
         mensajes = {
-            1: "Falla: No hay conexión con el sistema. Verifique el comando 'conectar'.",
-            2: "Falla: El sistema está inactivo. Verifique que los motores estén encendidos."
+            1: "Falla: No hay conexion con el sistema. Verifique el comando 'conectar'.",
+            2: "Falla: El sistema esta inactivo. Verifique que los motores esten encendidos."
         }
-        self.mensaje = mensajes.get(tipo, "Error de conexión desconocido.")
+        self.mensaje = mensajes.get(tipo, "Error de conexion desconocido.")
 
     def __str__(self):
         return self.mensaje
@@ -13,11 +13,11 @@ class ErrorDeConexion(Exception):
 class ErrorDeParametros(Exception):
     def __init__(self, tipo):
         mensajes = {
-            1: "Parámetros fuera de los límites aceptados.",
-            2: "Número de parámetros incorrecto. Use 'ayuda <comando>' para más información.",
-            3: "Parámetros inválidos. Use 'ayuda <comando>' para más información."
+            1: "Parametros fuera de los limites aceptados.",
+            2: "Numero de parametros incorrecto. Use 'ayuda <comando>' para mas informacion.",
+            3: "Parametros invalidos. Use 'ayuda <comando>' para mas informacion."
         }
-        self.mensaje = mensajes.get(tipo, "Error de parámetros.")
+        self.mensaje = mensajes.get(tipo, "Error de parametros.")
 
     def __str__(self):
         return self.mensaje
@@ -26,14 +26,14 @@ class ErrorDeParametros(Exception):
 class ErrorDeEstado(Exception):
     def __init__(self, tipo):
         mensajes = {
-            1: "Los motores ya están apagados.",
-            2: "Los motores ya están encendidos.",
-            3: "La conexión ya está activa.",
-            4: "La conexión ya está inactiva.",
-            5: "El efector ya está activado.",
-            6: "El efector ya está desactivado.",
-            7: "El robot ya está en modo aprendizaje.",
-            8: "El robot no está en modo aprendizaje.",
+            1: "Los motores ya estan apagados.",
+            2: "Los motores ya estan encendidos.",
+            3: "La conexión ya esta activa.",
+            4: "La conexión ya esta inactiva.",
+            5: "El efector ya esta activado.",
+            6: "El efector ya esta desactivado.",
+            7: "El robot ya esta en modo aprendizaje.",
+            8: "El robot no esta en modo aprendizaje.",
             9: "No se puede ejecutar en modo aprendizaje activo."
         }
         self.mensaje = mensajes.get(tipo, "Error de estado.")

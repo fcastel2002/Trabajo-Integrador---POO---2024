@@ -14,7 +14,7 @@ public:
     string solicitarComando();
     string solicitarUsuario();
     string solicitarClave();
-    vector<string> solicitarParametros(const string& comando);
+    vector<vector<string>> solicitarParametros(const string& comando);
 };
 
 #endif // INTERFAZ_H

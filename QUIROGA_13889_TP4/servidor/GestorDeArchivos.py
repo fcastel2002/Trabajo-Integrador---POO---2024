@@ -46,3 +46,10 @@ class GestorDeArchivos:
         with open(self.nombre_archivo, "r") as archivo:
             lineas = archivo.readlines()
             return lineas
+        
+    def escribir_archivo(self, linea):
+        try:
+            with open(self.nombre_archivo, "a") as archivo:
+                archivo.write(linea + "\n")
+        except Exception:
+            raise ErrorArchivos(1)
