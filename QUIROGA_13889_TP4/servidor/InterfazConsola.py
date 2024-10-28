@@ -185,7 +185,8 @@ class InterfazConsola:
 
     def iniciar_servidor_rpc(self):
         if self.servidor_activado is False:
-            self.rpc_server.iniciar()  # Inicia el servidor en un hilo separado
+            msj = self.rpc_server.iniciar()  # Inicia el servidor en un hilo separado
+            print(msj)
             self.logger.registrar_log("iniciar_servidor_rpc", "127.0.0.1", "consola_local", True)
             self.servidor_activado = True
         else:
@@ -193,8 +194,8 @@ class InterfazConsola:
 
     def detener_servidor_rpc(self):
         if self.servidor_activado is not False:
-            self.rpc_server.disconnect()
-            print("Servidor RPC detenido\n")
+            msj = self.rpc_server.disconnect()
+            print(msj)
             self.logger.registrar_log("detener_servidor_rpc", "127.0.0.1", "consola_local", True)
             self.servidor_activado = False
         else:
