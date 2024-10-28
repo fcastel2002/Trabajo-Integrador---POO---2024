@@ -24,6 +24,6 @@ class Logger:
 
                 escritor_csv.writerow(log_entrada)
         except IOError as e:
-            print(f"Error al abrir o escribir en el {self.nombre_archivo}: {e}")
+            return f"Error al abrir o escribir en el {self.nombre_archivo}: {e}"
         except Exception as e:
-            print(f"Error general al registrar en el log: {e}")
+            return f"Error general al registrar en el log: {e}"
