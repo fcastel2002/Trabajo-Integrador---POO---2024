@@ -163,7 +163,6 @@ class ControladorRobot:
 
         if archivo is not None:
             comandos = archivo
-            print(comandos)
             archivo_control_automatico = GestorDeArchivos("ArchivoRecibido.txt")
         else:
             archivo_control_automatico = GestorDeArchivos(f"{nombre_archivo}.txt")

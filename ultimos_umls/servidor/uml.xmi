@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<XMI verified="false" xmi.version="1.2" timestamp="2024-10-27T23:56:53" xmlns:UML="http://schema.omg.org/spec/UML/1.4">
+<XMI verified="false" xmi.version="1.2" timestamp="2024-10-28T00:12:25" xmlns:UML="http://schema.omg.org/spec/UML/1.4">
  <XMI.header>
   <XMI.documentation>
    <XMI.exporter>umbrello uml modeller http://umbrello.kde.org</XMI.exporter>
@@ -238,126 +238,30 @@
           <UML:Parameter visibility="private" isSpecification="false" xmi.id="uV6rm2Fm8EZq1" type="uRLEzRRdZbkFe" value="None" name="robot"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u1suJKoTogaSf" comment="        Comandos disponibles y su sintaxis:&#xa;        - Conectar al Robot: conectar(usuario, clave)&#xa;        - Desconectar del Robot: desconectar(usuario, clave)&#xa;        - Activar Motores: activar_motores(usuario, clave)&#xa;        - Desactivar Motores: desactivar_motores(usuario, clave)&#xa;        - Mover Efector Final (con Velocidad): mover_efector(usuario, clave, x, y, z, velocidad)&#xa;        - Mover Efector Final (solo PosiciÃ³n): mover_efector_posicion(usuario, clave, x, y, z)&#xa;        - Homming: homming(usuario, clave)&#xa;        - EjecuciÃ³n AutomÃ¡tica: ejecutar_automatico(usuario, clave, nombre_archivo)&#xa;        - Reportar PosiciÃ³n Actual: reportar_posicion(usuario, clave)&#xa;        - Cambiar a Modo Absoluto: modo_absoluto(usuario, clave)&#xa;        - Cambiar a Modo Relativo: modo_relativo(usuario, clave)&#xa;        - Activar Efector: activar_efector(usuario, clave)&#xa;        - Desactivar Efector: desactivar_efector(usuario, clave)&#xa;        Ejemplo:&#xa;        Para conectar el robot:&#xa;        conectar(&quot;admin&quot;, &quot;clave123&quot;)&#xa;" isOverride="false" name="mostrar_ayuda" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uFiA4CXtFThZR" type="uPrRdGdQegep2"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="usvnySXQSp4cy" comment=" Cambiar tipo de movimiento de acuerdo al estado actual Mostrar &quot;Activar/Desactivar Motores&quot; Mostrar solo la opciÃ³n vÃ¡lida para el efector Funciones para interactuar con el robot y servidor" isOverride="false" name="iniciar" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uPvkne0e0qk7V" type="uPrRdGdQegep2"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uZDXrCj85sKlK" isOverride="false" name="conectar_robot" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uyGqpaaJGYqH5" type="uPrRdGdQegep2"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uWeKdTuUH7boG" isOverride="false" name="desconectar_robot" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="utsjA9Q3VLDhw" type="uPrRdGdQegep2"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uaBG1RYhrzbHi" comment=" Inicia el servidor en un hilo separado" isOverride="false" name="iniciar_servidor_rpc" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uop2EYEFbIZvJ" type="uPrRdGdQegep2"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u2qyBXAtrQDkC" isOverride="false" name="detener_servidor_rpc" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uOpOb3ynYaMEZ" type="uPrRdGdQegep2"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uOfH5irrUDCGj" isOverride="false" name="activar_motores" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="u440x4vOqG8Pm" type="uPrRdGdQegep2"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uYu73eCHqTToA" comment=" Listar los comandos disponibles" isOverride="false" name="desactivar_motores" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="ubFV6Ab7A5mIV" type="uPrRdGdQegep2"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uEhsDUo2idYQJ" comment=" Mostrar y editar los parÃ¡metros de conexiÃ³n" isOverride="false" name="listar_comandos" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="usj1YyFDtvpSt" type="uPrRdGdQegep2"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uijEckmFh3rkA" comment=" Cargar parÃ¡metros desde el archivo JSON Actualizar el archivo de configuraciÃ³n" isOverride="false" name="mostrar_editar_parametros" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="udOEcI3K0G84a" type="uPrRdGdQegep2"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uvbmvj3W01lit" isOverride="false" name="modo_absoluto" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uruY6uGYDEBga" type="uPrRdGdQegep2"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="upcyYNsiC88o6" isOverride="false" name="modo_relativo" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uf8mXYNbujl6A" type="uPrRdGdQegep2"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ubno02GEcPRLO" isOverride="false" name="mover_efector" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uL8P2mUyPy2tt" type="uPrRdGdQegep2"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="udGvCnfUlAsvJ" isOverride="false" name="mover_efector_posicion" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uG0V6UBTBOPte" type="uPrRdGdQegep2"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="urLUQQULvO9f1" isOverride="false" name="realizar_homming" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="u6D0b2MKal0kI" type="uPrRdGdQegep2"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ur7JhnwYUeIxv" isOverride="false" name="aprendizaje" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uPzjJmIHCBJeK" type="uPrRdGdQegep2"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uvhLNwATsCyEr" isOverride="false" name="ejecutar_automatico" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uwEwKNcyJOnPC" type="uPrRdGdQegep2"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ubO5Djb7zPqIu" isOverride="false" name="reportar_estado" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uJ5rutV6jHZvS" type="uPrRdGdQegep2"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uwR1YNQw4yFRC" isOverride="false" name="reportar_posicion" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uTSKwMFx1QDnp" type="uPrRdGdQegep2"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uHxjVpyyRgzeN" isOverride="false" name="activar_efector" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uzh1qrceRC5rW" type="uPrRdGdQegep2"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uVN1FQENzwfu1" isOverride="false" name="desactivar_efector" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uDmoHD1HaQe9G" type="uPrRdGdQegep2"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u0pRoruZwth8e" comment="FunciÃ³n para mostrar las Ãºltimas 100 lÃ­neas del log de trabajo (solo para admin) AquÃ­ podemos agregar validaciÃ³n si queremos restringirlo a ciertos usuarios" isOverride="false" name="mostrar_log_admin" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="u53taquoFbWqM" type="uPrRdGdQegep2"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uWFG8wcwXY9yt" isOverride="false" name="cambiar_modo_trabajo" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uO7vEulQ39tsm" type="uPrRdGdQegep2"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uiV8Jl3gSNST5" comment=" Desactivar el modo de aprendizaje si estÃ¡ activo Desactivar el modo de aprendizaje Cerrar el servidor RPC si estÃ¡ activo" isOverride="false" name="salir" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uOgGEPRvNrDfu" type="uPrRdGdQegep2"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u1suJKoTogaSf" comment="        Comandos disponibles y su sintaxis:&#xa;        - Conectar al Robot: conectar(usuario, clave)&#xa;        - Desconectar del Robot: desconectar(usuario, clave)&#xa;        - Activar Motores: activar_motores(usuario, clave)&#xa;        - Desactivar Motores: desactivar_motores(usuario, clave)&#xa;        - Mover Efector Final (con Velocidad): mover_efector(usuario, clave, x, y, z, velocidad)&#xa;        - Mover Efector Final (solo PosiciÃ³n): mover_efector_posicion(usuario, clave, x, y, z)&#xa;        - Homming: homming(usuario, clave)&#xa;        - EjecuciÃ³n AutomÃ¡tica: ejecutar_automatico(usuario, clave, nombre_archivo)&#xa;        - Reportar PosiciÃ³n Actual: reportar_posicion(usuario, clave)&#xa;        - Cambiar a Modo Absoluto: modo_absoluto(usuario, clave)&#xa;        - Cambiar a Modo Relativo: modo_relativo(usuario, clave)&#xa;        - Activar Efector: activar_efector(usuario, clave)&#xa;        - Desactivar Efector: desactivar_efector(usuario, clave)&#xa;        Ejemplo:&#xa;        Para conectar el robot:&#xa;        conectar(&quot;admin&quot;, &quot;clave123&quot;)&#xa;" isOverride="false" name="mostrar_ayuda" isInline="false" isVirtual="false"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="usvnySXQSp4cy" comment=" Cambiar tipo de movimiento de acuerdo al estado actual Mostrar &quot;Activar/Desactivar Motores&quot; Mostrar solo la opciÃ³n vÃ¡lida para el efector Funciones para interactuar con el robot y servidor" isOverride="false" name="iniciar" isInline="false" isVirtual="false"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uZDXrCj85sKlK" isOverride="false" name="conectar_robot" isInline="false" isVirtual="false"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uWeKdTuUH7boG" isOverride="false" name="desconectar_robot" isInline="false" isVirtual="false"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uaBG1RYhrzbHi" comment=" Inicia el servidor en un hilo separado" isOverride="false" name="iniciar_servidor_rpc" isInline="false" isVirtual="false"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u2qyBXAtrQDkC" isOverride="false" name="detener_servidor_rpc" isInline="false" isVirtual="false"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uOfH5irrUDCGj" isOverride="false" name="activar_motores" isInline="false" isVirtual="false"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uYu73eCHqTToA" comment=" Listar los comandos disponibles" isOverride="false" name="desactivar_motores" isInline="false" isVirtual="false"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uEhsDUo2idYQJ" comment=" Mostrar y editar los parÃ¡metros de conexiÃ³n" isOverride="false" name="listar_comandos" isInline="false" isVirtual="false"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uijEckmFh3rkA" comment=" Cargar parÃ¡metros desde el archivo JSON Actualizar el archivo de configuraciÃ³n" isOverride="false" name="mostrar_editar_parametros" isInline="false" isVirtual="false"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uvbmvj3W01lit" isOverride="false" name="modo_absoluto" isInline="false" isVirtual="false"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="upcyYNsiC88o6" isOverride="false" name="modo_relativo" isInline="false" isVirtual="false"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ubno02GEcPRLO" isOverride="false" name="mover_efector" isInline="false" isVirtual="false"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="udGvCnfUlAsvJ" isOverride="false" name="mover_efector_posicion" isInline="false" isVirtual="false"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="urLUQQULvO9f1" isOverride="false" name="realizar_homming" isInline="false" isVirtual="false"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ur7JhnwYUeIxv" isOverride="false" name="aprendizaje" isInline="false" isVirtual="false"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uvhLNwATsCyEr" isOverride="false" name="ejecutar_automatico" isInline="false" isVirtual="false"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ubO5Djb7zPqIu" isOverride="false" name="reportar_estado" isInline="false" isVirtual="false"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uwR1YNQw4yFRC" isOverride="false" name="reportar_posicion" isInline="false" isVirtual="false"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uHxjVpyyRgzeN" isOverride="false" name="activar_efector" isInline="false" isVirtual="false"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uVN1FQENzwfu1" isOverride="false" name="desactivar_efector" isInline="false" isVirtual="false"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u0pRoruZwth8e" comment="FunciÃ³n para mostrar las Ãºltimas 100 lÃ­neas del log de trabajo (solo para admin) AquÃ­ podemos agregar validaciÃ³n si queremos restringirlo a ciertos usuarios" isOverride="false" name="mostrar_log_admin" isInline="false" isVirtual="false"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uWFG8wcwXY9yt" isOverride="false" name="cambiar_modo_trabajo" isInline="false" isVirtual="false"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uiV8Jl3gSNST5" comment=" Desactivar el modo de aprendizaje si estÃ¡ activo Desactivar el modo de aprendizaje Cerrar el servidor RPC si estÃ¡ activo" isOverride="false" name="salir" isInline="false" isVirtual="false"/>
        </UML:Classifier.feature>
       </UML:Class>
       <UML:Class visibility="public" isSpecification="false" namespace="Logical_View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uNKkoN9yOXYWq" name="Logger">
@@ -549,69 +453,69 @@
      </UML:Namespace.ownedElement>
      <XMI.extension xmi.extender="umbrello">
       <diagrams resolution="120">
-       <diagram showopsig="1" linecolor="#ff0000" snapx="25" showattribassocs="1" snapy="25" linewidth="0" showattsig="1" textcolor="#000000" isopen="1" showpackage="1" showpubliconly="0" showstereotype="1" name="class diagram" font="Sans Serif,9,-1,0,50,0,0,0,0,0" canvasheight="2544.23" canvaswidth="6036.44" localid="-1" snapcsgrid="0" showgrid="0" showops="1" griddotcolor="#d3d3d3" backgroundcolor="#ffffff" usefillcolor="1" fillcolor="#ffff00" zoom="100" xmi.id="uF4wqR1fCTud0" documentation="" showscope="1" snapgrid="0" showatts="1" type="1">
+       <diagram showopsig="1" linecolor="#ff0000" snapx="25" showattribassocs="1" snapy="25" linewidth="0" showattsig="1" textcolor="#000000" isopen="1" showpackage="1" showpubliconly="0" showstereotype="1" name="class diagram" font="Sans Serif,9,-1,0,50,0,0,0,0,0" canvasheight="2523.2" canvaswidth="6026.22" localid="-1" snapcsgrid="0" showgrid="0" showops="1" griddotcolor="#d3d3d3" backgroundcolor="#ffffff" usefillcolor="1" fillcolor="#ffff00" zoom="100" xmi.id="uF4wqR1fCTud0" documentation="" showscope="1" snapgrid="0" showatts="1" type="1">
         <widgets>
-         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" textcolor="#000000" showoperations="1" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="258.559" showattsigs="601" showstereotype="1" y="604.758" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uosyF8ptJe9LS" width="532" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="ukfYyI3xmVvtn" autoresize="1" showscope="1" height="544" showopsigs="601"/>
+         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" textcolor="#000000" showoperations="1" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="104.114" showattsigs="601" showstereotype="1" y="366.98" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uosyF8ptJe9LS" width="532" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="ukfYyI3xmVvtn" autoresize="1" showscope="1" height="544" showopsigs="601"/>
          <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" textcolor="#000000" showoperations="1" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="-231.689" showattsigs="601" showstereotype="1" y="-352" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uSRPXEA9kUeG7" width="687" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="uuLksuhEWqmmE" autoresize="1" showscope="1" height="85" showopsigs="601"/>
          <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" textcolor="#000000" showoperations="1" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="-234.03" showattsigs="601" showstereotype="1" y="-247.649" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uFpY3px9oUicY" width="1000" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="ubm9QLTQzkLWF" autoresize="1" showscope="1" height="85" showopsigs="601"/>
          <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" textcolor="#000000" showoperations="1" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="-230.445" showattsigs="601" showstereotype="1" y="-141.468" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uXWhvchDfIBEP" width="1000" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="uuLZrycWXi9fy" autoresize="1" showscope="1" height="85" showopsigs="601"/>
          <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" textcolor="#000000" showoperations="1" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="-232.568" showattsigs="601" showstereotype="1" y="-37.0787" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uOLXWuxa6ZNuD" width="1000" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="ulcKvtLCcWviT" autoresize="1" showscope="1" height="85" showopsigs="601"/>
-         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" textcolor="#000000" showoperations="1" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="17.865" showattsigs="601" showstereotype="1" y="162.745" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uy1Y4heIZzwPU" width="323" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="upns4gi9sIYQP" autoresize="1" showscope="1" height="187" showopsigs="601"/>
-         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" textcolor="#000000" showoperations="1" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="-504.146" showattsigs="601" showstereotype="1" y="454.4" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uamKlEUBWqQBM" width="399" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="uodjzqyiHBEeg" autoresize="1" showscope="1" height="663" showopsigs="601"/>
-         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" textcolor="#000000" showoperations="1" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="-760.818" showattsigs="601" showstereotype="1" y="206.383" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uS0QzFBMwQ3bN" width="517" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="uNKkoN9yOXYWq" autoresize="1" showscope="1" height="68" showopsigs="601"/>
-         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" textcolor="#000000" showoperations="1" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="-1418.44" showattsigs="601" showstereotype="1" y="599.909" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uyKFmwacFBmiq" width="700" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="uIILb6TXadWqx" autoresize="1" showscope="1" height="306" showopsigs="601"/>
+         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" textcolor="#000000" showoperations="1" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="-6.57944" showattsigs="601" showstereotype="1" y="148.3" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uy1Y4heIZzwPU" width="323" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="upns4gi9sIYQP" autoresize="1" showscope="1" height="187" showopsigs="601"/>
+         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" textcolor="#000000" showoperations="1" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="-454.146" showattsigs="601" showstereotype="1" y="307.733" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uamKlEUBWqQBM" width="399" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="uodjzqyiHBEeg" autoresize="1" showscope="1" height="663" showopsigs="601"/>
+         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" textcolor="#000000" showoperations="1" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="-899.707" showattsigs="601" showstereotype="1" y="181.938" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uS0QzFBMwQ3bN" width="517" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="uNKkoN9yOXYWq" autoresize="1" showscope="1" height="68" showopsigs="601"/>
+         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" textcolor="#000000" showoperations="1" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="-1226.22" showattsigs="601" showstereotype="1" y="438.798" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uyKFmwacFBmiq" width="700" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="uIILb6TXadWqx" autoresize="1" showscope="1" height="306" showopsigs="601"/>
          <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" textcolor="#000000" showoperations="1" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="-469.159" showattsigs="601" showstereotype="1" y="-172.371" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uOoOjh3X10kSu" width="82" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="uhNrIx6xNKxJy" autoresize="1" showscope="1" height="33" showopsigs="601"/>
         </widgets>
         <messages/>
         <associations>
          <assocwidget linecolor="#ff0000" indexa="1" usesdiagramfillcolor="1" widgetbid="upns4gi9sIYQP" indexb="1" linewidth="0" seqnum="" textcolor="none" usesdiagramusefillcolor="1" totalcounta="2" totalcountb="2" widgetaid="ukfYyI3xmVvtn" font="Sans Serif,9,-1,0,50,0,0,0,0,0" visibilityA="0" visibilityB="0" localid="u2zYCVkBZ5y1p" usefillcolor="1" fillcolor="none" changeabilityA="900" xmi.id="uyoKvdtQ2KeNq" changeabilityB="900" autoresize="1" type="510">
           <linepath layout="Direct">
-           <startpoint startx="340.865" starty="604.758"/>
-           <endpoint endx="340.865" endy="349.745"/>
+           <startpoint startx="316.421" starty="366.98"/>
+           <endpoint endx="316.421" endy="335.3"/>
           </linepath>
-          <floatingtext linecolor="#ff0000" usesdiagramfillcolor="1" linewidth="0" textcolor="none" usesdiagramusefillcolor="1" x="159" showstereotype="1" y="303.5" text="archivo_ordenes_ejecutadas" font="MS Shell Dlg 2,7.5,-1,5,50,0,0,0,0,0" localid="uLW5MTvN3wGHh" pretext="+" role="710" width="142" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="uuFg6PBem1ptn" autoresize="1" height="16"/>
+          <floatingtext linecolor="#ff0000" usesdiagramfillcolor="1" linewidth="0" textcolor="none" usesdiagramusefillcolor="1" x="131" showstereotype="1" y="290.5" text="archivo_ordenes_ejecutadas" font="MS Shell Dlg 2,7.5,-1,5,50,0,0,0,0,0" localid="uLW5MTvN3wGHh" pretext="+" role="710" width="142" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="uuFg6PBem1ptn" autoresize="1" height="16"/>
          </assocwidget>
          <assocwidget linecolor="#ff0000" indexa="1" usesdiagramfillcolor="1" widgetbid="upns4gi9sIYQP" indexb="1" linewidth="0" seqnum="" textcolor="none" usesdiagramusefillcolor="1" totalcounta="2" totalcountb="2" widgetaid="ukfYyI3xmVvtn" font="Sans Serif,9,-1,0,50,0,0,0,0,0" visibilityA="0" visibilityB="0" localid="ufjtzD3gErX4J" usefillcolor="1" fillcolor="none" changeabilityA="900" xmi.id="ujTeoExZ4sN8y" changeabilityB="900" autoresize="1" type="510">
           <linepath layout="Direct">
-           <startpoint startx="340.865" starty="604.758"/>
-           <endpoint endx="340.865" endy="349.745"/>
+           <startpoint startx="316.421" starty="366.98"/>
+           <endpoint endx="316.421" endy="335.3"/>
           </linepath>
-          <floatingtext linecolor="#ff0000" usesdiagramfillcolor="1" linewidth="0" textcolor="none" usesdiagramusefillcolor="1" x="163" showstereotype="1" y="303.5" text="archivo_ordenes_solicitadas" font="MS Shell Dlg 2,7.5,-1,5,50,0,0,0,0,0" localid="uSoLls9exFGv0" pretext="+" role="710" width="139" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="uUK6AGMbBFdtp" autoresize="1" height="16"/>
+          <floatingtext linecolor="#ff0000" usesdiagramfillcolor="1" linewidth="0" textcolor="none" usesdiagramusefillcolor="1" x="135" showstereotype="1" y="290.5" text="archivo_ordenes_solicitadas" font="MS Shell Dlg 2,7.5,-1,5,50,0,0,0,0,0" localid="uSoLls9exFGv0" pretext="+" role="710" width="139" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="uUK6AGMbBFdtp" autoresize="1" height="16"/>
          </assocwidget>
          <assocwidget linecolor="#ff0000" indexa="1" usesdiagramfillcolor="1" widgetbid="ukfYyI3xmVvtn" indexb="1" linewidth="0" seqnum="" textcolor="none" usesdiagramusefillcolor="1" totalcounta="2" totalcountb="2" widgetaid="uodjzqyiHBEeg" font="Sans Serif,9,-1,0,50,0,0,0,0,0" visibilityA="0" visibilityB="0" localid="uuazJwhtywBiJ" usefillcolor="1" fillcolor="none" changeabilityA="900" xmi.id="u2PPSaJNQmFgk" changeabilityB="900" autoresize="1" type="510">
           <linepath layout="Direct">
-           <startpoint startx="-105.146" starty="1049.06"/>
-           <endpoint endx="258.559" endy="1049.06"/>
+           <startpoint startx="-55.1458" starty="906.536"/>
+           <endpoint endx="104.114" endy="906.536"/>
           </linepath>
-          <floatingtext linecolor="#ff0000" usesdiagramfillcolor="1" linewidth="0" textcolor="none" usesdiagramusefillcolor="1" x="181" showstereotype="1" y="742" text="robot" font="MS Shell Dlg 2,7.5,-1,5,50,0,0,0,0,0" localid="u81iEg66RHuR8" pretext="+" role="710" width="40" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="uzEvsmY7Akpek" autoresize="1" height="16"/>
+          <floatingtext linecolor="#ff0000" usesdiagramfillcolor="1" linewidth="0" textcolor="none" usesdiagramusefillcolor="1" x="42" showstereotype="1" y="614" text="robot" font="MS Shell Dlg 2,7.5,-1,5,50,0,0,0,0,0" localid="u81iEg66RHuR8" pretext="+" role="710" width="40" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="uzEvsmY7Akpek" autoresize="1" height="16"/>
          </assocwidget>
          <assocwidget linecolor="#ff0000" indexa="1" usesdiagramfillcolor="1" widgetbid="upns4gi9sIYQP" indexb="1" linewidth="0" seqnum="" textcolor="none" usesdiagramusefillcolor="1" totalcounta="2" totalcountb="2" widgetaid="uodjzqyiHBEeg" font="Sans Serif,9,-1,0,50,0,0,0,0,0" visibilityA="0" visibilityB="0" localid="umg0o8pjiP8JN" usefillcolor="1" fillcolor="none" changeabilityA="900" xmi.id="u04fe4qaPa4c8" changeabilityB="900" autoresize="1" type="510">
           <linepath layout="Direct">
-           <startpoint startx="-105.146" starty="454.4"/>
-           <endpoint endx="17.865" endy="349.745"/>
+           <startpoint startx="-55.1458" starty="331.967"/>
+           <endpoint endx="-6.57944" endy="331.967"/>
           </linepath>
-          <floatingtext linecolor="#ff0000" usesdiagramfillcolor="1" linewidth="0" textcolor="none" usesdiagramusefillcolor="1" x="-62" showstereotype="1" y="283" text="gestor_logs" font="MS Shell Dlg 2,7.5,-1,5,50,0,0,0,0,0" localid="uQt7xkcJxJ1J1" pretext="+" role="710" width="66" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="utc1qGb5czUju" autoresize="1" height="16"/>
+          <floatingtext linecolor="#ff0000" usesdiagramfillcolor="1" linewidth="0" textcolor="none" usesdiagramusefillcolor="1" x="-84" showstereotype="1" y="267" text="gestor_logs" font="MS Shell Dlg 2,7.5,-1,5,50,0,0,0,0,0" localid="uQt7xkcJxJ1J1" pretext="+" role="710" width="66" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="utc1qGb5czUju" autoresize="1" height="16"/>
          </assocwidget>
          <assocwidget linecolor="#ff0000" indexa="1" usesdiagramfillcolor="1" widgetbid="uNKkoN9yOXYWq" indexb="1" linewidth="0" seqnum="" textcolor="none" usesdiagramusefillcolor="1" totalcounta="2" totalcountb="2" widgetaid="uodjzqyiHBEeg" font="Sans Serif,9,-1,0,50,0,0,0,0,0" visibilityA="0" visibilityB="0" localid="uSssEAKv9h7o2" usefillcolor="1" fillcolor="none" changeabilityA="900" xmi.id="uy4OPvKbazKgV" changeabilityB="900" autoresize="1" type="510">
           <linepath layout="Direct">
-           <startpoint startx="-494.969" starty="454.4"/>
-           <endpoint endx="-494.969" endy="274.383"/>
+           <startpoint startx="-454.146" starty="307.733"/>
+           <endpoint endx="-454.146" endy="249.938"/>
           </linepath>
-          <floatingtext linecolor="#ff0000" usesdiagramfillcolor="1" linewidth="0" textcolor="none" usesdiagramusefillcolor="1" x="-548.646" showstereotype="1" y="748" text="logger" font="MS Shell Dlg 2,7.5,-1,5,50,0,0,0,0,0" localid="u68miSA3XeB9H" pretext="+" role="710" width="44" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="uqisdDi4BSzeV" autoresize="1" height="16"/>
+          <floatingtext linecolor="#ff0000" usesdiagramfillcolor="1" linewidth="0" textcolor="none" usesdiagramusefillcolor="1" x="-512.646" showstereotype="1" y="726" text="logger" font="MS Shell Dlg 2,7.5,-1,5,50,0,0,0,0,0" localid="u68miSA3XeB9H" pretext="+" role="710" width="44" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="uqisdDi4BSzeV" autoresize="1" height="16"/>
          </assocwidget>
          <assocwidget linecolor="#ff0000" indexa="1" usesdiagramfillcolor="1" widgetbid="uNKkoN9yOXYWq" indexb="1" linewidth="0" seqnum="" textcolor="none" usesdiagramusefillcolor="1" totalcounta="2" totalcountb="2" widgetaid="uIILb6TXadWqx" font="Sans Serif,9,-1,0,50,0,0,0,0,0" visibilityA="0" visibilityB="0" localid="u43BlAG6qBK30" usefillcolor="1" fillcolor="none" changeabilityA="900" xmi.id="uDaBUMmca2c9O" changeabilityB="900" autoresize="1" type="510">
           <linepath layout="Direct">
-           <startpoint startx="-760.818" starty="599.909"/>
-           <endpoint endx="-760.818" endy="274.383"/>
+           <startpoint startx="-760.818" starty="438.798"/>
+           <endpoint endx="-760.818" endy="249.938"/>
           </linepath>
-          <floatingtext linecolor="#ff0000" usesdiagramfillcolor="1" linewidth="0" textcolor="none" usesdiagramusefillcolor="1" x="-789.646" showstereotype="1" y="278.557" text="logger" font="MS Shell Dlg 2,7.5,-1,5,50,0,0,0,0,0" localid="u2HZAiLXKeYtV" pretext="+" role="710" width="44" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="undIsAxIafqD2" autoresize="1" height="16"/>
+          <floatingtext linecolor="#ff0000" usesdiagramfillcolor="1" linewidth="0" textcolor="none" usesdiagramusefillcolor="1" x="-789.646" showstereotype="1" y="256.557" text="logger" font="MS Shell Dlg 2,7.5,-1,5,50,0,0,0,0,0" localid="u2HZAiLXKeYtV" pretext="+" role="710" width="44" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="undIsAxIafqD2" autoresize="1" height="16"/>
          </assocwidget>
          <assocwidget linecolor="#ff0000" indexa="1" usesdiagramfillcolor="1" widgetbid="uIILb6TXadWqx" indexb="1" linewidth="0" seqnum="" textcolor="none" usesdiagramusefillcolor="1" totalcounta="2" totalcountb="2" widgetaid="uodjzqyiHBEeg" font="Sans Serif,9,-1,0,50,0,0,0,0,0" visibilityA="0" visibilityB="0" localid="uPNPz6HELxkWG" usefillcolor="1" fillcolor="none" changeabilityA="900" xmi.id="u2hkZ9cJouWJk" changeabilityB="900" autoresize="1" type="510">
           <linepath layout="Direct">
-           <startpoint startx="-504.146" starty="905.909"/>
-           <endpoint endx="-718.444" endy="905.909"/>
+           <startpoint startx="-454.146" starty="733.687"/>
+           <endpoint endx="-526.222" endy="733.687"/>
           </linepath>
-          <floatingtext linecolor="#ff0000" usesdiagramfillcolor="1" linewidth="0" textcolor="none" usesdiagramusefillcolor="1" x="4555" showstereotype="1" y="-1395.47" text="rpc_server" font="MS Shell Dlg 2,7.5,-1,5,50,0,0,0,0,0" localid="uFPHFJkdpx7LM" pretext="+" role="710" width="63" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="uphgJ2Fx0fysM" autoresize="1" height="16"/>
+          <floatingtext linecolor="#ff0000" usesdiagramfillcolor="1" linewidth="0" textcolor="none" usesdiagramusefillcolor="1" x="4737" showstereotype="1" y="-1552.47" text="rpc_server" font="MS Shell Dlg 2,7.5,-1,5,50,0,0,0,0,0" localid="uFPHFJkdpx7LM" pretext="+" role="710" width="63" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="uphgJ2Fx0fysM" autoresize="1" height="16"/>
          </assocwidget>
          <assocwidget indexa="1" linecolor="#ff0000" usesdiagramfillcolor="1" widgetbid="uhNrIx6xNKxJy" indexb="1" linewidth="0" seqnum="" textcolor="none" usesdiagramusefillcolor="1" totalcounta="2" totalcountb="2" widgetaid="ubm9QLTQzkLWF" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="u3E87MLe4KbjC" usefillcolor="1" fillcolor="none" xmi.id="uTDCuaLNJ0KDA" autoresize="1" type="500">
           <linepath layout="Direct">
