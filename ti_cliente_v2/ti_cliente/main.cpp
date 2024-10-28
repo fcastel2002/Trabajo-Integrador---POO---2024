@@ -17,7 +17,8 @@ int main() {
     try {
         // Creamos la instancia del cliente
         Cliente cliente(ip, puerto, console);
-
+		cliente.setPass(contrasena);
+		cliente.setUser(usuario); 
         // Creamos el menú principal
         MainMenu menu(cliente);
 

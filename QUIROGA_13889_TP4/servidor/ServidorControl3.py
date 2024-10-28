@@ -68,7 +68,7 @@ class ServidorControl:
             self.logger.registrar_log(comando, "127.0.0.1", usuario, True)
             
 
-            return {"resultado": resultado}
+            return resultado
 
         except Exception as e:
             # Registrar error en el log y devolver mensaje de error

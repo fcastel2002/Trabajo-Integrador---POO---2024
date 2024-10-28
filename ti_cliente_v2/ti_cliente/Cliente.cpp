@@ -8,8 +8,8 @@ Cliente::Cliente(std::string ip, int puerto, CLIMessageView& console)
 	, m_puerto(puerto)
 	, client(m_ip.c_str(), m_puerto)
 	, m_console{console}
-	, m_usuario{ "admin" }
-	, m_clave{"clave123"} {}
+	, m_usuario{ "null" }
+	, m_clave{"null"} {}
 
 
 bool Cliente::enviarComando(Orden& my_order) {
@@ -34,14 +34,12 @@ std::vector<std::string> Cliente::pedirComandos(Orden& my_order) {
 	client.execute("Interpreta_Comando", params, result);
 	interpretarRespuesta(result);
 
-	std::vector<std::string> comandos;
-	if (result.hasMember("resultado") && result["resultado"].getType() == XmlRpcValue::TypeArray) {
-		for (int i = 0; i < result["resultado"].size(); ++i) {
-			if (result["resultado"][i].getType() == XmlRpcValue::TypeString) {
-				comandos.push_back(result["resultado"][i]);
-			}
-		}
-	}
+    std::vector<std::string> comandos;
+    if (result.getType() == XmlRpcValue::TypeArray) {
+        for (int i = 0; i < result.size(); ++i) {
+            comandos.push_back(result[i]);
+        }
+    }
 
 	client.close();
 	return comandos;
