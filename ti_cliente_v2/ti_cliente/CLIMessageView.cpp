@@ -4,7 +4,7 @@
 #include <regex>
 
 // Muestra un mensaje estándar al usuario
-void CLIMessageView::mostrarMensaje(const std::string& mensaje) {
+void CLIMessageView::mostrarMensaje(std::string& mensaje) {
     clear(); // Limpia la pantalla
     mvprintw(1, 1, "Mensaje: %s", mensaje.c_str());
     refresh(); // Actualiza la pantalla
@@ -55,6 +55,7 @@ void CLIMessageView::mostrarRespuesta(XmlRpcValue& respuesta) {
 }
 // Solicita al usuario su nombre de usuario y contraseña
 std::pair<std::string, std::string> CLIMessageView::loguearse() {
+    initscr();
     clear();
     echo(); // Muestra lo que se escribe
 
@@ -75,6 +76,7 @@ std::pair<std::string, std::string> CLIMessageView::loguearse() {
 
 // Solicita al usuario la IP y el puerto
 std::pair<std::string, int> CLIMessageView::conectarse() {
+    initscr();
     clear();
     echo(); // Muestra lo que se escribe
 

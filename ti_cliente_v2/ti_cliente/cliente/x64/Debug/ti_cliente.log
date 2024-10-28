@@ -1,8 +1,2 @@
-﻿  CLIMessageView.cpp
-  Cliente.cpp
-  MainMenu.cpp
-C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\ti_cliente_v2\ti_cliente\MainMenu.cpp(68,17): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  main.cpp
-C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\ti_cliente_v2\ti_cliente\main.cpp(17,25): error C2065: 'ip': undeclared identifier
-C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\ti_cliente_v2\ti_cliente\main.cpp(17,29): error C2065: 'puerto': undeclared identifier
-  Generating Code...
+﻿  Cliente.cpp
+  ti_cliente.vcxproj -> C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\ti_cliente_v2\ti_cliente\x64\Debug\cliente.exe

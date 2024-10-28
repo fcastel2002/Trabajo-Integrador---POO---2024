@@ -11,20 +11,14 @@ MainMenu::MainMenu(Cliente& cliente) : cliente(cliente) {
 // Inicializa la pantalla para PDCurses
 void MainMenu::inicializarPantalla() {
     initscr();               // Inicializa PDCurses
+	refresh();			   // Refresca la pantalla
     noecho();                // No muestra lo que se escribe
     curs_set(FALSE);         // Oculta el cursor
     keypad(stdscr, TRUE);    // Habilita teclas especiales (como las flechas)
 
     // Habilita el redimensionamiento de la ventana
     
-    // Crear la ventana auxiliar para depuración
-    int height = 10; // Altura de la ventana de depuración
-    int width = COLS; // Ancho de la ventana de depuración
-    int starty = LINES - height; // Posición Y de inicio
-    int startx = 0; // Posición X de inicio
-    debugWin = newwin(height, width, starty, startx);
-    scrollok(debugWin, TRUE); // Habilitar el scroll en la ventana de depuración
-     
+
 
 
     if (has_key(KEY_RESIZE)) {
@@ -34,7 +28,6 @@ void MainMenu::inicializarPantalla() {
 
 // Termina el uso de PDCurses
 void MainMenu::terminarPantalla() {
-	delwin(debugWin);        // Elimina la ventana de depuración
     endwin();                // Termina PDCurses
 }
 
@@ -43,7 +36,6 @@ void MainMenu::setComandos(const std::vector<std::string>& comandos) {
 }
 
 void MainMenu::mostrarMenu() {
-    refresh();
                 // Inicia la interfaz de PDCurses
     /*
     std::string opciones[] = {
@@ -127,21 +119,7 @@ Orden MainMenu::crearOrden(const std::string& comando) {
     parametros[0][0] = cliente.getUser();
     parametros[1][0] = cliente.getPass();
     parametros[2][0] = comando;
-    /*
-    for (int i = 0; i < 3; i++) {
-        clear();
-        echo();
-        mvprintw(1, 1, "Ingrese el parametro %d: ", i + 1);
-        char buffer[100];
-        getstr(buffer);
-        std::string param{ buffer };
-        if (param.empty()) {
-            break;
-        }
-        parametros.push_back(param);
-    }
-    noecho();
-    */
+ 
     if (parametros[2][0] == "conectar") {
         const int cantidad = 2;
         clear();
