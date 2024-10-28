@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<XMI verified="false" xmi.version="1.2" timestamp="2024-10-28T00:12:25" xmlns:UML="http://schema.omg.org/spec/UML/1.4">
+<XMI verified="false" xmi.version="1.2" timestamp="2024-10-28T00:37:25" xmlns:UML="http://schema.omg.org/spec/UML/1.4">
  <XMI.header>
   <XMI.documentation>
    <XMI.exporter>umbrello uml modeller http://umbrello.kde.org</XMI.exporter>
@@ -63,14 +63,13 @@
         <UML:Attribute visibility="public" isSpecification="false" xmi.id="u9zI1pwsyURHi" type="ul6zWlwDvxNA2" comment="Nueva variable para controlar el estado del homming Almacenar cuando se inicia la actividad Contador de Ã³rdenes solicitadas Almacenar Ã³rdenes que produjeron errores" initialValue="[]" name="errores"/>
         <UML:Operation stereotype="constructor" visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uKn6Ime9Ze7Wt" comment=" Nueva variable para controlar el estado del homming Almacenar cuando se inicia la actividad Contador de Ã³rdenes solicitadas Almacenar Ã³rdenes que produjeron errores" isOverride="false" name="__init__" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="ulWsDHauCGSG5" type="uPrRdGdQegep2"/>
           <UML:Parameter visibility="private" isSpecification="false" xmi.id="u6YYUCAKZcBA5" type="uPrRdGdQegep2" value="" name="puerto_serial"/>
           <UML:Parameter visibility="private" isSpecification="false" xmi.id="ubd9aZM5hKbvM" type="uPrRdGdQegep2" value="" name="baudios"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
         <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uYUJVJVROVrGr" comment=" ConexiÃ³n ya activa Limpiar el buffer de recepciÃ³n al iniciar la conexiÃ³n Leer mensajes iniciales y descartarlos Esperar un poco para que lleguen los mensajes iniciales Descartar cualquier mensaje residual" isOverride="false" name="conectar" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="ucku6jEh3BGMe" type="uPrRdGdQegep2"/>
+          <UML:Parameter kind="return" xmi.id="ucku6jEh3BGMe" type="ul6zWlwDvxNA2"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
         <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u4VFl6sH3HSi9" comment=" ConexiÃ³n ya inactiva" isOverride="false" name="desconectar" isInline="false" isVirtual="false">
@@ -80,17 +79,17 @@
         </UML:Operation>
         <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uJgfrudxZbk8n" comment=" No hay conexiÃ³n Motores ya encendidos" isOverride="false" name="activar_motores" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uWsV7uzARE6hY" type="uPrRdGdQegep2"/>
+          <UML:Parameter kind="return" xmi.id="uWsV7uzARE6hY" type="u5RR1lmO0KGrs"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
         <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u1C5lpzNnkp7A" comment=" No hay conexiÃ³n Motores ya apagados" isOverride="false" name="desactivar_motores" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="urBVeukPaIz5G" type="uPrRdGdQegep2"/>
+          <UML:Parameter kind="return" xmi.id="urBVeukPaIz5G" type="u5RR1lmO0KGrs"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
         <UML:Operation visibility="protected" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uYOJBMDIQThvi" comment=" Limpiar el buffer de entrada antes de leer la respuesta para asegurarnos de no tener residuos de comandos anteriores Descartar cualquier mensaje residual Agregar el comando al archivo de aprendizaje si estÃ¡ activo" isOverride="false" name="registrar_comando" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="u5qAYGiZwqIRZ" type="uPrRdGdQegep2"/>
+          <UML:Parameter kind="return" xmi.id="u5qAYGiZwqIRZ" type="u5RR1lmO0KGrs"/>
           <UML:Parameter visibility="private" isSpecification="false" xmi.id="uIxSohNzENyPw" type="uPrRdGdQegep2" value="" name="comando"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
@@ -115,7 +114,7 @@
         </UML:Operation>
         <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uZRfpUi13OX8o" comment=" No hay conexiÃ³n Motores apagados" isOverride="false" name="mover_efector" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uP4wMr5KzqQdV" type="uPrRdGdQegep2"/>
+          <UML:Parameter kind="return" xmi.id="uP4wMr5KzqQdV" type="ul6zWlwDvxNA2"/>
           <UML:Parameter visibility="private" isSpecification="false" xmi.id="upV2dUUDxraUN" type="uPrRdGdQegep2" value="" name="x"/>
           <UML:Parameter visibility="private" isSpecification="false" xmi.id="u9qgJE0Yc4C9S" type="uPrRdGdQegep2" value="" name="y"/>
           <UML:Parameter visibility="private" isSpecification="false" xmi.id="uUTmyj1wPun74" type="uPrRdGdQegep2" value="" name="z"/>
@@ -124,7 +123,7 @@
         </UML:Operation>
         <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uisnNq0lk50UN" comment="Mueve el efector a una posiciÃ³n especifica, sin pedir velocidad No hay conexiÃ³n Motores apagados Usar una velocidad por defecto, por ejemplo, 1000" isOverride="false" name="mover_efector_posicion" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uzLoWchl3nkbJ" type="uPrRdGdQegep2"/>
+          <UML:Parameter kind="return" xmi.id="uzLoWchl3nkbJ" type="ul6zWlwDvxNA2"/>
           <UML:Parameter visibility="private" isSpecification="false" xmi.id="uTbbl25yUp8Re" type="uPrRdGdQegep2" value="" name="x"/>
           <UML:Parameter visibility="private" isSpecification="false" xmi.id="u7Evum4IZ9KiI" type="uPrRdGdQegep2" value="" name="y"/>
           <UML:Parameter visibility="private" isSpecification="false" xmi.id="uaWW1arxUEmBb" type="uPrRdGdQegep2" value="" name="z"/>
@@ -138,7 +137,7 @@
         </UML:Operation>
         <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uCJZOYatAXI3C" comment=" No hay conexiÃ³n Motores apagados Actualizamos el estado de homming" isOverride="false" name="homming" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uPgMTNG5qk2il" type="uPrRdGdQegep2"/>
+          <UML:Parameter kind="return" xmi.id="uPgMTNG5qk2il" type="ul6zWlwDvxNA2"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
         <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ufA6hLcZg5Lpv" comment="Mueve el efector a la posiciÃ³n de origen/descanso No hay conexiÃ³n Motores apagados Comando de retorno al origen" isOverride="false" name="mover_a_origen" isInline="false" isVirtual="false">
@@ -148,17 +147,17 @@
         </UML:Operation>
         <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uOvH6NbjdTQac" comment="Reporte la posiciÃ³n actual y el modo de coordenadas No hay conexiÃ³n" isOverride="false" name="reportar_posicion" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uKOs4vvl4I3V9" type="uPrRdGdQegep2"/>
+          <UML:Parameter kind="return" xmi.id="uKOs4vvl4I3V9" type="ul6zWlwDvxNA2"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
         <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uHapYiQbokZ6e" comment="Cambiar a modo de coordenadas absolutas No hay conexiÃ³n" isOverride="false" name="modo_absoluto" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="u3iMBxLLNdeB2" type="uPrRdGdQegep2"/>
+          <UML:Parameter kind="return" xmi.id="u3iMBxLLNdeB2" type="ul6zWlwDvxNA2"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
         <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u9oe5dSyIlqC8" comment="Cambiar a modo de coordenadas relativas No hay conexiÃ³n" isOverride="false" name="modo_relativo" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="ubvvaXzpKtiMP" type="uPrRdGdQegep2"/>
+          <UML:Parameter kind="return" xmi.id="ubvvaXzpKtiMP" type="ul6zWlwDvxNA2"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
        </UML:Classifier.feature>
@@ -168,50 +167,43 @@
         <UML:Attribute visibility="public" isSpecification="false" xmi.id="u89oFGFC1JiKo" type="uRLEzRRdZbkFe" name="nombre_archivo"/>
         <UML:Operation stereotype="constructor" visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uF9LlTUws4Ijs" isOverride="false" name="__init__" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uDVf65cair5Tk" type="uPrRdGdQegep2"/>
           <UML:Parameter visibility="private" isSpecification="false" xmi.id="uUHuJFydvZqOF" type="uPrRdGdQegep2" value="" name="nombre"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u8TGCRuzR1uHc" comment="Limpia el contenido del archivo, dejÃ¡ndolo vacÃ­o." isOverride="false" name="limpiar_archivo" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="utJCsXO4PQHeE" type="uPrRdGdQegep2"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u8TGCRuzR1uHc" comment="Limpia el contenido del archivo, dejÃ¡ndolo vacÃ­o." isOverride="false" name="limpiar_archivo" isInline="false" isVirtual="false"/>
         <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uhuEgAGQFcO7Q" comment="Guarda una lÃ­nea en el archivo." isOverride="false" name="guardar_linea" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uvMQ1mkUmbCME" type="uPrRdGdQegep2"/>
           <UML:Parameter visibility="private" isSpecification="false" xmi.id="ubYQA52ocfMUX" type="uPrRdGdQegep2" value="" name="objeto_json"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
         <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uf990DjG6z3bK" comment="Lee y deserializa el contenido JSON del archivo." isOverride="false" name="leer_contenido" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uJGI1JAzoRJoP" type="uPrRdGdQegep2"/>
+          <UML:Parameter kind="return" xmi.id="uJGI1JAzoRJoP" type="ul6zWlwDvxNA2"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
         <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uBddi3vg51Maq" comment="Cuenta el nÃºmero de lÃ­neas en el archivo." isOverride="false" name="contar_lineas" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uI3fPBt9DywnL" type="uPrRdGdQegep2"/>
+          <UML:Parameter kind="return" xmi.id="uI3fPBt9DywnL" type="uLhH2d92vgBTz"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
         <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uIKw5sVv6lLzo" comment="Lee las Ãºltimas 'n' lÃ­neas del archivo." isOverride="false" name="leer_ultimas_lineas" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uGrrzcRmoFHkj" type="uPrRdGdQegep2"/>
+          <UML:Parameter kind="return" xmi.id="uGrrzcRmoFHkj" type="ul6zWlwDvxNA2"/>
           <UML:Parameter visibility="private" isSpecification="false" xmi.id="u1ThOXgbsYREF" type="uPrRdGdQegep2" value="" name="n"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
         <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="unmtG82HfBFLu" comment="Lee el contenido de un archivo CSV y lo devuelve como una lista de listas." isOverride="false" name="leer_csv" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="u48hAVwN3SylH" type="uPrRdGdQegep2"/>
+          <UML:Parameter kind="return" xmi.id="u48hAVwN3SylH" type="ul6zWlwDvxNA2"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
         <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ugAAgIf1UgzNC" isOverride="false" name="leer_archivo" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uX7KJAd3V116d" type="uPrRdGdQegep2"/>
+          <UML:Parameter kind="return" xmi.id="uX7KJAd3V116d" type="ul6zWlwDvxNA2"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
         <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uTftQ1XaTt3rz" isOverride="false" name="escribir_archivo" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uM4AFTunbeDdA" type="uPrRdGdQegep2"/>
           <UML:Parameter visibility="private" isSpecification="false" xmi.id="ufP9TlTOKomE7" type="uPrRdGdQegep2" value="" name="linea"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
@@ -234,7 +226,6 @@
         <UML:Attribute visibility="public" isSpecification="false" xmi.id="u2hkZ9cJouWJk" type="uIILb6TXadWqx" initialValue="(self,self.robot)" name="rpc_server"/>
         <UML:Operation stereotype="constructor" visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u7cyjJyGxyTWH" isOverride="false" name="__init__" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uNwUMEZE3gHZd" type="uPrRdGdQegep2"/>
           <UML:Parameter visibility="private" isSpecification="false" xmi.id="uV6rm2Fm8EZq1" type="uRLEzRRdZbkFe" value="None" name="robot"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
@@ -269,7 +260,6 @@
         <UML:Attribute visibility="public" isSpecification="false" xmi.id="uDLjHC8RgrAHJ" type="uRLEzRRdZbkFe" name="nombre_archivo"/>
         <UML:Operation stereotype="constructor" visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uE2UrXk1XiIy0" isOverride="false" name="__init__" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uL3u4OQioP4p6" type="uPrRdGdQegep2"/>
           <UML:Parameter visibility="private" isSpecification="false" xmi.id="uXyelOPEDgCfm" type="uPrRdGdQegep2" value="&quot;log_trabajo.csv&quot;" name="nombre_archivo"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
@@ -363,7 +353,6 @@
         <UML:Attribute visibility="public" isSpecification="false" xmi.id="uhGxYKr2hSuuE" type="uQN7D2xHtlgLd" initialValue="(tipo,&quot;Error de conexion desconocido.&quot;)" name="mensaje"/>
         <UML:Operation stereotype="constructor" visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ujJfehbYN0nu3" isOverride="false" name="__init__" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uzy8MPgLbORdl" type="uPrRdGdQegep2"/>
           <UML:Parameter visibility="private" isSpecification="false" xmi.id="uW0BRPGjekkY5" type="uPrRdGdQegep2" value="" name="tipo"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
@@ -390,7 +379,6 @@
         <UML:Attribute visibility="public" isSpecification="false" xmi.id="uSH6gPbnvDHaG" type="uQN7D2xHtlgLd" initialValue="(tipo,&quot;Error de parametros.&quot;)" name="mensaje"/>
         <UML:Operation stereotype="constructor" visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uVIdEt15qHYeO" isOverride="false" name="__init__" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="udPzlkAIvt8oG" type="uPrRdGdQegep2"/>
           <UML:Parameter visibility="private" isSpecification="false" xmi.id="ucJx767Z7pgrD" type="uPrRdGdQegep2" value="" name="tipo"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
@@ -411,7 +399,6 @@
         <UML:Attribute visibility="public" isSpecification="false" xmi.id="uamCy7UHgL4Ux" type="uQN7D2xHtlgLd" initialValue="(tipo,&quot;Error de estado.&quot;)" name="mensaje"/>
         <UML:Operation stereotype="constructor" visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uXuw2mwFJfWId" isOverride="false" name="__init__" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="u8Etjw7Q5VB3B" type="uPrRdGdQegep2"/>
           <UML:Parameter visibility="private" isSpecification="false" xmi.id="us1iT9quKlsDZ" type="uPrRdGdQegep2" value="" name="tipo"/>
          </UML:BehavioralFeature.parameter>
         </UML:Operation>
@@ -432,7 +419,6 @@
         <UML:Attribute visibility="public" isSpecification="false" xmi.id="uZf6ZYuRbDSC0" type="uQN7D2xHtlgLd" initialValue="(tipo,&quot;Error de estado.&quot;)" name="mensaje"/>
         <UML:Operation stereotype="constructor" visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uA82iT7ppaaXP" isOverride="false" name="__init__" isInline="false" isVirtual="false">
          <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uol58YrHeaBiz" type="uPrRdGdQegep2"/>
           <UML:Parameter visibility="private" isSpecification="false" xmi.id="uuv21BsWFgWfN" type="uPrRdGdQegep2" value="" name="tipo"/>
           <UML:Parameter visibility="private" isSpecification="false" xmi.id="uWzzC77mGWnvC" type="uRLEzRRdZbkFe" value="None" name="nombre_archivo"/>
          </UML:BehavioralFeature.parameter>
@@ -460,7 +446,7 @@
          <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" textcolor="#000000" showoperations="1" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="-234.03" showattsigs="601" showstereotype="1" y="-247.649" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uFpY3px9oUicY" width="1000" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="ubm9QLTQzkLWF" autoresize="1" showscope="1" height="85" showopsigs="601"/>
          <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" textcolor="#000000" showoperations="1" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="-230.445" showattsigs="601" showstereotype="1" y="-141.468" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uXWhvchDfIBEP" width="1000" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="uuLZrycWXi9fy" autoresize="1" showscope="1" height="85" showopsigs="601"/>
          <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" textcolor="#000000" showoperations="1" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="-232.568" showattsigs="601" showstereotype="1" y="-37.0787" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uOLXWuxa6ZNuD" width="1000" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="ulcKvtLCcWviT" autoresize="1" showscope="1" height="85" showopsigs="601"/>
-         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" textcolor="#000000" showoperations="1" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="-6.57944" showattsigs="601" showstereotype="1" y="148.3" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uy1Y4heIZzwPU" width="323" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="upns4gi9sIYQP" autoresize="1" showscope="1" height="187" showopsigs="601"/>
+         <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" textcolor="#000000" showoperations="1" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="-6.57944" showattsigs="601" showstereotype="1" y="148.3" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uy1Y4heIZzwPU" width="275" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="upns4gi9sIYQP" autoresize="1" showscope="1" height="187" showopsigs="601"/>
          <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" textcolor="#000000" showoperations="1" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="-454.146" showattsigs="601" showstereotype="1" y="307.733" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uamKlEUBWqQBM" width="399" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="uodjzqyiHBEeg" autoresize="1" showscope="1" height="663" showopsigs="601"/>
          <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" textcolor="#000000" showoperations="1" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="-899.707" showattsigs="601" showstereotype="1" y="181.938" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uS0QzFBMwQ3bN" width="517" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="uNKkoN9yOXYWq" autoresize="1" showscope="1" height="68" showopsigs="601"/>
          <classwidget linecolor="#ff0000" usesdiagramfillcolor="0" linewidth="0" textcolor="#000000" showoperations="1" usesdiagramusefillcolor="0" showpubliconly="0" showpackage="1" x="-1226.22" showattsigs="601" showstereotype="1" y="438.798" showattributes="1" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="uyKFmwacFBmiq" width="700" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="uIILb6TXadWqx" autoresize="1" showscope="1" height="306" showopsigs="601"/>
@@ -470,17 +456,17 @@
         <associations>
          <assocwidget linecolor="#ff0000" indexa="1" usesdiagramfillcolor="1" widgetbid="upns4gi9sIYQP" indexb="1" linewidth="0" seqnum="" textcolor="none" usesdiagramusefillcolor="1" totalcounta="2" totalcountb="2" widgetaid="ukfYyI3xmVvtn" font="Sans Serif,9,-1,0,50,0,0,0,0,0" visibilityA="0" visibilityB="0" localid="u2zYCVkBZ5y1p" usefillcolor="1" fillcolor="none" changeabilityA="900" xmi.id="uyoKvdtQ2KeNq" changeabilityB="900" autoresize="1" type="510">
           <linepath layout="Direct">
-           <startpoint startx="316.421" starty="366.98"/>
-           <endpoint endx="316.421" endy="335.3"/>
+           <startpoint startx="268.421" starty="366.98"/>
+           <endpoint endx="268.421" endy="335.3"/>
           </linepath>
-          <floatingtext linecolor="#ff0000" usesdiagramfillcolor="1" linewidth="0" textcolor="none" usesdiagramusefillcolor="1" x="131" showstereotype="1" y="290.5" text="archivo_ordenes_ejecutadas" font="MS Shell Dlg 2,7.5,-1,5,50,0,0,0,0,0" localid="uLW5MTvN3wGHh" pretext="+" role="710" width="142" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="uuFg6PBem1ptn" autoresize="1" height="16"/>
+          <floatingtext linecolor="#ff0000" usesdiagramfillcolor="1" linewidth="0" textcolor="none" usesdiagramusefillcolor="1" x="83" showstereotype="1" y="290.5" text="archivo_ordenes_ejecutadas" font="MS Shell Dlg 2,7.5,-1,5,50,0,0,0,0,0" localid="uLW5MTvN3wGHh" pretext="+" role="710" width="142" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="uuFg6PBem1ptn" autoresize="1" height="16"/>
          </assocwidget>
          <assocwidget linecolor="#ff0000" indexa="1" usesdiagramfillcolor="1" widgetbid="upns4gi9sIYQP" indexb="1" linewidth="0" seqnum="" textcolor="none" usesdiagramusefillcolor="1" totalcounta="2" totalcountb="2" widgetaid="ukfYyI3xmVvtn" font="Sans Serif,9,-1,0,50,0,0,0,0,0" visibilityA="0" visibilityB="0" localid="ufjtzD3gErX4J" usefillcolor="1" fillcolor="none" changeabilityA="900" xmi.id="ujTeoExZ4sN8y" changeabilityB="900" autoresize="1" type="510">
           <linepath layout="Direct">
-           <startpoint startx="316.421" starty="366.98"/>
-           <endpoint endx="316.421" endy="335.3"/>
+           <startpoint startx="268.421" starty="366.98"/>
+           <endpoint endx="268.421" endy="335.3"/>
           </linepath>
-          <floatingtext linecolor="#ff0000" usesdiagramfillcolor="1" linewidth="0" textcolor="none" usesdiagramusefillcolor="1" x="135" showstereotype="1" y="290.5" text="archivo_ordenes_solicitadas" font="MS Shell Dlg 2,7.5,-1,5,50,0,0,0,0,0" localid="uSoLls9exFGv0" pretext="+" role="710" width="139" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="uUK6AGMbBFdtp" autoresize="1" height="16"/>
+          <floatingtext linecolor="#ff0000" usesdiagramfillcolor="1" linewidth="0" textcolor="none" usesdiagramusefillcolor="1" x="87" showstereotype="1" y="290.5" text="archivo_ordenes_solicitadas" font="MS Shell Dlg 2,7.5,-1,5,50,0,0,0,0,0" localid="uSoLls9exFGv0" pretext="+" role="710" width="139" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="uUK6AGMbBFdtp" autoresize="1" height="16"/>
          </assocwidget>
          <assocwidget linecolor="#ff0000" indexa="1" usesdiagramfillcolor="1" widgetbid="ukfYyI3xmVvtn" indexb="1" linewidth="0" seqnum="" textcolor="none" usesdiagramusefillcolor="1" totalcounta="2" totalcountb="2" widgetaid="uodjzqyiHBEeg" font="Sans Serif,9,-1,0,50,0,0,0,0,0" visibilityA="0" visibilityB="0" localid="uuazJwhtywBiJ" usefillcolor="1" fillcolor="none" changeabilityA="900" xmi.id="u2PPSaJNQmFgk" changeabilityB="900" autoresize="1" type="510">
           <linepath layout="Direct">

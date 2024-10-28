@@ -19,11 +19,9 @@ class ServidorControl:
         # Cargar usuarios desde un archivo JSON
         try:
             with open("servidor\\usuarios.json", "r") as archivo:
-            #with open("usuarios.json", "r") as archivo:
                 return json.load(archivo)
         except FileNotFoundError:
-            print("No se encontró el archivo de usuarios.")
-            return {}
+            return {"error": "No se encontró el archivo de usuarios."}
 
     def _validar_usuario(self, usuario, clave):
         # Validar que el usuario y la clave sean correctos
@@ -38,7 +36,7 @@ class ServidorControl:
         self.server_thread = threading.Thread(target=self._iniciar_servidor)
         self.server_thread.daemon = True
         self.server_thread.start()
-        print(f"Servidor RPC iniciado en {self.ip}:{self.puerto}\n")
+        return f"Servidor RPC iniciado en {self.ip}:{self.puerto}\n"
 
     def _iniciar_servidor(self):
         try:
@@ -49,11 +47,10 @@ class ServidorControl:
     def disconnect(self):
         # Detener el servidor
         if self.server:
-            print("Iniciando cierre del servidor...")
             self.server.shutdown()
             self.server.server_close()
             self.server_thread.join()  # Asegurarse de que el hilo termine
-            print("Servidor cerrado correctamente.")
+            return "Servidor cerrado correctamente."
 
     def interpreta_comando(self, usuario, clave, comando, parametros = None):
         # Validar usuario y clave
@@ -160,7 +157,6 @@ class ServidorControl:
                 archivo = []
                 for i in range(1,len(parametros)):
                     archivo.append(parametros[i])
-                print(archivo)
                 try: 
                     return self.robot.ejecutar_automatico(nombre_archivo, archivo)
                 except Exception as e:
