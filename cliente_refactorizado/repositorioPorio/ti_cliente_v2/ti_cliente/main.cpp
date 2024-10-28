@@ -1,7 +1,6 @@
 #include "Cliente.h"
 #include "PantallaCurses.h"
 #include "MainMenu.h"
-#include "CLIMessageView.h"
 #include <iostream>
 
 int main() {
@@ -26,7 +25,7 @@ int main() {
         // Crear la instancia del cliente, usando la pantalla para mensajes y errores
         Cliente cliente(ip, puerto, pantalla);
 		cliente.setUser(user);
-		cliente.setPass(pass);
+		cliente.setPass(pass); 
 
         // Crear la instancia de MainMenu
         MainMenu menu(cliente, &pantalla);
@@ -37,8 +36,6 @@ int main() {
     }
     catch (const std::exception& e) {
         // Capturamos y mostramos cualquier error que ocurra durante la ejecución
-        CLIMessageView view;
-        view.mostrarError("Ocurrió un error inesperado: " + std::string(e.what()));
     }
 
     return 0;

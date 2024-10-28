@@ -17,7 +17,7 @@ public:
 	Archivo(std::string nombre, std::string ruta);
 	~Archivo();
 	bool abrir();
-	bool cerrar();
+	bool cerrar(); 
 	bool leer();
 	std::vector<std::string> getContenido();
 	std::string getNombre();

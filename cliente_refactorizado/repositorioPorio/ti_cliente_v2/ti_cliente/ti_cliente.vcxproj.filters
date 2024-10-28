@@ -21,16 +21,13 @@
     <ClCompile Include="MainMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FileManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Cliente.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CLIMessageView.cpp">
+    <ClCompile Include="PantallaCurses.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PantallaCurses.cpp">
+    <ClCompile Include="Archivo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,19 +35,7 @@
     <ClInclude Include="MainMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FileManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Cliente.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IMessageView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CLIMessageView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\json-develop\json-develop\include\nlohmann\json.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Orden.h">
@@ -63,6 +48,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PantallaCurses.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Archivo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

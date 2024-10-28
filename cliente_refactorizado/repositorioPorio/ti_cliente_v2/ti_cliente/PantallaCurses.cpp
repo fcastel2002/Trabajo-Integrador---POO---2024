@@ -15,17 +15,19 @@ PantallaCurses::~PantallaCurses() {
 	endwin();
 }
 
-int PantallaCurses::mostrarMenu(const std::vector<std::string>& opciones) {
+int PantallaCurses::mostrarMenu(const std::vector<std::string>& opciones, const std::string& tituloMenu) { 
 	int seleccion = 0;
 	int n_opciones = opciones.size();
 
 	while (true) {
 		limpiarPantalla();
+		mvprintw(1, 5, tituloMenu.c_str());
+		mvprintw(2, 1, "====================================");
 		for (int i = 0; i < n_opciones; ++i) {
 			if (i == seleccion) {
 				attron(A_REVERSE);
 			}
-			mvprintw(i + 1, 1, opciones[i].c_str());
+			mvprintw(i + 3, 2, opciones[i].c_str());
 			attroff(A_REVERSE);
 		}
 
@@ -69,9 +71,19 @@ std::string PantallaCurses::capturarEntrada(const std::string& mensaje) {
 	echo();
 	getstr(buffer);
 	noecho();
+
+	
 	return std::string(buffer);
 }
+std::vector<std::string> PantallaCurses::capturarEntradaMultiple(const std::string& mensaje = "archivo") {
+	limpiarPantalla();
+	
+	
+		Archivo archivo_gcode(capturarEntrada("Ingrese el nombre del archivo: "),"");
+		archivo_gcode.leer();
+		return archivo_gcode.getContenido(); 
 
+}
 
 void PantallaCurses::mostrarError(const std::string& error) {
 	limpiarPantalla();
@@ -80,4 +92,12 @@ void PantallaCurses::mostrarError(const std::string& error) {
 	attroff(A_BOLD | A_REVERSE);
 	refrescarPantalla();
 	getch();  // Espera a que el usuario presione una tecla para continuar
+}
+
+
+std::string PantallaCurses::capturarEleccion(const std::string& mensaje, const std::vector<std::string>& opciones) {
+	limpiarPantalla();
+	
+	int seleccion = mostrarMenu(opciones,mensaje.c_str());
+	return opciones[seleccion];
 }

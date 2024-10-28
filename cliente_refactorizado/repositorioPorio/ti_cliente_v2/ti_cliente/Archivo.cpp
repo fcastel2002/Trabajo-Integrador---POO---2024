@@ -1,7 +1,7 @@
 #include "Archivo.h"
 
 
-Archivo::Archivo(std::string nombre, std::string ruta)
+Archivo::Archivo(std::string nombre, std::string ruta = "")
 	: m_nombre{ nombre }
 	, m_ruta{ ruta }
 	, m_archivo{ m_ruta + m_nombre, std::ios::in }

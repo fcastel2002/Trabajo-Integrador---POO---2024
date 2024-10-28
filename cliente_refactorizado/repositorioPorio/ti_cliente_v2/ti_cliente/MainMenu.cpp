@@ -6,8 +6,8 @@ using namespace std;
 MainMenu::MainMenu(Cliente& cliente, IPantalla* pantalla) : cliente(cliente), m_pantalla(pantalla)  {
     OrdenBuilder builder;
 	builder.conUsuario(cliente.getUser())
-		.conClave(cliente.getPass())
-		.conComando("comandos");
+           .conClave(cliente.getPass())
+           .conComando("comandos");
 	Orden ordenComandos = builder.build();
 	m_comandos = cliente.pedirComandos(ordenComandos);
     //m_pantalla->mostrarTexto(m_comandos[3]);
@@ -24,7 +24,7 @@ void MainMenu::setComandos(const std::vector<std::string>& comandos) {
 void MainMenu::mostrarMenu() {
     m_pantalla->refrescarPantalla();
     while (true) {
-        int seleccion = m_pantalla->mostrarMenu(m_comandos);
+        int seleccion = m_pantalla->mostrarMenu(m_comandos, "Bienvenido al menu principal");
         if (!procesarSeleccion(seleccion)) {
 			break;
 
@@ -41,18 +41,29 @@ const std::string MainMenu::manejarSeleccion(int seleccion) {
 }
 
 bool MainMenu::procesarSeleccion(int seleccion) {
-	std::string comando = manejarSeleccion(seleccion);
+    std::string comando = manejarSeleccion(seleccion);
     OrdenBuilder builder;
-    if (comando == "salir") {
+    if (comando == "Salir") {
         return false;
     }
     builder.conUsuario(cliente.getUser())
-           .conClave(cliente.getPass())
-		   .conComando(comando);
+        .conClave(cliente.getPass())
+        .conComando(comando);
+
     std::vector<std::string> mensajesParametros = builder.obtenerEtiquetasParametros();
     std::vector<std::string> parametros;
-    for (const auto& mensaje : mensajesParametros) {
-        parametros.push_back(m_pantalla->capturarEntrada(mensaje));
+
+    if (comando == "Ejecutar automatico") {
+		std::string choice = m_pantalla->capturarEleccion("Desea enviar el archivo? (s/n)",{"Si","No"});
+        if (choice == "Si") {
+            parametros = m_pantalla->capturarEntradaMultiple("archivo");
+        }
+        parametros = {};
+    }
+    else {
+        for (const auto& mensaje : mensajesParametros) {
+            parametros.push_back(m_pantalla->capturarEntrada(mensaje));
+        }
     }
     builder.conParametros(parametros);
     Orden orden = builder.build();
