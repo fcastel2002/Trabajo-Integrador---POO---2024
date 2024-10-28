@@ -1,4 +1,5 @@
 #include "PantallaCurses.h"
+#include "ErrorHandler.h"
 #include "curses.h"
 
 PantallaCurses::PantallaCurses() {
@@ -7,7 +8,7 @@ PantallaCurses::PantallaCurses() {
 	keypad(stdscr, TRUE);    // Habilita teclas especiales (como las flechas)
 
 	if (has_key(KEY_RESIZE)) {
-		resize_term(0, 0);   // Ajusta el tamaño de la terminal a su valor actual
+		resize_term(0, 0);   // Ajusta el tamaÃ±o de la terminal a su valor actual
 	}
 }
 
@@ -47,7 +48,6 @@ int PantallaCurses::mostrarMenu(const std::vector<std::string>& opciones, const 
 	}
 }
 
-
 void PantallaCurses::limpiarPantalla() {
 	clear();
 	refresh();
@@ -64,25 +64,36 @@ void PantallaCurses::mostrarTexto(const std::string& mensaje) {
 	getch();
 }
 
-std::string PantallaCurses::capturarEntrada(const std::string& mensaje) {
+std::string PantallaCurses::capturarEntrada(const std::string& mensaje, ErrorHandler& errorHandler) {
 	limpiarPantalla();
 	mvprintw(1, 1, "%s", mensaje.c_str());
 	char buffer[80];
 	echo();
-	getstr(buffer);
+	try {
+		getstr(buffer);
+	} catch (const std::exception& e) {
+		errorHandler.handleException(e);
+		noecho();
+		return "";
+	}
 	noecho();
-
-	
 	return std::string(buffer);
 }
-std::vector<std::string> PantallaCurses::capturarEntradaMultiple(std::string& mensaje) {
-	limpiarPantalla();
-	
-	
-		Archivo archivo_gcode(mensaje,"");
-		archivo_gcode.leer();
-		return archivo_gcode.getContenido(); 
 
+std::vector<std::string> PantallaCurses::capturarEntradaMultiple(std::string& mensaje, ErrorHandler& errorHandler) {
+	limpiarPantalla();
+	std::vector<std::string> contenido;
+	try {
+		Archivo archivo_gcode(mensaje, "");
+		if (!archivo_gcode.leer(errorHandler)) {
+			errorHandler.logError("No se pudo leer el archivo", ErrorLevel::ERROR);
+		} else {
+			contenido = archivo_gcode.getContenido();
+		}
+	} catch (const std::exception& e) {
+		errorHandler.handleException(e);
+	}
+	return contenido;
 }
 
 void PantallaCurses::mostrarError(const std::string& error) {
@@ -94,10 +105,14 @@ void PantallaCurses::mostrarError(const std::string& error) {
 	getch();  // Espera a que el usuario presione una tecla para continuar
 }
 
-
-std::string PantallaCurses::capturarEleccion(const std::string& mensaje, const std::vector<std::string>& opciones) {
+std::string PantallaCurses::capturarEleccion(const std::string& mensaje, const std::vector<std::string>& opciones, ErrorHandler& errorHandler) {
 	limpiarPantalla();
-	
-	int seleccion = mostrarMenu(opciones,mensaje.c_str());
+	int seleccion;
+	try {
+		seleccion = mostrarMenu(opciones, mensaje.c_str());
+	} catch (const std::exception& e) {
+		errorHandler.handleException(e);
+		return "";
+	}
 	return opciones[seleccion];
 }
