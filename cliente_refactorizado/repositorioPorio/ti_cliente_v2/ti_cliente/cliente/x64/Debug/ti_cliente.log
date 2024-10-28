@@ -1,5 +1,2 @@
 ﻿  Archivo.cpp
-  PantallaCurses.cpp
-C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\cliente_refactorizado\repositorioPorio\ti_cliente_v2\ti_cliente\PantallaCurses.cpp(20,17): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  Generating Code...
   ti_cliente.vcxproj -> C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\cliente_refactorizado\repositorioPorio\ti_cliente_v2\ti_cliente\x64\Debug\cliente.exe
