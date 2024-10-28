@@ -1,0 +1,71 @@
+#include "PantallaCurses.h"
+#include "curses.h"
+
+PantallaCurses::PantallaCurses() {
+	initscr();
+	curs_set(FALSE);         // Oculta el cursor
+	keypad(stdscr, TRUE);    // Habilita teclas especiales (como las flechas)
+
+	if (has_key(KEY_RESIZE)) {
+		resize_term(0, 0);   // Ajusta el tamaño de la terminal a su valor actual
+	}
+}
+
+PantallaCurses::~PantallaCurses() {
+	endwin();
+}
+
+int PantallaCurses::mostrarMenu(const std::vector<std::string>& opciones) {
+	int seleccion = 0;
+	int n_opciones = opciones.size();
+
+	while (true) {
+		limpiarPantalla();
+		for (int i = 0; i < n_opciones; ++i) {
+			if (i == seleccion) {
+				attron(A_REVERSE);
+			}
+			mvprintw(i + 1, 1, opciones[i].c_str());
+			attroff(A_REVERSE);
+		}
+	}
+	refrescarPantalla();
+	int entrada = getch();
+
+	switch (entrada) {
+	case KEY_UP:
+		seleccion = (seleccion == 0) ? n_opciones - 1 : seleccion - 1;
+		break;
+	case KEY_DOWN:
+		seleccion = (seleccion == n_opciones - 1) ? 0 : seleccion + 1;
+		break;
+	case 10:
+		return seleccion;
+	}
+}
+
+
+void PantallaCurses::limpiarPantalla() {
+	clear();
+	refresh();
+}
+
+void PantallaCurses::refrescarPantalla() {
+	refresh();
+}
+
+void PantallaCurses::mostrarTexto(const std::string& mensaje) {
+	limpiarPantalla();
+	mvprintw(1, 1, "%s", mensaje.c_str());
+	refrescarPantalla();
+}
+
+std::string PantallaCurses::capturarEntrada(const std::string& mensaje) {
+	limpiarPantalla();
+	mvprintw(1, 1, "%s", mensaje.c_str());
+	char buffer[80];
+	echo();
+	getstr(buffer);
+	noecho();
+	return std::string(buffer);
+}
