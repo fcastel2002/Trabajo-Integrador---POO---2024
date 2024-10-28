@@ -58,10 +58,16 @@ bool MainMenu::procesarSeleccion(int seleccion) {
         std::string choice = m_pantalla->capturarEleccion("Desea enviar el archivo? (s/n)", {"Si", "No"});
         parametros.push_back(nombreArchivo);
         if (choice == "Si") {
-            std::vector<std::string> entradas = m_pantalla->capturarEntradaMultiple(nombreArchivo);
+            m_pantalla->mostrarTexto("opcion: " + choice);
+
+            std::vector<std::string> entradas = m_pantalla->archivoToVector(nombreArchivo);
             for (const auto& entrada : entradas) {
+                m_pantalla->mostrarTexto(entrada);
                 parametros.push_back(entrada);
             }
+        }
+        else {
+            parametros.push_back("");
         }
     } else {
         for (const auto& mensaje : mensajesParametros) {
@@ -70,6 +76,10 @@ bool MainMenu::procesarSeleccion(int seleccion) {
     }
     builder.conParametros(parametros);
     Orden orden = builder.build();
+    m_pantalla->mostrarTexto("Comando enviado :" + comando);
+    for (size_t i = 0; i < parametros.size(); ++i) {
+        m_pantalla->mostrarTexto("Parametro " + std::to_string(i) + " enviado: " + parametros[i]);
+    }
     cliente.enviarComando(orden);
 
     return true;

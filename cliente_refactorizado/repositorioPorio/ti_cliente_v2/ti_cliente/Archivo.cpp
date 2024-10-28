@@ -2,7 +2,7 @@
 
 
 Archivo::Archivo(std::string nombre, std::string ruta = "")
-	: m_nombre{ nombre }
+	: m_nombre{ nombre+".txt"}
 	, m_ruta{ ruta }
 	, m_archivo{ m_ruta + m_nombre, std::ios::in }
 	, m_contenido{} {}
@@ -18,7 +18,7 @@ bool Archivo::abrir() {
 	if (m_archivo.is_open()) {
 		return true;
 	}
-	m_archivo.open(m_ruta + m_nombre, std::ios::in);
+	m_archivo.open(m_nombre, std::ios::in);
 	if (m_archivo.is_open()) {
 		return true;
 	}

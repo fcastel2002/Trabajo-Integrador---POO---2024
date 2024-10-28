@@ -12,7 +12,7 @@ public:
 	void mostrarTexto(const std::string& mensaje) override;
 	void limpiarPantalla() override;
 	std::string capturarEntrada(const std::string& mensaje) override;
-	std::vector<std::string> capturarEntradaMultiple(std::string& mensaje) override;
+	std::vector<std::string> archivoToVector(std::string& mensaje) override;
 	std::string capturarEleccion(const std::string& mensaje, const std::vector<std::string>& opciones) override;
 	void refrescarPantalla() override;
 	void  mostrarError(const std::string& error) override;

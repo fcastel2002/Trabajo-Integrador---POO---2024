@@ -1,8 +1,4 @@
 ﻿  Archivo.cpp
-  Cliente.cpp
-  main.cpp
-C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\cliente_refactorizado\repositorioPorio\ti_cliente_v2\ti_cliente\main.cpp(37,34): warning C4101: 'e': unreferenced local variable
-  MainMenu.cpp
   PantallaCurses.cpp
 C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\cliente_refactorizado\repositorioPorio\ti_cliente_v2\ti_cliente\PantallaCurses.cpp(20,17): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   Generating Code...

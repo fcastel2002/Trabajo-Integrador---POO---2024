@@ -75,11 +75,12 @@ std::string PantallaCurses::capturarEntrada(const std::string& mensaje) {
 	
 	return std::string(buffer);
 }
-std::vector<std::string> PantallaCurses::capturarEntradaMultiple(std::string& mensaje) {
+std::vector<std::string> PantallaCurses::archivoToVector(std::string& mensaje) {
 	limpiarPantalla();
 	
 	
 		Archivo archivo_gcode(mensaje,"");
+		archivo_gcode.abrir();
 		archivo_gcode.leer();
 		return archivo_gcode.getContenido(); 
 
