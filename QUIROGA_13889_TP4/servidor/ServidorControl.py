@@ -61,14 +61,19 @@ class ServidorControl:
             # Ejecutar el comando correspondiente
             resultado = self._ejecutar_comando(comando, parametros)
             
-            # Registrar la operación en el log
-            self.logger.registrar_log(comando, "127.0.0.1", usuario, True)
+            mensaje_log = self.logger.registrar_log(comando, "127.0.0.1", usuario, True)
+            if mensaje_log:
+                return {"resultado": resultado, "log": mensaje_log}
+            
             return resultado
 
         except Exception as e:
             # Registrar error en el log y devolver mensaje de error
-            self.logger.registrar_log("error", "127.0.0.1", "sistema", False)
-            return {"error": f"Error al interpretar el comando: {str(e)}"}
+            mensaje_log = self.logger.registrar_log("error", "127.0.0.1", "sistema", False)
+            if mensaje_log:
+                return {"error": f"Error al interpretar el comando: {str(e)}", "log": mensaje_log}
+            else:
+                return {"error": f"Error al interpretar el comando: {str(e)}"}
 
 
     def _ejecutar_comando(self, comando, parametros = None):
