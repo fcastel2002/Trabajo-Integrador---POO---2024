@@ -38,4 +38,5 @@ private:
     std::string getErrorMessage(ErrorCode code) const;
     void openLogFile();
     void closeLogFile();
+    ~ErrorHandler();
 };

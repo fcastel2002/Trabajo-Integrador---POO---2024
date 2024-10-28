@@ -1,4 +1,3 @@
-// ErrorHandler.cpp
 #include "ErrorHandler.h"
 
 // Constructor: abre el archivo de log
