@@ -1,0 +1,4 @@
+xmlrpc
+pyserial
+logging
+questionary
