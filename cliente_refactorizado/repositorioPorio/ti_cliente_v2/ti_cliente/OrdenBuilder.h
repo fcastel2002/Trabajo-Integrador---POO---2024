@@ -16,8 +16,8 @@ private:
 public:
 	
 	OrdenBuilder() {
-		etiquetasParametros["conectar"] = { "Ingrese puerto COM", "Ingrese velocidad de transmisión" };
-		etiquetasParametros["mover_efector"] = { "Ingrese X", "Ingrese Y", "Ingrese Z", "Ingrese Velocidad" };
+		etiquetasParametros["conectar"] = { "Ingrese puerto COM: ", "Ingrese velocidad de transmisión: " };
+		etiquetasParametros["mover_efector"] = { "Ingrese X: ", "Ingrese Y: ", "Ingrese Z: ", "Ingrese Velocidad: " };
 	}
 	OrdenBuilder& conUsuario(const string& usuario) {
 		this->usuario = usuario;

@@ -12,5 +12,6 @@ public:
 	void limpiarPantalla() override;
 	std::string capturarEntrada(const std::string& mensaje) override;
 	void refrescarPantalla() override;
+	void  mostrarError(const std::string& error) override;
 };
 

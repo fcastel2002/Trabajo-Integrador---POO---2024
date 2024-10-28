@@ -28,19 +28,20 @@ int PantallaCurses::mostrarMenu(const std::vector<std::string>& opciones) {
 			mvprintw(i + 1, 1, opciones[i].c_str());
 			attroff(A_REVERSE);
 		}
-	}
-	refrescarPantalla();
-	int entrada = getch();
 
-	switch (entrada) {
-	case KEY_UP:
-		seleccion = (seleccion == 0) ? n_opciones - 1 : seleccion - 1;
-		break;
-	case KEY_DOWN:
-		seleccion = (seleccion == n_opciones - 1) ? 0 : seleccion + 1;
-		break;
-	case 10:
-		return seleccion;
+		refrescarPantalla();
+		int entrada = getch();
+
+		switch (entrada) {
+		case KEY_UP:
+			seleccion = (seleccion == 0) ? n_opciones - 1 : seleccion - 1;
+			break;
+		case KEY_DOWN:
+			seleccion = (seleccion == n_opciones - 1) ? 0 : seleccion + 1;
+			break;
+		case 10:
+			return seleccion;
+		}
 	}
 }
 
@@ -58,6 +59,7 @@ void PantallaCurses::mostrarTexto(const std::string& mensaje) {
 	limpiarPantalla();
 	mvprintw(1, 1, "%s", mensaje.c_str());
 	refrescarPantalla();
+	getch();
 }
 
 std::string PantallaCurses::capturarEntrada(const std::string& mensaje) {
@@ -68,4 +70,14 @@ std::string PantallaCurses::capturarEntrada(const std::string& mensaje) {
 	getstr(buffer);
 	noecho();
 	return std::string(buffer);
+}
+
+
+void PantallaCurses::mostrarError(const std::string& error) {
+	limpiarPantalla();
+	attron(A_BOLD | A_REVERSE);  // Resalta el mensaje de error
+	mvprintw(1, 1, "Error: %s", error.c_str());
+	attroff(A_BOLD | A_REVERSE);
+	refrescarPantalla();
+	getch();  // Espera a que el usuario presione una tecla para continuar
 }

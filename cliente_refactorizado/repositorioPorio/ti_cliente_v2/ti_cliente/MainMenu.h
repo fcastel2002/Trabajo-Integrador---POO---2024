@@ -20,7 +20,7 @@ public:
     MainMenu(Cliente& cliente, IPantalla* pantalla);
     void mostrarMenu();
     void setComandos(const std::vector<std::string>& comandos);
-	void procesarSeleccion(int seleccion);
+	bool procesarSeleccion(int seleccion);
 
 
 private:

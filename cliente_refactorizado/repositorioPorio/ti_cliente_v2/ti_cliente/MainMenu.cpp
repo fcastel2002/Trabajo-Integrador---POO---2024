@@ -10,6 +10,7 @@ MainMenu::MainMenu(Cliente& cliente, IPantalla* pantalla) : cliente(cliente), m_
 		.conComando("comandos");
 	Orden ordenComandos = builder.build();
 	m_comandos = cliente.pedirComandos(ordenComandos);
+    //m_pantalla->mostrarTexto(m_comandos[3]);
 
 }
 
@@ -22,8 +23,13 @@ void MainMenu::setComandos(const std::vector<std::string>& comandos) {
 
 void MainMenu::mostrarMenu() {
     m_pantalla->refrescarPantalla();
-	int seleccion = m_pantalla->mostrarMenu(m_comandos);
-	procesarSeleccion(seleccion);
+    while (true) {
+        int seleccion = m_pantalla->mostrarMenu(m_comandos);
+        if (!procesarSeleccion(seleccion)) {
+			break;
+
+        }
+    }
 }
 
 // Maneja la selección del menú
@@ -34,10 +40,12 @@ const std::string MainMenu::manejarSeleccion(int seleccion) {
     return "";
 }
 
-void MainMenu::procesarSeleccion(int seleccion) {
+bool MainMenu::procesarSeleccion(int seleccion) {
 	std::string comando = manejarSeleccion(seleccion);
     OrdenBuilder builder;
-
+    if (comando == "salir") {
+        return false;
+    }
     builder.conUsuario(cliente.getUser())
            .conClave(cliente.getPass())
 		   .conComando(comando);
@@ -49,4 +57,6 @@ void MainMenu::procesarSeleccion(int seleccion) {
     builder.conParametros(parametros);
     Orden orden = builder.build();
 	cliente.enviarComando(orden);
+
+    return true;
 }
