@@ -59,6 +59,7 @@ class ServidorControl:
 
         try:
             # Ejecutar el comando correspondiente
+            #print(f"{comando}\n")
             resultado = self._ejecutar_comando(comando, parametros)
             
             mensaje_log = self.logger.registrar_log(comando, "127.0.0.1", usuario, True)

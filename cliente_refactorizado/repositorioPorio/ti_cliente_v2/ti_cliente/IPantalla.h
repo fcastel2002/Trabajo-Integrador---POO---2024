@@ -10,6 +10,7 @@ public:
 	virtual void mostrarError(const std::string& error) = 0;
     virtual void limpiarPantalla() = 0;
     virtual std::string capturarEntrada(const std::string& mensaje) = 0;
+	virtual std::vector<std::string> capturarEntradaMultiple(const std::string& mensaje) = 0;
     virtual int mostrarMenu(const std::vector<std::string>& opciones) = 0; 
     virtual void refrescarPantalla() = 0;
 };

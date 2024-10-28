@@ -1,7 +1,6 @@
 #pragma once
 
 #include <string>
-#include "CLIMessageView.h"
 #include "IPantalla.h"
 #include <XmlRpc.h>
 #include "Orden.h"

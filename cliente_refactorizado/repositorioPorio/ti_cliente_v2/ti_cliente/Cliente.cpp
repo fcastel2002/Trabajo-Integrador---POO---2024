@@ -18,6 +18,7 @@ bool Cliente::enviarComando(Orden& my_order) {
 			 
 	
 	client.execute("Interpreta_Comando", params, result);
+	
 	interpretarRespuesta(result);
 	client.close();
 	return true;
@@ -32,7 +33,7 @@ std::vector<std::string> Cliente::pedirComandos(Orden& my_order) {
 	XmlRpcValue params, result;
 	params = my_order.crearOrden(m_usuario, m_clave);
 	client.execute("Interpreta_Comando", params, result);
-	interpretarRespuesta(result);
+	//interpretarRespuesta(result);
 
     std::vector<std::string> comandos;
     if (result.getType() == XmlRpcValue::TypeArray) {
