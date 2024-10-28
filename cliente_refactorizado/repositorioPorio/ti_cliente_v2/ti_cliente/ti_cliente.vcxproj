@@ -144,6 +144,7 @@
   <ItemGroup>
     <ClCompile Include="Archivo.cpp" />
     <ClCompile Include="Cliente.cpp" />
+    <ClCompile Include="ErrorHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="PantallaCurses.cpp" />
@@ -151,6 +152,7 @@
   <ItemGroup>
     <ClInclude Include="Archivo.h" />
     <ClInclude Include="Cliente.h" />
+    <ClInclude Include="ErrorHandler.h" />
     <ClInclude Include="IPantalla.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Orden.h" />
