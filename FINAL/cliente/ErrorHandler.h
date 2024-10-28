@@ -23,6 +23,7 @@ enum class ErrorCode {
 class ErrorHandler {
 public:
     ErrorHandler(const std::string& logFilePath = "error_log.txt");
+    ~ErrorHandler();
     void logError(const std::string& message, ErrorLevel level = ErrorLevel::ERROR);
     void logError(ErrorCode code, ErrorLevel level = ErrorLevel::ERROR);
     void displayError(const std::string& message, ErrorLevel level = ErrorLevel::ERROR);
@@ -36,5 +37,4 @@ private:
     std::string getErrorMessage(ErrorCode code) const;
     void openLogFile();
     void closeLogFile();
-    ~ErrorHandler();
 };
