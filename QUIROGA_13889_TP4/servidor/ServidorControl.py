@@ -63,8 +63,6 @@ class ServidorControl:
             
             # Registrar la operación en el log
             self.logger.registrar_log(comando, "127.0.0.1", usuario, True)
-            
-
             return resultado
 
         except Exception as e:
