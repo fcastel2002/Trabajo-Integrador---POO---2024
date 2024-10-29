@@ -1,4 +1,6 @@
 #include "Cliente.h"
+
+#include "RespuestaBuilder.h"
 #include "ErrorHandler.h"
 #include <iostream>
 #include <unordered_map>
@@ -44,14 +46,17 @@ void Cliente::interpretarRespuesta(XmlRpcValue& respuesta) {
 	}
 
 	// Limpia el mensaje recibido eliminando etiquetas XML y reemplazando entidades HTML
-	
+	RespuestaBuilder builder;
+	builder.conUsuario(respuesta[0])
+		.conComando(respuesta[1])
+		.conContenido(extraerContenido(respuesta[2]));
 	 
 	//std::string mensajeLimpio = extraerContenido(respuesta.toXml()); // contenido del mensaje
-
-	std::string mensajeLimpio = extraerContenido(respuesta[2]); // contenido del mensaje
+	Respuesta currentRespuesta = builder.build();
+	 // contenido del mensaje
 	
 	
-	m_pantalla.mostrarTexto(mensajeLimpio);
+	m_pantalla.mostrarTexto(currentRespuesta.getContenido());
 }
 
 std::string Cliente::extraerContenido(XmlRpcValue& contenido) {

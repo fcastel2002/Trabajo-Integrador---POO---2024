@@ -148,6 +148,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="PantallaCurses.cpp" />
+    <ClCompile Include="RespuestaBuilder.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Archivo.h" />
@@ -158,6 +159,7 @@
     <ClInclude Include="Orden.h" />
     <ClInclude Include="OrdenBuilder.h" />
     <ClInclude Include="PantallaCurses.h" />
+    <ClInclude Include="Respuesta.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

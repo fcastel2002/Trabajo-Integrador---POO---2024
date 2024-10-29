@@ -13,3 +13,5 @@ cliente_files/
 **/.vs
 **/Debug/
 FINAL_corre/FINAL/cliente/.vs
+FINAL_corre/FINAL/cliente/x64
+FINAL_corre/FINAL/XMLRPC++/x64
