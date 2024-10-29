@@ -107,13 +107,12 @@ class ServidorControl:
             self.respuestas[2] = [resultado]  # Convertir en lista si `resultado` no es una lista
 
     def _ejecutar_comando(self, comando, parametros = None):
-        comandos_disponibles = ["login","cerrar sesion",
+        comandos_disponibles = [
         "Conectarse al Robot", "Desconectar Robot", "Activar motores", "Desactivar motores",
         "Mover efector", "Realizar maniobra homming", "Reportar estado", "Reportar posicion",
-        "Actuar efector", "Ejecutar automatico", "Cambiar modo", "comandos","Salir"
-    ]
+        "Actuar efector", "Ejecutar automatico", "Cambiar modo", "Aprendizaje", "comandos" ]
         # Ejecutar el comando recibido
-        if comando == comandos_disponibles[2]:
+        if comando == comandos_disponibles[0]:
             self.robot.puerto_serial = parametros[0]  # puerto_COM
             self.robot.baudios = int(parametros[1])   # tasa_baudios
             try:
@@ -121,25 +120,25 @@ class ServidorControl:
             except Exception as e:
                 return f"Error: {str(e)}"
         
-        elif comando == comandos_disponibles[3]:
+        elif comando == comandos_disponibles[1]:
             try: 
                 return self.robot.desconectar()
             except Exception as e:
                 return f"Error: {str(e)}"
         
-        elif comando == comandos_disponibles[4]:
+        elif comando == comandos_disponibles[2]:
             try:
                 return self.robot.activar_motores()
             except Exception as e:
                 return f"Error: {str(e)}"
         
-        elif comando == comandos_disponibles[5]:
+        elif comando == comandos_disponibles[3]:
             try:
                 return self.robot.desactivar_motores()
             except Exception as e:
                 return f"Error: {str(e)}"
         
-        elif comando == comandos_disponibles[6]:
+        elif comando == comandos_disponibles[4]:
             x = float(parametros[0])  # X
             y = float(parametros[1])  # Y
             z = float(parametros[2])  # Z
@@ -159,32 +158,32 @@ class ServidorControl:
                 except Exception as e:
                     return f"Error: {str(e)}"
         
-        elif comando == comandos_disponibles[7]:
+        elif comando == comandos_disponibles[5]:
             try:
                 return self.robot.homming()
             except Exception as e:
                 return f"Error: {str(e)}"
         
-        elif comando == comandos_disponibles[8]:
+        elif comando == comandos_disponibles[6]:
             try:
                 return self.robot.reportar()
             except Exception as e:
                 return f"Error: {str(e)}"
         
-        elif comando == comandos_disponibles[9]:
+        elif comando == comandos_disponibles[7]:
             try:
                 return self.robot.reportar_posicion()
             except Exception as e:
                 return f"Error: {str(e)}"
         
-        elif comando == comandos_disponibles[10]:
+        elif comando == comandos_disponibles[8]:
             accion_efector = parametros[0]  # acción sobre el efector
             try: 
                 return self.robot.actuar_efector(accion_efector)
             except Exception as e:
                 return f"Error: {str(e)}"
         
-        elif comando == comandos_disponibles[11]:
+        elif comando == comandos_disponibles[9]:
             nombre_archivo = parametros[0]  # nombre del archivo
             if parametros[1] is not None:
                 archivo = []
@@ -199,7 +198,7 @@ class ServidorControl:
                     return self.robot.ejecutar_automatico(nombre_archivo)
                 except Exception as e:
                     return f"Error: {str(e)}"
-        elif comando == comandos_disponibles[12]:
+        elif comando == comandos_disponibles[10]:
             try:
                 if self.consola.tipo_movimiento == 'absoluto':
                     return self.robot.modo_relativo()
@@ -207,18 +206,19 @@ class ServidorControl:
                     return self.robot.modo_absoluto()
             except Exception as e:
                 return f"Error: {str(e)}"
-        elif comando == "Aprendizaje":
+        elif comando == comandos_disponibles[11]:
             nombre_archivo = parametros[0]
             activacion = None
             try:
                 activacion = parametros[1]
             except Exception:
                 activacion = None
+                return f"Error: Debe enviar segundo parametro para activacion o desactivacion"
             try:
                 return self.robot.aprender(nombre_archivo, activacion)
             except Exception as e:
                 return f"Error: {str(e)}"
-        elif comando == comandos_disponibles[13]:
+        elif comando == comandos_disponibles[12]:
             return comandos_disponibles
         else:
             raise ValueError(f"Comando '{comando}' no reconocido.")

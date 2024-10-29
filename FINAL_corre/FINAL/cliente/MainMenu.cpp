@@ -20,8 +20,8 @@ void MainMenu::setComandos() {
         m_comandos = cliente.pedirComandos(ordenComandos);
 
         m_opciones = m_comandos;
-        m_comandos.push_back("Cerrar sesion");
-        m_comandos.push_back(m_opcionesCliente[2]);
+        m_opciones.push_back("Cerrar sesion");
+        m_opciones.push_back(m_opcionesCliente[2]);
     }
     catch (const std::exception& e) {
         errorHandler.handleException(e);
@@ -75,8 +75,8 @@ std::string MainMenu::procesarSeleccionLocal(int seleccion) {
 }
 
 const std::string MainMenu::manejarSeleccion(int seleccion, const std::string& para) {
-    if (para == "servidor" && seleccion >= 0 && seleccion < m_comandos.size()) {
-        return m_comandos[seleccion];
+    if (para == "servidor" && seleccion >= 0 && seleccion < m_opciones.size()) {
+        return m_opciones[seleccion];
     }
     else if (para == "cliente" && seleccion >= 0 && seleccion < m_opcionesCliente.size()) {
         return m_opcionesCliente[seleccion];
@@ -94,7 +94,7 @@ bool MainMenu::procesarSeleccion(int seleccion) {
         return false;
     }
 
-    if (comando == "cerrar sesion") {
+    if (comando == "Cerrar sesion") {
         return false;
     }
 
@@ -108,7 +108,7 @@ bool MainMenu::procesarSeleccion(int seleccion) {
     try {
         if (comando == "Ejecutar automatico") {
             std::string nombreArchivo = m_pantalla->capturarEntrada("Ingrese el nombre del archivo:");
-            std::string choice = m_pantalla->capturarEleccion("¿Desea enviar el archivo? (s/n)", { "Si", "No" });
+            std::string choice = m_pantalla->capturarEleccion("ï¿½Desea enviar el archivo? (s/n)", { "Si", "No" });
             parametros.push_back(nombreArchivo);
 
             if (choice == "Si") {
