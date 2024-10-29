@@ -13,13 +13,14 @@ class ServidorControl:
         self.server_thread = None
         self.server = None
         self.logger = Logger()
-        self.usuarios_autorizados = self._cargar_usuarios()
+        self.usuarios_autorizados = None
 
     def _cargar_usuarios(self):
         # Cargar usuarios desde un archivo JSON
         try:
             with open("usuarios.json", "r") as archivo:
-                return json.load(archivo)
+                self.usuarios_autorizados = json.load(archivo)
+            return "Usuarios cargados correctamente."
         except FileNotFoundError:
             return "No se encontró el archivo de usuarios."
 

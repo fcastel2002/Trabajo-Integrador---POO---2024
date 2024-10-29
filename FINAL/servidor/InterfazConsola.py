@@ -184,13 +184,21 @@ class InterfazConsola:
             self.logger.registrar_log("desconectar_robot", ip, usuario, False)
 
     def iniciar_servidor_rpc(self):
-        if self.servidor_activado is False:
-            msj = self.rpc_server.iniciar()  # Inicia el servidor en un hilo separado
-            print(msj)
-            self.logger.registrar_log("iniciar_servidor_rpc", "127.0.0.1", "consola_local", True)
-            self.servidor_activado = True
-        else:
-            print("El servidor RPC ya está en ejecución\n")
+        try:
+            if self.servidor_activado is False:
+                msj = self.rpc_server._cargar_usuarios()
+                if self.rpc_server.usuarios is None:
+                    raise msj
+                print(msj)
+                msj = self.rpc_server.iniciar()  # Inicia el servidor en un hilo separado
+                print(msj)
+                self.logger.registrar_log("iniciar_servidor_rpc", "127.0.0.1", "consola_local", True)
+                self.servidor_activado = True
+            else:
+                print("El servidor RPC ya está en ejecución\n")
+        except Exception as e:
+            print(f"Error al iniciar el servidor RPC: {e}")
+            
 
     def detener_servidor_rpc(self):
         if self.servidor_activado is not False:
