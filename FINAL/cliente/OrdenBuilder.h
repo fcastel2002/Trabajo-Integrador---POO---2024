@@ -18,7 +18,7 @@ private:
 public:
     OrdenBuilder() {
         etiquetasParametros["Conectarse al Robot"] = { "Ingrese puerto COM: ", "Ingrese velocidad de transmision: " };
-        etiquetasParametros["Mover efector"] = { "Ingrese X: ", "Ingrese Y: ", "Ingrese Z: ", "Ingrese Velocidad: " };
+        etiquetasParametros["Mover efector"] = { "Ingrese X: ", "Ingrese Y: ", "Ingrese Z: ", "Ingrese Velocidad (opcional): " };
         etiquetasParametros["Aprendizaje"] = {"Iniciar", "Detener"};
 
     }
