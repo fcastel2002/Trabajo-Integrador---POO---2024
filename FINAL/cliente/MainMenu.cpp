@@ -100,13 +100,13 @@ bool MainMenu::procesarSeleccion(int seleccion) {
     std::vector<std::string> parametros;
 
     try {
-        if (comando == "Ejecutar automático") {
+        if (comando == "Ejecutar automatico") {
             std::string nombreArchivo = m_pantalla->capturarEntrada("Ingrese el nombre del archivo:");
             std::string choice = m_pantalla->capturarEleccion("¿Desea enviar el archivo? (s/n)", { "Si", "No" });
             parametros.push_back(nombreArchivo);
 
             if (choice == "Si") {
-                m_pantalla->mostrarTexto("Opción: " + choice);
+                m_pantalla->mostrarTexto("Opcion: " + choice);
 
                 std::vector<std::string> entradas = m_pantalla->archivoToVector(nombreArchivo);
                 for (const auto& entrada : entradas) {
