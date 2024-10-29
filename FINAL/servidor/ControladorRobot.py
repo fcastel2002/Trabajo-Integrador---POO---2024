@@ -63,8 +63,10 @@ class ControladorRobot:
 
         self.motores_activos = True
         gcode = "M17"
+        msjs = []
         try:
-            return self._registrar_comando(gcode)
+            msjs.append(self._registrar_comando(gcode))
+            return msjs
         except Exception as e:
             self.motores_activos = False
             raise e
@@ -104,24 +106,24 @@ class ControladorRobot:
         
         if not respuestas:
             self.errores.append(comando)
-            return {"error": "No se recibio respuesta del robot"}
+            return "No se recibio respuesta del robot"
 
         for respuesta in respuestas:
             if "ERROR" in respuesta.upper():
                 self.errores.append(comando)
-                return {"error": respuesta}
+                return respuesta
 
             try:
                 self.archivo_ordenes_ejecutadas.guardar_linea(f"{comando} -> {respuesta}")
             except Exception as e:
                 self.errores.append(comando)
-                return {"error": f"{e}"}
+                return f"{e}"
 
         # Agregar el comando al archivo de aprendizaje si está activo
         if self.aprendiendo and self.archivo_aprendizaje:
             self.archivo_aprendizaje.guardar_linea(comando)
 
-        return {"respuesta_robot": respuestas}
+        return respuestas
 
 
     def reportar(self):
