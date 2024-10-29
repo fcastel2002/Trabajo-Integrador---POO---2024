@@ -68,7 +68,8 @@ class ServidorControl:
     def interpreta_comando(self, usuario, clave, comando, parametros = None):
         # Validar usuario y clave
         if not self._validar_usuario(usuario, clave):
-            return "Acceso denegado: Usuario o clave incorrectos"
+            mensaje_error = self.crear_respuesta("Acceso denegado: Usuario o clave incorrectos")
+            return mensaje_error
 
         try:
             # Ejecutar el comando correspondiente
@@ -142,7 +143,7 @@ class ServidorControl:
             x = float(parametros[0])  # X
             y = float(parametros[1])  # Y
             z = float(parametros[2])  # Z
-            if len(parametros) > 3 and not parametros[3]:
+            if len(parametros) > 3 and not parametros[3] == "":
                 velocidad = float(parametros[3])  # velocidad
             else:
                 velocidad = None

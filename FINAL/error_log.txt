@@ -26,3 +26,18 @@
 [2024-10-29 13:39:32] ERROR: Faltan parametros esenciales para construir la orden.
 [2024-10-29 13:39:33] ERROR: Parametros insuficientes para crear la orden.
 [2024-10-29 13:39:33] WARNING: Respuesta no válida recibida del servidor.
+[2024-10-29 19:09:05] WARNING: Respuesta no válida recibida del servidor.
+[2024-10-29 19:11:07] WARNING: Respuesta no válida recibida del servidor.
+[2024-10-29 19:26:40] ERROR: Fallo la conexion
+[2024-10-29 19:26:55] ERROR: Fallo la conexion
+[2024-10-29 19:27:00] ERROR: Fallo la conexion
+[2024-10-29 19:27:11] ERROR: Fallo la conexion
+[2024-10-29 19:27:15] ERROR: Fallo la conexion
+[2024-10-29 19:27:18] ERROR: Fallo la conexion
+[2024-10-29 19:27:22] ERROR: Fallo la conexion
+[2024-10-29 19:27:26] ERROR: Fallo la conexion
+[2024-10-29 19:27:35] ERROR: Fallo la conexion
+[2024-10-29 19:28:13] ERROR: Fallo la conexion
+[2024-10-29 19:28:15] ERROR: Fallo la conexion
+[2024-10-29 19:28:17] ERROR: Fallo la conexion
+[2024-10-29 19:28:19] ERROR: Fallo la conexion
