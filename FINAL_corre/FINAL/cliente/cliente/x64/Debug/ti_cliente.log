@@ -1,0 +1,5 @@
+﻿  Cliente.cpp
+  main.cpp
+K:\FINAL\FINAL\cliente\main.cpp(34,34): warning C4101: 'e': unreferenced local variable
+  Generating Code...
+  ti_cliente.vcxproj -> K:\FINAL\FINAL\cliente\x64\Debug\cliente.exe
