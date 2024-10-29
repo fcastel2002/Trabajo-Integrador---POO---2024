@@ -67,7 +67,7 @@ std::string MainMenu::procesarSeleccionLocal(int seleccion) {
     if (comando == "Mostrar comandos") {
         setComandos();
         if (m_comandos.empty()) {
-
+            return "";
         }
         return "rpc";
     }
@@ -95,6 +95,7 @@ bool MainMenu::procesarSeleccion(int seleccion) {
     }
 
     if (comando == "Cerrar sesion") {
+		cliente.cerrarSesion();
         return false;
     }
 
