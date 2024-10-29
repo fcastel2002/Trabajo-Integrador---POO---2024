@@ -27,8 +27,10 @@ public:
     // Procesa la selección de comandos
     bool procesarSeleccion(int seleccion);
 
-    // Procesa una selección local del menú principal
-    std::string procesarSeleccionLocal(int seleccion);
+    //Sobre carga para procesar en local
+    std::string procesarSeleccion(int seleccion, const std::string& quien);
+       
+    
 
 private:
     Cliente& cliente;                     // Referencia al cliente para ejecutar comandos
