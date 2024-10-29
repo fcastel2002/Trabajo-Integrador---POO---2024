@@ -2,7 +2,7 @@ from xmlrpc.server import SimpleXMLRPCServer
 from Logger import Logger
 import json
 import threading
-
+from ManejadorErrores import ErrorArchivos
 
 class ServidorControl:
     def __init__(self, consola, robot, ip="127.0.0.1", puerto=9000):
@@ -13,15 +13,17 @@ class ServidorControl:
         self.server_thread = None
         self.server = None
         self.logger = Logger()
-        self.usuarios_autorizados = self._cargar_usuarios()
+        self.usuarios_autorizados = None
 
     def _cargar_usuarios(self):
         # Cargar usuarios desde un archivo JSON
         try:
-            with open("servidor\\usuarios.json", "r") as archivo:
-                return json.load(archivo)
+            file_name = "usuarios.json"
+            with open(file_name, "r") as archivo:
+                self.usuarios_autorizados = json.load(archivo)
+            return "Usuarios cargados correctamente."
         except FileNotFoundError:
-            return {"error": "No se encontró el archivo de usuarios."}
+            raise ErrorArchivos(2, file_name)
 
     def _validar_usuario(self, usuario, clave):
         # Validar que el usuario y la clave sean correctos
@@ -55,7 +57,7 @@ class ServidorControl:
     def interpreta_comando(self, usuario, clave, comando, parametros = None):
         # Validar usuario y clave
         if not self._validar_usuario(usuario, clave):
-            return {"error": "Acceso denegado: Usuario o clave incorrectos"}
+            return "Acceso denegado: Usuario o clave incorrectos"
 
         try:
             # Ejecutar el comando correspondiente
@@ -64,7 +66,7 @@ class ServidorControl:
             
             mensaje_log = self.logger.registrar_log(comando, "127.0.0.1", usuario, True)
             if mensaje_log:
-                return {"resultado": resultado, "log": mensaje_log}
+                return mensaje_log
             
             return resultado
 
@@ -72,9 +74,9 @@ class ServidorControl:
             # Registrar error en el log y devolver mensaje de error
             mensaje_log = self.logger.registrar_log("error", "127.0.0.1", "sistema", False)
             if mensaje_log:
-                return {"error": f"Error al interpretar el comando: {str(e)}", "log": mensaje_log}
+                return f"Error al interpretar el comando: {str(e)}"
             else:
-                return {"error": f"Error al interpretar el comando: {str(e)}"}
+                return f"Error al interpretar el comando: {str(e)}"
 
 
     def _ejecutar_comando(self, comando, parametros = None):

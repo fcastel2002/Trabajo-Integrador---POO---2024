@@ -2,32 +2,40 @@
 #include "ErrorHandler.h"
 
 Archivo::Archivo(std::string nombre, std::string ruta)
-    : m_nombre{ nombre }, m_ruta{ ruta }, m_archivo{ m_ruta + m_nombre, std::ios::in }, m_contenido{} {}
+    : m_nombre{ nombre + ".txt" }
+    , m_ruta{ ruta }
+    , m_archivo{}
+    , m_contenido{} {}
 
 Archivo::~Archivo() {
     if (m_archivo.is_open()) {
-        ErrorHandler errorHandler;  // Crear una instancia temporal si es necesario manejar errores en el cierre
-        cerrar(errorHandler);
+        cerrar();
     }
 }
 
-bool Archivo::abrir(ErrorHandler& errorHandler) {
+bool Archivo::abrir() {
     if (m_archivo.is_open()) {
         return true;
     }
+
     m_archivo.open(m_ruta + m_nombre, std::ios::in);
     if (!m_archivo.is_open()) {
+        ErrorHandler errorHandler;
         errorHandler.logError(ErrorCode::FILE_NOT_FOUND, ErrorLevel::ERROR);
+        errorHandler.displayError("No se pudo abrir el archivo: " + m_nombre, ErrorLevel::ERROR);
         return false;
     }
+
     return true;
 }
 
-bool Archivo::cerrar(ErrorHandler& errorHandler) {
+bool Archivo::cerrar() {
     if (m_archivo.is_open()) {
         m_archivo.close();
-        if (m_archivo.fail()) {
-            errorHandler.logError("Error al cerrar el archivo.", ErrorLevel::ERROR);
+        if (m_archivo.fail()) {  // Verificamos si hubo error al cerrar
+            ErrorHandler errorHandler;
+            errorHandler.logError("Error al cerrar el archivo: " + m_nombre, ErrorLevel::WARNING);
+            errorHandler.displayError("Error al cerrar el archivo: " + m_nombre, ErrorLevel::WARNING);
             return false;
         }
         return true;
@@ -35,23 +43,25 @@ bool Archivo::cerrar(ErrorHandler& errorHandler) {
     return false;
 }
 
-bool Archivo::leer(ErrorHandler& errorHandler) {
-    if (!m_archivo.is_open() && !abrir(errorHandler)) {
-        errorHandler.logError(ErrorCode::FILE_NOT_FOUND, ErrorLevel::ERROR);
+bool Archivo::leer() {
+    if (!abrir()) {  // Asegura que el archivo esté abierto o intenta abrirlo
         return false;
     }
 
     std::string linea;
     while (std::getline(m_archivo, linea)) {
-        if (m_archivo.fail()) {
-            errorHandler.logError("Error al leer una lÃ­nea del archivo.", ErrorLevel::ERROR);
-            cerrar(errorHandler);
-            return false;
-        }
         m_contenido.push_back(linea);
     }
 
-    cerrar(errorHandler);
+    if (m_archivo.bad()) {  // Verifica si hubo error al leer
+        ErrorHandler errorHandler;
+        errorHandler.logError(ErrorCode::OPERATION_FAILED, ErrorLevel::ERROR);
+        errorHandler.displayError("Error al leer el archivo: " + m_nombre, ErrorLevel::ERROR);
+        cerrar();
+        return false;
+    }
+
+    cerrar();
     return true;
 }
 

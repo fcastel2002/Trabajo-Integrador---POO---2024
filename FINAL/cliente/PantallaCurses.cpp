@@ -1,14 +1,14 @@
 #include "PantallaCurses.h"
-#include "ErrorHandler.h"
 #include "curses.h"
+#include "ErrorHandler.h"
 
 PantallaCurses::PantallaCurses() {
     initscr();
-    curs_set(FALSE);
-    keypad(stdscr, TRUE);
+    curs_set(FALSE);         // Oculta el cursor
+    keypad(stdscr, TRUE);    // Habilita teclas especiales (como las flechas)
 
     if (has_key(KEY_RESIZE)) {
-        resize_term(0, 0);
+        resize_term(0, 0);   // Ajusta el tamaño de la terminal a su valor actual
     }
 }
 
@@ -64,59 +64,56 @@ void PantallaCurses::mostrarTexto(const std::string& mensaje) {
     getch();
 }
 
-std::string PantallaCurses::capturarEntrada(const std::string& mensaje, ErrorHandler& errorHandler) {
+std::string PantallaCurses::capturarEntrada(const std::string& mensaje) {
     limpiarPantalla();
     mvprintw(1, 1, "%s", mensaje.c_str());
     char buffer[80];
     echo();
-    try {
-        getstr(buffer);
-    }
-    catch (const std::exception& e) {
-        errorHandler.handleException(e);
-        noecho();
-        return "";
-    }
+    getstr(buffer);
     noecho();
+
     return std::string(buffer);
 }
 
-std::vector<std::string> PantallaCurses::capturarEntradaMultiple(std::string& mensaje, ErrorHandler& errorHandler) {
+std::vector<std::string> PantallaCurses::archivoToVector(std::string& mensaje) {
     limpiarPantalla();
-    std::vector<std::string> contenido;
+    ErrorHandler errorHandler;
+
     try {
         Archivo archivo_gcode(mensaje, "");
-        if (!archivo_gcode.leer(errorHandler)) {
-            errorHandler.logError("No se pudo leer el archivo", ErrorLevel::ERROR);
+        if (!archivo_gcode.abrir()) {
+            errorHandler.logError("No se pudo abrir el archivo: " + mensaje, ErrorLevel::ERROR);
+            mostrarError("No se pudo abrir el archivo: " + mensaje);
+            return {};
         }
-        else {
-            contenido = archivo_gcode.getContenido();
+
+        if (!archivo_gcode.leer()) {
+            errorHandler.logError("Error al leer el archivo: " + mensaje, ErrorLevel::ERROR);
+            mostrarError("Error al leer el archivo: " + mensaje);
+            return {};
         }
+
+        return archivo_gcode.getContenido();
+
     }
     catch (const std::exception& e) {
         errorHandler.handleException(e);
+        mostrarError("Excepcion al procesar el archivo.");
+        return {};
     }
-    return contenido;
 }
 
 void PantallaCurses::mostrarError(const std::string& error) {
     limpiarPantalla();
-    attron(A_BOLD | A_REVERSE);
+    attron(A_BOLD | A_REVERSE);  // Resalta el mensaje de error
     mvprintw(1, 1, "Error: %s", error.c_str());
     attroff(A_BOLD | A_REVERSE);
     refrescarPantalla();
-    getch();
+    getch();  // Espera a que el usuario presione una tecla para continuar
 }
 
-std::string PantallaCurses::capturarEleccion(const std::string& mensaje, const std::vector<std::string>& opciones, ErrorHandler& errorHandler) {
+std::string PantallaCurses::capturarEleccion(const std::string& mensaje, const std::vector<std::string>& opciones) {
     limpiarPantalla();
-    int seleccion;
-    try {
-        seleccion = mostrarMenu(opciones, mensaje.c_str());
-    }
-    catch (const std::exception& e) {
-        errorHandler.handleException(e);
-        return "";
-    }
+    int seleccion = mostrarMenu(opciones, mensaje.c_str());
     return opciones[seleccion];
 }
