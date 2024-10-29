@@ -18,7 +18,7 @@ class ServidorControl:
     def _cargar_usuarios(self):
         # Cargar usuarios desde un archivo JSON
         try:
-            file_name = "usuarisdos.json"
+            file_name = "usuarios.json"
             with open(file_name, "r") as archivo:
                 self.usuarios_autorizados = json.load(archivo)
             return "Usuarios cargados correctamente."
