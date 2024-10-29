@@ -18,7 +18,7 @@ public:
 
     Orden(std::vector<std::vector<std::string>>& parametros) :m_parametros{ parametros } {}
 
-    XmlRpcValue crearOrden(std::string& user, std::string& pass) {
+    XmlRpcValue crearOrden() {
 
     XmlRpcValue params;
     params[0] = m_parametros[0][0]; //user

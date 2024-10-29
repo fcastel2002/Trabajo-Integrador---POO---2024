@@ -4,46 +4,92 @@
 using namespace std;
 
 MainMenu::MainMenu(Cliente& cliente, IPantalla* pantalla) : cliente(cliente), m_pantalla(pantalla)  {
-    OrdenBuilder builder;
-	builder.conUsuario(cliente.getUser())
-           .conClave(cliente.getPass())
-           .conComando("comandos");
-	Orden ordenComandos = builder.build();
-	m_comandos = cliente.pedirComandos(ordenComandos);
-    //m_pantalla->mostrarTexto(m_comandos[3]);
+    
 
 }
 
 // Inicializa la pantalla para PDCurses
 
-void MainMenu::setComandos(const std::vector<std::string>& comandos) {
-    m_comandos = comandos;
+void MainMenu::setComandos() {
+    OrdenBuilder builder;
+    builder.conUsuario(cliente.getUser())
+        .conClave(cliente.getPass())
+        .conComando("comandos");
+    Orden ordenComandos = builder.build();
+
+    m_comandos = cliente.pedirComandos(ordenComandos);
+    m_opciones = m_comandos;
+    m_comandos.push_back("Cerrar sesion");
+    m_comandos.push_back(m_opcionesCliente[2]);
+
 }
 
 
 void MainMenu::mostrarMenu() {
     m_pantalla->refrescarPantalla();
-    while (true) {
-        int seleccion = m_pantalla->mostrarMenu(m_comandos, "Bienvenido al menu principal");
-        if (!procesarSeleccion(seleccion)) {
+    while (m_flagMenu) {
+		int seleccion = m_pantalla->mostrarMenu(m_opcionesCliente, "Bienvenido al menu principal");
+        std::string opcion = procesarSeleccionLocal(seleccion);
+		if (opcion == "exit") {
 			break;
+		}
+        else if (opcion == "login") {
+            cliente.login();
+        }
+        while (opcion == "rpc") { 
+            int seleccion = m_pantalla->mostrarMenu(m_opciones, "Bienvenido al menu principal");
+            if (!procesarSeleccion(seleccion)) {
+                break;
 
+            }
         }
     }
 }
 
+std::string MainMenu::procesarSeleccionLocal(int seleccion) {
+	std::string comando = manejarSeleccion(seleccion, "cliente");
+	if (comando == "Salir") {
+		m_flagMenu = false;
+		return "exit";
+	}
+	if (comando == "Login") {
+		return "login";
+	}
+	if (comando == "Mostrar comandos") {
+        setComandos();
+		return "rpc";
+	}
+	return "";
+}
+
 // Maneja la selección del menú
-const std::string MainMenu::manejarSeleccion(int seleccion) {
-    if (seleccion >= 0 && seleccion < m_comandos.size()) {
-        return m_comandos[seleccion];
+const std::string MainMenu::manejarSeleccion(int seleccion, const std::string& para) {
+    if (para == "servidor") {
+
+        if (seleccion >= 0 && seleccion < m_comandos.size()) {
+            return m_opciones[seleccion]; 
+        }
+    }
+
+    else if (para == "cliente") {
+        if (seleccion >= 0 && seleccion < m_opcionesCliente.size()) {
+            return m_opcionesCliente[seleccion];
+        }
     }
     return "";
 }
 
+
 bool MainMenu::procesarSeleccion(int seleccion) {
-    std::string comando = manejarSeleccion(seleccion);
+    std::string comando = manejarSeleccion(seleccion,"servidor");
     OrdenBuilder builder;
+
     if (comando == "Salir") {
+		m_flagMenu = false;
+        return false;
+    }
+    if (comando == "cerrar sesion") {
+
         return false;
     }
     builder.conUsuario(cliente.getUser())

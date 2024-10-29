@@ -14,7 +14,7 @@ Cliente::Cliente(std::string ip, int puerto, IPantalla& pantalla)
 
 bool Cliente::enviarComando(Orden& my_order) {
 	XmlRpcValue params, result;
-	params = my_order.crearOrden(m_usuario,m_clave);
+	params = my_order.crearOrden();
 			 
 	
 	client.execute("Interpreta_Comando", params, result);
@@ -31,7 +31,9 @@ void Cliente::interpretarRespuesta(XmlRpcValue& respuesta) {
 
 std::vector<std::string> Cliente::pedirComandos(Orden& my_order) {
 	XmlRpcValue params, result;
-	params = my_order.crearOrden(m_usuario, m_clave);
+	std::string user = "admin";
+	std::string clave = "clave123";
+	params = my_order.crearOrden();
 	client.execute("Interpreta_Comando", params, result);
 	//interpretarRespuesta(result);
 
@@ -45,3 +47,13 @@ std::vector<std::string> Cliente::pedirComandos(Orden& my_order) {
 	client.close();
 	return comandos;
 }
+
+void Cliente::login() {
+	std::string user;
+	std::string pass;
+	user = m_pantalla.capturarEntrada("Ingrese su usuario: ");
+	pass = m_pantalla.capturarEntrada("Ingrese su clave: ");
+	setUser(user);
+	setPass(pass);
+}
+
