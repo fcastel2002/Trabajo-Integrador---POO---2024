@@ -1,4 +1,0 @@
-﻿  Scanning sources for module dependencies...
-  main.cpp
-C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL_corre\FINAL\cliente\main.cpp(39,34): warning C4101: 'e': unreferenced local variable
-  ti_cliente.vcxproj -> C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL_corre\FINAL\cliente\x64\Debug\cliente.exe

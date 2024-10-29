@@ -22,10 +22,10 @@ private:
     std::string m_clave;                // Contraseña
 
     // Método auxiliar para extraer el contenido entre las etiquetas <value> y </value>
-    std::string extraerContenido(const std::string& mensaje);
+    std::string extraerContenido(XmlRpcValue& contenido);
 
     // Método auxiliar para reemplazar entidades HTML comunes (ej., &apos;, &quot;) por sus caracteres equivalentes
-    std::string reemplazarEntidadesHTML(const std::string& texto);
+   // std::string reemplazarEntidadesHTML(const std::string& texto);
 
 public:
     // Constructor que inicializa la conexión con IP, puerto y pantalla

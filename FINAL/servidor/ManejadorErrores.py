@@ -28,8 +28,8 @@ class ErrorDeEstado(Exception):
         mensajes = {
             1: "Los motores ya estan apagados.",
             2: "Los motores ya estan encendidos.",
-            3: "La conexión ya esta activa.",
-            4: "La conexión ya esta inactiva.",
+            3: "La conexion ya esta activa.",
+            4: "La conexion ya esta inactiva.",
             5: "El efector ya esta activado.",
             6: "El efector ya esta desactivado.",
             7: "El robot ya esta en modo aprendizaje.",

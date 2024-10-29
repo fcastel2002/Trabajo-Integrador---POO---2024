@@ -259,7 +259,7 @@ class ControladorRobot:
             return mensajes
         
         self.homming_realizado = True  # Actualizamos el estado de homming
-        mensajes.append("Éxito: Homming realizado\n")
+        mensajes.append("Exito: Homming realizado\n")
         return mensajes
 
     def mover_a_origen(self):
@@ -273,7 +273,7 @@ class ControladorRobot:
         if "error" in resultado:
             return resultado["error"]
         
-        return "Éxito: Efector movido a la posición de origen\n"
+        return "Exito: Efector movido a la posición de origen\n"
 
     def reportar_posicion(self):
         """Reporte la posición actual y el modo de coordenadas"""

@@ -20,8 +20,8 @@ void MainMenu::setComandos() {
         m_comandos = cliente.pedirComandos(ordenComandos);
 
         m_opciones = m_comandos;
-        m_comandos.push_back("Cerrar sesion");
-        m_comandos.push_back(m_opcionesCliente[2]);
+        m_opciones.push_back("Cerrar sesion");
+        m_opciones.push_back(m_opcionesCliente[2]);
     }
     catch (const std::exception& e) {
         errorHandler.handleException(e);
@@ -32,7 +32,7 @@ void MainMenu::setComandos() {
 void MainMenu::mostrarMenu() {
     m_pantalla->refrescarPantalla();
     while (m_flagMenu) {
-        int seleccion = m_pantalla->mostrarMenu(m_opcionesCliente, "Bienvenido al menú principal");
+        int seleccion = m_pantalla->mostrarMenu(m_opcionesCliente, "Bienvenido al menu principal");
         std::string opcion = procesarSeleccionLocal(seleccion);
 
         if (opcion == "exit") {
@@ -41,11 +41,14 @@ void MainMenu::mostrarMenu() {
         else if (opcion == "login") {
             cliente.login();
         }
-        else if (opcion == "rpc") {
-            while (true) {
-                int seleccion = m_pantalla->mostrarMenu(m_opciones, "Menú de comandos");
-                if (!procesarSeleccion(seleccion)) {
-                    break;
+        if (m_comandos.size()>2) {
+
+            if (opcion == "rpc") {
+                while (true) {
+                    int seleccion = m_pantalla->mostrarMenu(m_opciones, "Menu de comandos");
+                    if (!procesarSeleccion(seleccion)) {
+                        break;
+                    }
                 }
             }
         }
@@ -63,14 +66,17 @@ std::string MainMenu::procesarSeleccionLocal(int seleccion) {
     }
     if (comando == "Mostrar comandos") {
         setComandos();
+        if (m_comandos.empty()) {
+
+        }
         return "rpc";
     }
     return "";
 }
 
 const std::string MainMenu::manejarSeleccion(int seleccion, const std::string& para) {
-    if (para == "servidor" && seleccion >= 0 && seleccion < m_comandos.size()) {
-        return m_comandos[seleccion];
+    if (para == "servidor" && seleccion >= 0 && seleccion < m_opciones.size()) {
+        return m_opciones[seleccion];
     }
     else if (para == "cliente" && seleccion >= 0 && seleccion < m_opcionesCliente.size()) {
         return m_opcionesCliente[seleccion];
@@ -88,7 +94,7 @@ bool MainMenu::procesarSeleccion(int seleccion) {
         return false;
     }
 
-    if (comando == "cerrar sesión") {
+    if (comando == "Cerrar sesion") {
         return false;
     }
 
@@ -102,7 +108,7 @@ bool MainMenu::procesarSeleccion(int seleccion) {
     try {
         if (comando == "Ejecutar automatico") {
             std::string nombreArchivo = m_pantalla->capturarEntrada("Ingrese el nombre del archivo:");
-            std::string choice = m_pantalla->capturarEleccion("¿Desea enviar el archivo? (s/n)", { "Si", "No" });
+            std::string choice = m_pantalla->capturarEleccion("ï¿½Desea enviar el archivo? (s/n)", { "Si", "No" });
             parametros.push_back(nombreArchivo);
 
             if (choice == "Si") {

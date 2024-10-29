@@ -1,4 +1,6 @@
 #include "Cliente.h"
+
+#include "RespuestaBuilder.h"
 #include "ErrorHandler.h"
 #include <iostream>
 #include <unordered_map>
@@ -37,17 +39,48 @@ bool Cliente::enviarComando(Orden& my_order) {
 
 void Cliente::interpretarRespuesta(XmlRpcValue& respuesta) {
 	ErrorHandler errorHandler;
-	if (respuesta.getType() != XmlRpcValue::TypeString) {
+	if (respuesta.getType() != XmlRpcValue::TypeArray) {
 		errorHandler.logError("Respuesta no válida recibida del servidor.", ErrorLevel::WARNING);
 		errorHandler.displayError("La respuesta del servidor no tiene el formato esperado.", ErrorLevel::WARNING);
 		return;
 	}
 
 	// Limpia el mensaje recibido eliminando etiquetas XML y reemplazando entidades HTML
-	std::string mensajeLimpio = extraerContenido(respuesta.toXml());
-	m_pantalla.mostrarTexto(mensajeLimpio);
+	RespuestaBuilder builder;
+	builder.conUsuario(respuesta[0])
+		.conComando(respuesta[1])
+		.conContenido(extraerContenido(respuesta[2]));
+	 
+	//std::string mensajeLimpio = extraerContenido(respuesta.toXml()); // contenido del mensaje
+	Respuesta currentRespuesta = builder.build();
+	 // contenido del mensaje
+	
+	
+	m_pantalla.mostrarTexto(currentRespuesta.getContenido());
 }
 
+std::string Cliente::extraerContenido(XmlRpcValue& contenido) {
+	if (contenido.getType() != XmlRpcValue::TypeArray) {
+		return "";
+	}
+
+	std::string resultado;
+	for (int i = 0; i < contenido.size(); ++i) {
+		if (contenido[i].getType() == XmlRpcValue::TypeString) {
+			resultado += static_cast <std::string>(contenido[i]) + "\n";
+		}
+	}
+
+	// Elimina el último salto de línea si existeA
+	if (!resultado.empty() && resultado.back() == '\n') {
+		resultado.pop_back();
+	}
+
+	return resultado;
+}
+
+
+/*
 // Método auxiliar para extraer el contenido entre las etiquetas <value> y </value> y limpiar entidades HTML
 std::string Cliente::extraerContenido(const std::string& mensaje) {
 	std::size_t start = mensaje.find("<value>");
@@ -86,6 +119,7 @@ std::string Cliente::reemplazarEntidadesHTML(const std::string& texto) {
 	}
 	return limpio;
 }
+*/
 
 std::vector<std::string> Cliente::pedirComandos(Orden& my_order) {
 	XmlRpcValue params, result;
@@ -102,11 +136,19 @@ std::vector<std::string> Cliente::pedirComandos(Orden& my_order) {
 			return comandos;
 		}
 
+		// Verifica que la respuesta es un array
 		if (result.getType() == XmlRpcValue::TypeArray) {
-			for (int i = 0; i < result.size(); ++i) {
-				if (result[i].getType() == XmlRpcValue::TypeString) {
-					comandos.push_back(result[i]);
+			// Verifica que el tercer elemento de la respuesta es un array
+			if (result.size() > 2 && result[2].getType() == XmlRpcValue::TypeArray) {
+				for (int i = 0; i < result[2].size(); ++i) {
+					if (result[2][i].getType() == XmlRpcValue::TypeString) {
+						comandos.push_back(result[2][i]);
+					}
 				}
+			}
+			else {
+				errorHandler.logError("El tercer elemento de la respuesta no es un array.", ErrorLevel::WARNING);
+				errorHandler.displayError("El formato del tercer elemento de la respuesta no es el esperado.", ErrorLevel::WARNING);
 			}
 		}
 		else {

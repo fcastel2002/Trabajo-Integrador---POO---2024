@@ -19,6 +19,7 @@ PantallaCurses::~PantallaCurses() {
 int PantallaCurses::mostrarMenu(const std::vector<std::string>& opciones, const std::string& tituloMenu) {
     int seleccion = 0;
     int n_opciones = opciones.size();
+    
 
     while (true) {
         limpiarPantalla();

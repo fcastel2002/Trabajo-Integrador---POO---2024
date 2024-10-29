@@ -2,6 +2,8 @@
 #include "PantallaCurses.h"
 #include "MainMenu.h"
 #include <iostream>
+#include <thread>
+#include <chrono>
 
 int main() {
     // Inicializamos los componentes principales
@@ -14,7 +16,7 @@ int main() {
     try {
         // Inicializar la pantalla de usuario
         PantallaCurses pantalla;
-
+  
         // Solicitar datos de conexión al usuario
         std::string ip = pantalla.capturarEntrada("Ingrese la IP del servidor:");
         std::string puertoStr = pantalla.capturarEntrada("Ingrese el puerto del servidor:");
@@ -23,7 +25,6 @@ int main() {
         // Crear la instancia del cliente, usando la pantalla para mensajes y errores
         Cliente cliente(ip, puerto, pantalla);
 		
-
         // Crear la instancia de MainMenu
         MainMenu menu(cliente, &pantalla);
 
@@ -37,4 +38,3 @@ int main() {
 
     return 0;
 }
-
