@@ -62,3 +62,5 @@ ERROR: Archivo no encontrado
 [2024-10-29 09:11:10] WARNING: Formato de respuesta incorrecto.
 [2024-10-29 09:19:42] WARNING: Formato de respuesta incorrecto.
 [2024-10-29 10:43:31] WARNING: Formato de respuesta incorrecto.
+[2024-10-29 15:14:16] WARNING: Respuesta no válida recibida del servidor.
+[2024-10-29 15:14:31] WARNING: Respuesta no válida recibida del servidor.

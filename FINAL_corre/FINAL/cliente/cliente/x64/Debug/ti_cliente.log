@@ -1,14 +1,4 @@
 ﻿  Scanning sources for module dependencies...
-  RespuestaBuilder.h
-  Compiling...
-  RespuestaBuilder.h
-  Archivo.cpp
-  Cliente.cpp
-  ErrorHandler.cpp
   main.cpp
-C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL_corre\FINAL\cliente\main.cpp(34,34): warning C4101: 'e': unreferenced local variable
-  MainMenu.cpp
-  PantallaCurses.cpp
-C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL_corre\FINAL\cliente\PantallaCurses.cpp(21,20): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  Generating Code...
+C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL_corre\FINAL\cliente\main.cpp(39,34): warning C4101: 'e': unreferenced local variable
   ti_cliente.vcxproj -> C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL_corre\FINAL\cliente\x64\Debug\cliente.exe
