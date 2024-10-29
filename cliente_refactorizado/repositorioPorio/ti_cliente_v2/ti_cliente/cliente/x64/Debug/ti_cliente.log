@@ -1,11 +1,4 @@
-﻿  Archivo.cpp
-  Cliente.cpp
-  ErrorHandler.cpp
-  main.cpp
-D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\cliente_refactorizado\repositorioPorio\ti_cliente_v2\ti_cliente\main.cpp(34,34): warning C4101: 'e': variable local sin referencia
+﻿  Cliente.cpp
   MainMenu.cpp
-  PantallaCurses.cpp
-D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\cliente_refactorizado\repositorioPorio\ti_cliente_v2\ti_cliente\PantallaCurses.cpp(20,17): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
   Generando código...
-  LINK : no se encontró D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\cliente_refactorizado\repositorioPorio\ti_cliente_v2\ti_cliente\x64\Debug\cliente.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
   ti_cliente.vcxproj -> D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\cliente_refactorizado\repositorioPorio\ti_cliente_v2\ti_cliente\x64\Debug\cliente.exe
