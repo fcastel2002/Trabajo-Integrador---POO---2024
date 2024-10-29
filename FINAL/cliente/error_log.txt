@@ -4,3 +4,20 @@ ERROR: Archivo no encontrado
 ERROR: Archivo no encontrado
 ERROR: Archivo no encontrado
 ERROR: Archivo no encontrado
+[2024-10-29 02:24:24] WARNING: Respuesta no válida recibida del servidor.
+[2024-10-29 02:24:47] WARNING: Respuesta no válida recibida del servidor.
+[2024-10-29 02:26:41] WARNING: Respuesta no válida recibida del servidor.
+[2024-10-29 02:26:45] WARNING: Respuesta no válida recibida del servidor.
+[2024-10-29 02:26:54] WARNING: Respuesta no válida recibida del servidor.
+[2024-10-29 02:32:17] ERROR: Fallo la conexion
+[2024-10-29 02:32:22] ERROR: Fallo la conexion
+[2024-10-29 02:32:25] ERROR: Fallo la conexion
+[2024-10-29 02:32:25] ERROR: Faltan parametros esenciales para construir la orden.
+[2024-10-29 02:32:25] ERROR: Parametros insuficientes para crear la orden.
+[2024-10-29 02:32:27] ERROR: Fallo la conexion
+[2024-10-29 02:32:27] ERROR: Faltan parametros esenciales para construir la orden.
+[2024-10-29 02:32:27] ERROR: Parametros insuficientes para crear la orden.
+[2024-10-29 02:32:30] ERROR: Fallo la conexion
+[2024-10-29 02:32:44] WARNING: Formato de respuesta incorrecto.
+[2024-10-29 02:33:08] WARNING: Formato de respuesta incorrecto.
+[2024-10-29 02:33:42] WARNING: Respuesta no valida recibida del servidor.

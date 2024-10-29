@@ -1,33 +1,43 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <map>
 #include "XmlRpc.h"
+#include "ErrorHandler.h"
 
-using namespace  XmlRpc;
+using namespace XmlRpc;
+
 class Orden {
 private:
-    std::string m_tipo{};
-    std::vector<std::vector<std::string>> m_parametros{};
-    // Atributo normal para almacenar las etiquetas de los parámetros
+    std::string m_tipo;
+    std::vector<std::vector<std::string>> m_parametros;
     std::map<std::string, std::vector<std::string>> etiquetasParametros;
 
-
-
-
 public:
-
-    Orden(std::vector<std::vector<std::string>>& parametros) :m_parametros{ parametros } {}
+    // Constructor que acepta un vector de vectores de strings
+    explicit Orden(const std::vector<std::vector<std::string>>& parametros) : m_parametros{ parametros } {}
 
     XmlRpcValue crearOrden() {
+        XmlRpcValue params;
+        ErrorHandler errorHandler;
 
-    XmlRpcValue params;
-    params[0] = m_parametros[0][0]; //user
-    params[1] = m_parametros[1][0]; //pass
-    params[2] = m_parametros[2][0];
-    for (int i = 0; i < m_parametros[3].size(); i++) {
-        params[3][i] = m_parametros[3][i];
-    }
+        try {
+            if (m_parametros.size() < 4) {
+                throw std::runtime_error("Parametros insuficientes para crear la orden.");
+            }
 
-    return params;
+            params[0] = m_parametros[0][0];
+            params[1] = m_parametros[1][0];
+            params[2] = m_parametros[2][0];
+
+            for (int i = 0; i < m_parametros[3].size(); i++) {
+                params[3][i] = m_parametros[3][i];
+            }
+        }
+        catch (const std::exception& e) {
+            errorHandler.handleException(e);
+        }
+
+        return params;
     }
 };

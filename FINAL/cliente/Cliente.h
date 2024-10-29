@@ -5,39 +5,49 @@
 #include <XmlRpc.h>
 #include "Orden.h"
 
+// Librerías necesarias para XmlRpc en Visual Studio
 #pragma comment(lib, "xmlrpc++.lib")
-#pragma comment(lib, "WS2_32.lib")	
-
+#pragma comment(lib, "WS2_32.lib")
 
 using namespace XmlRpc;
 
 class Cliente {
-
 private:
-	std::string m_ip;
-	int m_puerto;
-	XmlRpcClient client;
-	IPantalla& m_pantalla;
-	std::string m_usuario;
-	std::string m_clave;
+    std::string m_ip;               // Dirección IP del servidor
+    int m_puerto;                   // Puerto de conexión
+    XmlRpcClient client;            // Cliente XML-RPC para comunicaciones con el servidor
+    IPantalla& m_pantalla;          // Referencia a la interfaz de pantalla
+    std::string m_usuario;          // Nombre de usuario
+    std::string m_clave;            // Contraseña
+
 public:
+    // Constructor: inicializa la conexión con IP, puerto y pantalla
+    Cliente(std::string ip, int puerto, IPantalla& pantalla);
 
-	Cliente(std::string ip, int puerto, IPantalla& pantalla);
+    // Envia un comando al servidor a través de XML-RPC
+    bool enviarComando(Orden& my_order);
 
-	bool enviarComando(Orden& my_order);
-	std::vector<std::string> pedirComandos(Orden& my_order);
+    // Solicita y obtiene una lista de comandos del servidor
+    std::vector<std::string> pedirComandos(Orden& my_order);
 
-	void interpretarRespuesta(XmlRpcValue& respuesta);
+    // Interpreta la respuesta recibida del servidor
+    void interpretarRespuesta(XmlRpcValue& respuesta);
 
-	std::string getUser() { return m_usuario; }
-	std::string getPass() { return m_clave; }
-	void setUser(std::string user) { m_usuario = user; }
+    // Obtiene el nombre de usuario
+    std::string getUser() { return m_usuario; }
 
-	IPantalla& getPantalla() { return m_pantalla; }
+    // Obtiene la contraseña del usuario
+    std::string getPass() { return m_clave; }
 
-	void login();
-	
-	void setPass(std::string pass) { m_clave = pass; }
-//const std::vector<std::string> pedirComandos(Orden& my_order);
+    // Define el nombre de usuario
+    void setUser(std::string user) { m_usuario = user; }
+
+    // Define la contraseña del usuario
+    void setPass(std::string pass) { m_clave = pass; }
+
+    // Devuelve la referencia de la pantalla
+    IPantalla& getPantalla() { return m_pantalla; }
+
+    // Realiza el proceso de login solicitando usuario y contraseña al usuario
+    void login();
 };
-
