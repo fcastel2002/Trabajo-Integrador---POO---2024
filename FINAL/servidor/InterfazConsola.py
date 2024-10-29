@@ -187,8 +187,6 @@ class InterfazConsola:
         try:
             if self.servidor_activado is False:
                 msj = self.rpc_server._cargar_usuarios()
-                if self.rpc_server.usuarios is None:
-                    raise msj
                 print(msj)
                 msj = self.rpc_server.iniciar()  # Inicia el servidor en un hilo separado
                 print(msj)

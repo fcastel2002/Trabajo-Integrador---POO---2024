@@ -45,7 +45,7 @@ class ErrorArchivos(Exception):
     def __init__(self, tipo, nombre_archivo = None):
         mensajes = {
             1: "No se pudo escribir en el archivo",
-            2: f"El archivo {nombre_archivo}.txt no existe."
+            2: f"El archivo {nombre_archivo} no existe."
         }
         self.mensaje = mensajes.get(tipo, "Error de estado.")
 

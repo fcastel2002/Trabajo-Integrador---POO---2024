@@ -2,7 +2,7 @@ from xmlrpc.server import SimpleXMLRPCServer
 from Logger import Logger
 import json
 import threading
-
+from ManejadorErrores import ErrorArchivos
 
 class ServidorControl:
     def __init__(self, consola, robot, ip="127.0.0.1", puerto=9000):
@@ -18,11 +18,12 @@ class ServidorControl:
     def _cargar_usuarios(self):
         # Cargar usuarios desde un archivo JSON
         try:
-            with open("usuarios.json", "r") as archivo:
+            file_name = "usuarisdos.json"
+            with open(file_name, "r") as archivo:
                 self.usuarios_autorizados = json.load(archivo)
             return "Usuarios cargados correctamente."
         except FileNotFoundError:
-            return "No se encontró el archivo de usuarios."
+            raise ErrorArchivos(2, file_name)
 
     def _validar_usuario(self, usuario, clave):
         # Validar que el usuario y la clave sean correctos
