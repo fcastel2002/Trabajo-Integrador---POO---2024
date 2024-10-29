@@ -104,7 +104,7 @@ class ServidorControl:
         if isinstance(resultado, list):
             self.respuestas[2] = resultado
         else:
-            self.respuestas[2] = [resultado]  # Convertir en lista si `resultado` no es una lista
+            self.respuestas[2] = [resultado]
 
     def _ejecutar_comando(self, comando, parametros = None):
         comandos_disponibles = [
