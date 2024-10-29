@@ -35,6 +35,8 @@ public:
 
 	IPantalla& getPantalla() { return m_pantalla; }
 
+	void login();
+	
 	void setPass(std::string pass) { m_clave = pass; }
 //const std::vector<std::string> pedirComandos(Orden& my_order);
 };
