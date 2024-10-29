@@ -142,7 +142,7 @@ class ServidorControl:
             x = float(parametros[0])  # X
             y = float(parametros[1])  # Y
             z = float(parametros[2])  # Z
-            if len(parametros) > 3:
+            if len(parametros) > 3 and not parametros[3]:
                 velocidad = float(parametros[3])  # velocidad
             else:
                 velocidad = None

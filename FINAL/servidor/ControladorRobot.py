@@ -142,7 +142,7 @@ class ControladorRobot:
         if not self.motores_activos:
             raise ErrorDeConexion(2)  # Motores apagados
 
-        if activar:
+        if activar == "Iniciar":
             if self.aprendiendo:
                 raise ErrorDeEstado(7)  # Ya está en modo aprendizaje
             self.aprendiendo = True
