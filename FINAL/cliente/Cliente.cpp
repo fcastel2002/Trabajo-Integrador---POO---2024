@@ -42,7 +42,23 @@ void Cliente::interpretarRespuesta(XmlRpcValue& respuesta) {
 		return;
 	}
 
-	m_pantalla.mostrarTexto(respuesta.toXml());
+	// Limpia el mensaje recibido eliminando etiquetas XML
+	std::string mensajeLimpio = extraerContenido(respuesta.toXml());
+	m_pantalla.mostrarTexto(mensajeLimpio);
+}
+
+// Método auxiliar para extraer el contenido entre las etiquetas <value> y </value>
+std::string Cliente::extraerContenido(const std::string& mensaje) {
+	std::size_t start = mensaje.find("<value>");
+	std::size_t end = mensaje.find("</value>");
+
+	if (start != std::string::npos && end != std::string::npos) {
+		start += 7;  // Mueve el índice justo después de "<value>"
+		return mensaje.substr(start, end - start);  // Extrae el contenido entre las etiquetas
+	}
+
+	// Si no se encuentran las etiquetas, retorna el mensaje completo
+	return mensaje;
 }
 
 std::vector<std::string> Cliente::pedirComandos(Orden& my_order) {
