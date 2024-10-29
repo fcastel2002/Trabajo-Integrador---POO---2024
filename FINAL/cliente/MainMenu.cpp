@@ -33,7 +33,7 @@ void MainMenu::mostrarMenu() {
     m_pantalla->refrescarPantalla();
     while (m_flagMenu) {
         int seleccion = m_pantalla->mostrarMenu(m_opcionesCliente, "Bienvenido al menu principal");
-        std::string opcion = procesarSeleccionLocal(seleccion);
+        std::string opcion = procesarSeleccion(seleccion, "local");
 
         if (opcion == "exit") {
             break;
@@ -55,7 +55,7 @@ void MainMenu::mostrarMenu() {
     }
 }
 
-std::string MainMenu::procesarSeleccionLocal(int seleccion) {
+std::string MainMenu::procesarSeleccion(int seleccion, const std::string& quien) {
     std::string comando = manejarSeleccion(seleccion, "cliente");
     if (comando == "Salir") {
         m_flagMenu = false;

@@ -173,3 +173,10 @@ void Cliente::login() {
 	setUser(user);
 	setPass(pass);
 }
+
+void Cliente::cerrarSesion() {
+
+	setUser("null");
+	setPass("null");
+
+}

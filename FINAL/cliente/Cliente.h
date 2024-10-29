@@ -42,6 +42,10 @@ public:
 
     // Realiza el proceso de login solicitando usuario y contraseña al usuario
     void login();
+	
+    // Resetea usuario y contraseña
+    
+	void cerrarSesion();
 
     // Métodos getter y setter para el usuario y la contraseña
     std::string getUser() { return m_usuario; }
