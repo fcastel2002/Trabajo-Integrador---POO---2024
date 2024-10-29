@@ -20,13 +20,19 @@ public:
     MainMenu(Cliente& cliente, IPantalla* pantalla);
     void mostrarMenu();
     void setComandos(const std::vector<std::string>& comandos);
-	bool procesarSeleccion(int seleccion);
+    bool procesarSeleccion(int seleccion);
 
 
 private:
     Cliente& cliente;
     IPantalla* m_pantalla;
     const std::string manejarSeleccion(int seleccion);
+    const std::vector<std::string> m_opcionesCliente = {
+        "Login",
+        "Cerrar sesion",
+        "Conectar con el servidor",
+        "Salir"
+    }; 
 
     std::vector<std::string> m_comandos;
 };
