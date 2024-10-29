@@ -18,7 +18,7 @@ class ServidorControl:
     def _cargar_usuarios(self):
         # Cargar usuarios desde un archivo JSON
         try:
-            with open("servidor\\usuarios.json", "r") as archivo:
+            with open("usuarios.json", "r") as archivo:
                 return json.load(archivo)
         except FileNotFoundError:
             return "No se encontró el archivo de usuarios."
