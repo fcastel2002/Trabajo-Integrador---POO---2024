@@ -1,21 +1,19 @@
 #pragma once
+#include <string>
+#include <vector>
 #include "IPantalla.h"
-#include "Archivo.h"
-class PantallaCurses :
-    public IPantalla
-{
+#include "ErrorHandler.h"
+
+class PantallaCurses:public IPantalla {
 public:
     PantallaCurses();
-	~PantallaCurses() override;
-
-	int mostrarMenu(const std::vector<std::string>& opciones, const std::string& tituloMenu) override;
-	void mostrarTexto(const std::string& mensaje) override;
-	void limpiarPantalla() override;
-	std::string capturarEntrada(const std::string& mensaje) override;
-	std::vector<std::string> capturarEntradaMultiple(std::string& mensaje) override;
-	std::string capturarEleccion(const std::string& mensaje, const std::vector<std::string>& opciones) override;
-	void refrescarPantalla() override;
-	void  mostrarError(const std::string& error) override;
-
+    ~PantallaCurses();
+    int mostrarMenu(const std::vector<std::string>& opciones, const std::string& tituloMenu);
+    void limpiarPantalla();
+    void refrescarPantalla();
+    void mostrarTexto(const std::string& mensaje);
+    std::string capturarEntrada(const std::string& mensaje, ErrorHandler& errorHandler);
+    std::vector<std::string> capturarEntradaMultiple(std::string& mensaje, ErrorHandler& errorHandler);
+    void mostrarError(const std::string& error);
+    std::string capturarEleccion(const std::string& mensaje, const std::vector<std::string>& opciones, ErrorHandler& errorHandler);
 };
-

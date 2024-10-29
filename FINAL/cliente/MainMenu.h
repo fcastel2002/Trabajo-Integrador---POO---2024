@@ -18,9 +18,9 @@
 class MainMenu {
 public:
     MainMenu(Cliente& cliente, IPantalla* pantalla);
-    void mostrarMenu();
+    void mostrarMenu(ErrorHandler& errorHandler);
     void setComandos(const std::vector<std::string>& comandos);
-	bool procesarSeleccion(int seleccion);
+    bool procesarSeleccion(int seleccion, ErrorHandler& errorHandler);
 
 
 private:

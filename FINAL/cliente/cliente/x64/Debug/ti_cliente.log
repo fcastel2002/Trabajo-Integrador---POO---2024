@@ -1,9 +1,73 @@
-﻿  Archivo.cpp
-  Cliente.cpp
+﻿  Cliente.cpp
+D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\Cliente.cpp(25,2): error C2660: 'Cliente::interpretarRespuesta': la función no acepta 2 argumentos
+      D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\Cliente.h(29,10):
+      vea la declaración de 'Cliente::interpretarRespuesta'
+      D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\Cliente.cpp(25,2):
+      al hacer coincidir la lista de argumentos '(XmlRpc::XmlRpcValue, ErrorHandler)'
+  
+D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\Cliente.cpp(30,15): error C2511: 'void Cliente::interpretarRespuesta(XmlRpc::XmlRpcValue &,ErrorHandler &)': la función miembro sobrecargada no se ha encontrado en 'Cliente'
+      D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\Cliente.h(14,7):
+      vea la declaración de 'Cliente'
+  
+  ErrorHandler.cpp
   main.cpp
-C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\cliente_refactorizado\repositorioPorio\ti_cliente_v2\ti_cliente\main.cpp(37,34): warning C4101: 'e': unreferenced local variable
+D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\main.cpp(13,24): error C2259: "PantallaCurses": no se puede crear una instancia de una clase abstract
+      D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\PantallaCurses.h(7,7):
+      vea la declaración de 'PantallaCurses'
+      D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\main.cpp(13,24):
+      debido a los siguientes miembros:
+      D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\main.cpp(13,24):
+      'std::string IPantalla::capturarEntrada(const std::string &)': es abstracto
+      D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\IPantalla.h(13,25):
+      vea la declaración de 'IPantalla::capturarEntrada'
+      D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\main.cpp(13,24):
+      'std::vector<std::string,std::allocator<std::string>> IPantalla::capturarEntradaMultiple(std::string &)': es abstracto
+      D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\IPantalla.h(14,35):
+      vea la declaración de 'IPantalla::capturarEntradaMultiple'
+      D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\main.cpp(13,24):
+      'std::string IPantalla::capturarEleccion(const std::string &,const std::vector<std::string,std::allocator<std::string>> &)': es abstracto
+      D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\IPantalla.h(15,25):
+      vea la declaración de 'IPantalla::capturarEleccion'
+  
+D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\main.cpp(16,35): error C2660: 'PantallaCurses::capturarEntrada': la función no acepta 1 argumentos
+      D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\PantallaCurses.h(15,17):
+      vea la declaración de 'PantallaCurses::capturarEntrada'
+      D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\main.cpp(16,35):
+      al hacer coincidir la lista de argumentos '(const char [28])'
+  
+D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\main.cpp(17,42): error C2660: 'PantallaCurses::capturarEntrada': la función no acepta 1 argumentos
+      D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\PantallaCurses.h(15,17):
+      vea la declaración de 'PantallaCurses::capturarEntrada'
+      D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\main.cpp(17,42):
+      al hacer coincidir la lista de argumentos '(const char [32])'
+  
+D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\main.cpp(19,37): error C2660: 'PantallaCurses::capturarEntrada': la función no acepta 1 argumentos
+      D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\PantallaCurses.h(15,17):
+      vea la declaración de 'PantallaCurses::capturarEntrada'
+      D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\main.cpp(19,37):
+      al hacer coincidir la lista de argumentos '(const char [20])'
+  
+D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\main.cpp(20,37): error C2660: 'PantallaCurses::capturarEntrada': la función no acepta 1 argumentos
+      D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\PantallaCurses.h(15,17):
+      vea la declaración de 'PantallaCurses::capturarEntrada'
+      D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\main.cpp(20,37):
+      al hacer coincidir la lista de argumentos '(const char [18])'
+  
   MainMenu.cpp
+D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\MainMenu.cpp(7,11): error C2511: 'MainMenu::MainMenu(Cliente &,IPantalla *,ErrorHandler &)': la función miembro sobrecargada no se ha encontrado en 'MainMenu'
+      D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\MainMenu.h(18,7):
+      vea la declaración de 'MainMenu'
+  
+D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\MainMenu.cpp(7,128): error C2550: 'MainMenu::{ctor}': las listas de inicializadores de constructor solo se permiten en las definiciones de constructor
+D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\MainMenu.cpp(15,9): error C2597: referencia no válida a miembro no static 'MainMenu::m_comandos'
+      D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\MainMenu.h(31,30):
+      vea la declaración de 'MainMenu::m_comandos'
+  
   PantallaCurses.cpp
-C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\cliente_refactorizado\repositorioPorio\ti_cliente_v2\ti_cliente\PantallaCurses.cpp(20,17): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  Generating Code...
-  ti_cliente.vcxproj -> C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\cliente_refactorizado\repositorioPorio\ti_cliente_v2\ti_cliente\x64\Debug\cliente.exe
+D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\PantallaCurses.cpp(21,20): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\PantallaCurses.cpp(88,9): error C2065: 'Archivo': identificador no declarado
+D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\PantallaCurses.cpp(88,17): error C2146: error de sintaxis: falta ';' delante del identificador 'archivo_gcode'
+D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\PantallaCurses.cpp(88,17): error C3861: 'archivo_gcode': no se encontró el identificador
+D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\PantallaCurses.cpp(89,14): error C2065: 'archivo_gcode': identificador no declarado
+D:\OneDrive - Universidad Nacional de Cuyo\8vo semestre\POO\Integrador\Trabajo-Integrador---POO---2024\FINAL\cliente\PantallaCurses.cpp(93,25): error C2065: 'archivo_gcode': identificador no declarado
+  Generando código...

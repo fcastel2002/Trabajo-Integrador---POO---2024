@@ -4,21 +4,21 @@
 
 using namespace std;
 
-MainMenu::MainMenu(Cliente& cliente, IPantalla* pantalla, ErrorHandler& errorHandler) : cliente(cliente), m_pantalla(pantalla)  {
+MainMenu::MainMenu(Cliente& cliente, IPantalla* pantalla, ErrorHandler& errorHandler) : cliente(cliente), m_pantalla(pantalla) {
     OrdenBuilder builder;
     builder.conUsuario(cliente.getUser())
-           .conClave(cliente.getPass())
-           .conComando("comandos");
+        .conClave(cliente.getPass())
+        .conComando("comandos");
     Orden ordenComandos = builder.build();
 
     try {
         m_comandos = cliente.pedirComandos(ordenComandos, errorHandler);
-    } catch (const std::exception& e) {
+    }
+    catch (const std::exception& e) {
         errorHandler.handleException(e);
     }
 }
 
-// Inicializa la pantalla para PDCurses
 void MainMenu::setComandos(const std::vector<std::string>& comandos) {
     m_comandos = comandos;
 }
@@ -33,7 +33,6 @@ void MainMenu::mostrarMenu(ErrorHandler& errorHandler) {
     }
 }
 
-// Maneja la selección del menú
 const std::string MainMenu::manejarSeleccion(int seleccion) {
     if (seleccion >= 0 && seleccion < m_comandos.size()) {
         return m_comandos[seleccion];
@@ -49,8 +48,8 @@ bool MainMenu::procesarSeleccion(int seleccion, ErrorHandler& errorHandler) {
     }
 
     builder.conUsuario(cliente.getUser())
-           .conClave(cliente.getPass())
-           .conComando(comando);
+        .conClave(cliente.getPass())
+        .conComando(comando);
 
     std::vector<std::string> mensajesParametros = builder.obtenerEtiquetasParametros();
     std::vector<std::string> parametros;
@@ -58,7 +57,7 @@ bool MainMenu::procesarSeleccion(int seleccion, ErrorHandler& errorHandler) {
     try {
         if (comando == "Ejecutar automatico") {
             std::string nombreArchivo = m_pantalla->capturarEntrada("Ingrese el nombre del archivo:");
-            std::string choice = m_pantalla->capturarEleccion("Desea enviar el archivo? (s/n)", {"Si", "No"});
+            std::string choice = m_pantalla->capturarEleccion("Desea enviar el archivo? (s/n)", { "Si", "No" });
             parametros.push_back(nombreArchivo);
 
             if (choice == "Si") {
@@ -67,12 +66,14 @@ bool MainMenu::procesarSeleccion(int seleccion, ErrorHandler& errorHandler) {
                     parametros.push_back(entrada);
                 }
             }
-        } else {
+        }
+        else {
             for (const auto& mensaje : mensajesParametros) {
                 parametros.push_back(m_pantalla->capturarEntrada(mensaje));
             }
         }
-    } catch (const std::exception& e) {
+    }
+    catch (const std::exception& e) {
         errorHandler.handleException(e);
         return false;
     }
