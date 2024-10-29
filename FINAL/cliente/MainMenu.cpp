@@ -108,7 +108,7 @@ bool MainMenu::procesarSeleccion(int seleccion) {
     try {
         if (comando == "Ejecutar automatico") {
             std::string nombreArchivo = m_pantalla->capturarEntrada("Ingrese el nombre del archivo:");
-            std::string choice = m_pantalla->capturarEleccion("�Desea enviar el archivo? (s/n)", { "Si", "No" });
+            std::string choice = m_pantalla->capturarEleccion("Desea enviar el archivo? (s/n)", { "Si", "No" });
             parametros.push_back(nombreArchivo);
 
             if (choice == "Si") {
@@ -123,6 +123,12 @@ bool MainMenu::procesarSeleccion(int seleccion) {
             else {
                 parametros.push_back("");
             }
+        }
+        else if (comando == "Aprendizaje") {
+            std::string nombreArchivo = m_pantalla->capturarEntrada("Ingrese el nombre del archivo:");
+			std::string choice = m_pantalla->capturarEleccion("Que quiere hacer con el aprendizaje?: ", mensajesParametros);
+			parametros.push_back(nombreArchivo);
+			parametros.push_back(choice);
         }
         else {
             for (const auto& mensaje : mensajesParametros) {
