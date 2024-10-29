@@ -1,0 +1,2205 @@
+format 224
+"cliente" // cliente
+  revision 1
+  modified_by 45 "Usuario"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  cpp_h_dir "C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/FINAL/cliente/"
+  cpp_src_dir "C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/FINAL/cliente/"
+  classview 128045 "cliente"
+    
+    classdiagramsettings member_max_width 0 end
+    
+    classcompositediagramsettings end
+    
+    collaborationdiagramsettings end
+    
+    objectdiagramsettings end
+    
+    objectcompositediagramsettings end
+    
+    sequencediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    
+    activitydiagramsettings
+     end
+    class 128045 "Archivo"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 128045 "m_nombre"
+	private explicit_type "std::string"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Nombre del archivo con extensión"
+      end
+
+      attribute 128173 "m_ruta"
+	private explicit_type "std::string"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Ruta del archivo"
+      end
+
+      attribute 128301 "m_archivo"
+	private explicit_type "std::fstream"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Flujo de archivo"
+      end
+
+      attribute 128429 "m_contenido"
+	private explicit_type "std::string"
+	stereotype "std::vector"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${stereotype}<${type}> ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Contenido leído del archivo"
+      end
+
+      operation 128045 "Archivo"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 2
+	  param in name "nombre" explicit_type "std::string"
+	  param in name "ruta" explicit_type "std::string"
+	    defaultvalue "\"\""
+	cpp_decl "    ${comment}${inline}${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}
+    : m_nombre{ nombre + \".txt\" }
+    , m_ruta{ ruta }
+    , m_archivo{}
+    , m_contenido{} ${throw}{
+${body}}
+"
+	
+	
+	
+	
+	comment " Constructor que inicializa el nombre y la ruta del archivo"
+      end
+
+      operation 128173 "~Archivo"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${)}${volatile}${throw} {
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Destructor que cierra el archivo si está abierto"
+      end
+
+      operation 128301 "abrir"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Abre el archivo para lectura"
+      end
+
+      operation 128429 "cerrar"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Cierra el archivo si está abierto"
+      end
+
+      operation 128557 "leer"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Lee el contenido del archivo línea por línea"
+      end
+
+      operation 128685 "getContenido"
+	preserve_cpp_body_indent public explicit_return_type "std::vector<std::string>"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Retorna el contenido del archivo leído en un vector de strings"
+      end
+
+      operation 128813 "getNombre"
+	preserve_cpp_body_indent public explicit_return_type "std::string"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Obtiene el nombre del archivo"
+      end
+
+      operation 128941 "getRuta"
+	preserve_cpp_body_indent public explicit_return_type "std::string"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Obtiene la ruta del archivo"
+      end
+    end
+
+    class 128173 "Cliente"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 128557 "m_ip"
+	private explicit_type "std::string"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Dirección IP del servidor"
+      end
+
+      attribute 128685 "m_puerto"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Puerto de conexión"
+      end
+
+      attribute 128813 "client"
+	private explicit_type "XmlRpcClient"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Cliente XML-RPC para la comunicación con el servidor"
+      end
+
+      classrelation 128045 // m_pantalla (<unidirectional association>)
+	relation 128045 --->
+	  a role_name "m_pantalla" private
+	    comment " Referencia a la pantalla para mostrar mensajes"
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} & ${name}${value};
+"
+	    classrelation_ref 128045 // m_pantalla (<unidirectional association>)
+	  b parent class_ref 128301 // IPantalla
+      end
+
+      attribute 128941 "m_usuario"
+	private explicit_type "std::string"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Nombre de usuario"
+      end
+
+      attribute 129069 "m_clave"
+	private explicit_type "std::string"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Contraseña"
+      end
+
+      operation 129069 "extraerContenido"
+	preserve_cpp_body_indent private explicit_return_type "std::string"
+	nparams 1
+	  param inout name "contenido" explicit_type "XmlRpcValue"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Método auxiliar para extraer el contenido entre las etiquetas <value> y </value>"
+      end
+
+      operation 129197 "Cliente"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 3
+	  param in name "ip" explicit_type "std::string"
+	  param in name "puerto" explicit_type "int"
+	  param inout name "pantalla" type class_ref 128301 // IPantalla
+	cpp_decl "    ${comment}${inline}${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} & ${p2}${v2}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} & ${p2}${)}
+	: m_ip(ip)
+	, m_puerto(puerto)
+	, client(m_ip.c_str(), m_puerto)
+	, m_pantalla{ pantalla }
+	, m_usuario{ \"null\" }
+	, m_clave{ \"null\" } ${throw}{
+${body}}
+"
+	
+	
+	
+	
+	comment " Método auxiliar para reemplazar entidades HTML comunes (ej., &apos;, &quot;) por sus caracteres equivalentes
+ std::string reemplazarEntidadesHTML(const std::string& texto);
+ Constructor que inicializa la conexión con IP, puerto y pantalla"
+      end
+
+      operation 129325 "enviarComando"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 1
+	  param inout name "my_order" type class_ref 128429 // Orden
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Envía un comando al servidor a través de XML-RPC"
+      end
+
+      operation 129453 "pedirComandos"
+	preserve_cpp_body_indent public explicit_return_type "std::vector<std::string>"
+	nparams 1
+	  param inout name "my_order" type class_ref 128429 // Orden
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//
+//// Método auxiliar para extraer el contenido entre las etiquetas <value> y </value> y limpiar entidades HTML
+//std::string Cliente::extraerContenido(const std::string& mensaje) {
+//std::size_t start = mensaje.find(\"<value>\");
+//std::size_t end = mensaje.find(\"</value>\");
+//
+//std::string contenido;
+//if (start != std::string::npos && end != std::string::npos) {
+//start += 7;  // Mueve el índice justo después de \"<value>\"
+//contenido = mensaje.substr(start, end - start);  // Extrae el contenido entre las etiquetas
+//}
+//else {
+//contenido = mensaje;
+//}
+//
+//// Reemplaza las entidades HTML comunes con sus caracteres equivalentes
+//return reemplazarEntidadesHTML(contenido);
+//}
+//
+//// Método auxiliar para reemplazar entidades HTML comunes
+//std::string Cliente::reemplazarEntidadesHTML(const std::string& texto) {
+//std::string limpio = texto;
+//const std::unordered_map<std::string, std::string> entidades = {
+//{\"&apos;\", \"'\"},
+//{\"&quot;\", \"\\\"\"},
+//{\"&lt;\", \"<\"},
+//{\"&gt;\", \">\"},
+//{\"&amp;\", \"&\"}
+//};
+//
+//for (const auto& [entidad, caracter] : entidades) {
+//std::size_t pos = limpio.find(entidad);
+//while (pos != std::string::npos) {
+//limpio.replace(pos, entidad.length(), caracter);
+//pos = limpio.find(entidad, pos + caracter.length());
+//}
+//}
+//return limpio;
+//}
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} & ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment " Solicita y obtiene una lista de comandos del servidor"
+      end
+
+      operation 129581 "interpretarRespuesta"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param inout name "respuesta" explicit_type "XmlRpcValue"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Interpreta la respuesta recibida del servidor y muestra el mensaje limpio"
+      end
+
+      operation 129709 "login"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "// Implementación de la función login
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment " Realiza el proceso de login solicitando usuario y contraseña al usuario"
+      end
+
+      operation 129837 "getUser"
+	cpp_inline public explicit_return_type "std::string"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract} { return m_usuario; };
+"
+	
+	
+	
+	
+	comment " Métodos getter y setter para el usuario y la contraseña"
+      end
+
+      operation 129965 "getPass"
+	cpp_inline public explicit_return_type "std::string"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract} { return m_clave; };
+"
+	
+	
+	
+	
+      end
+
+      operation 130093 "setUser"
+	cpp_inline public explicit_return_type "void"
+	nparams 1
+	  param in name "user" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract} { m_usuario = user; };
+"
+	
+	
+	
+	
+      end
+
+      operation 130221 "setPass"
+	cpp_inline public explicit_return_type "void"
+	nparams 1
+	  param in name "pass" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract} { m_clave = pass; };
+"
+	
+	
+	
+	
+      end
+
+      operation 130349 "getPantalla"
+	cpp_inline public return_type class_ref 128301 // IPantalla
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} & ${name}${(}${)}${const}${volatile}${throw}${abstract} { return m_pantalla; };
+"
+	
+	
+	
+	
+	comment " Devuelve la referencia de la pantalla"
+      end
+    end
+
+    class 128301 "IPantalla"
+      abstract visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      operation 131885 "~IPantalla"
+	cpp_virtual cpp_defaulted public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 132013 "mostrarTexto"
+	abstract cpp_virtual public explicit_return_type "void"
+	nparams 1
+	  param in name "mensaje" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+	comment " Muestra un mensaje de texto en pantalla"
+      end
+
+      operation 132141 "mostrarError"
+	abstract cpp_virtual public explicit_return_type "void"
+	nparams 1
+	  param in name "error" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+	comment " Muestra un mensaje de error en pantalla"
+      end
+
+      operation 132269 "limpiarPantalla"
+	abstract cpp_virtual public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+	comment " Limpia la pantalla"
+      end
+
+      operation 132397 "capturarEntrada"
+	abstract cpp_virtual public explicit_return_type "std::string"
+	nparams 1
+	  param in name "mensaje" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+	comment " Captura la entrada del usuario mostrando un mensaje"
+      end
+
+      operation 132525 "archivoToVector"
+	abstract cpp_virtual public explicit_return_type "std::vector<std::string>"
+	nparams 1
+	  param inout name "mensaje" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+	comment " Convierte un archivo en un vector de strings"
+      end
+
+      operation 132653 "capturarEleccion"
+	abstract cpp_virtual public explicit_return_type "std::string"
+	nparams 2
+	  param in name "mensaje" explicit_type "std::string"
+	  param in name "opciones" explicit_type "std::vector<std::string>"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} & ${p0}${v0}, const ${t1} & ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+	comment " Muestra opciones al usuario y captura su elección"
+      end
+
+      operation 132781 "mostrarMenu"
+	abstract cpp_virtual public explicit_return_type "int"
+	nparams 2
+	  param in name "opciones" explicit_type "std::vector<std::string>"
+	  param in name "tituloMenu" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} & ${p0}${v0}, const ${t1} & ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+	comment " Muestra un menú y retorna la opción elegida por el usuario"
+      end
+
+      operation 132909 "refrescarPantalla"
+	abstract cpp_virtual public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+	comment " Refresca la pantalla, actualizando su contenido"
+      end
+    end
+
+    class 128429 "Orden"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 130989 "m_tipo"
+	private explicit_type "std::string"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 131117 "m_parametros"
+	private explicit_type "std::vector<std::string>"
+	stereotype "std::vector"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${stereotype}<${type}> ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 131245 "etiquetasParametros"
+	private explicit_type "std::string, std::vector<std::string>"
+	stereotype "std::map"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${stereotype}<${type}> ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 133805 "Orden"
+	cpp_inline public explicit_return_type ""
+	nparams 1
+	  param in name "parametros" explicit_type "std::vector<std::vector<std::string>>"
+	cpp_decl "    ${comment}${inline}explicit ${name}${(}const ${t0} & ${p0}${v0}${)}${volatile}${throw}${abstract} : m_parametros{ parametros } {};
+"
+	
+	
+	
+	
+	comment " Constructor que acepta un vector de vectores de strings"
+      end
+
+      operation 133933 "crearOrden"
+	cpp_inline public explicit_return_type "XmlRpcValue"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract} {
+        XmlRpcValue params;
+        ErrorHandler errorHandler;
+
+        try {
+            if (m_parametros.size() < 4) {
+                throw std::runtime_error(\"Parametros insuficientes para crear la orden.\");
+            }
+
+            params[0] = m_parametros[0][0];
+            params[1] = m_parametros[1][0];
+            params[2] = m_parametros[2][0];
+
+            for (int i = 0; i < m_parametros[3].size(); i++) {
+                params[3][i] = m_parametros[3][i];
+            }
+        }
+        catch (const std::exception& e) {
+            errorHandler.handleException(e);
+        }
+
+        return params;
+    };
+"
+	
+	
+	
+	
+      end
+    end
+
+    class 128557 "ErrorLevel"
+      visibility package stereotype "enum_class"
+      cpp_decl "${comment}enum class ${name} {
+${items}};
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment " Niveles de severidad de error"
+      attribute 129197 "INFO"
+	public type class_ref 128557 // ErrorLevel
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 129325 "WARNING"
+	public type class_ref 128557 // ErrorLevel
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 129453 "ERROR"
+	public type class_ref 128557 // ErrorLevel
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+    end
+
+    class 128685 "ErrorCode"
+      visibility package stereotype "enum_class"
+      cpp_decl "${comment}enum class ${name} {
+${items}};
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment " CÃ³digos de errores predefinidos"
+      attribute 129581 "FILE_NOT_FOUND"
+	public type class_ref 128685 // ErrorCode
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 129709 "CONNECTION_FAILED"
+	public type class_ref 128685 // ErrorCode
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 129837 "INVALID_INPUT"
+	public type class_ref 128685 // ErrorCode
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 129965 "OPERATION_FAILED"
+	public type class_ref 128685 // ErrorCode
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 130093 "UNKNOWN_ERROR"
+	public type class_ref 128685 // ErrorCode
+	cpp_decl "  ${name}${value},${comment}"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+    end
+
+    class 128813 "ErrorHandler"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      operation 130477 "ErrorHandler"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 1
+	  param in name "logFilePath" explicit_type "std::string"
+	    defaultvalue "\"error_log.txt\""
+	cpp_decl "    ${comment}${inline}${name}${(}const ${t0} & ${p0}${v0}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}const ${t0} & ${p0}${)} : logFilePath(logFilePath) ${throw}{
+${body}}
+"
+	
+	
+	
+	
+	comment " Constructor: abre el archivo de log"
+      end
+
+      operation 130605 "~ErrorHandler"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${)}${volatile}${throw} {
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Destructor: cierra el archivo de log si estÃ¡ abierto"
+      end
+
+      operation 130733 "logError"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 2
+	  param in name "message" explicit_type "std::string"
+	  param in name "level" type class_ref 128557 // ErrorLevel
+	    defaultvalue "ErrorLevel::ERROR"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} & ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "// Agrega timestamp al mensaje de error
+
+${inline}${typeprefix}${type} ${class}::${name}${(}const ${t0} & ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment " Registra un mensaje de error con un nivel de severidad"
+      end
+
+      operation 130861 "logError"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 2
+	  param in name "code" type class_ref 128685 // ErrorCode
+	  param in name "level" type class_ref 128557 // ErrorLevel
+	    defaultvalue "ErrorLevel::ERROR"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "// Registra el error utilizando un cÃ³digo predefinido
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment " Registra un error usando un cÃ³digo predefinido"
+      end
+
+      operation 130989 "displayError"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 2
+	  param in name "message" explicit_type "std::string"
+	  param in name "level" type class_ref 128557 // ErrorLevel
+	    defaultvalue "ErrorLevel::ERROR"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} & ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "// Muestra el error al usuario
+
+${inline}${typeprefix}${type} ${class}::${name}${(}const ${t0} & ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment " Muestra el error en la consola con un nivel de severidad"
+      end
+
+      operation 131117 "handleException"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "e" explicit_type "std::exception"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Maneja una excepciÃ³n y registra el error"
+      end
+
+      attribute 130221 "logFilePath"
+	private explicit_type "std::string"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 130349 "logFile"
+	private explicit_type "std::ofstream"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 131245 "getLevelString"
+	preserve_cpp_body_indent const private explicit_return_type "std::string"
+	nparams 1
+	  param in name "level" type class_ref 128557 // ErrorLevel
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "// Convierte el nivel de error en una cadena legible
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment " Obtiene la representaciÃ³n en cadena de un nivel de error"
+      end
+
+      operation 131373 "getErrorMessage"
+	preserve_cpp_body_indent const private explicit_return_type "std::string"
+	nparams 1
+	  param in name "code" type class_ref 128685 // ErrorCode
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "// Convierte el cÃ³digo de error en un mensaje especÃ­fico
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment " Obtiene el mensaje de error para un cÃ³digo de error especÃ­fico"
+      end
+
+      operation 131501 "openLogFile"
+	preserve_cpp_body_indent private explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Abre el archivo de log para escribir"
+      end
+
+      operation 131629 "closeLogFile"
+	preserve_cpp_body_indent private explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Cierra el archivo de log"
+      end
+
+      operation 131757 "getCurrentTimestamp"
+	preserve_cpp_body_indent const private explicit_return_type "std::string"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "// Genera el timestamp actual
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment " Obtiene el timestamp actual para el log"
+      end
+    end
+
+    class 128941 "MainMenu"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      operation 133037 "MainMenu"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 2
+	  param inout name "cliente" type class_ref 128173 // Cliente
+	  param inout name "pantalla" type class_ref 128301 // IPantalla
+	cpp_decl "    ${comment}${inline}${name}${(}${t0} & ${p0}${v0}, ${t1} * ${p1}${v1}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${t0} & ${p0}, ${t1} * ${p1}${)}
+    : cliente(cliente), m_pantalla(pantalla) ${throw}{
+${body}}
+"
+	
+	
+	
+	
+	comment " Constructor que inicializa el menú principal con el cliente y la pantalla"
+      end
+
+      operation 133165 "mostrarMenu"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Muestra el menú principal"
+      end
+
+      operation 133293 "setComandos"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Configura los comandos del cliente"
+      end
+
+      operation 133421 "procesarSeleccion"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 1
+	  param in name "seleccion" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Procesa la selección de comandos"
+      end
+
+      operation 133549 "procesarSeleccionLocal"
+	preserve_cpp_body_indent public explicit_return_type "std::string"
+	nparams 1
+	  param in name "seleccion" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Procesa una selección local del menú principal"
+      end
+
+      classrelation 128173 // cliente (<unidirectional association>)
+	relation 128173 --->
+	  a role_name "cliente" private
+	    comment " Referencia al cliente para ejecutar comandos"
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} & ${name}${value};
+"
+	    classrelation_ref 128173 // cliente (<unidirectional association>)
+	  b parent class_ref 128173 // Cliente
+      end
+
+      classrelation 128301 // m_pantalla (<unidirectional association>)
+	relation 128301 --->
+	  a role_name "m_pantalla" private
+	    comment " Referencia a la pantalla para mostrar el menú y mensajes"
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 128301 // m_pantalla (<unidirectional association>)
+	  b parent class_ref 128301 // IPantalla
+      end
+
+      operation 133677 "manejarSeleccion"
+	preserve_cpp_body_indent constvalue private explicit_return_type "std::string"
+	nparams 2
+	  param in name "seleccion" explicit_type "int"
+	  param in name "para" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, const ${t1} & ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Maneja la selección en el menú principal o en el menú de comandos"
+      end
+
+      attribute 130477 "m_opcionesCliente"
+	const_attribute private explicit_type "std::string"
+	init_value "=  {
+        \"Login\",
+        \"Mostrar comandos\",
+        \"Salir\"
+    }"
+	stereotype "std::vector"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${stereotype}<${type}> ${name}${h_value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Opciones del menú principal del cliente
+"
+      end
+
+      attribute 130605 "m_comandos"
+	private explicit_type "std::string"
+	stereotype "std::vector"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${stereotype}<${type}> ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Lista de comandos del cliente"
+      end
+
+      attribute 130733 "m_opciones"
+	private explicit_type "std::string"
+	stereotype "std::vector"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${stereotype}<${type}> ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Opciones dinámicas para mostrar en pantalla"
+      end
+
+      attribute 130861 "m_flagMenu"
+	private explicit_type "bool"
+	init_value "=  true"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${h_value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Indicador para mantener el menú abierto o cerrado"
+      end
+    end
+
+    class 129069 "OrdenBuilder"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 131373 "usuario"
+	private explicit_type "string"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 131501 "clave"
+	private explicit_type "string"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 131629 "comando"
+	private explicit_type "string"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 131757 "parametros"
+	private explicit_type "string"
+	stereotype "vector"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${stereotype}<${type}> ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 131885 "etiquetasParametros"
+	private explicit_type "string, vector<string>"
+	stereotype "map"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${stereotype}<${type}> ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 134061 "OrdenBuilder"
+	cpp_inline public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw}${abstract} {
+        etiquetasParametros[\"Conectarse al Robot\"] = { \"Ingrese puerto COM: \", \"Ingrese velocidad de transmision: \" };
+        etiquetasParametros[\"Mover efector\"] = { \"Ingrese X: \", \"Ingrese Y: \", \"Ingrese Z: \", \"Ingrese Velocidad: \" };
+    };
+"
+	
+	
+	
+	
+      end
+
+      operation 134189 "conUsuario"
+	cpp_inline public return_type class_ref 129069 // OrdenBuilder
+	nparams 1
+	  param in name "usuario" explicit_type "string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} & ${name}${(}const ${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract} {
+        this->usuario = usuario;
+        return *this;
+    };
+"
+	
+	
+	
+	
+	comment " Setea el usuario para la orden"
+      end
+
+      operation 134317 "conClave"
+	cpp_inline public return_type class_ref 129069 // OrdenBuilder
+	nparams 1
+	  param in name "clave" explicit_type "string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} & ${name}${(}const ${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract} {
+        this->clave = clave;
+        return *this;
+    };
+"
+	
+	
+	
+	
+	comment " Setea la clave para la orden"
+      end
+
+      operation 134445 "conComando"
+	cpp_inline public return_type class_ref 129069 // OrdenBuilder
+	nparams 1
+	  param in name "comando" explicit_type "string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} & ${name}${(}const ${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract} {
+        this->comando = comando;
+        return *this;
+    };
+"
+	
+	
+	
+	
+	comment " Setea el comando de la orden"
+      end
+
+      operation 134573 "conParametros"
+	cpp_inline public return_type class_ref 129069 // OrdenBuilder
+	nparams 1
+	  param in name "parametros" explicit_type "vector<string>"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} & ${name}${(}const ${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract} {
+        this->parametros = parametros;
+        return *this;
+    };
+"
+	
+	
+	
+	
+	comment " Setea los parámetros para la orden"
+      end
+
+      operation 134701 "obtenerEtiquetasParametros"
+	const cpp_inline public explicit_return_type "vector<string>"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract} {
+        auto it = etiquetasParametros.find(comando);
+        return it != etiquetasParametros.end() ? it->second : vector<string>();
+    };
+"
+	
+	
+	
+	
+	comment " Obtiene las etiquetas de parámetros asociadas al comando"
+      end
+
+      operation 134829 "build"
+	const cpp_inline public return_type class_ref 128429 // Orden
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract} {
+        ErrorHandler errorHandler;
+        try {
+            if (usuario.empty() || clave.empty() || comando.empty()) {
+                throw std::runtime_error(\"Faltan parametros esenciales para construir la orden.\");
+            }
+            std::vector<std::vector<std::string>> parametrosOrden = { {usuario}, {clave}, {comando}, parametros };
+            return Orden(parametrosOrden);  // Ahora debería funcionar correctamente
+        }
+        catch (const std::exception& e) {
+            errorHandler.handleException(e);
+            return Orden(std::vector<std::vector<std::string>>{});  // Retorna una orden vacía si falla
+        }
+    };
+"
+	
+	
+	
+	
+	comment " Construye y retorna una instancia de Orden"
+      end
+    end
+
+    class 129197 "PantallaCurses"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 128429 // <generalisation>
+	relation 128429 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 128429 // <generalisation>
+	  b parent class_ref 128301 // IPantalla
+      end
+
+      operation 134957 "PantallaCurses"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${)}${volatile}${throw} {
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Constructor que inicializa la pantalla usando PDCurses"
+      end
+
+      operation 135085 "~PantallaCurses"
+	preserve_cpp_body_indent cpp_override public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${)}${volatile}${throw} {
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Destructor que cierra la pantalla al finalizar"
+      end
+
+      operation 135213 "mostrarMenu"
+	preserve_cpp_body_indent cpp_override public explicit_return_type "int"
+	nparams 2
+	  param in name "opciones" explicit_type "std::vector<std::string>"
+	  param in name "tituloMenu" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} & ${p0}${v0}, const ${t1} & ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Muestra el menú y permite seleccionar una opción"
+      end
+
+      operation 135341 "mostrarTexto"
+	preserve_cpp_body_indent cpp_override public explicit_return_type "void"
+	nparams 1
+	  param in name "mensaje" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Muestra un mensaje de texto en la pantalla"
+      end
+
+      operation 135469 "limpiarPantalla"
+	preserve_cpp_body_indent cpp_override public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Limpia el contenido de la pantalla"
+      end
+
+      operation 135597 "capturarEntrada"
+	preserve_cpp_body_indent cpp_override public explicit_return_type "std::string"
+	nparams 1
+	  param in name "mensaje" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Captura la entrada de texto del usuario"
+      end
+
+      operation 135725 "archivoToVector"
+	preserve_cpp_body_indent cpp_override public explicit_return_type "std::vector<std::string>"
+	nparams 1
+	  param inout name "mensaje" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Convierte el contenido de un archivo en un vector de strings"
+      end
+
+      operation 135853 "capturarEleccion"
+	preserve_cpp_body_indent cpp_override public explicit_return_type "std::string"
+	nparams 2
+	  param in name "mensaje" explicit_type "std::string"
+	  param in name "opciones" explicit_type "std::vector<std::string>"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} & ${p0}${v0}, const ${t1} & ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Muestra opciones y captura la elección del usuario"
+      end
+
+      operation 135981 "refrescarPantalla"
+	preserve_cpp_body_indent cpp_override public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Refresca la pantalla para actualizar su contenido"
+      end
+
+      operation 136109 "mostrarError"
+	preserve_cpp_body_indent cpp_override public explicit_return_type "void"
+	nparams 1
+	  param in name "error" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}const ${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+	comment " Muestra un mensaje de error resaltado en la pantalla"
+      end
+    end
+
+    class 129325 "Respuesta"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 132013 "m_usuario"
+	private explicit_type "std::string"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 132141 "m_comando"
+	private explicit_type "std::string"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 132269 "m_contenido"
+	private explicit_type "std::string"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 136237 "Respuesta"
+	cpp_inline public explicit_return_type ""
+	nparams 3
+	  param in name "usuario" explicit_type "std::string"
+	  param in name "comando" explicit_type "std::string"
+	  param in name "contenido" explicit_type "std::string"
+	cpp_decl "    ${comment}${inline}${name}${(}const ${t0} & ${p0}${v0}, const ${t1} & ${p1}${v1}, const ${t2} & ${p2}${v2}${)}${volatile}${throw}${abstract} : m_usuario{ usuario }
+		, m_comando{ comando }
+		, m_contenido{ contenido } {};
+"
+	
+	
+	
+	
+      end
+
+      operation 136365 "getUsuario"
+	const cpp_inline public explicit_return_type "std::string"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract} {
+		return m_usuario;
+	};
+"
+	
+	
+	
+	
+      end
+
+      operation 136493 "getComando"
+	const cpp_inline public explicit_return_type "std::string"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract} {
+		return m_comando;
+	};
+"
+	
+	
+	
+	
+      end
+
+      operation 136621 "getContenido"
+	const cpp_inline public explicit_return_type "std::string"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract} {
+		return m_contenido;
+	};
+"
+	
+	
+	
+	
+      end
+    end
+
+    class 129453 "RespuestaBuilder"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 132397 "m_usuario"
+	private explicit_type "std::string"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 132525 "m_comando"
+	private explicit_type "std::string"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 132653 "m_contenido"
+	private explicit_type "std::string"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 136749 "conUsuario"
+	cpp_inline public return_type class_ref 129453 // RespuestaBuilder
+	nparams 1
+	  param in name "usuario" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} & ${name}${(}const ${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract} {
+		m_usuario = usuario;
+		return *this;
+	};
+"
+	
+	
+	
+	
+      end
+
+      operation 136877 "conComando"
+	cpp_inline public return_type class_ref 129453 // RespuestaBuilder
+	nparams 1
+	  param in name "comando" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} & ${name}${(}const ${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract} {
+		m_comando = comando;
+		return *this;
+	};
+"
+	
+	
+	
+	
+      end
+
+      operation 137005 "conContenido"
+	cpp_inline public return_type class_ref 129453 // RespuestaBuilder
+	nparams 1
+	  param in name "contenido" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} & ${name}${(}const ${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract} {
+		m_contenido = contenido;
+		return *this;
+	};
+"
+	
+	
+	
+	
+      end
+
+      operation 137133 "build"
+	cpp_inline public return_type class_ref 129325 // Respuesta
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract} {
+		return Respuesta(m_usuario, m_comando, m_contenido);
+	};
+"
+	
+	
+	
+	
+      end
+    end
+
+    sequencediagram 128173 "sequencias"
+      sequencediagramsettings end
+      overlapping_bars size A4
+    end
+  end
+
+  deploymentview 128045 "cliente"
+    //deployment diagram settings
+    deploymentdiagramsettings
+     end
+    artifact 128045 "Archivo"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 128045 // Archivo
+      end
+    end
+
+    artifact 128173 "Cliente"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 128173 // Cliente
+      end
+    end
+
+    artifact 128301 "ErrorHandler"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 128557 // ErrorLevel
+	class_ref 128685 // ErrorCode
+	class_ref 128813 // ErrorHandler
+      end
+    end
+
+    artifact 128429 "IPantalla"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 128301 // IPantalla
+      end
+    end
+
+    artifact 128557 "MainMenu"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 128941 // MainMenu
+      end
+    end
+
+    artifact 128685 "Orden"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 128429 // Orden
+      end
+    end
+
+    artifact 128813 "OrdenBuilder"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 129069 // OrdenBuilder
+      end
+    end
+
+    artifact 128941 "PantallaCurses"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 129197 // PantallaCurses
+      end
+    end
+
+    artifact 129069 "Respuesta"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 129325 // Respuesta
+      end
+    end
+
+    artifact 129197 "RespuestaBuilder"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 129453 // RespuestaBuilder
+      end
+    end
+
+    artifact 129325 "main"
+      stereotype "source"
+      cpp_src "int main() {
+    // Inicializamos los componentes principales
+/*
+    std::string ip = \"127.0.0.1\";   // Dirección IP del servidor
+    int puerto = 9000;              // Puerto del servidor XMLRPC
+    CLIMessageView console;
+*/  
+
+    try {
+        // Inicializar la pantalla de usuario
+        PantallaCurses pantalla;
+  
+        // Solicitar datos de conexión al usuario
+        std::string ip = pantalla.capturarEntrada(\"Ingrese la IP del servidor:\");
+        std::string puertoStr = pantalla.capturarEntrada(\"Ingrese el puerto del servidor:\");
+        int puerto = std::stoi(puertoStr);
+	
+        // Crear la instancia del cliente, usando la pantalla para mensajes y errores
+        Cliente cliente(ip, puerto, pantalla);
+		
+        // Crear la instancia de MainMenu
+        MainMenu menu(cliente, &pantalla);
+
+        // Ejecutar el menú principal
+        menu.mostrarMenu();
+
+    }
+    catch (const std::exception& e) {
+        // Capturamos y mostramos cualquier error que ocurra durante la ejecución
+    }
+
+    return 0;
+}
+"
+      associated_elems
+      end
+    end
+  end
+
+  classview 128173 "nose"
+    
+    classdiagramsettings member_max_width 0 end
+    
+    classcompositediagramsettings end
+    
+    collaborationdiagramsettings end
+    
+    objectdiagramsettings end
+    
+    objectcompositediagramsettings end
+    
+    sequencediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    
+    activitydiagramsettings
+     end
+    classdiagram 128045 "nose"
+      classdiagramsettings member_max_width 0 end
+      size B
+    end
+  end
+end

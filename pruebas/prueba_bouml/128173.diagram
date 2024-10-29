@@ -1,0 +1,25 @@
+format 224
+
+classinstance 128045 class_ref 128045 // Archivo
+  name ""   xyz 143 4 2000 life_line_z 2000
+classinstance 128173 class_ref 128173 // Cliente
+  name ""   xyz 261 4 2000 life_line_z 2000
+classinstance 128301 class_ref 128429 // Orden
+  name ""   xyz 446 4 2000 life_line_z 2000
+classinstance 128429 class_ref 128301 // IPantalla
+  name ""   xyz 340 4 2000 life_line_z 2000
+classinstance 128557 class_ref 128557 // ErrorLevel
+  name ""   xyz 538 4 2000 life_line_z 2000
+classinstance 128685 class_ref 128813 // ErrorHandler
+  name ""   xyz 603 4 2000 life_line_z 2000
+classinstance 128813 class_ref 128941 // MainMenu
+  name ""   xyz 712 4 2000 life_line_z 2000
+classinstance 128941 class_ref 129069 // OrdenBuilder
+  name ""   xyz 863 4 2000 life_line_z 2000
+classinstance 129069 class_ref 129197 // PantallaCurses
+  name ""   xyz 912 4 2000 life_line_z 2000
+classinstance 129197 class_ref 129197 // PantallaCurses
+  name ""   xyz 87 4 2000 life_line_z 2000
+classinstance 129325 class_ref 129069 // OrdenBuilder
+  name ""   xyz 765 4 2000 life_line_z 2000
+end

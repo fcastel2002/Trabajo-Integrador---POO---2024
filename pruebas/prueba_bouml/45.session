@@ -1,0 +1,10 @@
+window_sizes 1800 903 450 1345 751 104
+
+show_stereotypes
+selected class_ref 129069 // OrdenBuilder
+open
+  class_ref 129197 // PantallaCurses
+  deploymentview_ref 128045 // cliente
+  classview_ref 128173 // nose
+end
+end
