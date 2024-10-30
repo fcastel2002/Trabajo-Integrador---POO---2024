@@ -4,33 +4,45 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
+#include <stdexcept>
+#include "XmlRpc.h"
+
+bool verificarServidor(const std::string& ip, int puerto) {
+    try {
+        XmlRpc::XmlRpcClient client(ip.c_str(), puerto);
+        XmlRpc::XmlRpcValue noArgs, result;
+        if (client.execute("system.listMethods", noArgs, result)) {
+            return true;
+        }
+    }
+    catch (const XmlRpc::XmlRpcException& e) {
+        return false;
+    }
+    return false;
+}
 
 int main() {
-    // Inicializamos los componentes principales
-/*
-    std::string ip = "127.0.0.1";   // Dirección IP del servidor
-    int puerto = 9000;              // Puerto del servidor XMLRPC
-    CLIMessageView console;
-*/  
-
     try {
-        // Inicializar la pantalla de usuario
         PantallaCurses pantalla;
-  
-        // Solicitar datos de conexión al usuario
-        std::string ip = pantalla.capturarEntrada("Ingrese la IP del servidor:");
-        std::string puertoStr = pantalla.capturarEntrada("Ingrese el puerto del servidor:");
-        int puerto = std::stoi(puertoStr);
-	
-        // Crear la instancia del cliente, usando la pantalla para mensajes y errores
+        std::string ip;
+        int puerto;
+
+        while (true) {
+            ip = pantalla.capturarEntrada("Ingrese la IP del servidor:");
+            std::string puertoStr = pantalla.capturarEntrada("Ingrese el puerto del servidor:");
+            puerto = std::stoi(puertoStr);
+
+            if (verificarServidor(ip, puerto)) {
+                break;
+            }
+            else {
+                pantalla.mostrarTexto("Error al conectar con el servidor\n El servidor esta apagado o los parametros son incorrectos, intente nuevamente");
+            }
+        }
+
         Cliente cliente(ip, puerto, pantalla);
-		
-        // Crear la instancia de MainMenu
         MainMenu menu(cliente, &pantalla);
-
-        // Ejecutar el menú principal
         menu.mostrarMenu();
-
     }
     catch (const std::exception& e) {
         // Capturamos y mostramos cualquier error que ocurra durante la ejecución
