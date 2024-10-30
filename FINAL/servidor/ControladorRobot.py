@@ -165,7 +165,7 @@ class ControladorRobot:
 
         if archivo is not None:
             comandos = archivo
-            archivo_control_automatico = GestorDeArchivos("ArchivoRecibido.txt")
+            archivo_control_automatico = GestorDeArchivos(f"{nombre_archivo}+.txt")
         else:
             archivo_control_automatico = GestorDeArchivos(f"{nombre_archivo}.txt")
             try:
@@ -179,11 +179,12 @@ class ControladorRobot:
             if archivo is not None:
                 archivo_control_automatico.escribir_archivo(comando)
             respuestas = self._registrar_comando(comando)
-            if "error" in respuestas:
-                resultados.append(f"Comando: {comando} - Error: {respuestas['error']}")
+                 # Iterar sobre cada respuesta en la lista y verificar si contiene "error"
+        for respuesta in respuestas:
+            if "error" in respuesta.lower():
+                resultados.append(f"Comando: {comando} - Error: {respuesta}")
             else:
-                for respuesta in respuestas['respuesta_robot']:
-                    resultados.append(f"Comando: {comando} - Respuesta: {respuesta}")
+                resultados.append(f"Comando: {comando} - Respuesta: {respuesta}")
 
         resultados.append("Ejecucion automatica completada\n")
         return "\n".join(resultados)
@@ -198,7 +199,7 @@ class ControladorRobot:
         resultado = self._registrar_comando(gcode)
         mensajes = []
         if "error" in resultado:
-            mensajes.append(resultado["error"])
+            mensajes.append(resultado)
             return mensajes
         mensajes.append(f"Exito: Efector movido a (X={x}, Y={y}, Z={z}) con velocidad {velocidad}\n")
         return mensajes
@@ -216,7 +217,7 @@ class ControladorRobot:
         resultado = self._registrar_comando(gcode)
         mensajes = []
         if "error" in resultado:
-            mensajes.append(resultado["error"])
+            mensajes.append(resultado)
             return mensajes
         mensajes.append(f"Exito: Efector movido a (X={x}, Y={y}, Z={z}) con velocidad {velocidad_default}\n")
         return mensajes
@@ -242,7 +243,7 @@ class ControladorRobot:
 
         resultado = self._registrar_comando(gcode)
         if "error" in resultado:
-            return resultado["error"]
+            return resultado
         
         return f"Exito: Efector {'activado' if accion == '1' else 'desactivado'}\n"
 
@@ -255,7 +256,7 @@ class ControladorRobot:
         resultado = self._registrar_comando("G28")
         mensajes = []
         if "error" in resultado:
-            mensajes.append(resultado["error"])
+            mensajes.append(resultado)
             return mensajes
         
         self.homming_realizado = True  # Actualizamos el estado de homming
@@ -284,10 +285,10 @@ class ControladorRobot:
         respuestas = self._registrar_comando("M114")
 
         if "error" in respuestas:
-            mensajes.append(respuestas["error"])
+            mensajes.append(respuestas)
             return mensajes
         
-        for respuesta in respuestas['respuesta_robot']:
+        for respuesta in respuestas:
             mensajes.append(respuesta)
         return mensajes
 
@@ -299,7 +300,7 @@ class ControladorRobot:
         resultado = self._registrar_comando("G90")
         mensajes = []
         if "error" in resultado:
-            mensajes.append(resultado["error"])
+            mensajes.append(resultado)
             return mensajes
         mensajes.append(resultado)
         mensajes.append("Modo de coordenadas absolutas activado\n")
@@ -313,7 +314,7 @@ class ControladorRobot:
         resultado = self._registrar_comando("G91")
         mensajes = []
         if "error" in resultado:
-            mensajes.append(resultado["error"])
+            mensajes.append(resultado)
             return mensajes
         mensajes.append(resultado)
         mensajes.append("Modo relativo activado\n")
