@@ -80,46 +80,7 @@ std::string Cliente::extraerContenido(XmlRpcValue& contenido) {
 }
 
 
-/*
-// Método auxiliar para extraer el contenido entre las etiquetas <value> y </value> y limpiar entidades HTML
-std::string Cliente::extraerContenido(const std::string& mensaje) {
-	std::size_t start = mensaje.find("<value>");
-	std::size_t end = mensaje.find("</value>");
 
-	std::string contenido;
-	if (start != std::string::npos && end != std::string::npos) {
-		start += 7;  // Mueve el índice justo después de "<value>"
-		contenido = mensaje.substr(start, end - start);  // Extrae el contenido entre las etiquetas
-	}
-	else {
-		contenido = mensaje;
-	}
-
-	// Reemplaza las entidades HTML comunes con sus caracteres equivalentes
-	return reemplazarEntidadesHTML(contenido);
-}
-
-// Método auxiliar para reemplazar entidades HTML comunes
-std::string Cliente::reemplazarEntidadesHTML(const std::string& texto) {
-	std::string limpio = texto;
-	const std::unordered_map<std::string, std::string> entidades = {
-		{"&apos;", "'"},
-		{"&quot;", "\""},
-		{"&lt;", "<"},
-		{"&gt;", ">"},
-		{"&amp;", "&"}
-	};
-
-	for (const auto& [entidad, caracter] : entidades) {
-		std::size_t pos = limpio.find(entidad);
-		while (pos != std::string::npos) {
-			limpio.replace(pos, entidad.length(), caracter);
-			pos = limpio.find(entidad, pos + caracter.length());
-		}
-	}
-	return limpio;
-}
-*/
 
 std::vector<std::string> Cliente::pedirComandos(Orden& my_order) {
 	XmlRpcValue params, result;
