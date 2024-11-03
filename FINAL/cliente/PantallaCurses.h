@@ -24,16 +24,13 @@ public:
 
     // Captura la entrada de texto del usuario
     std::string capturarEntrada(const std::string& mensaje) override;
-
-    // Convierte el contenido de un archivo en un vector de strings
-    std::vector<std::string> archivoToVector(std::string& mensaje) override;
-
-    // Muestra opciones y captura la elección del usuario
-    std::string capturarEleccion(const std::string& mensaje, const std::vector<std::string>& opciones) override;
-
+	std::string capturarEntrada(const std::string& mensaje, const std::vector<std::string>& opciones) override;
+   
     // Refresca la pantalla para actualizar su contenido
     void refrescarPantalla() override;
 
     // Muestra un mensaje de error resaltado en la pantalla
     void mostrarError(const std::string& error) override;
+
+    static void handleResize();
 };

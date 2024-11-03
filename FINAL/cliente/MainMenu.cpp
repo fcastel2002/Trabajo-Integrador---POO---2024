@@ -109,13 +109,16 @@ bool MainMenu::procesarSeleccion(int seleccion) {
     try {
         if (comando == "Ejecutar automatico") {
             std::string nombreArchivo = m_pantalla->capturarEntrada("Ingrese el nombre del archivo:");
-            std::string choice = m_pantalla->capturarEleccion("Desea enviar el archivo? (s/n)", { "Si", "No" });
+			if (nombreArchivo == "ESC") return true;
+			Archivo archivo_gcode(nombreArchivo, "");
+            std::string choice = m_pantalla->capturarEntrada("Desea enviar el archivo? (s/n)", { "Si", "No" });
+            if (choice == "ESC") return true;
             parametros.push_back(nombreArchivo);
 
             if (choice == "Si") {
                 m_pantalla->mostrarTexto("Opcion: " + choice);
 
-                std::vector<std::string> entradas = m_pantalla->archivoToVector(nombreArchivo);
+                std::vector<std::string> entradas = archivo_gcode.archivoToVector(archivo_gcode);
                 for (const auto& entrada : entradas) {
                     m_pantalla->mostrarTexto(entrada);
                     parametros.push_back(entrada);
@@ -127,7 +130,7 @@ bool MainMenu::procesarSeleccion(int seleccion) {
         }
         else if (comando == "Aprendizaje") {
             std::string nombreArchivo = m_pantalla->capturarEntrada("Ingrese el nombre del archivo:");
-			std::string choice = m_pantalla->capturarEleccion("Que quiere hacer con el aprendizaje?: ", mensajesParametros);
+			std::string choice = m_pantalla->capturarEntrada("Que quiere hacer con el aprendizaje?: ", mensajesParametros);
 			parametros.push_back(nombreArchivo);
 			parametros.push_back(choice);
         }

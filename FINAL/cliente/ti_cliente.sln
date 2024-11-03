@@ -27,11 +27,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XMLRPC++", "..\XMLRPC++\XMLRPC++.vcxproj", "{2C314936-727B-4A4A-952E-77CD64E1F2ED}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ClienteForGUI", "D:\programas\ciente_gui\ClienteForGUI\ClienteForGUI.vcxproj", "{74D77CFA-EE2D-458A-A86E-7B9A0715B113}"
-	ProjectSection(ProjectDependencies) = postProject
-		{A43D6854-9A9A-4242-AEA2-41CE706981CE} = {A43D6854-9A9A-4242-AEA2-41CE706981CE}
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -56,14 +51,6 @@ Global
 		{2C314936-727B-4A4A-952E-77CD64E1F2ED}.Release|x64.Build.0 = Release|x64
 		{2C314936-727B-4A4A-952E-77CD64E1F2ED}.Release|x86.ActiveCfg = Release|Win32
 		{2C314936-727B-4A4A-952E-77CD64E1F2ED}.Release|x86.Build.0 = Release|Win32
-		{74D77CFA-EE2D-458A-A86E-7B9A0715B113}.Debug|x64.ActiveCfg = Debug|x64
-		{74D77CFA-EE2D-458A-A86E-7B9A0715B113}.Debug|x64.Build.0 = Debug|x64
-		{74D77CFA-EE2D-458A-A86E-7B9A0715B113}.Debug|x86.ActiveCfg = Debug|Win32
-		{74D77CFA-EE2D-458A-A86E-7B9A0715B113}.Debug|x86.Build.0 = Debug|Win32
-		{74D77CFA-EE2D-458A-A86E-7B9A0715B113}.Release|x64.ActiveCfg = Release|x64
-		{74D77CFA-EE2D-458A-A86E-7B9A0715B113}.Release|x64.Build.0 = Release|x64
-		{74D77CFA-EE2D-458A-A86E-7B9A0715B113}.Release|x86.ActiveCfg = Release|Win32
-		{74D77CFA-EE2D-458A-A86E-7B9A0715B113}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

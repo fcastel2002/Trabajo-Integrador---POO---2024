@@ -24,9 +24,6 @@ private:
     // Método auxiliar para extraer el contenido entre las etiquetas <value> y </value>
     std::string extraerContenido(XmlRpcValue& contenido);
 
-    // Método auxiliar para reemplazar entidades HTML comunes (ej., &apos;, &quot;) por sus caracteres equivalentes
-   // std::string reemplazarEntidadesHTML(const std::string& texto);
-
 public:
     // Constructor que inicializa la conexión con IP, puerto y pantalla
     Cliente(std::string ip, int puerto, IPantalla& pantalla);

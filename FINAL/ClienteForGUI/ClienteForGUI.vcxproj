@@ -76,13 +76,17 @@
   <PropertyGroup />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>../XMLRPC++;../cliente;../PDCurses-3.8;&lt;inherit from parent or project defaults&gt;</AdditionalIncludeDirectories>
+      <AdditionalOptions>/D_HAS_STD_BYTE=0 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies />
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);WS2_32.lib; pdcurses.a;msvcrtd.lib;kernel32.lib;user32.lib;gdi32.lib;legacy_stdio_definitions.lib;..cliente/x64/Debug/XMLRPC++.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../XMLRPC++/x64/Debug</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -119,19 +123,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="ClienteForGUI.h" />
+    <ClInclude Include="ArchivoWrapper.h" />
+    <ClInclude Include="ClienteWrapper.h" />
+    <ClInclude Include="ErrorHandlerWrapper.h" />
+    <ClInclude Include="MainMenuWrapper.h" />
+    <ClInclude Include="OrdenBuilderWrapper.h" />
+    <ClInclude Include="OrdenWrapper.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="RespuestaBuilderWrapper.h" />
+    <ClInclude Include="RespuestaWrapper.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ArchivoWrapper.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
-    <ClCompile Include="ClienteForGUI.cpp" />
-    <ClCompile Include="pch.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
+    <ClCompile Include="ClienteWrapper.cpp" />
+    <ClCompile Include="ErrorHandlerWrapper.cpp" />
+    <ClCompile Include="MainMenuWrapper.cpp" />
+    <ClCompile Include="OrdenBuilderWrapper.cpp" />
+    <ClCompile Include="OrdenWrapper.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="RespuestaBuilderWrapper.cpp" />
+    <ClCompile Include="RespuestaWrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc" />

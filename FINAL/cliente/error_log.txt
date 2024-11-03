@@ -72,3 +72,5 @@ ERROR: Archivo no encontrado
 [2024-10-29 23:03:08] ERROR: Archivo no encontrado
 [2024-10-29 23:03:08] ERROR: No se pudo abrir el archivo: ArchivoAutomatico.txt
 [2024-10-29 23:03:10] WARNING: Respuesta no válida recibida del servidor.
+[2024-11-02 16:19:13] ERROR: Fallo la conexion
+[2024-11-02 16:39:09] ERROR: Fallo la conexion

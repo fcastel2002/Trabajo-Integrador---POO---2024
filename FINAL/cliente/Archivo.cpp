@@ -65,6 +65,34 @@ bool Archivo::leer() {
     return true;
 }
 
+
+std::vector<std::string> Archivo::archivoToVector(Archivo& archivo_) {
+	ErrorHandler errorHandler;
+
+	try {
+		//Archivo archivo_gcode(nombreArchivo, "");
+		if (!archivo_.abrir()) {
+			errorHandler.logError(ErrorCode::FILE_NOT_FOUND, ErrorLevel::ERROR);
+			errorHandler.displayError("No se pudo abrir el archivo: " + archivo_.m_nombre, ErrorLevel::ERROR);
+			return {};
+		}
+
+		if (!archivo_.leer()) {
+			errorHandler.logError(ErrorCode::OPERATION_FAILED, ErrorLevel::ERROR);
+			errorHandler.displayError("Error al leer el archivo: " + archivo_.m_nombre, ErrorLevel::ERROR);
+			return {};
+		}
+
+		return archivo_.getContenido();
+
+	}
+	catch (const std::exception& e) {
+		errorHandler.handleException(e);
+		errorHandler.displayError("Excepcion al procesar el archivo.", ErrorLevel::ERROR);
+		return {};
+	}
+}
+
 std::vector<std::string> Archivo::getContenido() {
     return m_contenido;
 }

@@ -1,15 +1,20 @@
 #include "PantallaCurses.h"
 #include "curses.h"
 #include "ErrorHandler.h"
+#include <csignal>
+#include <cstdlib>
 
 PantallaCurses::PantallaCurses() {
+    system("MODE 80,25");
     initscr();
+    start_color();
+    init_pair(1, COLOR_BLACK, COLOR_WHITE);
+    init_pair(2, COLOR_BLUE, COLOR_WHITE);
+    bkgd(COLOR_PAIR(1));
     curs_set(FALSE);         // Oculta el cursor
     keypad(stdscr, TRUE);    // Habilita teclas especiales (como las flechas)
 
-    if (has_key(KEY_RESIZE)) {
-        resize_term(0, 0);   // Ajusta el tamaño de la terminal a su valor actual
-    }
+    
 }
 
 PantallaCurses::~PantallaCurses() {
@@ -18,18 +23,24 @@ PantallaCurses::~PantallaCurses() {
 
 int PantallaCurses::mostrarMenu(const std::vector<std::string>& opciones, const std::string& tituloMenu) {
     int seleccion = 0;
-    int n_opciones = opciones.size();
-    
+    size_t n_opciones = opciones.size();
+    int max_y, max_x;
 
-    while (true) {
+        getmaxyx(stdscr, max_y, max_x);
         limpiarPantalla();
-        mvprintw(1, 5, tituloMenu.c_str());
-        mvprintw(2, 1, "====================================");
+        int titulo_x = (max_x - static_cast<int>(tituloMenu.size())) / 2;
+    while (true) {
+        handleResize();
+        attron(COLOR_PAIR(2)); 
+        mvprintw(1, titulo_x, "%s", tituloMenu.c_str());
+        attroff(COLOR_PAIR(2)); 
+        mvprintw(2, (max_x - 36) / 2, "====================================");
         for (int i = 0; i < n_opciones; ++i) {
+            size_t opcion_x = (max_x - opciones[i].size()) / 2;
             if (i == seleccion) {
                 attron(A_REVERSE);
             }
-            mvprintw(i + 3, 2, opciones[i].c_str());
+            mvprintw(i + 3, opcion_x, opciones[i].c_str());
             attroff(A_REVERSE);
         }
 
@@ -43,6 +54,8 @@ int PantallaCurses::mostrarMenu(const std::vector<std::string>& opciones, const 
         case KEY_DOWN:
             seleccion = (seleccion == n_opciones - 1) ? 0 : seleccion + 1;
             break;
+		case 27:  
+			return -1;
         case 10:
             return seleccion;
         }
@@ -68,42 +81,23 @@ void PantallaCurses::mostrarTexto(const std::string& mensaje) {
 std::string PantallaCurses::capturarEntrada(const std::string& mensaje) {
     limpiarPantalla();
     mvprintw(1, 1, "%s", mensaje.c_str());
+    mvprintw(25, 25, "Presione ESC para cancelar la operacion");
     char buffer[80];
     echo();
-    getstr(buffer);
-    noecho();
-
-    return std::string(buffer);
-}
-
-std::vector<std::string> PantallaCurses::archivoToVector(std::string& mensaje) {
-    limpiarPantalla();
-    ErrorHandler errorHandler;
-
-    try {
-        Archivo archivo_gcode(mensaje, "");
-        if (!archivo_gcode.abrir()) {
-            errorHandler.logError("No se pudo abrir el archivo: " + mensaje, ErrorLevel::ERROR);
-            mostrarError("No se pudo abrir el archivo: " + mensaje);
-            return {};
+    int ch;
+    int i = 0; 
+    while ((ch = getch()) != '\n') { 
+        if (ch == 27) { // ESC key 
+            noecho(); 
+            return "ESC"; 
         }
-
-        if (!archivo_gcode.leer()) {
-            errorHandler.logError("Error al leer el archivo: " + mensaje, ErrorLevel::ERROR);
-            mostrarError("Error al leer el archivo: " + mensaje);
-            return {};
-        }
-
-        return archivo_gcode.getContenido();
-
+        buffer[i++] = ch; 
+        //addch(ch); 
     }
-    catch (const std::exception& e) {
-        errorHandler.handleException(e);
-        mostrarError("Excepcion al procesar el archivo.");
-        return {};
-    }
+    buffer[i] = '\0'; 
+    noecho(); 
+    return std::string(buffer); 
 }
-
 void PantallaCurses::mostrarError(const std::string& error) {
     limpiarPantalla();
     attron(A_BOLD | A_REVERSE);  // Resalta el mensaje de error
@@ -113,8 +107,21 @@ void PantallaCurses::mostrarError(const std::string& error) {
     getch();  // Espera a que el usuario presione una tecla para continuar
 }
 
-std::string PantallaCurses::capturarEleccion(const std::string& mensaje, const std::vector<std::string>& opciones) {
+std::string PantallaCurses::capturarEntrada(const std::string& mensaje, const std::vector<std::string>& opciones) {
     limpiarPantalla();
     int seleccion = mostrarMenu(opciones, mensaje.c_str());
+    if (seleccion == -1) {
+        return "ESC";
+    }
     return opciones[seleccion];
+}
+
+void PantallaCurses::handleResize() {
+    int new_y, new_x;
+    getmaxyx(stdscr, new_y, new_x);
+    if (is_termresized()) {
+        resize_term(new_y, new_x);
+        clear();
+        refresh();
+    }
 }
