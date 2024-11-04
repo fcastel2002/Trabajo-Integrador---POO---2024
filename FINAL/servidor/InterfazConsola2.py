@@ -105,8 +105,8 @@ class InterfazConsola:
                 continue
             elif choice == "Salir":
                 self.salir()
-            elif choice is "Iniciar Servidor RPC":
-                self.iniciar_servidor_rpc
+            elif choice == "Iniciar Servidor RPC":
+                self.iniciar_servidor_rpc()
             elif choice == "Detener Servidor RPC":
                 self.detener_servidor_rpc()
             elif choice == "Listar Comandos Disponibles":
@@ -130,7 +130,6 @@ class InterfazConsola:
             try:
                 puerto = questionary.text("Ingrese el puerto COM (ejemplo: COM8):").ask()
                 baudios = questionary.text("Ingrese la tasa de baudios (ejemplo: 115200):").ask()
-
                 if puerto and baudios:
                     self.robot.puerto_serial = puerto
                     self.robot.baudios = int(baudios)
@@ -231,7 +230,6 @@ class InterfazConsola:
                 return False
         return True
     
-
     def iniciar_servidor_rpc(self):
         try:
             if self.servidor_activado is False:
@@ -289,11 +287,9 @@ class InterfazConsola:
         if editar:
             nuevo_puerto = questionary.text("Ingrese el nuevo puerto (actual: {}):".format(parametros['puerto_serial']), default=parametros['puerto_serial']).ask()
             nuevo_baudios = questionary.text("Ingrese la nueva tasa de baudios (actual: {}):".format(parametros['baudios']), default=str(parametros['baudios'])).ask()
-
             # Actualizar el archivo de configuración
             parametros['puerto_serial'] = nuevo_puerto
             parametros['baudios'] = int(nuevo_baudios)
-
             with open(self.archivo_configuracion, "w") as archivo:
                 json.dump(parametros, archivo)
 
