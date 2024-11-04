@@ -103,3 +103,4 @@ ERROR: Archivo no encontrado
 [2024-11-04 11:24:45] WARNING: Error al cerrar el archivo: ArchivoAutomatico.txt
 [2024-11-04 11:26:20] WARNING: Error al cerrar el archivo: ArchivoAutomatico.txt
 [2024-11-04 11:31:01] WARNING: Error al cerrar el archivo: ArchivoAutomatico.txt
+[2024-11-04 11:41:07] WARNING: Respuesta no válida recibida del servidor.

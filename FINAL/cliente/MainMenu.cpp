@@ -20,7 +20,7 @@ void MainMenu::setComandos() {
         m_comandos = cliente.pedirComandos(ordenComandos);
 
         m_opciones = m_comandos;
-        m_opciones.push_back("Cerrar sesion");
+        m_opciones.push_back("Volver");
         m_opciones.push_back(m_opcionesCliente[2]);
     }
     catch (const std::exception& e) {
@@ -109,6 +109,9 @@ bool MainMenu::procesarSeleccion(int seleccion) {
 		cliente.cerrarSesion();
         return false;
     }
+    if (comando == "Volver") {
+        return false;
+    }
 
     builder.conUsuario(cliente.getUser())
         .conClave(cliente.getPass())
@@ -145,9 +148,10 @@ bool MainMenu::procesarSeleccion(int seleccion) {
 			parametros.push_back(nombreArchivo);
 			parametros.push_back(choice);
         } else if (comando == "Actuar efector") {
-            std::string choice = m_pantalla->capturarEleccion("Desea activar o desactivar el efector?", mensajesParametros);
+            std::string choice = m_pantalla->capturarEntrada("Desea activar o desactivar el efector?", mensajesParametros);
             parametros.push_back(choice);
         }
+
         else {
             for (const auto& mensaje : mensajesParametros) {
                 parametros.push_back(m_pantalla->capturarEntrada(mensaje));
