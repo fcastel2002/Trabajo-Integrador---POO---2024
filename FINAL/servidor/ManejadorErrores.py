@@ -42,12 +42,15 @@ class ErrorDeEstado(Exception):
         return self.mensaje
 
 class ErrorArchivos(Exception):
-    def __init__(self, tipo, nombre_archivo = None):
+    def __init__(self, tipo, nombre_archivo=None):
         mensajes = {
-            1: "No se pudo escribir en el archivo",
-            2: f"El archivo {nombre_archivo} no existe."
+            1: "No se pudo escribir en el archivo.",
+            2: f"El archivo {nombre_archivo} no existe." if nombre_archivo else "El archivo especificado no existe.",
+            3: f"Permisos insuficientes para acceder al archivo {nombre_archivo}." if nombre_archivo else "Permisos insuficientes para acceder al archivo.",
+            4: "Error de formato: El contenido del archivo no es valido.",
+            5: f"El archivo {nombre_archivo} está dañado o inaccesible." if nombre_archivo else "El archivo está dañado o inaccesible."
         }
-        self.mensaje = mensajes.get(tipo, "Error de estado.")
+        self.mensaje = mensajes.get(tipo, "Error de archivos.")
 
     def __str__(self):
         return self.mensaje
