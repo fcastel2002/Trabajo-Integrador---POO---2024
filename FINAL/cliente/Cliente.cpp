@@ -116,7 +116,7 @@ std::string Cliente::extraerContenido(XmlRpcValue& contenido) {
 	}
 
 	// Elimina el último salto de línea si existeA
-	if (!resultado.empty() && resultado.back() == '\n') {
+	if (!resultado.empty()) {
 		resultado.pop_back();
 	}
 
