@@ -187,7 +187,6 @@ class ControladorRobot:
             for respuesta in respuestas:
                 resultados.append(respuesta)
                  # Iterar sobre cada respuesta en la lista y verificar si contiene "error"
-        
         for i,resultado in enumerate(resultados):
             if "error" in resultado.lower():
                 respuestas_usuario.append(f"Comando: {comandos[i]} - Error: {resultado}")
@@ -208,12 +207,13 @@ class ControladorRobot:
         else:
             gcode = f"G1 X{x} Y{y} Z{z}"
             respuesta_servidor = f"Exito: Efector movido a (X={x}, Y={y}, Z={z}) \n"
-        resultado = self._registrar_comando(gcode)
+        resultados = self._registrar_comando(gcode)
         mensajes = []
-        if "error" in resultado.lower():
-            mensajes.append(resultado)
-            mensajes.append("Debe respetar los limites del espacio de trabajo del robot")
-            return mensajes
+        for resultado in resultados:
+            if "error" in resultado.lower():
+                mensajes.append(resultado)
+                mensajes.append("Debe respetar los limites del espacio de trabajo del robot")
+                return mensajes
         mensajes.append(respuesta_servidor)
         return mensajes
 
@@ -235,12 +235,15 @@ class ControladorRobot:
             self.efector_estado = "desactivado"
         else:
             raise ErrorDeParametros(3)  # Parámetros inválidos
-
-        resultado = self._registrar_comando(gcode)
-        if "error" in resultado:
-            return resultado
+        mensajes = []
+        respuestas = self._registrar_comando(gcode)
+        for respuesta in respuestas:
+            mensajes.append(respuesta)
+            if "error" in respuesta.lower():
+                return mensajes
+        mensajes.append(f"Exito: Efector {'activado' if accion == 'activar' else 'desactivado'}\n")
         
-        return f"Exito: Efector {'activado' if accion == '1' else 'desactivado'}\n"
+        return mensajes
 
     def homming(self):
         if self.estado_conexion == "desconectado":

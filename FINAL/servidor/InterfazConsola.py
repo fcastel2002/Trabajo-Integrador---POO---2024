@@ -367,7 +367,7 @@ class InterfazConsola:
         try:
             nombre_archivo = questionary.text("Ingrese el nombre del archivo:").ask()
             activar = questionary.confirm("¿Desea activar el modo aprendizaje?").ask()
-            mensaje = self.robot.aprender(nombre_archivo, activar)
+            mensaje = self.robot.aprender(nombre_archivo, "Iniciar" if activar is True else "Finalizar")
             print(mensaje)
             self.logger.registrar_log("aprendizaje", ip, usuario, True)
         except Exception as e:
@@ -379,8 +379,8 @@ class InterfazConsola:
         ip = "127.0.0.1"
         try:
             nombre_archivo = questionary.text("Ingrese el nombre del archivo G-code (sin extensión):").ask()
-            mensaje = self.robot.ejecutar_automatico(nombre_archivo)
-            if mensaje:
+            mensajes = self.robot.ejecutar_automatico(nombre_archivo)
+            for mensaje in mensajes:
                 print(mensaje)
             self.logger.registrar_log("ejecutar_automatico", ip, usuario, True)
         except ErrorDeConexion as e:
@@ -418,8 +418,9 @@ class InterfazConsola:
         usuario = "consola_local"
         ip = "127.0.0.1"
         try:
-            mensaje = self.robot.actuar_efector('1')
-            print(mensaje)
+            mensajes = self.robot.actuar_efector('activar')
+            for mensaje in mensajes:
+                print(mensaje)
             self.logger.registrar_log("activar_efector", ip, usuario, True)
         except Exception as e:
             print(f"Error al activar el efector: {e}")
@@ -429,8 +430,9 @@ class InterfazConsola:
         usuario = "consola_local"
         ip = "127.0.0.1"
         try:
-            mensaje = self.robot.actuar_efector('0')
-            print(mensaje)
+            mensajes = self.robot.actuar_efector('desactivar')
+            for mensaje in mensajes:   
+                print(mensaje)
             self.logger.registrar_log("desactivar_efector", ip, usuario, True)
         except Exception as e:
             print(f"Error al desactivar el efector: {e}")
