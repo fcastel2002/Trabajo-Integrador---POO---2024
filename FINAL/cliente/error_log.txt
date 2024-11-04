@@ -115,3 +115,7 @@ ERROR: Archivo no encontrado
 [2024-11-04 16:10:38] WARNING: Error al cerrar el archivo: ArchivoAutomatico.txt
 [2024-11-04 16:14:04] WARNING: Error al cerrar el archivo: ArchivoAutomatico.txt
 [2024-11-04 16:17:49] WARNING: Respuesta no válida recibida del servidor.
+[2024-11-04 17:18:06] ERROR: Fallo la conexion
+[2024-11-04 17:18:28] ERROR: Fallo la conexion
+[2024-11-04 17:20:02] WARNING: Error al cerrar el archivo: ArchivoAutomatico.txt
+[2024-11-04 17:20:42] WARNING: Error al cerrar el archivo: ArchivoAutomatico.txt
