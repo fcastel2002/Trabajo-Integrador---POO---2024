@@ -4,7 +4,8 @@
 #include "Cliente.h"
 #include "OrdenBuilder.h"
 #include "IPantalla.h"
-#include "ErrorHandler.h"  // Agregado para posible manejo de errores en el .h
+#include "ErrorHandler.h" 
+#include "Archivo.h"// Agregado para posible manejo de errores en el .h
 #include <curses.h>        // Librería PDCurses
 #include <string>
 #include <vector>
@@ -29,8 +30,6 @@ public:
 
     //Sobre carga para procesar en local
     std::string procesarSeleccion(int seleccion, const std::string& quien);
-       
-    
 
 private:
     Cliente& cliente;                     // Referencia al cliente para ejecutar comandos
@@ -40,7 +39,7 @@ private:
     const std::string manejarSeleccion(int seleccion, const std::string& para);
 
     // Opciones del menú principal del cliente
-    const std::vector<std::string> m_opcionesCliente = {
+     std::vector<std::string> m_opcionesCliente = {
         "Login",
         "Mostrar comandos",
         "Salir"

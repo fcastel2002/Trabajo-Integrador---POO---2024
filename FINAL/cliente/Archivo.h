@@ -17,6 +17,7 @@ public:
     // Destructor que cierra el archivo si está abierto
     ~Archivo();
 
+	std::vector<std::string> archivoToVector(Archivo& archivo_);
     // Abre el archivo para lectura
     bool abrir();
 
@@ -34,4 +35,6 @@ public:
 
     // Obtiene la ruta del archivo
     std::string getRuta();
+
+
 };

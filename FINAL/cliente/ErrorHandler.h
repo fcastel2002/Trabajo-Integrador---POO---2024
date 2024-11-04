@@ -1,5 +1,8 @@
 // ErrorHandler.h
 #pragma once
+
+
+#include "IPantalla.h"
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -23,26 +26,8 @@ enum class ErrorCode {
 };
 
 class ErrorHandler {
-public:
-    // Constructor: abre el archivo de log
-    ErrorHandler(const std::string& logFilePath = "error_log.txt");
-
-    // Destructor: cierra el archivo de log si está abierto
-    ~ErrorHandler();
-
-    // Registra un mensaje de error con un nivel de severidad
-    void logError(const std::string& message, ErrorLevel level = ErrorLevel::ERROR);
-
-    // Registra un error usando un código predefinido
-    void logError(ErrorCode code, ErrorLevel level = ErrorLevel::ERROR);
-
-    // Muestra el error en la consola con un nivel de severidad
-    void displayError(const std::string& message, ErrorLevel level = ErrorLevel::ERROR);
-
-    // Maneja una excepción y registra el error
-    void handleException(const std::exception& e);
-
 private:
+    IPantalla* m_pantalla;
     std::string logFilePath;
     std::ofstream logFile;
 
@@ -60,4 +45,24 @@ private:
 
     // Obtiene el timestamp actual para el log
     std::string getCurrentTimestamp() const;
+public:
+    // Constructor: abre el archivo de log
+    ErrorHandler(const std::string& logFilePath = "error_log.txt");
+
+    // Destructor: cierra el archivo de log si está abierto 
+    ~ErrorHandler(); 
+
+    // Registra un mensaje de error con un nivel de severidad
+    void logError(const std::string& message, ErrorLevel level = ErrorLevel::ERROR);
+
+    // Registra un error usando un código predefinido
+    void logError(ErrorCode code, ErrorLevel level = ErrorLevel::ERROR);
+
+    // Muestra el error en la consola con un nivel de severidad
+    void displayError(const std::string& message, ErrorLevel level = ErrorLevel::ERROR);
+
+    // Maneja una excepción y registra el error
+    void handleException(const std::exception& e);
+
+
 };

@@ -17,16 +17,18 @@ public:
 
     // Captura la entrada del usuario mostrando un mensaje
     virtual std::string capturarEntrada(const std::string& mensaje) = 0;
+    virtual std::string capturarEntrada(const std::string& mensaje, const std::vector<std::string>& opciones) = 0;
 
-    // Convierte un archivo en un vector de strings
-    virtual std::vector<std::string> archivoToVector(std::string& mensaje) = 0;
-
-    // Muestra opciones al usuario y captura su elección
-    virtual std::string capturarEleccion(const std::string& mensaje, const std::vector<std::string>& opciones) = 0;
 
     // Muestra un menú y retorna la opción elegida por el usuario
     virtual int mostrarMenu(const std::vector<std::string>& opciones, const std::string& tituloMenu) = 0;
 
     // Refresca la pantalla, actualizando su contenido
     virtual void refrescarPantalla() = 0;
+    
+    virtual void showCurrentUser(const std::string& user) = 0;
+private:
+
+	IPantalla& operator=(const IPantalla&) = delete;
+    
 };

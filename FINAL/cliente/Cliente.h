@@ -24,12 +24,9 @@ private:
     // Método auxiliar para extraer el contenido entre las etiquetas <value> y </value>
     std::string extraerContenido(XmlRpcValue& contenido);
 
-    // Método auxiliar para reemplazar entidades HTML comunes (ej., &apos;, &quot;) por sus caracteres equivalentes
-   // std::string reemplazarEntidadesHTML(const std::string& texto);
-
 public:
     // Constructor que inicializa la conexión con IP, puerto y pantalla
-    Cliente(std::string ip, int puerto, IPantalla& pantalla);
+    Cliente(IPantalla& pantalla);
 
     // Envía un comando al servidor a través de XML-RPC
     bool enviarComando(Orden& my_order);
@@ -46,6 +43,10 @@ public:
     // Resetea usuario y contraseña
     
 	void cerrarSesion();
+
+
+    bool verificarServidor(); 
+    void capturarIpYPuerto();
 
     // Métodos getter y setter para el usuario y la contraseña
     std::string getUser() { return m_usuario; }
