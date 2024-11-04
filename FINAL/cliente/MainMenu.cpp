@@ -89,6 +89,9 @@ const std::string MainMenu::manejarSeleccion(int seleccion, const std::string& p
     if (para == "servidor" && seleccion >= 0 && seleccion < m_opciones.size()) {
         return m_opciones[seleccion];
     }
+	else if (para == "servidor" && seleccion == -1) {
+		return "Volver";
+	}
     else if (para == "cliente" && seleccion >= 0 && seleccion < m_opcionesCliente.size()) {
         return m_opcionesCliente[seleccion];
     }
@@ -109,10 +112,10 @@ bool MainMenu::procesarSeleccion(int seleccion) {
 		cliente.cerrarSesion();
         return false;
     }
-    if (comando == "Volver") {
+    if (comando == "Volver" || comando == "ESC") {
         return false;
     }
-   
+    
 
     builder.conUsuario(cliente.getUser())
         .conClave(cliente.getPass())
@@ -123,9 +126,9 @@ bool MainMenu::procesarSeleccion(int seleccion) {
 
     try {
         if (comando == "Ejecutar automatico") {
-            std::string nombreArchivo = m_pantalla->capturarEntrada("Seleccione el archivo para la ejecucion automatica:",Archivo::obtenerArchivos("./archivos_gcode"));
+            std::string nombreArchivo = m_pantalla->capturarEntrada("Seleccione el archivo para la ejecucion automatica:",Archivo::obtenerArchivos("./archivos_gcode")); //metodo static necesario
 			if (nombreArchivo == "ESC") return true;
-			Archivo archivo_gcode(nombreArchivo, "");
+			Archivo archivo_gcode(nombreArchivo, "./archivos_gcode/");
             std::string choice = m_pantalla->capturarEntrada("Desea enviar el archivo? (s/n)", { "Si", "No" });
             if (choice == "ESC") return true;
             parametros.push_back(nombreArchivo);

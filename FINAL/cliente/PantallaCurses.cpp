@@ -34,14 +34,14 @@ int PantallaCurses::mostrarMenu(const std::vector<std::string>& opciones, const 
     getmaxyx(stdscr, max_y, max_x);
     limpiarPantalla();
     int titulo_x = (max_x - static_cast<int>(tituloMenu.size())) / 2;
-    int menu_x = (max_x - 36) / 2; // Ajustar la posición del menú
+    int menu_x = (max_x - 51) / 2; // Ajustar la posición del menú
 
     while (true) {
         handleResize();
         attron(COLOR_PAIR(2));
         mvprintw(1, titulo_x, "%s", tituloMenu.c_str());
         attroff(COLOR_PAIR(2));
-        mvprintw(2, menu_x, "====================================");
+        mvprintw(2, menu_x, "===================================================");
         for (int i = 0; i < n_opciones; ++i) {
             int opcion_x = menu_x; // Usar la misma posición de inicio para todas las opciones
             if (i == seleccion) {
@@ -50,7 +50,7 @@ int PantallaCurses::mostrarMenu(const std::vector<std::string>& opciones, const 
             mvprintw(i + 3, opcion_x, opciones[i].c_str());
             attroff(A_REVERSE);
         }
-
+        mvprintw(28, 1, "Presione ESC para volver");
         refrescarPantalla();
         int entrada = getch();
 
@@ -105,21 +105,33 @@ void PantallaCurses::mostrarTexto(const std::string& mensaje) {
 
 std::string PantallaCurses::capturarEntrada(const std::string& mensaje) {
     limpiarPantalla();
-    
-    mvprintw(1, 1, "%s", mensaje.c_str());
-    mvprintw(28, 1, "Presione ESC para cancelar la operacion");
 
     keypad(stdscr, TRUE);    // Activar teclas especiales
     cbreak();                // Desactivar el buffering de línea
     noecho();                // Desactivar el eco de caracteres
+    halfdelay(1);            // Esperar 0.1 segundos en getch()
 
     char buffer[80];
     int ch;
     int i = 0;
     int mensaje_len = static_cast<int>(mensaje.size());
 
-    while ((ch = getch()) != '\n') {
-        handleResize();
+    while (true) {
+        handleResize(); // Manejar el redimensionamiento de la ventana
+        move(1, 1 + mensaje_len); // Mover el cursor a la posición correcta
+        mvprintw(1, 1, "%s", mensaje.c_str());
+        refresh();
+        mvprintw(28, 1, "Presione ESC para cancelar la operacion");
+        
+
+        ch = getch();
+        if (ch == ERR) {
+            // No se ha ingresado ningún carácter, continuar el bucle
+            continue;
+        }
+        if (ch == '\n') {
+            break;
+        }
         if (ch == 27) { // Posible tecla ESC
             nodelay(stdscr, TRUE); // No bloquear getch()
             int next_ch = getch();
@@ -152,9 +164,11 @@ std::string PantallaCurses::capturarEntrada(const std::string& mensaje) {
     }
 
     buffer[i] = '\0';
-    
+
     return std::string(buffer);
 }
+
+
 void PantallaCurses::mostrarError(const std::string& error) {
     limpiarPantalla();
     attron(COLOR_PAIR(3));  // Resalta el mensaje de error
@@ -182,7 +196,7 @@ void PantallaCurses::handleResize() {
         resize_term(new_y, new_x);
       
    
-        //clear();
+        clear();
         refresh();
        // showCurrentUser(user_);
     }
