@@ -7,5 +7,10 @@
         "vector": "cpp",
         "random": "cpp"
     },
-    "cmake.sourceDirectory": "D:/OneDrive - Universidad Nacional de Cuyo/8vo semestre/POO/Integrador/Trabajo-Integrador---POO---2024/ti_cliente_v2/json-develop/json-develop"
+    "cmake.sourceDirectory": "D:/OneDrive - Universidad Nacional de Cuyo/8vo semestre/POO/Integrador/Trabajo-Integrador---POO---2024/ti_cliente_v2/json-develop/json-develop",
+    "python.testing.pytestArgs": [
+        "FINAL"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
 }
