@@ -252,11 +252,12 @@ class ControladorRobot:
         if not self.motores_activos:
             raise ErrorDeConexion(2)  # Motores apagados
 
-        resultado = self._registrar_comando("G28")
+        respuestas = self._registrar_comando("G28")
         mensajes = []
-        if "error" in resultado:
-            mensajes.append(resultado)
-            return mensajes
+        for respuesta in respuestas:
+            mensajes.append(respuesta)
+            if "error" in respuesta:
+                return mensajes
         
         self.homming_realizado = True  # Actualizamos el estado de homming
         mensajes.append("Exito: Homming realizado\n")
