@@ -72,7 +72,7 @@ std::string MainMenu::procesarSeleccion(int seleccion, const std::string& quien)
         return "login";
     }
     
-    if (m_opcionesCliente[0].find("Cerrar sesion") != std::string::npos) {
+    if (comando.find("Cerrar sesion") != std::string::npos) {
 		return "cerrar sesion"; 
     }
     if (comando == "Mostrar comandos") {
