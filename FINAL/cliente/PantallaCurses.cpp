@@ -6,7 +6,7 @@
 #include <sstream>
 
 PantallaCurses::PantallaCurses() {
-    system("MODE 80,25");
+    system("MODE 100,30");
     initscr();
     start_color();
     init_pair(1, COLOR_BLACK, COLOR_WHITE);
@@ -38,7 +38,6 @@ int PantallaCurses::mostrarMenu(const std::vector<std::string>& opciones, const 
 
     while (true) {
         handleResize();
-		showCurrentUser(user_);
         attron(COLOR_PAIR(2));
         mvprintw(1, titulo_x, "%s", tituloMenu.c_str());
         attroff(COLOR_PAIR(2));
@@ -74,7 +73,7 @@ void PantallaCurses::limpiarPantalla() {
 
     clear();
     refresh();
-	//showCurrentUser(user_);
+	
 	
 }
 
@@ -108,7 +107,7 @@ std::string PantallaCurses::capturarEntrada(const std::string& mensaje) {
     limpiarPantalla();
     
     mvprintw(1, 1, "%s", mensaje.c_str());
-    mvprintw(25, 25, "Presione ESC para cancelar la operacion");
+    mvprintw(28, 1, "Presione ESC para cancelar la operacion");
 
     keypad(stdscr, TRUE);    // Activar teclas especiales
     cbreak();                // Desactivar el buffering de línea
@@ -190,9 +189,3 @@ void PantallaCurses::handleResize() {
     }
 }
 
-
-void PantallaCurses::showCurrentUser(const std::string& user = "Ningun usuario ingresado") {
-	user_ = user;
-    
-	
-}

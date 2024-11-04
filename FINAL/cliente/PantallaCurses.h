@@ -7,9 +7,6 @@
 #include <string>
 
 class PantallaCurses : public IPantalla {
-private:
-    WINDOW* userWin;
-    std::string user_;
 public:
     // Constructor que inicializa la pantalla usando PDCurses
     PantallaCurses();
@@ -36,7 +33,5 @@ public:
     // Muestra un mensaje de error resaltado en la pantalla
     void mostrarError(const std::string& error) override;
 
-   // void showCurrentTime() override;
-    void showCurrentUser(const std::string& user) override;
     void handleResize();
 };
