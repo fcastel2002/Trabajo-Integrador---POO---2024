@@ -112,6 +112,7 @@ bool MainMenu::procesarSeleccion(int seleccion) {
     if (comando == "Volver") {
         return false;
     }
+   
 
     builder.conUsuario(cliente.getUser())
         .conClave(cliente.getPass())
@@ -157,11 +158,15 @@ bool MainMenu::procesarSeleccion(int seleccion) {
                 parametros.push_back(m_pantalla->capturarEntrada(mensaje));
             }
         }
-
+        if (std::find(parametros.begin(), parametros.end(), "ESC") != parametros.end()) {
+            return true;
+        }
         builder.conParametros(parametros);
         Orden orden = builder.build();
 
-        m_pantalla->mostrarTexto("Comando enviado: " + comando);
+
+        m_pantalla->mostrarTexto("Comando enviado: " + comando);       
+     
         for (size_t i = 0; i < parametros.size(); ++i) {
             m_pantalla->mostrarTexto("Parametro " + std::to_string(i) + " enviado: " + parametros[i]);
         }

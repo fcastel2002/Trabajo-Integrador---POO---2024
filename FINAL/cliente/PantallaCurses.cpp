@@ -3,6 +3,7 @@
 #include "ErrorHandler.h"
 #include <csignal>
 #include <cstdlib>
+#include <sstream>
 
 PantallaCurses::PantallaCurses() {
     system("MODE 80,25");
@@ -84,7 +85,21 @@ void PantallaCurses::refrescarPantalla() {
 
 void PantallaCurses::mostrarTexto(const std::string& mensaje) {
     limpiarPantalla();
-    mvprintw(1, 1, "%s", mensaje.c_str());
+
+    int max_y, max_x;
+    getmaxyx(stdscr, max_y, max_x);
+
+    std::istringstream stream(mensaje);
+    std::string linea;
+    int fila = 1;
+
+    // Divide el mensaje en líneas y las imprime
+    while (std::getline(stream, linea)) {
+        if (fila >= max_y) break; // Evita escribir fuera de la ventana
+        mvprintw(fila, 1, "%s", linea.c_str());
+        fila++;
+    }
+
     refrescarPantalla();
     getch();
 }
