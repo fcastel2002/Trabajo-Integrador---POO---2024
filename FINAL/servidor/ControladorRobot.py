@@ -297,12 +297,12 @@ class ControladorRobot:
         if self.estado_conexion == "desconectado":
             raise ErrorDeConexion(1)  # No hay conexión
 
-        resultado = self._registrar_comando("G90")
+        respuestas = self._registrar_comando("G90")
         mensajes = []
-        if "error" in resultado:
-            mensajes.append(resultado)
-            return mensajes
-        mensajes.append(resultado)
+        for respuesta in respuestas:
+            mensajes.append(respuesta)
+            if "error" in respuesta:
+                return mensajes
         mensajes.append("Modo de coordenadas absolutas activado\n")
         self.tipo_movimiento = 'absoluto'
         return mensajes
@@ -312,12 +312,12 @@ class ControladorRobot:
         if self.estado_conexion == "desconectado":
             raise ErrorDeConexion(1)  # No hay conexión
         
-        resultado = self._registrar_comando("G91")
+        respuestas = self._registrar_comando("G91")
         mensajes = []
-        if "error" in resultado:
-            mensajes.append(resultado)
-            return mensajes
-        mensajes.append(resultado)
+        for respuesta in respuestas:
+            mensajes.append(respuesta)
+            if "error" in respuesta:
+                return mensajes
         mensajes.append("Modo relativo activado\n")
         self.tipo_movimiento = 'relativo'
         return mensajes
