@@ -3,6 +3,8 @@
 #include <vector>
 #include <fstream>
 
+#include <filesystem>
+
 class Archivo {
 private:
     std::string m_nombre;                  // Nombre del archivo con extensión
@@ -36,5 +38,5 @@ public:
     // Obtiene la ruta del archivo
     std::string getRuta();
 
-
+	static std::vector<std::string> obtenerArchivos(const std::string& ruta); //metodo static, necesario para poder llamarlo sin instanciar un objeto de la clase
 };

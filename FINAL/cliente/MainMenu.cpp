@@ -123,7 +123,7 @@ bool MainMenu::procesarSeleccion(int seleccion) {
 
     try {
         if (comando == "Ejecutar automatico") {
-            std::string nombreArchivo = m_pantalla->capturarEntrada("Ingrese el nombre del archivo:");
+            std::string nombreArchivo = m_pantalla->capturarEntrada("Seleccione el archivo para la ejecucion automatica:",Archivo::obtenerArchivos("./archivos_gcode"));
 			if (nombreArchivo == "ESC") return true;
 			Archivo archivo_gcode(nombreArchivo, "");
             std::string choice = m_pantalla->capturarEntrada("Desea enviar el archivo? (s/n)", { "Si", "No" });

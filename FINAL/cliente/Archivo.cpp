@@ -93,6 +93,21 @@ std::vector<std::string> Archivo::archivoToVector(Archivo& archivo_) {
 	}
 }
 
+std::vector<std::string> Archivo::obtenerArchivos(const std::string& ruta) {
+    std::vector<std::string> archivos;
+
+    try {
+        for (const auto& entry : std::filesystem::directory_iterator(ruta)) {
+            archivos.push_back(entry.path().filename().string());
+        }
+    }
+    catch (const std::filesystem::filesystem_error& e) {
+        ErrorHandler errorHandler;
+        errorHandler.logError(ErrorCode::FILE_NOT_FOUND, ErrorLevel::ERROR);
+        errorHandler.displayError("No se pudo acceder al directorio: " + ruta, ErrorLevel::ERROR);
+    }
+    return archivos;
+}
 std::vector<std::string> Archivo::getContenido() {
     return m_contenido;
 }

@@ -121,7 +121,6 @@ std::string PantallaCurses::capturarEntrada(const std::string& mensaje) {
     while ((ch = getch()) != '\n') {
         handleResize();
         if (ch == 27) { // Posible tecla ESC
-            // Verificar si es una secuencia de escape o la tecla ESC sola
             nodelay(stdscr, TRUE); // No bloquear getch()
             int next_ch = getch();
             nodelay(stdscr, FALSE); // Restaurar bloqueo de getch()
@@ -183,7 +182,7 @@ void PantallaCurses::handleResize() {
         resize_term(new_y, new_x);
       
    
-        clear();
+        //clear();
         refresh();
        // showCurrentUser(user_);
     }
