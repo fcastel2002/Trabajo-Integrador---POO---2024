@@ -130,6 +130,9 @@ bool MainMenu::procesarSeleccion(int seleccion) {
 			std::string choice = m_pantalla->capturarEleccion("Que quiere hacer con el aprendizaje?: ", mensajesParametros);
 			parametros.push_back(nombreArchivo);
 			parametros.push_back(choice);
+        } else if (comando == "Actuar efector") {
+            std::string choice = m_pantalla->capturarEleccion("Desea activar o desactivar el efector?", mensajesParametros);
+            parametros.push_back(choice);
         }
         else {
             for (const auto& mensaje : mensajesParametros) {

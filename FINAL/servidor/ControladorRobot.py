@@ -65,7 +65,9 @@ class ControladorRobot:
         gcode = "M17"
         msjs = []
         try:
-            msjs.append(self._registrar_comando(gcode))
+            respuestas = self._registrar_comando(gcode)
+            for respuesta in respuestas:
+                msjs.append(respuesta)
             return msjs
         except Exception as e:
             self.motores_activos = False
@@ -106,12 +108,14 @@ class ControladorRobot:
         
         if not respuestas:
             self.errores.append(comando)
-            return "No se recibio respuesta del robot"
+            respuestas.append("No se recibio respuesta del robot")
+            return respuestas
 
         for respuesta in respuestas:
             if "ERROR" in respuesta.upper():
                 self.errores.append(comando)
-                return respuesta
+                respuestas.append(respuesta)
+                return respuestas
 
             try:
                 self.archivo_ordenes_ejecutadas.guardar_linea(f"{comando} -> {respuesta}")
@@ -165,7 +169,7 @@ class ControladorRobot:
 
         if archivo is not None:
             comandos = archivo
-            archivo_control_automatico = GestorDeArchivos(f"{nombre_archivo}+.txt")
+            archivo_control_automatico = GestorDeArchivos(f"archivoRecibido.txt")
         else:
             archivo_control_automatico = GestorDeArchivos(f"{nombre_archivo}.txt")
             try:
@@ -173,53 +177,44 @@ class ControladorRobot:
             except Exception:
                 raise ErrorArchivos(2,nombre_archivo)
 
+        respuestas_usuario = []
         resultados = []
         for comando in comandos:
             comando = comando.strip()
             if archivo is not None:
                 archivo_control_automatico.escribir_archivo(comando)
             respuestas = self._registrar_comando(comando)
+            for respuesta in respuestas:
+                resultados.append(respuesta)
                  # Iterar sobre cada respuesta en la lista y verificar si contiene "error"
-        for respuesta in respuestas:
-            if "error" in respuesta.lower():
-                resultados.append(f"Comando: {comando} - Error: {respuesta}")
+        
+        for i,resultado in enumerate(resultados):
+            if "error" in resultado.lower():
+                respuestas_usuario.append(f"Comando: {comandos[i]} - Error: {resultado}")
             else:
-                resultados.append(f"Comando: {comando} - Respuesta: {respuesta}")
+                respuestas_usuario.append(f"Comando: {comandos[i]} - Respuesta: {resultado}")
 
-        resultados.append("Ejecucion automatica completada\n")
-        return "\n".join(resultados)
+        respuestas_usuario.append("Ejecucion automatica completada\n")
+        return respuestas_usuario
 
-    def mover_efector(self, x, y, z, velocidad):
+    def mover_efector(self, x, y, z, velocidad = None):
         if self.estado_conexion == "desconectado":
             raise ErrorDeConexion(1)  # No hay conexión
         if not self.motores_activos:
             raise ErrorDeConexion(2)  # Motores apagados
-
-        gcode = f"G1 X{x} Y{y} Z{z} F{velocidad}"
+        if velocidad:
+            gcode = f"G1 X{x} Y{y} Z{z} F{velocidad}"
+            respuesta_servidor = f"Exito: Efector movido a (X={x}, Y={y}, Z={z}) con velocidad {velocidad}\n"
+        else:
+            gcode = f"G1 X{x} Y{y} Z{z}"
+            respuesta_servidor = f"Exito: Efector movido a (X={x}, Y={y}, Z={z}) \n"
         resultado = self._registrar_comando(gcode)
         mensajes = []
-        if "error" in resultado:
+        if "error" in resultado.lower():
             mensajes.append(resultado)
+            mensajes.append("Debe respetar los limites del espacio de trabajo del robot")
             return mensajes
-        mensajes.append(f"Exito: Efector movido a (X={x}, Y={y}, Z={z}) con velocidad {velocidad}\n")
-        return mensajes
-    
-    def mover_efector_posicion(self, x, y, z):
-        """Mueve el efector a una posición especifica, sin pedir velocidad"""
-        if self.estado_conexion == "desconectado":
-            raise ErrorDeConexion(1)  # No hay conexión
-        if not self.motores_activos:
-            raise ErrorDeConexion(2)  # Motores apagados
-
-        # Usar una velocidad por defecto, por ejemplo, 1000
-        velocidad_default = 1000
-        gcode = f"G1 X{x} Y{y} Z{z} F{velocidad_default}"
-        resultado = self._registrar_comando(gcode)
-        mensajes = []
-        if "error" in resultado:
-            mensajes.append(resultado)
-            return mensajes
-        mensajes.append(f"Exito: Efector movido a (X={x}, Y={y}, Z={z}) con velocidad {velocidad_default}\n")
+        mensajes.append(respuesta_servidor)
         return mensajes
 
     def actuar_efector(self, accion):
@@ -228,12 +223,12 @@ class ControladorRobot:
         if not self.motores_activos:
             raise ErrorDeConexion(2)  # Motores apagados
 
-        if accion == '1':
+        if accion.lower() == 'activar':
             if self.efector_estado == "activado":
                 raise ErrorDeEstado(5)  # Efector ya activado
             gcode = "M3"
             self.efector_estado = "activado"
-        elif accion == '0':
+        elif accion.lower() == 'desactivar':
             if self.efector_estado == "desactivado":
                 raise ErrorDeEstado(6)  # Efector ya desactivado
             gcode = "M5"

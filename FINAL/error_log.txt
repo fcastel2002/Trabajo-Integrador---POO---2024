@@ -41,3 +41,24 @@
 [2024-10-29 19:28:15] ERROR: Fallo la conexion
 [2024-10-29 19:28:17] ERROR: Fallo la conexion
 [2024-10-29 19:28:19] ERROR: Fallo la conexion
+[2024-10-30 09:39:10] ERROR: Fallo la conexion
+[2024-10-30 09:39:24] ERROR: Fallo la conexion
+[2024-10-30 09:40:05] ERROR: Fallo la conexion
+[2024-10-30 09:55:38] WARNING: Respuesta no válida recibida del servidor.
+[2024-10-30 09:55:42] WARNING: Respuesta no válida recibida del servidor.
+[2024-10-30 10:06:30] ERROR: Fallo la conexion
+[2024-10-30 10:10:41] WARNING: Error al cerrar el archivo: archivoAutm.txt
+[2024-10-30 10:11:27] WARNING: Error al cerrar el archivo: archivoAutm.txt
+[2024-10-30 10:15:59] WARNING: Error al cerrar el archivo: archivoAutm.txt
+[2024-10-30 10:16:22] WARNING: Error al cerrar el archivo: archivoAutm.txt
+[2024-10-30 10:18:43] WARNING: Error al cerrar el archivo: archivoAutm.txt
+[2024-10-30 10:19:27] WARNING: Error al cerrar el archivo: archivoAutm.txt
+[2024-10-30 10:21:13] WARNING: Error al cerrar el archivo: archivoAutm.txt
+[2024-10-30 10:23:23] WARNING: Respuesta no válida recibida del servidor.
+[2024-10-30 10:25:09] WARNING: Respuesta no válida recibida del servidor.
+[2024-10-30 10:25:39] WARNING: Error al cerrar el archivo: archivoAutm.txt
+[2024-10-30 10:29:37] WARNING: Error al cerrar el archivo: archivoAutm.txt
+[2024-10-30 10:33:50] WARNING: Error al cerrar el archivo: archivoAutm.txt
+[2024-10-30 10:35:56] WARNING: Error al cerrar el archivo: archivoAutm.txt
+[2024-10-30 10:42:25] WARNING: Error al cerrar el archivo: archivoAutm.txt
+[2024-10-30 10:51:12] WARNING: Error al cerrar el archivo: archivoAutm.txt

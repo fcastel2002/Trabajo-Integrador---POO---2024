@@ -20,7 +20,7 @@ public:
         etiquetasParametros["Conectarse al Robot"] = { "Ingrese puerto COM: ", "Ingrese velocidad de transmision: " };
         etiquetasParametros["Mover efector"] = { "Ingrese X: ", "Ingrese Y: ", "Ingrese Z: ", "Ingrese Velocidad (opcional): " };
         etiquetasParametros["Aprendizaje"] = {"Iniciar", "Detener"};
-
+        etiquetasParametros["Actuar efector"] = {"Activar", "Desactivar"};
     }
 
     // Setea el usuario para la orden
@@ -41,13 +41,13 @@ public:
         return *this;
     }
 
-    // Setea los parámetros para la orden
+    // Setea los parï¿½metros para la orden
     OrdenBuilder& conParametros(const vector<string>& parametros) {
         this->parametros = parametros;
         return *this;
     }
 
-    // Obtiene las etiquetas de parámetros asociadas al comando
+    // Obtiene las etiquetas de parï¿½metros asociadas al comando
     vector<string> obtenerEtiquetasParametros() const {
         auto it = etiquetasParametros.find(comando);
         return it != etiquetasParametros.end() ? it->second : vector<string>();
@@ -61,11 +61,11 @@ public:
                 throw std::runtime_error("Faltan parametros esenciales para construir la orden.");
             }
             std::vector<std::vector<std::string>> parametrosOrden = { {usuario}, {clave}, {comando}, parametros };
-            return Orden(parametrosOrden);  // Ahora debería funcionar correctamente
+            return Orden(parametrosOrden);  // Ahora deberï¿½a funcionar correctamente
         }
         catch (const std::exception& e) {
             errorHandler.handleException(e);
-            return Orden(std::vector<std::vector<std::string>>{});  // Retorna una orden vacía si falla
+            return Orden(std::vector<std::vector<std::string>>{});  // Retorna una orden vacï¿½a si falla
         }
     }
 };

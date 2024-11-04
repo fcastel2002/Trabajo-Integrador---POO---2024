@@ -155,7 +155,7 @@ class ServidorControl:
                     return f"Error: {str(e)}"
             else:
                 try:
-                    return self.robot.mover_efector_posicion(x, y, z)
+                    return self.robot.mover_efector(x, y, z)
                 except Exception as e:
                     return f"Error: {str(e)}"
         
