@@ -61,7 +61,7 @@ bool Archivo::leer() {
         return false;
     }
 
-    cerrar();
+    //cerrar();
     return true;
 }
 

@@ -3,6 +3,7 @@
 #include "RespuestaBuilder.h"
 #include "ErrorHandler.h"
 #include <iostream>
+#include <algorithm>
 #include <unordered_map>
 
 Cliente::Cliente(IPantalla& pantalla)
@@ -17,7 +18,16 @@ Cliente::Cliente(IPantalla& pantalla)
 void Cliente::capturarIpYPuerto() {
 	m_ip = m_pantalla.capturarEntrada("Ingrese la IP del servidor: ");
 	std::string puertoStr = m_pantalla.capturarEntrada("Ingrese el puerto del servidor: ");
-	m_puerto = std::stoi(puertoStr);
+	try {
+		m_puerto = std::stoi(puertoStr);
+
+	}
+	catch (const std::invalid_argument& e) {
+		ErrorHandler errorHandler;
+		errorHandler.logError("El puerto ingresado no es un numero valido.", ErrorLevel::ERROR);
+		errorHandler.displayError("El puerto ingresado no es un numero valido.", ErrorLevel::ERROR);
+		capturarIpYPuerto();
+	}
 	verificarServidor();
 }
 
@@ -27,11 +37,12 @@ bool Cliente::verificarServidor() {
 	while (true) {
 		try {
 			XmlRpcValue noArgs, result;
-			if (client.execute("system.listMethods", noArgs, result)) {
+			
+			if (client.execute("system.listMethods", noArgs, result)) { 
 				client.close();
 				return true;
 			}
-			else {
+			else { //.execute no arroja una exception como tal si no se puede realizar la conexion, por lo tanto se utiliza else.
 				errorHandler.logError(ErrorCode::CONNECTION_FAILED, ErrorLevel::ERROR);
 				errorHandler.displayError("Conexion fallida con el servidor\n Servidor apagado o parametros erroneos.", ErrorLevel::ERROR);
 				capturarIpYPuerto();

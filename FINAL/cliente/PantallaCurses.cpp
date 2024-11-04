@@ -91,6 +91,7 @@ void PantallaCurses::mostrarTexto(const std::string& mensaje) {
 
 std::string PantallaCurses::capturarEntrada(const std::string& mensaje) {
     limpiarPantalla();
+    
     mvprintw(1, 1, "%s", mensaje.c_str());
     mvprintw(25, 25, "Presione ESC para cancelar la operacion");
 
@@ -138,6 +139,7 @@ std::string PantallaCurses::capturarEntrada(const std::string& mensaje) {
     }
 
     buffer[i] = '\0';
+    
     return std::string(buffer);
 }
 void PantallaCurses::mostrarError(const std::string& error) {
