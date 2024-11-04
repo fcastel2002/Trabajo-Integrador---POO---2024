@@ -40,7 +40,14 @@ void MainMenu::mostrarMenu() {
         }
         else if (opcion == "login") {
             cliente.login();
+            m_opcionesCliente[0] = std::string("Cerrar sesion: ") + cliente.getUser();
+
         }
+		else if (opcion == "cerrar sesion") {
+			cliente.cerrarSesion();
+			m_opcionesCliente[0] = "Login";
+		}
+		else
         if (m_comandos.size()>2) {
 
             if (opcion == "rpc") {
@@ -63,6 +70,10 @@ std::string MainMenu::procesarSeleccion(int seleccion, const std::string& quien)
     }
     if (comando == "Login") {
         return "login";
+    }
+    
+    if (m_opcionesCliente[0].find("Cerrar sesion") != std::string::npos) {
+		return "cerrar sesion"; 
     }
     if (comando == "Mostrar comandos") {
         setComandos();

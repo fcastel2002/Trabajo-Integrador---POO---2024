@@ -4,16 +4,19 @@
 #include <unordered_map>
 #include <iomanip>
 #include <sstream>
+#include "PantallaCurses.h"
 
 // Constructor: abre el archivo de log
 ErrorHandler::ErrorHandler(const std::string& logFilePath) : logFilePath(logFilePath) {
     openLogFile();
+	m_pantalla = new PantallaCurses();
 }
 
 void ErrorHandler::openLogFile() {
     logFile.open(logFilePath, std::ios::app);
     if (!logFile.is_open()) {
-        std::cerr << "No se pudo abrir el archivo de log de errores." << std::endl;
+        //std::cerr << "No se pudo abrir el archivo de log de errores." << std::endl;
+		m_pantalla->mostrarError("No se pudo abrir el archivo de log de errores.");
         logError("No se pudo abrir el archivo de log de errores.", ErrorLevel::ERROR);
     }
 }
@@ -22,7 +25,8 @@ void ErrorHandler::closeLogFile() {
     if (logFile.is_open()) {
         logFile.close();
         if (logFile.fail()) {
-            std::cerr << "Error al cerrar el archivo de log." << std::endl;
+           //std::cerr << "Error al cerrar el archivo de log." << std::endl;
+			m_pantalla->mostrarError("Error al cerrar el archivo de log.");
         }
     }
 }
@@ -61,7 +65,8 @@ void ErrorHandler::logError(const std::string& message, ErrorLevel level) {
         logFile << logMessage << std::endl;
     }
     else {
-        std::cerr << "Error al escribir en el log: " << logMessage << std::endl;
+        //sstd::cerr << "Error al escribir en el log: " << logMessage << std::endl;
+		m_pantalla->mostrarError("Error al escribir en el log: " + logMessage);
     }
 }
 
@@ -74,7 +79,8 @@ void ErrorHandler::logError(ErrorCode code, ErrorLevel level) {
 // Muestra el error al usuario
 void ErrorHandler::displayError(const std::string& message, ErrorLevel level) {
     std::string levelStr = getLevelString(level);
-    std::cerr << "[" << levelStr << "] " << message << std::endl;
+    //std::cerr << "[" << levelStr << "] " << message << std::endl;
+	m_pantalla->mostrarError("[" + levelStr + "] " + message);
 }
 
 // Maneja una excepción y registra el error

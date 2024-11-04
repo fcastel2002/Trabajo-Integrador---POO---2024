@@ -39,7 +39,7 @@ private:
     const std::string manejarSeleccion(int seleccion, const std::string& para);
 
     // Opciones del menú principal del cliente
-    const std::vector<std::string> m_opcionesCliente = {
+     std::vector<std::string> m_opcionesCliente = {
         "Login",
         "Mostrar comandos",
         "Salir"

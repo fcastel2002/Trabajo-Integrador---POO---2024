@@ -5,13 +5,46 @@
 #include <iostream>
 #include <unordered_map>
 
-Cliente::Cliente(std::string ip, int puerto, IPantalla& pantalla)
-	: m_ip(ip)
-	, m_puerto(puerto)
-	, client(m_ip.c_str(), m_puerto)
-	, m_pantalla{ pantalla }
+Cliente::Cliente(IPantalla& pantalla)
+	: m_pantalla{ pantalla }
 	, m_usuario{ "null" }
-	, m_clave{ "null" } {}
+	, m_clave{ "null" }
+	, client("",0){
+	capturarIpYPuerto();
+	
+	}
+
+void Cliente::capturarIpYPuerto() {
+	m_ip = m_pantalla.capturarEntrada("Ingrese la IP del servidor: ");
+	std::string puertoStr = m_pantalla.capturarEntrada("Ingrese el puerto del servidor: ");
+	m_puerto = std::stoi(puertoStr);
+	verificarServidor();
+}
+
+bool Cliente::verificarServidor() {
+	ErrorHandler errorHandler;
+	client = XmlRpcClient(m_ip.c_str(), m_puerto);
+	while (true) {
+		try {
+			XmlRpcValue noArgs, result;
+			if (client.execute("system.listMethods", noArgs, result)) {
+				client.close();
+				return true;
+			}
+			else {
+				errorHandler.logError(ErrorCode::CONNECTION_FAILED, ErrorLevel::ERROR);
+				errorHandler.displayError("Conexion fallida con el servidor\n Servidor apagado o parametros erroneos.", ErrorLevel::ERROR);
+				capturarIpYPuerto();
+			}
+		}
+		catch (const XmlRpcException& e) {
+			errorHandler.logError(e.getMessage(), ErrorLevel::ERROR);
+			errorHandler.displayError("Conexion fallida con el servidor\nServidor apagado o parametros erroneos.", ErrorLevel::ERROR);
+			capturarIpYPuerto();
+		}
+	}
+	return false;
+}
 
 bool Cliente::enviarComando(Orden& my_order) {
 	XmlRpcValue params, result;
@@ -92,7 +125,7 @@ std::vector<std::string> Cliente::pedirComandos(Orden& my_order) {
 	try {
 		if (!client.execute("Interpreta_Comando", params, result)) {
 			errorHandler.logError(ErrorCode::CONNECTION_FAILED, ErrorLevel::ERROR);
-			errorHandler.displayError("Error al solicitar comandos del servidor.", ErrorLevel::ERROR);
+			errorHandler.displayError("Error al solicitar comandos del servidor.\n\n\n\n Revise usuario y clave", ErrorLevel::ERROR);
 			client.close();
 			return comandos;
 		}

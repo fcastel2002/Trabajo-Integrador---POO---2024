@@ -25,4 +25,10 @@ public:
 
     // Refresca la pantalla, actualizando su contenido
     virtual void refrescarPantalla() = 0;
+    
+    virtual void showCurrentUser(const std::string& user) = 0;
+private:
+
+	IPantalla& operator=(const IPantalla&) = delete;
+    
 };

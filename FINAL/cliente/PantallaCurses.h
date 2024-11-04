@@ -3,9 +3,13 @@
 #include "Archivo.h"
 #include "ErrorHandler.h"  // Agregado para manejar errores si es necesario en el .h
 #include <vector>
+#include <curses.h>
 #include <string>
 
 class PantallaCurses : public IPantalla {
+private:
+    WINDOW* userWin;
+    std::string user_;
 public:
     // Constructor que inicializa la pantalla usando PDCurses
     PantallaCurses();
@@ -32,5 +36,7 @@ public:
     // Muestra un mensaje de error resaltado en la pantalla
     void mostrarError(const std::string& error) override;
 
-    static void handleResize();
+   // void showCurrentTime() override;
+    void showCurrentUser(const std::string& user) override;
+    void handleResize();
 };

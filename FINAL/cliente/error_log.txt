@@ -74,3 +74,21 @@ ERROR: Archivo no encontrado
 [2024-10-29 23:03:10] WARNING: Respuesta no válida recibida del servidor.
 [2024-11-02 16:19:13] ERROR: Fallo la conexion
 [2024-11-02 16:39:09] ERROR: Fallo la conexion
+[2024-11-03 21:37:06] ERROR: Archivo no encontrado
+[2024-11-03 21:37:12] ERROR: Archivo no encontrado
+[2024-11-03 21:37:14] WARNING: Respuesta no válida recibida del servidor.
+[2024-11-03 21:41:20] ERROR: Fallo la conexion
+[2024-11-03 23:03:48] ERROR: Fallo la conexion
+[2024-11-03 23:03:51] ERROR: Fallo la conexion
+[2024-11-03 23:03:53] ERROR: Fallo la conexion
+[2024-11-03 23:04:42] ERROR: Fallo la conexion
+[2024-11-03 23:05:24] ERROR: Fallo la conexion
+[2024-11-03 23:05:50] ERROR: Fallo la conexion
+[2024-11-03 23:06:22] ERROR: Fallo la conexion
+[2024-11-03 23:09:27] ERROR: Fallo la conexion
+[2024-11-03 23:10:12] ERROR: Fallo la conexion
+[2024-11-03 23:10:37] ERROR: Fallo la conexion
+[2024-11-03 23:11:59] ERROR: Fallo la conexion
+[2024-11-03 23:26:52] ERROR: Fallo la conexion
+[2024-11-04 08:40:03] ERROR: Fallo la conexion
+[2024-11-04 10:07:58] ERROR: Fallo la conexion
