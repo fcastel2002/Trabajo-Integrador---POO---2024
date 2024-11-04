@@ -202,8 +202,10 @@ class ServidorControl:
         elif comando == comandos_disponibles[10]:
             try:
                 if self.consola.tipo_movimiento == 'absoluto':
+                    self.consola.tipo_movimiento = 'relativo'
                     return self.robot.modo_relativo()
                 else:
+                    self.consola.tipo_movimiento = 'absoluto'
                     return self.robot.modo_absoluto()
             except Exception as e:
                 return f"Error: {str(e)}"
