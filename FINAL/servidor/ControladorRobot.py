@@ -13,6 +13,7 @@ class ControladorRobot:
         self.efector_estado = "desactivado"
         self.aprendiendo = False
         self.actividad = "inactivo"
+        self.tipo_movimiento = 'absoluto'
         self.homming_realizado = False  # Nueva variable para controlar el estado del homming
         self.archivo_ordenes_ejecutadas = GestorDeArchivos("ordenes_ejecutadas.txt")
         self.archivo_ordenes_solicitadas = GestorDeArchivos("ordenes_solicitadas.txt")
@@ -302,6 +303,7 @@ class ControladorRobot:
             return mensajes
         mensajes.append(resultado)
         mensajes.append("Modo de coordenadas absolutas activado\n")
+        self.tipo_movimiento = 'absoluto'
         return mensajes
 
     def modo_relativo(self):
@@ -316,4 +318,5 @@ class ControladorRobot:
             return mensajes
         mensajes.append(resultado)
         mensajes.append("Modo relativo activado\n")
+        self.tipo_movimiento = 'relativo'
         return mensajes

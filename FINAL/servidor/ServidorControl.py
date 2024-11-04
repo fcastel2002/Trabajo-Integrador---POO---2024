@@ -5,8 +5,7 @@ import threading
 from ManejadorErrores import ErrorArchivos
 
 class ServidorControl:
-    def __init__(self, consola, robot, ip="127.0.0.1", puerto=9000):
-        self.consola = consola
+    def __init__(self, robot, ip="127.0.0.1", puerto=9000):
         self.robot = robot
         self.ip = ip
         self.puerto = puerto
@@ -201,11 +200,9 @@ class ServidorControl:
                     return f"Error: {str(e)}"
         elif comando == comandos_disponibles[10]:
             try:
-                if self.consola.tipo_movimiento == 'absoluto':
-                    self.consola.tipo_movimiento = 'relativo'
+                if self.robot.tipo_movimiento == 'absoluto':
                     return self.robot.modo_relativo()
                 else:
-                    self.consola.tipo_movimiento = 'absoluto'
                     return self.robot.modo_absoluto()
             except Exception as e:
                 return f"Error: {str(e)}"

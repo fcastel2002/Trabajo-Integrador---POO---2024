@@ -16,13 +16,12 @@ class InterfazConsola:
         self.archivo_usuarios = "usuarios.json"
         self.archivo_logs = "log_trabajo.csv"
         self.modo_trabajo = "manual"
-        self.tipo_movimiento = "absoluto"
         self.gestor_logs = GestorDeArchivos(self.archivo_logs)
         self.logger = Logger()
         self.evento_finalizacion = threading.Event()
         self.evento_creacion_Servidor = threading.Event()
         self.evento_cierre_Servidor = threading.Event()
-        self.rpc_server = ServidorControl(self,self.robot)
+        self.rpc_server = ServidorControl(self.robot)
 
     def mostrar_ayuda(self):
         ayuda = """
@@ -65,7 +64,7 @@ class InterfazConsola:
                 opciones_menu.append(f"Cambiar Modo de Trabajo (Actual: {self.modo_trabajo})")
 
                 # Cambiar tipo de movimiento de acuerdo al estado actual
-                if self.tipo_movimiento == "absoluto":
+                if self.robot.tipo_movimiento == "absoluto":
                     opciones_menu.append("Cambiar a Modo Relativo")
                 else:
                     opciones_menu.append("Cambiar a Modo Absoluto")
@@ -289,7 +288,7 @@ class InterfazConsola:
                     break
             else: 
                 self.logger.registrar_log("modo_absoluto", ip, usuario, True)
-                self.tipo_movimiento = "absoluto"
+                self.robot.tipo_movimiento = "absoluto"
         except Exception as e:
             print(f"Error al cambiar a modo absoluto: {e}")
             self.logger.registrar_log("modo_absoluto", ip, usuario, False)
@@ -308,7 +307,7 @@ class InterfazConsola:
                     break
             else: 
                 self.logger.registrar_log("modo_relativo", ip, usuario, True)
-                self.tipo_movimiento = "relativo"
+                self.robot.tipo_movimiento = "relativo"
         except Exception as e:
             print(f"Error al cambiar a modo relativo: {e}")
             self.logger.registrar_log("modo_relativo", ip, usuario, False)
