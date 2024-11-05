@@ -17,9 +17,6 @@ class InterfazConsola:
         self.modo_trabajo = "manual"
         self.gestor_logs = GestorDeArchivos(self.archivo_logs)
         self.logger = Logger()
-        self.evento_finalizacion = threading.Event()
-        self.evento_creacion_Servidor = threading.Event()
-        self.evento_cierre_Servidor = threading.Event()
         self.rpc_server = ServidorControl(self.robot)
         self.usuario = "consola_local"
         self.ip = "127.0.0.1"
