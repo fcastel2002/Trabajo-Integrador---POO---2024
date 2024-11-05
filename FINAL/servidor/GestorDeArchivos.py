@@ -73,7 +73,7 @@ class GestorDeArchivos:
         """Lee todas las líneas del archivo de texto."""
         try:
             with open(self.nombre_archivo, "r") as archivo:
-                lineas = archivo.readlines()
+                lineas = [linea for linea in archivo.readlines() if linea.strip()]
                 return lineas
         except FileNotFoundError:
             raise ErrorArchivos(2, self.nombre_archivo)
