@@ -190,12 +190,13 @@ class ControladorRobot:
         respuestas_usuario = []
         resultados = []
         for comando in comandos:
+            comando = comando.strip()
             if archivo is not None:
                 archivo_control_automatico.escribir_archivo(comando)
             respuestas = self._registrar_comando(comando)
             for respuesta in respuestas:
                 resultados.append(respuesta)
-                 # Iterar sobre cada respuesta en la lista y verificar si contiene "error"
+                
         for i,resultado in enumerate(resultados):
             if "error" in resultado.lower():
                 respuestas_usuario.append(f"Comando: {comandos[i]} - Error: {resultado}")
