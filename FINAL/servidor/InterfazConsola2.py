@@ -12,7 +12,6 @@ class InterfazConsola:
     def __init__(self, robot=None):
         self.robot = ControladorRobot('COM8', 115200) if robot == None else robot
         self.servidor_activado = False
-        self.archivo_configuracion = "configuracion_robot.json"
         self.archivo_usuarios = "usuarios.json"
         self.archivo_logs = "log_trabajo.csv"
         self.modo_trabajo = "manual"
@@ -33,8 +32,7 @@ class InterfazConsola:
         - Desconectar del Robot: desconectar(usuario, clave)
         - Activar Motores: activar_motores(usuario, clave)
         - Desactivar Motores: desactivar_motores(usuario, clave)
-        - Mover Efector Final (con Velocidad): mover_efector(usuario, clave, x, y, z, velocidad)
-        - Mover Efector Final (solo Posición): mover_efector_posicion(usuario, clave, x, y, z)
+        - Mover Efector Final : mover_efector(usuario, clave, x, y, z, velocidad(opcional) )
         - Homming: homming(usuario, clave)
         - Ejecución Automática: ejecutar_automatico(usuario, clave, nombre_archivo)
         - Reportar Posición Actual: reportar_posicion(usuario, clave)
@@ -63,7 +61,6 @@ class InterfazConsola:
                 opciones_menu.append("Desconectar del Robot")
                 opciones_menu.append("Listar Comandos Disponibles")
                 opciones_menu.append("Mostrar/Editar Parámetros de Conexión")
-                opciones_menu.append(f"Cambiar Modo de Trabajo (Actual: {self.modo_trabajo})")
 
                 # Cambiar tipo de movimiento de acuerdo al estado actual
                 if self.robot.tipo_movimiento == "absoluto":
@@ -119,13 +116,11 @@ class InterfazConsola:
                 self.mostrar_log_admin()
             elif choice == "Mostrar Ayuda":
                 self.mostrar_ayuda()
-            elif choice == f"Cambiar Modo de Trabajo (Actual: {self.modo_trabajo})":
-                self.cambiar_modo_trabajo()
             else:
-                resultado = self.interpreta_seleccion(choice)
+                resultado = self.enviar_orden(choice)
                 self.logger.registrar_log(choice, self.ip, self.usuario, True if resultado is True else False)
 
-    def interpreta_seleccion(self, choice):
+    def enviar_orden(self, choice):
         if choice == "Conectar al Robot":
             try:
                 puerto = questionary.text("Ingrese el puerto COM (ejemplo: COM8):").ask()
@@ -178,7 +173,7 @@ class InterfazConsola:
                 x = questionary.text("Ingrese la coordenada X:").ask()
                 y = questionary.text("Ingrese la coordenada Y:").ask()
                 z = questionary.text("Ingrese la coordenada Z:").ask()
-                velocidad = questionary.confirm("¿Desea editar los parámetros de conexión?").ask()
+                velocidad = questionary.confirm("¿Desea ingresar velocidad?").ask()
                 if velocidad is True:
                     velocidad = questionary.text("Ingrese la velocidad:").ask()
                 mensajes = self.robot.mover_efector(float(x), float(y), float(z), float(velocidad) if velocidad is True else None)
@@ -195,7 +190,7 @@ class InterfazConsola:
             try:
                 nombre_archivo = questionary.text("Ingrese el nombre del archivo:").ask()
                 activar = questionary.confirm("¿Desea activar el modo aprendizaje?").ask()
-                mensaje = self.robot.aprender(nombre_archivo, "Iniciar" if activar is True else "Finalizar")
+                mensajes = self.robot.aprender(nombre_archivo, "Iniciar" if activar is True else "Finalizar")
             except Exception as e:
                 print(f"Error en el modo aprendizaje: {e}")
                 return False
@@ -271,32 +266,6 @@ class InterfazConsola:
         for comando in comandos:
             print(f"- {comando}")
 
-    # Mostrar y editar los parámetros de conexión
-    def mostrar_editar_parametros(self):
-        # Cargar parámetros desde el archivo JSON
-        try:
-            with open(self.archivo_configuracion, "r") as archivo:
-                parametros = json.load(archivo)
-        except FileNotFoundError:
-            print("Archivo de configuración no encontrado, creando uno nuevo.")
-            parametros = {"puerto_serial": "COM8", "baudios": 115200}
-
-        print(f"Parámetros actuales:\nPuerto: {parametros['puerto_serial']}\nBaudios: {parametros['baudios']}")
-        editar = questionary.confirm("¿Desea editar los parámetros de conexión?").ask()
-
-        if editar:
-            nuevo_puerto = questionary.text("Ingrese el nuevo puerto (actual: {}):".format(parametros['puerto_serial']), default=parametros['puerto_serial']).ask()
-            nuevo_baudios = questionary.text("Ingrese la nueva tasa de baudios (actual: {}):".format(parametros['baudios']), default=str(parametros['baudios'])).ask()
-            # Actualizar el archivo de configuración
-            parametros['puerto_serial'] = nuevo_puerto
-            parametros['baudios'] = int(nuevo_baudios)
-            with open(self.archivo_configuracion, "w") as archivo:
-                json.dump(parametros, archivo)
-
-            print(f"Parámetros actualizados:\nPuerto: {nuevo_puerto}\nBaudios: {nuevo_baudios}")
-        else:
-            print("No se realizaron cambios en los parámetros.")
-
     def reportar_estado(self):
         try:
             reporte = self.robot.reportar()
@@ -313,10 +282,6 @@ class InterfazConsola:
         ultimas_lineas = self.gestor_logs.leer_ultimas_lineas(100)
         for linea in ultimas_lineas:
             print(linea.strip())
-
-    def cambiar_modo_trabajo(self):
-        self.modo_trabajo = "manual" if self.modo_trabajo == "automático" else "automático"
-        print(f"Modo de trabajo cambiado a: {self.modo_trabajo}")
 
     def salir(self):
         # Desactivar el modo de aprendizaje si está activo

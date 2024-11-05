@@ -47,11 +47,13 @@ class ControladorRobot:
             raise ErrorDeConexion(1)
 
     def desconectar(self):
+        mensajes = []
         if self.estado_conexion == "desconectado":
             raise ErrorDeEstado(4)  # Conexión ya inactiva
         self.serial_robot.close()
         self.estado_conexion = "desconectado"
-        return "Exito: Conexion terminada\n"
+        mensajes.append("Exito: Conexion terminada\n")
+        return mensajes
 
     def activar_motores(self):
         if self.estado_conexion == "desconectado":
@@ -146,19 +148,22 @@ class ControladorRobot:
     def aprender(self, nombre_archivo, activar):
         if not self.motores_activos:
             raise ErrorDeConexion(2)  # Motores apagados
-
+        mensajes = []
         if activar == "Iniciar":
             if self.aprendiendo:
                 raise ErrorDeEstado(7)  # Ya está en modo aprendizaje
             self.aprendiendo = True
             self.archivo_aprendizaje = GestorDeArchivos(f"{nombre_archivo}.txt")
-            return "Modo aprendizaje activado\n"
+            mensajes.append("Modo aprendizaje activado\n")
+            return mensajes
         else:
             if not self.aprendiendo:
-                return "El robot ya esta fuera del modo aprendizaje\n"
+                mensajes.append("El robot ya esta fuera del modo aprendizaje\n")
+                return mensajes
             self.aprendiendo = False
             self.archivo_aprendizaje = None  # Eliminar la referencia
-            return "Modo aprendizaje desactivado\n"
+            mensajes.append("Modo aprendizaje desactivado\n")
+            return mensajes
 
     def ejecutar_automatico(self, nombre_archivo, archivo = None):
         if self.estado_conexion == "desconectado":
