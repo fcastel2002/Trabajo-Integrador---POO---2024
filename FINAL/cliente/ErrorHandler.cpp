@@ -1,4 +1,3 @@
-// ErrorHandler.cpp
 #include "ErrorHandler.h"
 #include <ctime>
 #include <unordered_map>
@@ -6,32 +5,43 @@
 #include <sstream>
 #include "PantallaCurses.h"
 
-// Constructor: abre el archivo de log
+/**
+ * Constructor: abre el archivo de log.
+ * @param logFilePath Ruta del archivo de log.
+ */
 ErrorHandler::ErrorHandler(const std::string& logFilePath) : logFilePath(logFilePath) {
     openLogFile();
-	m_pantalla = new PantallaCurses();
+    m_pantalla = new PantallaCurses();
 }
 
+/**
+ * Abre el archivo de log para escritura.
+ */
 void ErrorHandler::openLogFile() {
     logFile.open(logFilePath, std::ios::app);
     if (!logFile.is_open()) {
-        //std::cerr << "No se pudo abrir el archivo de log de errores." << std::endl;
-		m_pantalla->mostrarError("No se pudo abrir el archivo de log de errores.");
+        m_pantalla->mostrarError("No se pudo abrir el archivo de log de errores.");
         logError("No se pudo abrir el archivo de log de errores.", ErrorLevel::ERROR);
     }
 }
 
+/**
+ * Cierra el archivo de log si está abierto.
+ */
 void ErrorHandler::closeLogFile() {
     if (logFile.is_open()) {
         logFile.close();
         if (logFile.fail()) {
-           //std::cerr << "Error al cerrar el archivo de log." << std::endl;
-			m_pantalla->mostrarError("Error al cerrar el archivo de log.");
+            m_pantalla->mostrarError("Error al cerrar el archivo de log.");
         }
     }
 }
 
-// Convierte el nivel de error en una cadena legible
+/**
+ * Convierte el nivel de error en una cadena legible.
+ * @param level Nivel de error.
+ * @return Cadena representando el nivel de error.
+ */
 std::string ErrorHandler::getLevelString(ErrorLevel level) const {
     static const std::unordered_map<ErrorLevel, std::string> levelStrings = {
         {ErrorLevel::INFO, "INFO"},
@@ -42,7 +52,11 @@ std::string ErrorHandler::getLevelString(ErrorLevel level) const {
     return it != levelStrings.end() ? it->second : "UNKNOWN";
 }
 
-// Convierte el código de error en un mensaje específico
+/**
+ * Obtiene el mensaje de error correspondiente a un código de error.
+ * @param code Código de error.
+ * @return Mensaje de error.
+ */
 std::string ErrorHandler::getErrorMessage(ErrorCode code) const {
     static const std::unordered_map<ErrorCode, std::string> errorMessages = {
         {ErrorCode::FILE_NOT_FOUND, "Archivo no encontrado"},
@@ -55,7 +69,11 @@ std::string ErrorHandler::getErrorMessage(ErrorCode code) const {
     return it != errorMessages.end() ? it->second : "Error desconocido";
 }
 
-// Agrega timestamp al mensaje de error
+/**
+ * Agrega timestamp al mensaje de error y lo registra en el archivo de log.
+ * @param message Mensaje de error.
+ * @param level Nivel de error.
+ */
 void ErrorHandler::logError(const std::string& message, ErrorLevel level) {
     std::string levelStr = getLevelString(level);
     std::string timestamp = getCurrentTimestamp();
@@ -65,31 +83,43 @@ void ErrorHandler::logError(const std::string& message, ErrorLevel level) {
         logFile << logMessage << std::endl;
     }
     else {
-        //sstd::cerr << "Error al escribir en el log: " << logMessage << std::endl;
-		m_pantalla->mostrarError("Error al escribir en el log: " + logMessage);
+        m_pantalla->mostrarError("Error al escribir en el log: " + logMessage);
     }
 }
 
-// Registra el error utilizando un código predefinido
+/**
+ * Registra el error utilizando un código predefinido.
+ * @param code Código de error.
+ * @param level Nivel de error.
+ */
 void ErrorHandler::logError(ErrorCode code, ErrorLevel level) {
     std::string message = getErrorMessage(code);
     logError(message, level);
 }
 
-// Muestra el error al usuario
+/**
+ * Muestra el error al usuario.
+ * @param message Mensaje de error.
+ * @param level Nivel de error.
+ */
 void ErrorHandler::displayError(const std::string& message, ErrorLevel level) {
     std::string levelStr = getLevelString(level);
-    //std::cerr << "[" << levelStr << "] " << message << std::endl;
-	m_pantalla->mostrarError("[" + levelStr + "] " + message);
+    m_pantalla->mostrarError("[" + levelStr + "] " + message);
 }
 
-// Maneja una excepción y registra el error
+/**
+ * Maneja una excepción y registra el error.
+ * @param e Excepción capturada.
+ */
 void ErrorHandler::handleException(const std::exception& e) {
     logError(e.what(), ErrorLevel::ERROR);
     displayError("Excepcion capturada: " + std::string(e.what()), ErrorLevel::ERROR);
 }
 
-// Genera el timestamp actual
+/**
+ * Genera el timestamp actual.
+ * @return Timestamp actual en formato de cadena.
+ */
 std::string ErrorHandler::getCurrentTimestamp() const {
     auto now = std::time(nullptr);
     std::tm localTime;
@@ -99,6 +129,9 @@ std::string ErrorHandler::getCurrentTimestamp() const {
     return oss.str();
 }
 
+/**
+ * Destructor: cierra el archivo de log si está abierto.
+ */
 ErrorHandler::~ErrorHandler() {
     closeLogFile();
 }

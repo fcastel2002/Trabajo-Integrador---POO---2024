@@ -142,3 +142,16 @@ ERROR: Archivo no encontrado
 [2024-11-04 20:12:03] ERROR: El puerto ingresado no es un numero valido.
 [2024-11-04 20:26:00] ERROR: Fallo la conexion
 [2024-11-04 20:27:47] ERROR: Fallo la conexion
+[2024-11-05 06:58:31] ERROR: Fallo la conexion
+[2024-11-05 06:58:43] ERROR: Fallo la conexion
+[2024-11-05 06:59:25] ERROR: Fallo la conexion
+[2024-11-05 06:59:57] ERROR: Fallo la conexion
+[2024-11-05 07:03:01] ERROR: Fallo la conexion
+[2024-11-05 07:03:33] ERROR: Fallo la conexion
+[2024-11-05 07:03:44] ERROR: Fallo la conexion
+[2024-11-05 07:04:05] ERROR: Fallo la conexion
+[2024-11-05 07:04:16] ERROR: Fallo la conexion
+[2024-11-05 07:08:53] ERROR: Fallo la conexion
+[2024-11-05 07:11:48] ERROR: Fallo la conexion
+[2024-11-05 07:12:37] ERROR: Fallo la conexion
+[2024-11-05 07:25:24] ERROR: Fallo la conexion

@@ -2,8 +2,6 @@
 #include "PantallaCurses.h"
 #include "MainMenu.h"
 #include <iostream>
-#include <thread>
-#include <chrono>
 #include <stdexcept>
 #include "XmlRpc.h"
 

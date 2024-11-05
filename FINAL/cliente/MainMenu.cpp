@@ -4,9 +4,17 @@
 
 using namespace std;
 
+/**
+ * Constructor de la clase MainMenu.
+ * @param cliente Referencia a un objeto Cliente para la interacción con el servidor.
+ * @param pantalla Puntero a una interfaz de pantalla para la interacción con el usuario.
+ */
 MainMenu::MainMenu(Cliente& cliente, IPantalla* pantalla)
     : cliente(cliente), m_pantalla(pantalla) {}
 
+/**
+ * Configura los comandos disponibles obteniéndolos del servidor.
+ */
 void MainMenu::setComandos() {
     OrdenBuilder builder;
     builder.conUsuario(cliente.getUser())
@@ -29,6 +37,9 @@ void MainMenu::setComandos() {
     }
 }
 
+/**
+ * Muestra el menú principal y maneja la interacción del usuario.
+ */
 void MainMenu::mostrarMenu() {
     m_pantalla->refrescarPantalla();
     while (m_flagMenu) {
@@ -43,25 +54,31 @@ void MainMenu::mostrarMenu() {
             m_opcionesCliente[0] = std::string("Cerrar sesion: ") + cliente.getUser();
 
         }
-		else if (opcion == "cerrar sesion") {
-			cliente.cerrarSesion();
-			m_opcionesCliente[0] = "Login";
-		}
-		else
-        if (m_comandos.size()>2) {
+        else if (opcion == "cerrar sesion") {
+            cliente.cerrarSesion();
+            m_opcionesCliente[0] = "Login";
+        }
+        else
+            if (m_comandos.size() > 2) {
 
-            if (opcion == "rpc") {
-                while (true) {
-                    int seleccion = m_pantalla->mostrarMenu(m_opciones, "Menu de comandos");
-                    if (!procesarSeleccion(seleccion)) {
-                        break;
+                if (opcion == "rpc") {
+                    while (true) {
+                        int seleccion = m_pantalla->mostrarMenu(m_opciones, "Menu de comandos");
+                        if (!procesarSeleccion(seleccion)) {
+                            break;
+                        }
                     }
                 }
             }
-        }
     }
 }
 
+/**
+ * Procesa la selección del usuario en el menú.
+ * @param seleccion Índice de la opción seleccionada.
+ * @param quien Contexto de la selección (local o servidor).
+ * @return Una cadena que indica la acción a realizar.
+ */
 std::string MainMenu::procesarSeleccion(int seleccion, const std::string& quien) {
     std::string comando = manejarSeleccion(seleccion, "cliente");
     if (comando == "Salir") {
@@ -71,9 +88,9 @@ std::string MainMenu::procesarSeleccion(int seleccion, const std::string& quien)
     if (comando == "Login") {
         return "login";
     }
-    
+
     if (comando.find("Cerrar sesion") != std::string::npos) {
-		return "cerrar sesion"; 
+        return "cerrar sesion";
     }
     if (comando == "Mostrar comandos") {
         setComandos();
@@ -85,19 +102,30 @@ std::string MainMenu::procesarSeleccion(int seleccion, const std::string& quien)
     return "";
 }
 
+/**
+ * Maneja la selección del usuario en el menú.
+ * @param seleccion Índice de la opción seleccionada.
+ * @param para Contexto de la selección (cliente o servidor).
+ * @return Una cadena que indica el comando seleccionado.
+ */
 const std::string MainMenu::manejarSeleccion(int seleccion, const std::string& para) {
     if (para == "servidor" && seleccion >= 0 && seleccion < m_opciones.size()) {
         return m_opciones[seleccion];
     }
-	else if (para == "servidor" && seleccion == -1) {
-		return "Volver";
-	}
+    else if (para == "servidor" && seleccion == -1) {
+        return "Volver";
+    }
     else if (para == "cliente" && seleccion >= 0 && seleccion < m_opcionesCliente.size()) {
         return m_opcionesCliente[seleccion];
     }
     return "";
 }
 
+/**
+ * Procesa la selección del usuario en el menú de comandos del servidor.
+ * @param seleccion Índice de la opción seleccionada.
+ * @return true si se debe continuar mostrando el menú, false en caso contrario.
+ */
 bool MainMenu::procesarSeleccion(int seleccion) {
     std::string comando = manejarSeleccion(seleccion, "servidor");
     OrdenBuilder builder;
@@ -109,13 +137,13 @@ bool MainMenu::procesarSeleccion(int seleccion) {
     }
 
     if (comando == "Cerrar sesion") {
-		cliente.cerrarSesion();
+        cliente.cerrarSesion();
         return false;
     }
     if (comando == "Volver" || comando == "ESC") {
         return false;
     }
-    
+
 
     builder.conUsuario(cliente.getUser())
         .conClave(cliente.getPass())
@@ -126,15 +154,15 @@ bool MainMenu::procesarSeleccion(int seleccion) {
 
     try {
         if (comando == "Ejecutar automatico") {
-            std::string nombreArchivo = m_pantalla->capturarEntrada("Seleccione el archivo para la ejecucion automatica:",Archivo::obtenerArchivos("./archivos_gcode")); //metodo static necesario
-			if (nombreArchivo == "ESC") return true;
-			Archivo archivo_gcode(nombreArchivo, "./archivos_gcode/");
+            std::string nombreArchivo = m_pantalla->capturarEntrada("Seleccione el archivo para la ejecucion automatica:", Archivo::obtenerArchivos(m_pantalla->capturarEntrada("Ingrese la ruta: "))); //metodo static necesario
+            if (nombreArchivo == "ESC") return true;
+            Archivo archivo_gcode(nombreArchivo, "./archivos_gcode/");
             std::string choice = m_pantalla->capturarEntrada("Desea enviar el archivo? (s/n)", { "Si", "No" });
             if (choice == "ESC") return true;
             parametros.push_back(nombreArchivo);
 
             if (choice == "Si") {
-                m_pantalla->mostrarTexto("Opcion: " + choice);
+               ;
 
                 std::vector<std::string> entradas = archivo_gcode.archivoToVector(archivo_gcode);
                 for (const auto& entrada : entradas) {
@@ -148,10 +176,11 @@ bool MainMenu::procesarSeleccion(int seleccion) {
         }
         else if (comando == "Aprendizaje") {
             std::string nombreArchivo = m_pantalla->capturarEntrada("Ingrese el nombre del archivo:");
-			std::string choice = m_pantalla->capturarEntrada("Que quiere hacer con el aprendizaje?: ", mensajesParametros);
-			parametros.push_back(nombreArchivo);
-			parametros.push_back(choice);
-        } else if (comando == "Actuar efector") {
+            std::string choice = m_pantalla->capturarEntrada("Que quiere hacer con el aprendizaje?: ", mensajesParametros);
+            parametros.push_back(nombreArchivo);
+            parametros.push_back(choice);
+        }
+        else if (comando == "Actuar efector") {
             std::string choice = m_pantalla->capturarEntrada("Desea activar o desactivar el efector?", mensajesParametros);
             parametros.push_back(choice);
         }
@@ -167,13 +196,13 @@ bool MainMenu::procesarSeleccion(int seleccion) {
         builder.conParametros(parametros);
         Orden orden = builder.build();
 
+        /*
+        m_pantalla->mostrarTexto("Comando enviado: " + comando);
 
-        m_pantalla->mostrarTexto("Comando enviado: " + comando);       
-     
         for (size_t i = 0; i < parametros.size(); ++i) {
             m_pantalla->mostrarTexto("Parametro " + std::to_string(i) + " enviado: " + parametros[i]);
         }
-
+        */
         cliente.enviarComando(orden);
 
     }
