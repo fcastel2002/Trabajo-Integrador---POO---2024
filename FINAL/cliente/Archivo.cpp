@@ -1,18 +1,30 @@
 #include "Archivo.h"
 #include "ErrorHandler.h"
 
+/**
+ * Constructor que inicializa el nombre y la ruta del archivo.
+ * @param nombre Nombre del archivo con extensión.
+ * @param ruta Ruta del archivo (opcional).
+ */
 Archivo::Archivo(std::string nombre, std::string ruta)
     : m_nombre{ nombre }
     , m_ruta{ ruta }
     , m_archivo{}
     , m_contenido{} {}
 
+/**
+ * Destructor que cierra el archivo si está abierto.
+ */
 Archivo::~Archivo() {
     if (m_archivo.is_open()) {
         cerrar();
     }
 }
 
+/**
+ * Abre el archivo para lectura.
+ * @return true si el archivo se abrió correctamente, false en caso contrario.
+ */
 bool Archivo::abrir() {
     if (m_archivo.is_open()) {
         return true;
@@ -29,6 +41,10 @@ bool Archivo::abrir() {
     return true;
 }
 
+/**
+ * Cierra el archivo si está abierto.
+ * @return true si el archivo se cerró correctamente, false en caso contrario.
+ */
 bool Archivo::cerrar() {
     if (m_archivo.is_open()) {
         m_archivo.close();
@@ -43,6 +59,10 @@ bool Archivo::cerrar() {
     return false;
 }
 
+/**
+ * Lee el contenido del archivo línea por línea.
+ * @return true si la lectura fue exitosa, false en caso contrario.
+ */
 bool Archivo::leer() {
     if (!abrir()) {  // Asegura que el archivo esté abierto o intenta abrirlo
         return false;
@@ -61,38 +81,45 @@ bool Archivo::leer() {
         return false;
     }
 
-    //cerrar();
     return true;
 }
 
-
+/**
+ * Convierte el contenido del archivo en un vector de strings.
+ * @param archivo_ Referencia a un objeto de la clase Archivo.
+ * @return Vector de strings con el contenido del archivo.
+ */
 std::vector<std::string> Archivo::archivoToVector(Archivo& archivo_) {
-	ErrorHandler errorHandler;
+    ErrorHandler errorHandler;
 
-	try {
-		//Archivo archivo_gcode(nombreArchivo, "");
-		if (!archivo_.abrir()) {
-			errorHandler.logError(ErrorCode::FILE_NOT_FOUND, ErrorLevel::ERROR);
-			errorHandler.displayError("No se pudo abrir el archivo: " + archivo_.m_nombre, ErrorLevel::ERROR);
-			return {};
-		}
+    try {
+        if (!archivo_.abrir()) {
+            errorHandler.logError(ErrorCode::FILE_NOT_FOUND, ErrorLevel::ERROR);
+            errorHandler.displayError("No se pudo abrir el archivo: " + archivo_.m_nombre, ErrorLevel::ERROR);
+            return {};
+        }
 
-		if (!archivo_.leer()) {
-			errorHandler.logError(ErrorCode::OPERATION_FAILED, ErrorLevel::ERROR);
-			errorHandler.displayError("Error al leer el archivo: " + archivo_.m_nombre, ErrorLevel::ERROR);
-			return {};
-		}
+        if (!archivo_.leer()) {
+            errorHandler.logError(ErrorCode::OPERATION_FAILED, ErrorLevel::ERROR);
+            errorHandler.displayError("Error al leer el archivo: " + archivo_.m_nombre, ErrorLevel::ERROR);
+            return {};
+        }
 
-		return archivo_.getContenido();
+        return archivo_.getContenido();
 
-	}
-	catch (const std::exception& e) {
-		errorHandler.handleException(e);
-		errorHandler.displayError("Excepcion al procesar el archivo.", ErrorLevel::ERROR);
-		return {};
-	}
+    }
+    catch (const std::exception& e) {
+        errorHandler.handleException(e);
+        errorHandler.displayError("Excepcion al procesar el archivo.", ErrorLevel::ERROR);
+        return {};
+    }
 }
 
+/**
+ * Obtiene una lista de archivos en la ruta especificada.
+ * @param ruta Ruta del directorio.
+ * @return Vector de strings con los nombres de los archivos en la ruta.
+ */
 std::vector<std::string> Archivo::obtenerArchivos(const std::string& ruta) {
     std::vector<std::string> archivos;
 
@@ -108,14 +135,27 @@ std::vector<std::string> Archivo::obtenerArchivos(const std::string& ruta) {
     }
     return archivos;
 }
+
+/**
+ * Retorna el contenido del archivo leído en un vector de strings.
+ * @return Vector de strings con el contenido del archivo.
+ */
 std::vector<std::string> Archivo::getContenido() {
     return m_contenido;
 }
 
+/**
+ * Obtiene el nombre del archivo.
+ * @return Nombre del archivo.
+ */
 std::string Archivo::getNombre() {
     return m_nombre;
 }
 
+/**
+ * Obtiene la ruta del archivo.
+ * @return Ruta del archivo.
+ */
 std::string Archivo::getRuta() {
     return m_ruta;
 }
