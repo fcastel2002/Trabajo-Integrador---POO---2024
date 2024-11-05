@@ -2,7 +2,7 @@
 #include "ErrorHandler.h"
 
 Archivo::Archivo(std::string nombre, std::string ruta)
-    : m_nombre{ nombre + ".txt" }
+    : m_nombre{ nombre }
     , m_ruta{ ruta }
     , m_archivo{}
     , m_contenido{} {}

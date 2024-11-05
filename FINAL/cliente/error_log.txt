@@ -120,3 +120,25 @@ ERROR: Archivo no encontrado
 [2024-11-04 17:20:02] WARNING: Error al cerrar el archivo: ArchivoAutomatico.txt
 [2024-11-04 17:20:42] WARNING: Error al cerrar el archivo: ArchivoAutomatico.txt
 [2024-11-04 17:45:00] ERROR: Fallo la conexion
+[2024-11-04 18:37:05] ERROR: Fallo la conexion
+[2024-11-04 18:42:59] ERROR: El puerto ingresado no es un numero valido.
+[2024-11-04 18:43:00] ERROR: El puerto ingresado no es un numero valido.
+[2024-11-04 19:42:00] ERROR: Archivo no encontrado
+[2024-11-04 19:42:01] ERROR: Archivo no encontrado
+[2024-11-04 19:42:40] WARNING: Error al cerrar el archivo: ArchivoAutomatico.txt
+[2024-11-04 19:45:33] ERROR: Faltan parametros esenciales para construir la orden.
+[2024-11-04 19:45:36] ERROR: Parametros insuficientes para crear la orden.
+[2024-11-04 19:45:37] WARNING: Respuesta no válida recibida del servidor.
+[2024-11-04 19:45:38] ERROR: Faltan parametros esenciales para construir la orden.
+[2024-11-04 19:45:42] ERROR: Parametros insuficientes para crear la orden.
+[2024-11-04 19:45:42] WARNING: Respuesta no válida recibida del servidor.
+[2024-11-04 19:46:29] ERROR: Faltan parametros esenciales para construir la orden.
+[2024-11-04 19:46:30] ERROR: Parametros insuficientes para crear la orden.
+[2024-11-04 19:46:31] WARNING: Respuesta no válida recibida del servidor.
+[2024-11-04 19:50:35] ERROR: Fallo la conexion
+[2024-11-04 19:50:40] ERROR: Fallo la conexion
+[2024-11-04 20:12:00] ERROR: Fallo la conexion
+[2024-11-04 20:12:02] ERROR: El puerto ingresado no es un numero valido.
+[2024-11-04 20:12:03] ERROR: El puerto ingresado no es un numero valido.
+[2024-11-04 20:26:00] ERROR: Fallo la conexion
+[2024-11-04 20:27:47] ERROR: Fallo la conexion
