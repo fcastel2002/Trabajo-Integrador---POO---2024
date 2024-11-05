@@ -1,17 +1,16 @@
 from xmlrpc.server import SimpleXMLRPCServer
-from Logger import Logger
 import json
 import threading
 from ManejadorErrores import ErrorArchivos
 
 class ServidorControl:
-    def __init__(self, robot, ip="127.0.0.1", puerto=9000):
+    def __init__(self, robot, logger, ip="127.0.0.1", puerto=9000):
         self.robot = robot
         self.ip = ip
         self.puerto = puerto
         self.server_thread = None
         self.server = None
-        self.logger = Logger()
+        self.logger = logger
         self.usuarios_autorizados = None
         
         
