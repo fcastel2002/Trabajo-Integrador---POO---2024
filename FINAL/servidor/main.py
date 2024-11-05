@@ -1,4 +1,4 @@
-from InterfazConsola2 import InterfazConsola
+from InterfazConsola import InterfazConsola
 
 def main():
     consola = InterfazConsola()
