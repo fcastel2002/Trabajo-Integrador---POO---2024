@@ -154,11 +154,20 @@ bool MainMenu::procesarSeleccion(int seleccion) {
 
     try {
         if (comando == "Ejecutar automatico") {
-            std::string nombreArchivo = m_pantalla->capturarEntrada("Seleccione el archivo para la ejecucion automatica:", Archivo::obtenerArchivos(m_pantalla->capturarEntrada("Ingrese la ruta: "))); //metodo static necesario
+            std::string nombreArchivo,choice;
+            std::string dedonde = m_pantalla->capturarEntrada("Donde esta el archivo que desea ejecutar?: ", { "Servidor","Cliente" });
+            if (dedonde == "Cliente") {
+                std::string nombreArchivo = m_pantalla->capturarEntrada("Seleccione el archivo para la ejecucion automatica:", Archivo::obtenerArchivos(m_pantalla->capturarEntrada("Ingrese la ruta: "))); //metodo static necesario
+                std::string choice = m_pantalla->capturarEntrada("Desea enviar el archivo? (s/n)", { "Si", "No" });
+            }
+            else {
+                std::string nombreArchivo = m_pantalla->capturarEntrada("Ingrese el nombre del archivo presente en el servidor (sin extension): ");
+            }
+
             if (nombreArchivo == "ESC") return true;
-            Archivo archivo_gcode(nombreArchivo, "./archivos_gcode/");
-            std::string choice = m_pantalla->capturarEntrada("Desea enviar el archivo? (s/n)", { "Si", "No" });
             if (choice == "ESC") return true;
+            Archivo archivo_gcode(nombreArchivo, "./archivos_gcode/");
+            
             parametros.push_back(nombreArchivo);
 
             if (choice == "Si") {

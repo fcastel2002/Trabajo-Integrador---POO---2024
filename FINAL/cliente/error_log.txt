@@ -155,3 +155,11 @@ ERROR: Archivo no encontrado
 [2024-11-05 07:11:48] ERROR: Fallo la conexion
 [2024-11-05 07:12:37] ERROR: Fallo la conexion
 [2024-11-05 07:25:24] ERROR: Fallo la conexion
+[2024-11-05 16:56:58] ERROR: Fallo la conexion
+[2024-11-05 18:06:49] ERROR: El puerto ingresado no es un numero valido.
+[2024-11-05 18:40:24] ERROR: Fallo la conexion
+[2024-11-05 18:40:52] ERROR: Fallo la conexion
+[2024-11-05 18:45:56] WARNING: Error al cerrar el archivo: ArchivoAutomatico.txt
+[2024-11-05 18:46:59] WARNING: Error al cerrar el archivo: ArchivoAutomatico.txt
+[2024-11-05 19:04:11] ERROR: Archivo no encontrado
+[2024-11-05 19:07:55] ERROR: Archivo no encontrado

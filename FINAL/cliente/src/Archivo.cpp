@@ -48,14 +48,7 @@ bool Archivo::abrir() {
 bool Archivo::cerrar() {
     if (m_archivo.is_open()) {
         m_archivo.close();
-        if (m_archivo.fail()) {  // Verificamos si hubo error al cerrar
-            ErrorHandler errorHandler;
-            errorHandler.logError("Error al cerrar el archivo: " + m_nombre, ErrorLevel::WARNING);
-            errorHandler.displayError("Error al cerrar el archivo: " + m_nombre, ErrorLevel::WARNING);
-            return false;
         }
-        return true;
-    }
     return false;
 }
 
