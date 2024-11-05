@@ -84,8 +84,12 @@ class ControladorRobot:
 
         self.motores_activos = False
         gcode = "M18"
-        try:   
-            return self._registrar_comando(gcode)
+        mensajes = []
+        try:
+            respuestas = self._registrar_comando(gcode)
+            for respuesta in respuestas:
+                mensajes.append(respuesta)
+            return mensajes
         except Exception:
             self.motores_activos = True
             raise Exception
@@ -186,7 +190,6 @@ class ControladorRobot:
         respuestas_usuario = []
         resultados = []
         for comando in comandos:
-            comando = comando.strip()
             if archivo is not None:
                 archivo_control_automatico.escribir_archivo(comando)
             respuestas = self._registrar_comando(comando)

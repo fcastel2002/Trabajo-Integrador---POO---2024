@@ -105,8 +105,6 @@ class InterfazConsola:
                 self.detener_servidor_rpc()
             elif choice == "Listar Comandos Disponibles":
                 self.listar_comandos()
-            elif choice == "Mostrar/Editar Parámetros de Conexión":
-                self.mostrar_editar_parametros()
             elif choice == "Reportar Estado":
                 self.reportar_estado()
             elif choice == "Mostrar las últimas 100 líneas del Log (Admin)":
@@ -146,8 +144,7 @@ class InterfazConsola:
                 return False
         elif choice == "Desactivar Motores":
             try:
-                mensaje = self.robot.desactivar_motores()
-                print(mensaje)
+                mensajes = self.robot.desactivar_motores()
             except Exception as e:
                 print(f"Error al desactivar motores: {e}")
                 return False
@@ -291,5 +288,4 @@ class InterfazConsola:
             self.rpc_server.disconnect()
 
         print("Saliendo del sistema...")
-        self.evento_finalizacion.set()
         sys.exit(0)
