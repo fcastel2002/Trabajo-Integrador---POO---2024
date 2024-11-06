@@ -179,7 +179,7 @@ class ControladorRobot:
 
         if archivo is not None:
             comandos = archivo
-            archivo_control_automatico = GestorDeArchivos(f"archivoRecibido.txt")
+            archivo_control_automatico = GestorDeArchivos(f"{nombre_archivo}.txt")
         else:
             archivo_control_automatico = GestorDeArchivos(f"{nombre_archivo}.txt")
             try:

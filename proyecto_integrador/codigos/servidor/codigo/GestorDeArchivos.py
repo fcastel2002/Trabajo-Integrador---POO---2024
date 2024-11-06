@@ -4,7 +4,7 @@ from ManejadorErrores import ErrorArchivos
 
 class GestorDeArchivos:
     def __init__(self, nombre):
-        self.nombre_archivo = nombre
+        self.nombre_archivo = "..//archivos//" + nombre
 
     def limpiar_archivo(self):
         """Limpia el contenido del archivo, dejándolo vacío."""
