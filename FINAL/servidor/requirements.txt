@@ -1,3 +1,2 @@
 pyserial
-logging
 questionary
