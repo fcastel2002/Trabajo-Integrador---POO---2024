@@ -1,0 +1,40 @@
+#pragma once
+#include "IPantalla.h"
+#include "Archivo.h"
+#include "ErrorHandler.h"  // Agregado para manejar errores si es necesario en el .h
+#include <vector>
+#include <curses.h>
+#include <string>
+#include <csignal>
+#include <cstdlib>
+#include <sstream>
+
+class PantallaCurses : public IPantalla {
+public:
+    // Constructor que inicializa la pantalla usando PDCurses
+    PantallaCurses();
+
+    // Destructor que cierra la pantalla al finalizar
+    ~PantallaCurses() override;
+
+    // Muestra el men� y permite seleccionar una opci�n
+    int mostrarMenu(const std::vector<std::string>& opciones, const std::string& tituloMenu) override;
+
+    // Muestra un mensaje de texto en la pantalla
+    void mostrarTexto(const std::string& mensaje) override;
+
+    // Limpia el contenido de la pantalla
+    void limpiarPantalla() override;
+
+    // Captura la entrada de texto del usuario
+    std::string capturarEntrada(const std::string& mensaje) override;
+	std::string capturarEntrada(const std::string& mensaje, const std::vector<std::string>& opciones) override;
+   
+    // Refresca la pantalla para actualizar su contenido
+    void refrescarPantalla() override;
+
+    // Muestra un mensaje de error resaltado en la pantalla
+    void mostrarError(const std::string& error) override;
+
+    void handleResize();
+};
