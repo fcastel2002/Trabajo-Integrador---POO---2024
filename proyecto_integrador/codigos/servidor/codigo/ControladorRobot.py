@@ -176,7 +176,8 @@ class ControladorRobot:
             raise ErrorDeConexion(2)
         if self.aprendiendo:
             raise ErrorDeEstado(9)
-
+        if nombre_archivo.endswith(".txt"):
+            nombre_archivo = nombre_archivo[:-4]
         if archivo is not None:
             comandos = archivo
             archivo_control_automatico = GestorDeArchivos(f"{nombre_archivo}.txt")
