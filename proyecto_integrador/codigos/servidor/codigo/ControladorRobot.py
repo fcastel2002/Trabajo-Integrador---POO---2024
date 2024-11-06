@@ -108,7 +108,7 @@ class ControladorRobot:
         self.serial_robot.reset_input_buffer()
 
         respuestas = []
-        time.sleep(2)
+        time.sleep(3)
         while self.serial_robot.in_waiting > 0:
             respuesta = self.serial_robot.readline().decode().strip()  # Descartar cualquier mensaje residual
             respuestas.append(respuesta)
