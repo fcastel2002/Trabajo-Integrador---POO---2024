@@ -20,7 +20,7 @@ public:
     virtual std::string capturarEntrada(const std::string& mensaje, const std::vector<std::string>& opciones) = 0;
 
 
-    // Muestra un menú y retorna la opción elegida por el usuario
+    // Muestra un menï¿½ y retorna la opciï¿½n elegida por el usuario
     virtual int mostrarMenu(const std::vector<std::string>& opciones, const std::string& tituloMenu) = 0;
 
     // Refresca la pantalla, actualizando su contenido

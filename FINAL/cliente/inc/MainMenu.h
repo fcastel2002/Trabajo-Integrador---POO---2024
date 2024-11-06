@@ -5,27 +5,27 @@
 #include "OrdenBuilder.h"
 #include "IPantalla.h"
 #include "ErrorHandler.h" 
-#include "Archivo.h"// Agregado para posible manejo de errores en el .h
-#include <curses.h>        // Librería PDCurses
+#include "Archivo.h"        
+#include <curses.h>       
 #include <string>
 #include <vector>
 
-#pragma comment(lib, "pdcurses.a")
-#pragma comment(lib, "MSVCRTD.lib")
-#pragma comment(lib, "libcmtd.lib")
+//#pragma comment(lib, "pdcurses.a")
+//#pragma comment(lib, "MSVCRTD.lib")
+//#pragma comment(lib, "libcmtd.lib")
 
 class MainMenu {
 public:
-    // Constructor que inicializa el menú principal con el cliente y la pantalla
+    // Constructor que inicializa el menï¿½ principal con el cliente y la pantalla
     MainMenu(Cliente& cliente, IPantalla* pantalla);
 
-    // Muestra el menú principal
+    // Muestra el menï¿½ principal
     void mostrarMenu();
 
     // Configura los comandos del cliente
     void setComandos();
 
-    // Procesa la selección de comandos
+    // Procesa la selecciï¿½n de comandos
     bool procesarSeleccion(int seleccion);
 
     //Sobre carga para procesar en local
@@ -33,12 +33,12 @@ public:
 
 private:
     Cliente& cliente;                     // Referencia al cliente para ejecutar comandos
-    IPantalla* m_pantalla;                // Referencia a la pantalla para mostrar el menú y mensajes
+    IPantalla* m_pantalla;                // Referencia a la pantalla para mostrar el menï¿½ y mensajes
 
-    // Maneja la selección en el menú principal o en el menú de comandos
+    // Maneja la selecciï¿½n en el menï¿½ principal o en el menï¿½ de comandos
     const std::string manejarSeleccion(int seleccion, const std::string& para);
 
-    // Opciones del menú principal del cliente
+    // Opciones del menï¿½ principal del cliente
      std::vector<std::string> m_opcionesCliente = {
         "Login",
         "Mostrar comandos",
@@ -46,8 +46,8 @@ private:
     };
 
     std::vector<std::string> m_comandos;  // Lista de comandos del cliente
-    std::vector<std::string> m_opciones;  // Opciones dinámicas para mostrar en pantalla
-    bool m_flagMenu = true;               // Indicador para mantener el menú abierto o cerrado
+    std::vector<std::string> m_opciones;  // Opciones dinï¿½micas para mostrar en pantalla
+    bool m_flagMenu = true;               // Indicador para mantener el menï¿½ abierto o cerrado
 };
 
 #endif

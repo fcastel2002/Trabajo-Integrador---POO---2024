@@ -6,21 +6,21 @@
 
 class Archivo {
 private:
-    std::string m_nombre;                  // Nombre del archivo con extensión
+    std::string m_nombre;                  // Nombre del archivo con extensiï¿½n
     std::string m_ruta;                    // Ruta del archivo
     std::fstream m_archivo;                // Flujo de archivo
-    std::vector<std::string> m_contenido;  // Contenido leído del archivo
+    std::vector<std::string> m_contenido;  // Contenido leï¿½do del archivo
 
 public:
     /**
      * Constructor que inicializa el nombre y la ruta del archivo.
-     * @param nombre Nombre del archivo con extensión.
+     * @param nombre Nombre del archivo con extensiï¿½n.
      * @param ruta Ruta del archivo (opcional).
      */
     Archivo(std::string nombre, std::string ruta = "");
 
     /**
-     * Destructor que cierra el archivo si está abierto.
+     * Destructor que cierra el archivo si estï¿½ abierto.
      */
     ~Archivo();
 
@@ -33,24 +33,24 @@ public:
 
     /**
      * Abre el archivo para lectura.
-     * @return true si el archivo se abrió correctamente, false en caso contrario.
+     * @return true si el archivo se abriï¿½ correctamente, false en caso contrario.
      */
     bool abrir();
 
     /**
-     * Cierra el archivo si está abierto.
-     * @return true si el archivo se cerró correctamente, false en caso contrario.
+     * Cierra el archivo si estï¿½ abierto.
+     * @return true si el archivo se cerrï¿½ correctamente, false en caso contrario.
      */
     bool cerrar();
 
     /**
-     * Lee el contenido del archivo línea por línea.
+     * Lee el contenido del archivo lï¿½nea por lï¿½nea.
      * @return true si la lectura fue exitosa, false en caso contrario.
      */
     bool leer();
 
     /**
-     * Retorna el contenido del archivo leído en un vector de strings.
+     * Retorna el contenido del archivo leï¿½do en un vector de strings.
      * @return Vector de strings con el contenido del archivo.
      */
     std::vector<std::string> getContenido();

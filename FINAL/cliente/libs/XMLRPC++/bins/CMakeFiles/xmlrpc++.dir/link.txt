@@ -1,0 +1,2 @@
+C:\msys64\ucrt64\bin\ar.exe qc libxmlrpc++.a CMakeFiles/xmlrpc++.dir/XmlRpcClient.cpp.obj CMakeFiles/xmlrpc++.dir/XmlRpcDispatch.cpp.obj CMakeFiles/xmlrpc++.dir/XmlRpcServer.cpp.obj CMakeFiles/xmlrpc++.dir/XmlRpcServerConnection.cpp.obj CMakeFiles/xmlrpc++.dir/XmlRpcServerMethod.cpp.obj CMakeFiles/xmlrpc++.dir/XmlRpcSocket.cpp.obj CMakeFiles/xmlrpc++.dir/XmlRpcSource.cpp.obj CMakeFiles/xmlrpc++.dir/XmlRpcUtil.cpp.obj CMakeFiles/xmlrpc++.dir/XmlRpcValue.cpp.obj
+C:\msys64\ucrt64\bin\ranlib.exe libxmlrpc++.a

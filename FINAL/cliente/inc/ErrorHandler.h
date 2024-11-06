@@ -1,4 +1,3 @@
-// ErrorHandler.h
 #pragma once
 
 
@@ -8,6 +7,9 @@
 #include <fstream>
 #include <exception>
 #include <unordered_map>
+#include <ctime>
+#include <iomanip>
+#include <sstream>
 
 // Niveles de severidad de error
 enum class ErrorLevel {

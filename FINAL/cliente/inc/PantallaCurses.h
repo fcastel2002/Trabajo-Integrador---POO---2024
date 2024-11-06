@@ -5,6 +5,9 @@
 #include <vector>
 #include <curses.h>
 #include <string>
+#include <csignal>
+#include <cstdlib>
+#include <sstream>
 
 class PantallaCurses : public IPantalla {
 public:
@@ -14,7 +17,7 @@ public:
     // Destructor que cierra la pantalla al finalizar
     ~PantallaCurses() override;
 
-    // Muestra el menú y permite seleccionar una opción
+    // Muestra el menï¿½ y permite seleccionar una opciï¿½n
     int mostrarMenu(const std::vector<std::string>& opciones, const std::string& tituloMenu) override;
 
     // Muestra un mensaje de texto en la pantalla

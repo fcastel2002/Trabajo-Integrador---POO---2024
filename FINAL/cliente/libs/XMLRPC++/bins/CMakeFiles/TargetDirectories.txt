@@ -1,0 +1,3 @@
+D:/repositorio/pruebacmake/libs/XMLRPC++/bins/CMakeFiles/xmlrpc++.dir
+D:/repositorio/pruebacmake/libs/XMLRPC++/bins/CMakeFiles/edit_cache.dir
+D:/repositorio/pruebacmake/libs/XMLRPC++/bins/CMakeFiles/rebuild_cache.dir

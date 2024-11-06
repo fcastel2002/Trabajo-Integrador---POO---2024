@@ -6,29 +6,32 @@
 #include <XmlRpc.h>
 #include "Orden.h"
 #include "ErrorHandler.h"
+#include <iostream>
+#include <algorithm>
+#include <unordered_map>
 
-#pragma comment(lib, "xmlrpc++.lib")
-#pragma comment(lib, "WS2_32.lib")	
+//#pragma comment(lib, "xmlrpc++.lib")
+//#pragma comment(lib, "WS2_32.lib")	
 
 using namespace XmlRpc;
 
 class Cliente {
 private:
-    std::string m_ip;                   // Dirección IP del servidor
-    int m_puerto;                       // Puerto de conexión
-    XmlRpcClient client;                // Cliente XML-RPC para la comunicación con el servidor
+    std::string m_ip;                   // Direcciï¿½n IP del servidor
+    int m_puerto;                       // Puerto de conexiï¿½n
+    XmlRpcClient client;                // Cliente XML-RPC para la comunicaciï¿½n con el servidor
     IPantalla& m_pantalla;              // Referencia a la pantalla para mostrar mensajes
     std::string m_usuario;              // Nombre de usuario
-    std::string m_clave;                // Contraseña
+    std::string m_clave;                // Contraseï¿½a
 
-    // Método auxiliar para extraer el contenido entre las etiquetas <value> y </value>
+    // Mï¿½todo auxiliar para extraer el contenido entre las etiquetas <value> y </value>
     std::string extraerContenido(XmlRpcValue& contenido);
 
 public:
-    // Constructor que inicializa la conexión con IP, puerto y pantalla
+    // Constructor que inicializa la conexiï¿½n con IP, puerto y pantalla
     Cliente(IPantalla& pantalla);
 
-    // Envía un comando al servidor a través de XML-RPC
+    // Envï¿½a un comando al servidor a travï¿½s de XML-RPC
     bool enviarComando(Orden& my_order);
 
     // Solicita y obtiene una lista de comandos del servidor
@@ -37,10 +40,10 @@ public:
     // Interpreta la respuesta recibida del servidor y muestra el mensaje limpio
     void interpretarRespuesta(XmlRpcValue& respuesta);
 
-    // Realiza el proceso de login solicitando usuario y contraseña al usuario
+    // Realiza el proceso de login solicitando usuario y contraseï¿½a al usuario
     void login();
 	
-    // Resetea usuario y contraseña
+    // Resetea usuario y contraseï¿½a
     
 	void cerrarSesion();
 
@@ -48,7 +51,7 @@ public:
     bool verificarServidor(); 
     void capturarIpYPuerto();
 
-    // Métodos getter y setter para el usuario y la contraseña
+    // Mï¿½todos getter y setter para el usuario y la contraseï¿½a
     std::string getUser() { return m_usuario; }
     std::string getPass() { return m_clave; }
     void setUser(std::string user) { m_usuario = user; }

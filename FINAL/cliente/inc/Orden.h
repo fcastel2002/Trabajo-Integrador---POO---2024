@@ -16,12 +16,12 @@ private:
 public:
     /**
      * Constructor que acepta un vector de vectores de strings.
-     * @param parametros Vector de vectores de strings que representan los parámetros de la orden.
+     * @param parametros Vector de vectores de strings que representan los parï¿½metros de la orden.
      */
     explicit Orden(const std::vector<std::vector<std::string>>& parametros) : m_parametros{ parametros } {}
 
     /**
-     * Crea una orden en formato XmlRpcValue a partir de los parámetros proporcionados.
+     * Crea una orden en formato XmlRpcValue a partir de los parï¿½metros proporcionados.
      * @return XmlRpcValue que representa la orden creada.
      */
     XmlRpcValue crearOrden() {
