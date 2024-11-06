@@ -7,7 +7,7 @@ set(CMAKE_DEPENDS_GENERATOR "MinGW Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
-  "C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/FINAL/cliente_make/CMakeLists.txt"
+  "C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/proyecto_integrador/codigos/cliente/CMakeLists.txt"
   "CMakeFiles/3.31.0-rc1/CMakeCCompiler.cmake"
   "CMakeFiles/3.31.0-rc1/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.31.0-rc1/CMakeRCCompiler.cmake"

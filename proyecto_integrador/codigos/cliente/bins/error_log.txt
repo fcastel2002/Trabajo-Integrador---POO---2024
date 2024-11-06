@@ -1,0 +1,8 @@
+[2024-11-05 23:45:16] ERROR: Archivo no encontrado
+[2024-11-05 23:45:17] ERROR: Archivo no encontrado
+[2024-11-05 23:45:29] WARNING: Respuesta no válida recibida del servidor.
+[2024-11-05 23:47:21] ERROR: Archivo no encontrado
+[2024-11-05 23:47:23] ERROR: Archivo no encontrado
+[2024-11-05 23:49:07] WARNING: Respuesta no válida recibida del servidor.
+[2024-11-05 23:53:51] ERROR: Archivo no encontrado
+[2024-11-05 23:53:57] ERROR: Archivo no encontrado

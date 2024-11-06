@@ -3,7 +3,7 @@
 
 /**
  * Constructor que inicializa el nombre y la ruta del archivo.
- * @param nombre Nombre del archivo con extensiÛn.
+ * @param nombre Nombre del archivo con extensi√≥n.
  * @param ruta Ruta del archivo (opcional).
  */
 Archivo::Archivo(std::string nombre, std::string ruta)
@@ -13,7 +13,7 @@ Archivo::Archivo(std::string nombre, std::string ruta)
     , m_contenido{} {}
 
 /**
- * Destructor que cierra el archivo si est· abierto.
+ * Destructor que cierra el archivo si est√° abierto.
  */
 Archivo::~Archivo() {
     if (m_archivo.is_open()) {
@@ -23,7 +23,7 @@ Archivo::~Archivo() {
 
 /**
  * Abre el archivo para lectura.
- * @return true si el archivo se abriÛ correctamente, false en caso contrario.
+ * @return true si el archivo se abri√≥ correctamente, false en caso contrario.
  */
 bool Archivo::abrir() {
     if (m_archivo.is_open()) {
@@ -42,8 +42,8 @@ bool Archivo::abrir() {
 }
 
 /**
- * Cierra el archivo si est· abierto.
- * @return true si el archivo se cerrÛ correctamente, false en caso contrario.
+ * Cierra el archivo si est√° abierto.
+ * @return true si el archivo se cerr√≥ correctamente, false en caso contrario.
  */
 bool Archivo::cerrar() {
     if (m_archivo.is_open()) {
@@ -53,11 +53,11 @@ bool Archivo::cerrar() {
 }
 
 /**
- * Lee el contenido del archivo lÌnea por lÌnea.
+ * Lee el contenido del archivo l√≠nea por l√≠nea.
  * @return true si la lectura fue exitosa, false en caso contrario.
  */
 bool Archivo::leer() {
-    if (!abrir()) {  // Asegura que el archivo estÈ abierto o intenta abrirlo
+    if (!abrir()) {  // Asegura que el archivo est√© abierto o intenta abrirlo
         return false;
     }
 
@@ -69,7 +69,7 @@ bool Archivo::leer() {
     if (m_archivo.bad()) {  // Verifica si hubo error al leer
         ErrorHandler errorHandler;
         errorHandler.logError(ErrorCode::OPERATION_FAILED, ErrorLevel::ERROR);
-        errorHandler.displayError("Error al leer el archivo: " + m_nombre, ErrorLevel::ERROR);
+        errorHandler.displayError("Error al leer el archivo: " + m_ruta+ m_nombre, ErrorLevel::ERROR);
         cerrar();
         return false;
     }
@@ -130,7 +130,7 @@ std::vector<std::string> Archivo::obtenerArchivos(const std::string& ruta) {
 }
 
 /**
- * Retorna el contenido del archivo leÌdo en un vector de strings.
+ * Retorna el contenido del archivo le√≠do en un vector de strings.
  * @return Vector de strings con el contenido del archivo.
  */
 std::vector<std::string> Archivo::getContenido() {

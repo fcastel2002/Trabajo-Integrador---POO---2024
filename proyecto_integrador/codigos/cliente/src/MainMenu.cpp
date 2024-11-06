@@ -6,14 +6,14 @@ using namespace std;
 
 /**
  * Constructor de la clase MainMenu.
- * @param cliente Referencia a un objeto Cliente para la interacción con el servidor.
- * @param pantalla Puntero a una interfaz de pantalla para la interacción con el usuario.
+ * @param cliente Referencia a un objeto Cliente para la interacciÃ³n con el servidor.
+ * @param pantalla Puntero a una interfaz de pantalla para la interacciÃ³n con el usuario.
  */
 MainMenu::MainMenu(Cliente& cliente, IPantalla* pantalla)
     : cliente(cliente), m_pantalla(pantalla) {}
 
 /**
- * Configura los comandos disponibles obteniéndolos del servidor.
+ * Configura los comandos disponibles obteniÃ©ndolos del servidor.
  */
 void MainMenu::setComandos() {
     OrdenBuilder builder;
@@ -38,7 +38,7 @@ void MainMenu::setComandos() {
 }
 
 /**
- * Muestra el menú principal y maneja la interacción del usuario.
+ * Muestra el menÃº principal y maneja la interacciÃ³n del usuario.
  */
 void MainMenu::mostrarMenu() {
     m_pantalla->refrescarPantalla();
@@ -74,10 +74,10 @@ void MainMenu::mostrarMenu() {
 }
 
 /**
- * Procesa la selección del usuario en el menú.
- * @param seleccion Índice de la opción seleccionada.
- * @param quien Contexto de la selección (local o servidor).
- * @return Una cadena que indica la acción a realizar.
+ * Procesa la selecciÃ³n del usuario en el menÃº.
+ * @param seleccion Ãndice de la opciÃ³n seleccionada.
+ * @param quien Contexto de la selecciÃ³n (local o servidor).
+ * @return Una cadena que indica la acciÃ³n a realizar.
  */
 std::string MainMenu::procesarSeleccion(int seleccion, const std::string& quien) {
     std::string comando = manejarSeleccion(seleccion, "cliente");
@@ -103,9 +103,9 @@ std::string MainMenu::procesarSeleccion(int seleccion, const std::string& quien)
 }
 
 /**
- * Maneja la selección del usuario en el menú.
- * @param seleccion Índice de la opción seleccionada.
- * @param para Contexto de la selección (cliente o servidor).
+ * Maneja la selecciÃ³n del usuario en el menÃº.
+ * @param seleccion Ãndice de la opciÃ³n seleccionada.
+ * @param para Contexto de la selecciÃ³n (cliente o servidor).
  * @return Una cadena que indica el comando seleccionado.
  */
 const std::string MainMenu::manejarSeleccion(int seleccion, const std::string& para) {
@@ -122,9 +122,9 @@ const std::string MainMenu::manejarSeleccion(int seleccion, const std::string& p
 }
 
 /**
- * Procesa la selección del usuario en el menú de comandos del servidor.
- * @param seleccion Índice de la opción seleccionada.
- * @return true si se debe continuar mostrando el menú, false en caso contrario.
+ * Procesa la selecciÃ³n del usuario en el menÃº de comandos del servidor.
+ * @param seleccion Ãndice de la opciÃ³n seleccionada.
+ * @return true si se debe continuar mostrando el menÃº, false en caso contrario.
  */
 bool MainMenu::procesarSeleccion(int seleccion) {
     std::string comando = manejarSeleccion(seleccion, "servidor");
@@ -154,11 +154,13 @@ bool MainMenu::procesarSeleccion(int seleccion) {
 
     try {
         if (comando == "Ejecutar automatico") {
-            std::string nombreArchivo,choice;
+            std::string nombreArchivo,choice,ruta;
             std::string dedonde = m_pantalla->capturarEntrada("Donde esta el archivo que desea ejecutar?: ", { "Servidor","Cliente" });
             if (dedonde == "Cliente") {
-                std::string nombreArchivo = m_pantalla->capturarEntrada("Seleccione el archivo para la ejecucion automatica:", Archivo::obtenerArchivos(m_pantalla->capturarEntrada("Ingrese la ruta: "))); //metodo static necesario
-                std::string choice = m_pantalla->capturarEntrada("Desea enviar el archivo? (s/n)", { "Si", "No" });
+                ruta = "./"+m_pantalla->capturarEntrada("Ingrese la ruta: ")+"/";
+                nombreArchivo = m_pantalla->capturarEntrada("Seleccione el archivo para la ejecucion automatica:", Archivo::obtenerArchivos(ruta)); //metodo static necesario
+                choice = m_pantalla->capturarEntrada("Desea enviar el archivo? (s/n)", { "Si", "No" });
+
             }
             else {
                 std::string nombreArchivo = m_pantalla->capturarEntrada("Ingrese el nombre del archivo presente en el servidor (sin extension): ");
@@ -166,8 +168,8 @@ bool MainMenu::procesarSeleccion(int seleccion) {
 
             if (nombreArchivo == "ESC") return true;
             if (choice == "ESC") return true;
-            Archivo archivo_gcode(nombreArchivo, "./archivos_gcode/");
-            
+            Archivo archivo_gcode(nombreArchivo, ruta);
+            m_pantalla->mostrarTexto(choice);
             parametros.push_back(nombreArchivo);
 
             if (choice == "Si") {

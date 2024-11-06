@@ -1,6 +1,6 @@
 CMakeFiles/cliente.dir/src/Archivo.cpp.obj: \
- C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\src\Archivo.cpp \
- C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/FINAL/cliente_make/inc/Archivo.h \
+ C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\src\Archivo.cpp \
+ C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/proyecto_integrador/codigos/cliente/inc/Archivo.h \
  C:/msys64/ucrt64/include/c++/13.2.0/string \
  C:/msys64/ucrt64/include/c++/13.2.0/bits/requires_hosted.h \
  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++config.h \
@@ -186,8 +186,8 @@ CMakeFiles/cliente.dir/src/Archivo.cpp.obj: \
  C:/msys64/ucrt64/include/c++/13.2.0/bits/align.h \
  C:/msys64/ucrt64/include/c++/13.2.0/bits/fs_dir.h \
  C:/msys64/ucrt64/include/c++/13.2.0/bits/fs_ops.h \
- C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/FINAL/cliente_make/inc/ErrorHandler.h \
- C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/FINAL/cliente_make/inc/IPantalla.h \
+ C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/proyecto_integrador/codigos/cliente/inc/ErrorHandler.h \
+ C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/proyecto_integrador/codigos/cliente/inc/IPantalla.h \
  C:/msys64/ucrt64/include/c++/13.2.0/iostream \
  C:/msys64/ucrt64/include/c++/13.2.0/unordered_map \
  C:/msys64/ucrt64/include/c++/13.2.0/bits/unordered_map.h \

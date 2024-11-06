@@ -1,6 +1,6 @@
 CMakeFiles/cliente.dir/src/Cliente.cpp.obj: \
- C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\src\Cliente.cpp \
- C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/FINAL/cliente_make/inc/Cliente.h \
+ C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\src\Cliente.cpp \
+ C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/proyecto_integrador/codigos/cliente/inc/Cliente.h \
  C:/msys64/ucrt64/include/c++/13.2.0/string \
  C:/msys64/ucrt64/include/c++/13.2.0/bits/requires_hosted.h \
  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++config.h \
@@ -108,33 +108,33 @@ CMakeFiles/cliente.dir/src/Cliente.cpp.obj: \
  C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_vector.h \
  C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_bvector.h \
  C:/msys64/ucrt64/include/c++/13.2.0/bits/vector.tcc \
- C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/FINAL/cliente_make/inc/IPantalla.h \
- C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/FINAL/cliente_make/libs/XMLRPC++/XmlRpc.h \
- C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/FINAL/cliente_make/libs/XMLRPC++/XmlRpcClient.h \
- C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/FINAL/cliente_make/libs/XMLRPC++/XmlRpcDispatch.h \
+ C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/proyecto_integrador/codigos/cliente/inc/IPantalla.h \
+ C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/proyecto_integrador/codigos/cliente/libs/XMLRPC++/XmlRpc.h \
+ C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/proyecto_integrador/codigos/cliente/libs/XMLRPC++/XmlRpcClient.h \
+ C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/proyecto_integrador/codigos/cliente/libs/XMLRPC++/XmlRpcDispatch.h \
  C:/msys64/ucrt64/include/c++/13.2.0/list \
  C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_list.h \
  C:/msys64/ucrt64/include/c++/13.2.0/bits/allocated_ptr.h \
  C:/msys64/ucrt64/include/c++/13.2.0/ext/aligned_buffer.h \
  C:/msys64/ucrt64/include/c++/13.2.0/bits/list.tcc \
- C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/FINAL/cliente_make/libs/XMLRPC++/XmlRpcSource.h \
- C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/FINAL/cliente_make/libs/XMLRPC++/XmlRpcException.h \
- C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/FINAL/cliente_make/libs/XMLRPC++/XmlRpcServer.h \
+ C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/proyecto_integrador/codigos/cliente/libs/XMLRPC++/XmlRpcSource.h \
+ C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/proyecto_integrador/codigos/cliente/libs/XMLRPC++/XmlRpcException.h \
+ C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/proyecto_integrador/codigos/cliente/libs/XMLRPC++/XmlRpcServer.h \
  C:/msys64/ucrt64/include/c++/13.2.0/map \
  C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_tree.h \
  C:/msys64/ucrt64/include/c++/13.2.0/bits/node_handle.h \
  C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_map.h \
  C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_multimap.h \
  C:/msys64/ucrt64/include/c++/13.2.0/bits/erase_if.h \
- C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/FINAL/cliente_make/libs/XMLRPC++/XmlRpcServerMethod.h \
- C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/FINAL/cliente_make/libs/XMLRPC++/XmlRpcValue.h \
+ C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/proyecto_integrador/codigos/cliente/libs/XMLRPC++/XmlRpcServerMethod.h \
+ C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/proyecto_integrador/codigos/cliente/libs/XMLRPC++/XmlRpcValue.h \
  C:/msys64/ucrt64/include/time.h C:/msys64/ucrt64/include/sys/timeb.h \
  C:/msys64/ucrt64/include/sec_api/sys/timeb_s.h \
  C:/msys64/ucrt64/include/_timeval.h \
  C:/msys64/ucrt64/include/pthread_time.h \
- C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/FINAL/cliente_make/libs/XMLRPC++/XmlRpcUtil.h \
- C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/FINAL/cliente_make/inc/Orden.h \
- C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/FINAL/cliente_make/inc/ErrorHandler.h \
+ C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/proyecto_integrador/codigos/cliente/libs/XMLRPC++/XmlRpcUtil.h \
+ C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/proyecto_integrador/codigos/cliente/inc/Orden.h \
+ C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/proyecto_integrador/codigos/cliente/inc/ErrorHandler.h \
  C:/msys64/ucrt64/include/c++/13.2.0/iostream \
  C:/msys64/ucrt64/include/c++/13.2.0/ostream \
  C:/msys64/ucrt64/include/c++/13.2.0/ios \
@@ -205,5 +205,5 @@ CMakeFiles/cliente.dir/src/Cliente.cpp.obj: \
  C:/msys64/ucrt64/include/c++/13.2.0/bits/ranges_algobase.h \
  C:/msys64/ucrt64/include/c++/13.2.0/pstl/glue_algorithm_defs.h \
  C:/msys64/ucrt64/include/c++/13.2.0/pstl/execution_defs.h \
- C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/FINAL/cliente_make/inc/RespuestaBuilder.h \
- C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/FINAL/cliente_make/inc/Respuesta.h
+ C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/proyecto_integrador/codigos/cliente/inc/RespuestaBuilder.h \
+ C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/proyecto_integrador/codigos/cliente/inc/Respuesta.h

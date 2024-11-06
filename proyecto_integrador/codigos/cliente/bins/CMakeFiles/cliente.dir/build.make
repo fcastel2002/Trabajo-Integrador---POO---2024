@@ -52,10 +52,10 @@ RM = K:\CMake\bin\cmake.exe -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make
+CMAKE_SOURCE_DIR = C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\bins
+CMAKE_BINARY_DIR = C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\bins
 
 # Include any dependencies generated for this target.
 include CMakeFiles/cliente.dir/depend.make
@@ -73,93 +73,93 @@ CMakeFiles/cliente.dir/codegen:
 
 CMakeFiles/cliente.dir/src/Archivo.cpp.obj: CMakeFiles/cliente.dir/flags.make
 CMakeFiles/cliente.dir/src/Archivo.cpp.obj: CMakeFiles/cliente.dir/includes_CXX.rsp
-CMakeFiles/cliente.dir/src/Archivo.cpp.obj: C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/FINAL/cliente_make/src/Archivo.cpp
+CMakeFiles/cliente.dir/src/Archivo.cpp.obj: C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/proyecto_integrador/codigos/cliente/src/Archivo.cpp
 CMakeFiles/cliente.dir/src/Archivo.cpp.obj: CMakeFiles/cliente.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\bins\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cliente.dir/src/Archivo.cpp.obj"
-	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cliente.dir/src/Archivo.cpp.obj -MF CMakeFiles\cliente.dir\src\Archivo.cpp.obj.d -o CMakeFiles\cliente.dir\src\Archivo.cpp.obj -c C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\src\Archivo.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\bins\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cliente.dir/src/Archivo.cpp.obj"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cliente.dir/src/Archivo.cpp.obj -MF CMakeFiles\cliente.dir\src\Archivo.cpp.obj.d -o CMakeFiles\cliente.dir\src\Archivo.cpp.obj -c C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\src\Archivo.cpp
 
 CMakeFiles/cliente.dir/src/Archivo.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cliente.dir/src/Archivo.cpp.i"
-	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\src\Archivo.cpp > CMakeFiles\cliente.dir\src\Archivo.cpp.i
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\src\Archivo.cpp > CMakeFiles\cliente.dir\src\Archivo.cpp.i
 
 CMakeFiles/cliente.dir/src/Archivo.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cliente.dir/src/Archivo.cpp.s"
-	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\src\Archivo.cpp -o CMakeFiles\cliente.dir\src\Archivo.cpp.s
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\src\Archivo.cpp -o CMakeFiles\cliente.dir\src\Archivo.cpp.s
 
 CMakeFiles/cliente.dir/src/Cliente.cpp.obj: CMakeFiles/cliente.dir/flags.make
 CMakeFiles/cliente.dir/src/Cliente.cpp.obj: CMakeFiles/cliente.dir/includes_CXX.rsp
-CMakeFiles/cliente.dir/src/Cliente.cpp.obj: C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/FINAL/cliente_make/src/Cliente.cpp
+CMakeFiles/cliente.dir/src/Cliente.cpp.obj: C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/proyecto_integrador/codigos/cliente/src/Cliente.cpp
 CMakeFiles/cliente.dir/src/Cliente.cpp.obj: CMakeFiles/cliente.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\bins\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/cliente.dir/src/Cliente.cpp.obj"
-	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cliente.dir/src/Cliente.cpp.obj -MF CMakeFiles\cliente.dir\src\Cliente.cpp.obj.d -o CMakeFiles\cliente.dir\src\Cliente.cpp.obj -c C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\src\Cliente.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\bins\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/cliente.dir/src/Cliente.cpp.obj"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cliente.dir/src/Cliente.cpp.obj -MF CMakeFiles\cliente.dir\src\Cliente.cpp.obj.d -o CMakeFiles\cliente.dir\src\Cliente.cpp.obj -c C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\src\Cliente.cpp
 
 CMakeFiles/cliente.dir/src/Cliente.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cliente.dir/src/Cliente.cpp.i"
-	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\src\Cliente.cpp > CMakeFiles\cliente.dir\src\Cliente.cpp.i
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\src\Cliente.cpp > CMakeFiles\cliente.dir\src\Cliente.cpp.i
 
 CMakeFiles/cliente.dir/src/Cliente.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cliente.dir/src/Cliente.cpp.s"
-	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\src\Cliente.cpp -o CMakeFiles\cliente.dir\src\Cliente.cpp.s
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\src\Cliente.cpp -o CMakeFiles\cliente.dir\src\Cliente.cpp.s
 
 CMakeFiles/cliente.dir/src/ErrorHandler.cpp.obj: CMakeFiles/cliente.dir/flags.make
 CMakeFiles/cliente.dir/src/ErrorHandler.cpp.obj: CMakeFiles/cliente.dir/includes_CXX.rsp
-CMakeFiles/cliente.dir/src/ErrorHandler.cpp.obj: C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/FINAL/cliente_make/src/ErrorHandler.cpp
+CMakeFiles/cliente.dir/src/ErrorHandler.cpp.obj: C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/proyecto_integrador/codigos/cliente/src/ErrorHandler.cpp
 CMakeFiles/cliente.dir/src/ErrorHandler.cpp.obj: CMakeFiles/cliente.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\bins\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/cliente.dir/src/ErrorHandler.cpp.obj"
-	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cliente.dir/src/ErrorHandler.cpp.obj -MF CMakeFiles\cliente.dir\src\ErrorHandler.cpp.obj.d -o CMakeFiles\cliente.dir\src\ErrorHandler.cpp.obj -c C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\src\ErrorHandler.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\bins\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/cliente.dir/src/ErrorHandler.cpp.obj"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cliente.dir/src/ErrorHandler.cpp.obj -MF CMakeFiles\cliente.dir\src\ErrorHandler.cpp.obj.d -o CMakeFiles\cliente.dir\src\ErrorHandler.cpp.obj -c C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\src\ErrorHandler.cpp
 
 CMakeFiles/cliente.dir/src/ErrorHandler.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cliente.dir/src/ErrorHandler.cpp.i"
-	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\src\ErrorHandler.cpp > CMakeFiles\cliente.dir\src\ErrorHandler.cpp.i
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\src\ErrorHandler.cpp > CMakeFiles\cliente.dir\src\ErrorHandler.cpp.i
 
 CMakeFiles/cliente.dir/src/ErrorHandler.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cliente.dir/src/ErrorHandler.cpp.s"
-	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\src\ErrorHandler.cpp -o CMakeFiles\cliente.dir\src\ErrorHandler.cpp.s
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\src\ErrorHandler.cpp -o CMakeFiles\cliente.dir\src\ErrorHandler.cpp.s
 
 CMakeFiles/cliente.dir/src/main.cpp.obj: CMakeFiles/cliente.dir/flags.make
 CMakeFiles/cliente.dir/src/main.cpp.obj: CMakeFiles/cliente.dir/includes_CXX.rsp
-CMakeFiles/cliente.dir/src/main.cpp.obj: C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/FINAL/cliente_make/src/main.cpp
+CMakeFiles/cliente.dir/src/main.cpp.obj: C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/proyecto_integrador/codigos/cliente/src/main.cpp
 CMakeFiles/cliente.dir/src/main.cpp.obj: CMakeFiles/cliente.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\bins\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/cliente.dir/src/main.cpp.obj"
-	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cliente.dir/src/main.cpp.obj -MF CMakeFiles\cliente.dir\src\main.cpp.obj.d -o CMakeFiles\cliente.dir\src\main.cpp.obj -c C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\src\main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\bins\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/cliente.dir/src/main.cpp.obj"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cliente.dir/src/main.cpp.obj -MF CMakeFiles\cliente.dir\src\main.cpp.obj.d -o CMakeFiles\cliente.dir\src\main.cpp.obj -c C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\src\main.cpp
 
 CMakeFiles/cliente.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cliente.dir/src/main.cpp.i"
-	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\src\main.cpp > CMakeFiles\cliente.dir\src\main.cpp.i
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\src\main.cpp > CMakeFiles\cliente.dir\src\main.cpp.i
 
 CMakeFiles/cliente.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cliente.dir/src/main.cpp.s"
-	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\src\main.cpp -o CMakeFiles\cliente.dir\src\main.cpp.s
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\src\main.cpp -o CMakeFiles\cliente.dir\src\main.cpp.s
 
 CMakeFiles/cliente.dir/src/MainMenu.cpp.obj: CMakeFiles/cliente.dir/flags.make
 CMakeFiles/cliente.dir/src/MainMenu.cpp.obj: CMakeFiles/cliente.dir/includes_CXX.rsp
-CMakeFiles/cliente.dir/src/MainMenu.cpp.obj: C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/FINAL/cliente_make/src/MainMenu.cpp
+CMakeFiles/cliente.dir/src/MainMenu.cpp.obj: C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/proyecto_integrador/codigos/cliente/src/MainMenu.cpp
 CMakeFiles/cliente.dir/src/MainMenu.cpp.obj: CMakeFiles/cliente.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\bins\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/cliente.dir/src/MainMenu.cpp.obj"
-	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cliente.dir/src/MainMenu.cpp.obj -MF CMakeFiles\cliente.dir\src\MainMenu.cpp.obj.d -o CMakeFiles\cliente.dir\src\MainMenu.cpp.obj -c C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\src\MainMenu.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\bins\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/cliente.dir/src/MainMenu.cpp.obj"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cliente.dir/src/MainMenu.cpp.obj -MF CMakeFiles\cliente.dir\src\MainMenu.cpp.obj.d -o CMakeFiles\cliente.dir\src\MainMenu.cpp.obj -c C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\src\MainMenu.cpp
 
 CMakeFiles/cliente.dir/src/MainMenu.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cliente.dir/src/MainMenu.cpp.i"
-	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\src\MainMenu.cpp > CMakeFiles\cliente.dir\src\MainMenu.cpp.i
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\src\MainMenu.cpp > CMakeFiles\cliente.dir\src\MainMenu.cpp.i
 
 CMakeFiles/cliente.dir/src/MainMenu.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cliente.dir/src/MainMenu.cpp.s"
-	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\src\MainMenu.cpp -o CMakeFiles\cliente.dir\src\MainMenu.cpp.s
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\src\MainMenu.cpp -o CMakeFiles\cliente.dir\src\MainMenu.cpp.s
 
 CMakeFiles/cliente.dir/src/PantallaCurses.cpp.obj: CMakeFiles/cliente.dir/flags.make
 CMakeFiles/cliente.dir/src/PantallaCurses.cpp.obj: CMakeFiles/cliente.dir/includes_CXX.rsp
-CMakeFiles/cliente.dir/src/PantallaCurses.cpp.obj: C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/FINAL/cliente_make/src/PantallaCurses.cpp
+CMakeFiles/cliente.dir/src/PantallaCurses.cpp.obj: C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/proyecto_integrador/codigos/cliente/src/PantallaCurses.cpp
 CMakeFiles/cliente.dir/src/PantallaCurses.cpp.obj: CMakeFiles/cliente.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\bins\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/cliente.dir/src/PantallaCurses.cpp.obj"
-	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cliente.dir/src/PantallaCurses.cpp.obj -MF CMakeFiles\cliente.dir\src\PantallaCurses.cpp.obj.d -o CMakeFiles\cliente.dir\src\PantallaCurses.cpp.obj -c C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\src\PantallaCurses.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\bins\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/cliente.dir/src/PantallaCurses.cpp.obj"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cliente.dir/src/PantallaCurses.cpp.obj -MF CMakeFiles\cliente.dir\src\PantallaCurses.cpp.obj.d -o CMakeFiles\cliente.dir\src\PantallaCurses.cpp.obj -c C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\src\PantallaCurses.cpp
 
 CMakeFiles/cliente.dir/src/PantallaCurses.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cliente.dir/src/PantallaCurses.cpp.i"
-	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\src\PantallaCurses.cpp > CMakeFiles\cliente.dir\src\PantallaCurses.cpp.i
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\src\PantallaCurses.cpp > CMakeFiles\cliente.dir\src\PantallaCurses.cpp.i
 
 CMakeFiles/cliente.dir/src/PantallaCurses.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cliente.dir/src/PantallaCurses.cpp.s"
-	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\src\PantallaCurses.cpp -o CMakeFiles\cliente.dir\src\PantallaCurses.cpp.s
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\src\PantallaCurses.cpp -o CMakeFiles\cliente.dir\src\PantallaCurses.cpp.s
 
 # Object files for target cliente
 cliente_OBJECTS = \
@@ -180,12 +180,12 @@ cliente.exe: CMakeFiles/cliente.dir/src/main.cpp.obj
 cliente.exe: CMakeFiles/cliente.dir/src/MainMenu.cpp.obj
 cliente.exe: CMakeFiles/cliente.dir/src/PantallaCurses.cpp.obj
 cliente.exe: CMakeFiles/cliente.dir/build.make
-cliente.exe: C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/FINAL/cliente_make/libs/PDCurses-3.8/wincon/pdcurses.a
-cliente.exe: C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/FINAL/cliente_make/libs/XMLRPC++/bins/libxmlrpc++.a
+cliente.exe: C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/proyecto_integrador/codigos/cliente/libs/PDCurses-3.8/wincon/pdcurses.a
+cliente.exe: C:/Users/Usuario/Desktop/RepoProgramacion/Trabajo-Integrador---POO---2024/proyecto_integrador/codigos/cliente/libs/XMLRPC++/bins/libxmlrpc++.a
 cliente.exe: CMakeFiles/cliente.dir/linkLibs.rsp
 cliente.exe: CMakeFiles/cliente.dir/objects1.rsp
 cliente.exe: CMakeFiles/cliente.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\bins\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable cliente.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\bins\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable cliente.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\cliente.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -197,6 +197,6 @@ CMakeFiles/cliente.dir/clean:
 .PHONY : CMakeFiles/cliente.dir/clean
 
 CMakeFiles/cliente.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\bins C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\bins C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\FINAL\cliente_make\bins\CMakeFiles\cliente.dir\DependInfo.cmake "--color=$(COLOR)"
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\bins C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\bins C:\Users\Usuario\Desktop\RepoProgramacion\Trabajo-Integrador---POO---2024\proyecto_integrador\codigos\cliente\bins\CMakeFiles\cliente.dir\DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/cliente.dir/depend
 
