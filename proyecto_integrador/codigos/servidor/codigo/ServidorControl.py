@@ -187,7 +187,8 @@ class ServidorControl:
             if parametros[1] is not None:
                 archivo = []
                 for i in range(1,len(parametros)):
-                    archivo.append(parametros[i])
+                    if parametros[i] != "":
+                        archivo.append(parametros[i])
                 try: 
                     return self.robot.ejecutar_automatico(nombre_archivo, archivo)
                 except Exception as e:
