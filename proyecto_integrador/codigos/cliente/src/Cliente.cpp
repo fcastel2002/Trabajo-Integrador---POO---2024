@@ -8,7 +8,7 @@
 
 /**
  * Constructor de la clase Cliente.
- * @param pantalla Referencia a una interfaz de pantalla para la interacción con el usuario.
+ * @param pantalla Referencia a una interfaz de pantalla para la interacciï¿½n con el usuario.
  */
 Cliente::Cliente(IPantalla& pantalla)
 	: m_pantalla{ pantalla }
@@ -22,8 +22,8 @@ Cliente::Cliente(IPantalla& pantalla)
  * Captura la IP y el puerto del servidor desde la entrada del usuario.
  */
 void Cliente::capturarIpYPuerto() {
-	m_ip = m_pantalla.capturarEntrada("Ingrese la IP del servidor: ");
-	std::string puertoStr = m_pantalla.capturarEntrada("Ingrese el puerto del servidor: ");
+	m_ip = m_pantalla.capturarEntrada("Ingrese la IP del servidor (sugerido: localhost): ");
+	std::string puertoStr = m_pantalla.capturarEntrada("Ingrese el puerto del servidor (sugerido: 9000): ");
 	try {
 		m_puerto = std::stoi(puertoStr);
 	}
@@ -37,8 +37,8 @@ void Cliente::capturarIpYPuerto() {
 }
 
 /**
- * Verifica la conexión con el servidor.
- * @return true si la conexión es exitosa, false en caso contrario.
+ * Verifica la conexiï¿½n con el servidor.
+ * @return true si la conexiï¿½n es exitosa, false en caso contrario.
  */
 bool Cliente::verificarServidor() {
 	ErrorHandler errorHandler;
@@ -67,9 +67,9 @@ bool Cliente::verificarServidor() {
 }
 
 /**
- * Envía un comando al servidor.
+ * Envï¿½a un comando al servidor.
  * @param my_order Referencia a un objeto Orden que contiene el comando a enviar.
- * @return true si el comando se envía correctamente, false en caso contrario.
+ * @return true si el comando se envï¿½a correctamente, false en caso contrario.
  */
 bool Cliente::enviarComando(Orden& my_order) {
 	XmlRpcValue params, result;
@@ -102,7 +102,7 @@ bool Cliente::enviarComando(Orden& my_order) {
 void Cliente::interpretarRespuesta(XmlRpcValue& respuesta) {
 	ErrorHandler errorHandler;
 	if (respuesta.getType() != XmlRpcValue::TypeArray) {
-		errorHandler.logError("Respuesta no válida recibida del servidor.", ErrorLevel::WARNING);
+		errorHandler.logError("Respuesta no vï¿½lida recibida del servidor.", ErrorLevel::WARNING);
 		errorHandler.displayError("La respuesta del servidor no tiene el formato esperado.", ErrorLevel::WARNING);
 		return;
 	}
@@ -120,7 +120,7 @@ void Cliente::interpretarRespuesta(XmlRpcValue& respuesta) {
 /**
  * Extrae el contenido de un objeto XmlRpcValue.
  * @param contenido Referencia a un objeto XmlRpcValue que contiene el contenido a extraer.
- * @return Una cadena de texto con el contenido extraído.
+ * @return Una cadena de texto con el contenido extraï¿½do.
  */
 std::string Cliente::extraerContenido(XmlRpcValue& contenido) {
 	if (contenido.getType() != XmlRpcValue::TypeArray) {
@@ -134,7 +134,7 @@ std::string Cliente::extraerContenido(XmlRpcValue& contenido) {
 		}
 	}
 
-	// Elimina el último salto de línea si existe
+	// Elimina el ï¿½ltimo salto de lï¿½nea si existe
 	if (!resultado.empty()) {
 		resultado.pop_back();
 	}
@@ -179,7 +179,7 @@ std::vector<std::string> Cliente::pedirComandos(Orden& my_order) {
 		}
 		else {
 			errorHandler.logError("Formato de respuesta incorrecto.", ErrorLevel::WARNING);
-			errorHandler.displayError("El servidor devolvió un formato no esperado.", ErrorLevel::WARNING);
+			errorHandler.displayError("El servidor devolviï¿½ un formato no esperado.", ErrorLevel::WARNING);
 		}
 
 		client.close();
@@ -193,7 +193,7 @@ std::vector<std::string> Cliente::pedirComandos(Orden& my_order) {
 }
 
 /**
- * Realiza el proceso de inicio de sesión del usuario.
+ * Realiza el proceso de inicio de sesiï¿½n del usuario.
  */
 void Cliente::login() {
 	std::string user = m_pantalla.capturarEntrada("Ingrese su usuario: ");
@@ -203,7 +203,7 @@ void Cliente::login() {
 }
 
 /**
- * Cierra la sesión del usuario.
+ * Cierra la sesiï¿½n del usuario.
  */
 void Cliente::cerrarSesion() {
 	setUser("null");
