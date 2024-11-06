@@ -200,9 +200,9 @@ class ControladorRobot:
                 
         for i,resultado in enumerate(resultados):
             if "error" in resultado.lower():
-                respuestas_usuario.append(f"Comando: {comandos[i]} - Error: {resultado}")
+                respuestas_usuario.append(f"Comando: {comandos[i]} \n Error: {resultado}")
             else:
-                respuestas_usuario.append(f"Comando: {comandos[i]} - Respuesta: {resultado}")
+                respuestas_usuario.append(f"Comando: {comandos[i]} \n Respuesta: {resultado}")
 
         respuestas_usuario.append("Ejecucion automatica completada\n")
         return respuestas_usuario
